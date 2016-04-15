@@ -1,0 +1,2 @@
+1. 根视图为一个navigationViewController,上面是一个TabBarController
+2. 每一个bar item所在页里面都嵌套这一个
