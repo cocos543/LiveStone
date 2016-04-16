@@ -1,2 +1,21 @@
 1. 根视图为一个navigationViewController,上面是一个TabBarController
-2. 每一个bar item所在页里面都嵌套这一个
+
+2. 每一个bar item所在页里面都嵌套一个table获取view的控制器
+
+3. 静态Cells类型的table的style 要设置成group
+
+4. 让navigationBar底部线条隐藏的方法
+//自定义背景图和自定义shadow图
+[self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+[self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];//用于去除导航栏的底线，也就是周围的边线
+
+5. 自定义navBar返回按钮用的是UIBarButtonItem对象
+
+6. 一个tab控制器嵌套一个nav控制器,nav控制器push一个视图的时候如果设置为hideBottomBarOnPush的话,效果就是微信那样.而nav控制器嵌套tab控制器,然后push一个视图的话,不需要设置hideBottomBarOnPush效果也是微信那样.不过后者的话一会所有页面的navigationBar都是同一个这样就很不方便,毕竟一般情况下,不同页面有着不同的navigationBar.
+
+***************重大更新***********
+7. 现在整体结构修改成了tab控制器嵌套nav控制器
+
+8. 按照第7步修改之后,要设置tab里面每一个页面的标题,必须使用self.navigationItem.title = @"活石";而不是原来的self.tabBarController.title = @"活石";
+
+9.

@@ -40,7 +40,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     //这样表格才不会被盖在navigationBar下面..
-    self.tabBarController.title = @"我";
+    self.navigationItem.title = @"我";
+    self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)didReceiveMemoryWarning {

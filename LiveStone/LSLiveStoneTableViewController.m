@@ -1,18 +1,18 @@
 //
-//  LSDiscoveryTableViewController.m
+//  LSLiveStoneTableViewController.m
 //  LiveStone
 //
-//  Created by 郑克明 on 16/4/15.
+//  Created by 郑克明 on 16/4/16.
 //  Copyright © 2016年 Cocos. All rights reserved.
 //
 
-#import "LSDiscoveryTableViewController.h"
+#import "LSLiveStoneTableViewController.h"
 
-@interface LSDiscoveryTableViewController () <UITableViewDelegate>
+@interface LSLiveStoneTableViewController () <UITableViewDelegate>
 
 @end
 
-@implementation LSDiscoveryTableViewController
+@implementation LSLiveStoneTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,25 +24,32 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationItem.title = @"活石";
+    self.navigationController.navigationBarHidden = NO;
+    self.tableView.separatorStyle = NO;
+//    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];//用于去除导航栏的底线，也就是周围的边线
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    self.navigationItem.title = @"发现";
-    self.navigationController.navigationBarHidden = NO;
 }
 
 #pragma mark - Table view data source
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return 15.0f;
+        return 0.1f;
     }
+    
     return 5.0f;
 }
-
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
