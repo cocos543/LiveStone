@@ -1,33 +1,46 @@
 //
-//  LSUserTableViewController.m
+//  TestTableViewController.m
 //  LiveStone
 //
-//  Created by 郑克明 on 16/4/15.
+//  Created by 郑克明 on 16/4/17.
 //  Copyright © 2016年 Cocos. All rights reserved.
 //
 
-#import "LSUserTableViewController.h"
+#import "TestTableViewController.h"
+#import "TestContactsSearchResultController.h"
 
-@interface LSUserTableViewController () <UITableViewDelegate>
-
+@interface TestTableViewController () <UISearchBarDelegate>
+@property (nonatomic, strong) UISearchController *searchController;
 @end
 
-@implementation LSUserTableViewController
+@implementation TestTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:[TestContactsSearchResultController new]];
+    self.searchController.view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.95];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    //这样表格才不会被盖在navigationBar下面..
-    self.navigationItem.title = @"我";
-    self.navigationController.navigationBarHidden = NO;
+    UISearchBar *bar = self.searchController.searchBar;
+    bar.barStyle = UIBarStyleDefault;
+    bar.translucent = YES;
+    UIImageView *view = [[[bar.subviews objectAtIndex:0] subviews] firstObject];
+    view.layer.borderWidth = 1;
+    
+    bar.layer.borderColor = [UIColor redColor].CGColor;
+    
+    bar.showsBookmarkButton = YES;
+    [bar setImage:[UIImage imageNamed:@"VoiceSearchStartBtn"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
+    bar.delegate = self;
+    CGRect rect = bar.frame;
+    rect.size.height = 44;
+    bar.frame = rect;
+    self.tableView.tableHeaderView = bar;
+    self.tableView.sectionIndexColor = [UIColor lightGrayColor];
+    self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
+    
+    self.tableView.sectionHeaderHeight = 25;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,12 +48,8 @@
     // Dispose of any resources that can be recreated.
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
-        return 15.0f;
-    }
-    return 5.0f;
-}
+#pragma mark - Table view data source
+
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];

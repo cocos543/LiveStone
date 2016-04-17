@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED0221BF1CC32FC1004D6514 /* TestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0221BE1CC32FC1004D6514 /* TestTableViewController.m */; };
+		ED0221C41CC330A4004D6514 /* TableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0221C31CC330A4004D6514 /* TableCellView.m */; };
+		ED0221C61CC330BB004D6514 /* TableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED0221C51CC330BB004D6514 /* TableCellView.xib */; };
+		ED0221C91CC33424004D6514 /* TestContactsSearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0221C81CC33424004D6514 /* TestContactsSearchResultController.m */; };
+		ED0221DA1CC37956004D6514 /* CCSimpleTools.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0221D91CC37956004D6514 /* CCSimpleTools.m */; };
+		ED0221DC1CC37CAC004D6514 /* LSBookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED0221DB1CC37CAC004D6514 /* LSBookCollectionViewCell.xib */; };
 		ED42985A1CC0637000FCD799 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4298591CC0637000FCD799 /* main.m */; };
 		ED42985D1CC0637000FCD799 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42985C1CC0637000FCD799 /* AppDelegate.m */; };
 		ED4298601CC0637000FCD799 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42985F1CC0637000FCD799 /* ViewController.m */; };
@@ -22,6 +28,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED0221BD1CC32FC1004D6514 /* TestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableViewController.h; sourceTree = "<group>"; };
+		ED0221BE1CC32FC1004D6514 /* TestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableViewController.m; sourceTree = "<group>"; };
+		ED0221C21CC330A4004D6514 /* TableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCellView.h; sourceTree = "<group>"; };
+		ED0221C31CC330A4004D6514 /* TableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCellView.m; sourceTree = "<group>"; };
+		ED0221C51CC330BB004D6514 /* TableCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCellView.xib; sourceTree = "<group>"; };
+		ED0221C71CC33424004D6514 /* TestContactsSearchResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestContactsSearchResultController.h; sourceTree = "<group>"; };
+		ED0221C81CC33424004D6514 /* TestContactsSearchResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestContactsSearchResultController.m; sourceTree = "<group>"; };
+		ED0221CD1CC35516004D6514 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		ED0221D81CC37956004D6514 /* CCSimpleTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSimpleTools.h; sourceTree = "<group>"; };
+		ED0221D91CC37956004D6514 /* CCSimpleTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSimpleTools.m; sourceTree = "<group>"; };
+		ED0221DB1CC37CAC004D6514 /* LSBookCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBookCollectionViewCell.xib; sourceTree = "<group>"; };
 		ED4298551CC0637000FCD799 /* LiveStone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveStone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED4298591CC0637000FCD799 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ED42985B1CC0637000FCD799 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -56,6 +73,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED0221CA1CC3389E004D6514 /* Bible */ = {
+			isa = PBXGroup;
+			children = (
+				EDFA40951CC134A00054E77C /* LSBibleViewController.h */,
+				EDFA40961CC134A00054E77C /* LSBibleViewController.m */,
+				ED0221DB1CC37CAC004D6514 /* LSBookCollectionViewCell.xib */,
+			);
+			name = Bible;
+			sourceTree = "<group>";
+		};
+		ED0221CE1CC3771F004D6514 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				ED0221D81CC37956004D6514 /* CCSimpleTools.h */,
+				ED0221D91CC37956004D6514 /* CCSimpleTools.m */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
 		ED42984C1CC0637000FCD799 = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +111,7 @@
 		ED4298571CC0637000FCD799 /* LiveStone */ = {
 			isa = PBXGroup;
 			children = (
+				ED0221CE1CC3771F004D6514 /* Tools */,
 				ED4298761CC07DB400FCD799 /* ThirdLib */,
 				ED4298771CC07DBC00FCD799 /* Classes */,
 				EDFA408D1CC11A450054E77C /* UI */,
@@ -94,6 +131,14 @@
 				ED4298691CC0637000FCD799 /* LaunchScreen.storyboard */,
 				ED42986C1CC0637000FCD799 /* Info.plist */,
 				ED4298641CC0637000FCD799 /* LiveStone.xcdatamodeld */,
+				ED0221BD1CC32FC1004D6514 /* TestTableViewController.h */,
+				ED0221BE1CC32FC1004D6514 /* TestTableViewController.m */,
+				ED0221C21CC330A4004D6514 /* TableCellView.h */,
+				ED0221C31CC330A4004D6514 /* TableCellView.m */,
+				ED0221C51CC330BB004D6514 /* TableCellView.xib */,
+				ED0221C71CC33424004D6514 /* TestContactsSearchResultController.h */,
+				ED0221C81CC33424004D6514 /* TestContactsSearchResultController.m */,
+				ED0221CD1CC35516004D6514 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -121,8 +166,7 @@
 				EDFA408F1CC123D80054E77C /* LSUserTableViewController.m */,
 				EDFA40911CC132620054E77C /* LSDiscoveryTableViewController.h */,
 				EDFA40921CC132620054E77C /* LSDiscoveryTableViewController.m */,
-				EDFA40951CC134A00054E77C /* LSBibleViewController.h */,
-				EDFA40961CC134A00054E77C /* LSBibleViewController.m */,
+				ED0221CA1CC3389E004D6514 /* Bible */,
 				EDFA40981CC139D90054E77C /* LSMainTabBarController.h */,
 				EDFA40991CC139D90054E77C /* LSMainTabBarController.m */,
 				ED5F94BF1CC1B83D00D8D626 /* LSLiveStoneTableViewController.h */,
@@ -189,7 +233,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED42986B1CC0637000FCD799 /* LaunchScreen.storyboard in Resources */,
+				ED0221C61CC330BB004D6514 /* TableCellView.xib in Resources */,
 				ED4298681CC0637000FCD799 /* Assets.xcassets in Resources */,
+				ED0221DC1CC37CAC004D6514 /* LSBookCollectionViewCell.xib in Resources */,
 				ED4298631CC0637000FCD799 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,11 +249,15 @@
 			files = (
 				ED4298601CC0637000FCD799 /* ViewController.m in Sources */,
 				ED42985D1CC0637000FCD799 /* AppDelegate.m in Sources */,
+				ED0221DA1CC37956004D6514 /* CCSimpleTools.m in Sources */,
 				EDFA40931CC132620054E77C /* LSDiscoveryTableViewController.m in Sources */,
 				ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */,
 				ED42985A1CC0637000FCD799 /* main.m in Sources */,
 				EDFA40971CC134A00054E77C /* LSBibleViewController.m in Sources */,
 				ED4298661CC0637000FCD799 /* LiveStone.xcdatamodeld in Sources */,
+				ED0221C91CC33424004D6514 /* TestContactsSearchResultController.m in Sources */,
+				ED0221C41CC330A4004D6514 /* TableCellView.m in Sources */,
+				ED0221BF1CC32FC1004D6514 /* TestTableViewController.m in Sources */,
 				EDFA40901CC123D80054E77C /* LSUserTableViewController.m in Sources */,
 				EDFA409A1CC139D90054E77C /* LSMainTabBarController.m in Sources */,
 			);
@@ -321,6 +371,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/LiveStone/PrefixHeader.pch";
 				INFOPLIST_FILE = LiveStone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cocos.LiveStone;
@@ -332,6 +385,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/LiveStone/PrefixHeader.pch";
 				INFOPLIST_FILE = LiveStone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cocos.LiveStone;

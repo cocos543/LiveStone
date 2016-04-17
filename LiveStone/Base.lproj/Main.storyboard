@@ -204,12 +204,67 @@
                     <view key="view" contentMode="scaleToFill" id="mSJ-9a-gV6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="74G-iO-iCS" userLabel="TopView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="40"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SzV-tg-dsI">
+                                        <rect key="frame" x="250" y="5" width="100" height="35"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ad5-HW-Bxq">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
+                                                <state key="normal" title="旧约"/>
+                                                <connections>
+                                                    <action selector="theBtnAction:" destination="NYC-ky-rse" eventType="touchUpInside" id="JwG-N4-r9M"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCs-NO-9kR">
+                                                <rect key="frame" x="50" y="0.0" width="50" height="30"/>
+                                                <state key="normal" title="新约"/>
+                                                <connections>
+                                                    <action selector="theBtnAction:" destination="NYC-ky-rse" eventType="touchUpInside" id="K7N-BC-KXG"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="AXz-Lt-TTZ"/>
+                                            <constraint firstAttribute="width" constant="100" id="mnB-CL-lrX"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="SzV-tg-dsI" firstAttribute="centerY" secondItem="74G-iO-iCS" secondAttribute="centerY" constant="2.5" id="I2X-AS-ie0"/>
+                                    <constraint firstItem="SzV-tg-dsI" firstAttribute="centerX" secondItem="74G-iO-iCS" secondAttribute="centerX" id="geE-Zc-K4Y"/>
+                                    <constraint firstAttribute="height" constant="40" id="w7L-n4-3y1" userLabel="TopView高度"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYR-uz-HSq">
+                                <rect key="frame" x="0.0" y="104" width="600" height="452"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Be3-80-yQp" firstAttribute="top" secondItem="nYR-uz-HSq" secondAttribute="bottom" id="G7J-UG-WPm" userLabel="ScrollView下"/>
+                            <constraint firstAttribute="trailing" secondItem="74G-iO-iCS" secondAttribute="trailing" id="KeC-9N-NKs" userLabel="TopView右边"/>
+                            <constraint firstAttribute="trailing" secondItem="nYR-uz-HSq" secondAttribute="trailing" id="Ss5-Ua-hCP" userLabel="ScrollView右"/>
+                            <constraint firstItem="nYR-uz-HSq" firstAttribute="leading" secondItem="mSJ-9a-gV6" secondAttribute="leading" id="Tqz-FR-JyH" userLabel="ScrollView左"/>
+                            <constraint firstItem="74G-iO-iCS" firstAttribute="top" secondItem="pZb-85-b68" secondAttribute="bottom" id="Uio-ly-tFT" userLabel="TopView顶边"/>
+                            <constraint firstItem="74G-iO-iCS" firstAttribute="leading" secondItem="mSJ-9a-gV6" secondAttribute="leading" id="XNg-xt-Cut" userLabel="TopView左边"/>
+                            <constraint firstItem="nYR-uz-HSq" firstAttribute="top" secondItem="74G-iO-iCS" secondAttribute="bottom" id="d7M-pg-Ocy" userLabel="ScrollView上"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="圣经" id="zx4-is-fsC"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="a26-kp-7WI"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="scrollView" destination="nYR-uz-HSq" id="hmE-sK-hFY"/>
+                        <outlet property="theNewTestamentBtn" destination="yCs-NO-9kR" id="Z09-PZ-wBg"/>
+                        <outlet property="theOldTestamentBtn" destination="Ad5-HW-Bxq" id="gQn-w5-aph"/>
+                        <outlet property="topSlideView" destination="SzV-tg-dsI" id="YU9-Xg-p79"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRb-Og-2Eu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -317,6 +372,52 @@
             </objects>
             <point key="canvasLocation" x="1222" y="3277"/>
         </scene>
+        <!--Root View Controller-->
+        <scene sceneID="v8o-Np-H9e">
+            <objects>
+                <tableViewController id="AbH-6C-IF1" customClass="TestTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fEC-D7-hS7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LMb-pW-Nh9">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LMb-pW-Nh9" id="iaG-pb-jBa">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="AbH-6C-IF1" id="x6l-3b-gx4"/>
+                            <outlet property="delegate" destination="AbH-6C-IF1" id="Hzc-1A-akd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="DVB-Qj-ApQ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="61u-Xv-yla" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1363" y="4051"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="0rc-eC-Smr">
+            <objects>
+                <navigationController id="26f-wq-zzf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="jOJ-1Z-rb9"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9ZB-BG-jdv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="AbH-6C-IF1" kind="relationship" relationship="rootViewController" id="Yjr-fn-Z5V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MVq-cY-9Ns" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="549" y="4038"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="fij-Ie-MQv">
             <objects>
@@ -329,8 +430,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzR-Q0-peJ">
-                                <rect key="frame" x="64" y="146" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzR-Q0-peJ">
+                                <rect key="frame" x="278" y="500" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="MSb-zB-LDk" kind="show" id="8tP-lP-tV4"/>
@@ -338,6 +439,10 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uNZ-gr-E30" firstAttribute="top" secondItem="qzR-Q0-peJ" secondAttribute="bottom" constant="21" id="BtQ-ya-pGb"/>
+                            <constraint firstItem="qzR-Q0-peJ" firstAttribute="centerX" secondItem="xBX-KZ-S3u" secondAttribute="centerX" constant="1" id="P7g-x6-uaS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qDB-Ie-KQy"/>
                 </viewController>
@@ -374,6 +479,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Qcl-ty-S0J" kind="relationship" relationship="viewControllers" id="dQa-F2-2bh"/>
+                        <segue destination="26f-wq-zzf" kind="relationship" relationship="viewControllers" id="60r-10-quv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EkU-d1-MQX" userLabel="First Responder" sceneMemberID="firstResponder"/>

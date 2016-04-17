@@ -1,18 +1,18 @@
 //
-//  LSUserTableViewController.m
+//  TestContactsSearchResultController.m
 //  LiveStone
 //
-//  Created by 郑克明 on 16/4/15.
+//  Created by 郑克明 on 16/4/17.
 //  Copyright © 2016年 Cocos. All rights reserved.
 //
 
-#import "LSUserTableViewController.h"
+#import "TestContactsSearchResultController.h"
 
-@interface LSUserTableViewController () <UITableViewDelegate>
+@interface TestContactsSearchResultController ()
 
 @end
 
-@implementation LSUserTableViewController
+@implementation TestContactsSearchResultController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,23 +24,11 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    //这样表格才不会被盖在navigationBar下面..
-    self.navigationItem.title = @"我";
-    self.navigationController.navigationBarHidden = NO;
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
-        return 15.0f;
-    }
-    return 5.0f;
-}
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
