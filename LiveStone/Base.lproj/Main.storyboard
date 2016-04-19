@@ -240,7 +240,7 @@
                                     <constraint firstAttribute="height" constant="40" id="w7L-n4-3y1" userLabel="TopView高度"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYR-uz-HSq">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nYR-uz-HSq">
                                 <rect key="frame" x="0.0" y="104" width="600" height="452"/>
                             </scrollView>
                         </subviews>

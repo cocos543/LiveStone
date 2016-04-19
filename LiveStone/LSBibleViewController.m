@@ -7,10 +7,11 @@
 //
 
 #import "LSBibleViewController.h"
+#import "LSCollectionViewFlowLayout.h"
 
 #define LINE_VIEW_HIGHT 4
 
-@interface LSBibleViewController () <UIScrollViewDelegate>
+@interface LSBibleViewController () <UIScrollViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource>
 
 #pragma mark - IBOutlet
 /**
@@ -37,16 +38,28 @@
 /**
  *  存放旧约书本
  */
-@property (strong,nonatomic) UICollectionView *theOldColView;
+@property (strong, nonatomic) UICollectionView *theOldCollectionView;
 /**
  *  存放新约书本
  */
-@property (strong,nonatomic) UICollectionView *theNewColView;
+@property (strong, nonatomic) UICollectionView *theNewCollectionView;
+
+/**
+ *  书本布局
+ */
+@property (nonatomic, strong) LSCollectionViewFlowLayout *bookLayout;
+/**
+ *  书本章节详情布局
+ */
+@property (nonatomic, strong) LSCollectionViewFlowLayout *detailLayout;
 
 
 @end
 
 @implementation LSBibleViewController
+
+static NSString * const reuseIdentifierBookCell = @"reuseIdentifierBookCell";
+static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -89,9 +102,9 @@
  */
 -(void)loadContentView{
     //SCREEN_WIDTH()
-    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH * 2, SCREEN_HEIGHT);
+    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH * 2, 415);
     self.scrollView.pagingEnabled = YES;
-    self.scrollView.bounces =  NO;
+//    self.scrollView.bounces =  NO;
     self.scrollView.delegate = self;
     UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     view1.backgroundColor = [CCSimpleTools stringToColor:@"#5A90C7" opacity:1.0f];
@@ -99,6 +112,58 @@
     view2.backgroundColor = [CCSimpleTools stringToColor:@"#37C8C7" opacity:1.0f];
     [self.scrollView addSubview:view1];
     [self.scrollView addSubview:view2];
+    
+    [self loadCollectionView];
+}
+/**
+ *  两部分CollectionView的加载
+ */
+-(void)loadCollectionView{
+    [self calcBookLayout];
+    [self calcDetailLayout];
+    
+    CGRect frame = self.view.frame;
+    frame.size.height = self.scrollView.contentSize.height;
+    UICollectionView *theOldCollectionView = [[UICollectionView alloc] initWithFrame:frame collectionViewLayout: self.bookLayout];
+    theOldCollectionView.backgroundColor = [UIColor grayColor];
+    //第二个collect位于右区域
+//    frame.origin.x += frame.size.width;
+//    UICollectionView *theNewCollectionView = [[UICollectionView alloc] initWithFrame:frame collectionViewLayout: self.bookLayout];
+//    theNewCollectionView.backgroundColor = [UIColor grayColor];
+    
+    //注册cell
+    [theOldCollectionView registerNib:[UINib nibWithNibName:@"LSBookCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierBookCell];
+//    [theOldCollectionView registerNib:[UINib nibWithNibName:@"LSBookDetailCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierDetailCell];
+//    [theNewCollectionView registerNib:[UINib nibWithNibName:@"LSBookCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierBookCell];
+//    [theNewCollectionView registerNib:[UINib nibWithNibName:@"LSBookDetailCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierDetailCell];
+    
+    [self.scrollView addSubview:theOldCollectionView];
+//    [self.scrollView addSubview:theNewCollectionView];
+//    [self.view addSubview:theOldCollectionView];
+    
+    theOldCollectionView.delegate = self;
+    theOldCollectionView.dataSource = self;
+//    theNewCollectionView.delegate = self;
+//    theNewCollectionView.dataSource = self;
+    self.theOldCollectionView = theOldCollectionView;
+//    self.theNewCollectionView = theNewCollectionView;
+    
+}
+/**
+ *  计算书本布局
+ */
+-(void)calcBookLayout{
+    LSCollectionViewFlowLayout *layout = [[LSCollectionViewFlowLayout alloc] init];
+    layout.itemSize = CGSizeMake(100, 30);
+    self.bookLayout = layout;
+}
+/**
+ *  计算章节详情布局
+ */
+-(void)calcDetailLayout{
+    LSCollectionViewFlowLayout *layout = [[LSCollectionViewFlowLayout alloc] init];
+    
+    self.detailLayout = layout;
 }
 
 #pragma mark - 界面事件响应处理
@@ -124,10 +189,29 @@
 
 #pragma mark - ScrollView 代理
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView != self.scrollView) {
+        return;
+    }
     CGRect frame = self.lineView.frame;
     //计算出内容区域宽是lineView的多少倍
     float mul = scrollView.frame.size.width / self.lineView.frame.size.width;
     frame.origin.x = scrollView.contentOffset.x / mul;
     self.lineView.frame = frame;
+}
+
+#pragma mark - UICollectionViewDataSource
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 33;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierBookCell forIndexPath:indexPath];
+    return cell;
 }
 @end

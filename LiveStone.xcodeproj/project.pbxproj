@@ -21,6 +21,9 @@
 		ED4298681CC0637000FCD799 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED4298671CC0637000FCD799 /* Assets.xcassets */; };
 		ED42986B1CC0637000FCD799 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED4298691CC0637000FCD799 /* LaunchScreen.storyboard */; };
 		ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */; };
+		EDC958A91CC5109A00D51CA5 /* LSBookDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC958A81CC5109A00D51CA5 /* LSBookDetailCell.xib */; };
+		EDC958AC1CC5174400D51CA5 /* RoundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC958AB1CC5174400D51CA5 /* RoundButton.m */; };
+		EDC958AF1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC958AE1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m */; };
 		EDFA40901CC123D80054E77C /* LSUserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA408F1CC123D80054E77C /* LSUserTableViewController.m */; };
 		EDFA40931CC132620054E77C /* LSDiscoveryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA40921CC132620054E77C /* LSDiscoveryTableViewController.m */; };
 		EDFA40971CC134A00054E77C /* LSBibleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA40961CC134A00054E77C /* LSBibleViewController.m */; };
@@ -52,6 +55,11 @@
 		ED42986C1CC0637000FCD799 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED5F94BF1CC1B83D00D8D626 /* LSLiveStoneTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSLiveStoneTableViewController.h; sourceTree = "<group>"; };
 		ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSLiveStoneTableViewController.m; sourceTree = "<group>"; };
+		EDC958A81CC5109A00D51CA5 /* LSBookDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBookDetailCell.xib; sourceTree = "<group>"; };
+		EDC958AA1CC5174400D51CA5 /* RoundButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundButton.h; sourceTree = "<group>"; };
+		EDC958AB1CC5174400D51CA5 /* RoundButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundButton.m; sourceTree = "<group>"; };
+		EDC958AD1CC5186300D51CA5 /* LSCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		EDC958AE1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		EDFA408E1CC123D80054E77C /* LSUserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSUserTableViewController.h; sourceTree = "<group>"; };
 		EDFA408F1CC123D80054E77C /* LSUserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSUserTableViewController.m; sourceTree = "<group>"; };
 		EDFA40911CC132620054E77C /* LSDiscoveryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSDiscoveryTableViewController.h; sourceTree = "<group>"; };
@@ -79,6 +87,11 @@
 				EDFA40951CC134A00054E77C /* LSBibleViewController.h */,
 				EDFA40961CC134A00054E77C /* LSBibleViewController.m */,
 				ED0221DB1CC37CAC004D6514 /* LSBookCollectionViewCell.xib */,
+				EDC958A81CC5109A00D51CA5 /* LSBookDetailCell.xib */,
+				EDC958AA1CC5174400D51CA5 /* RoundButton.h */,
+				EDC958AB1CC5174400D51CA5 /* RoundButton.m */,
+				EDC958AD1CC5186300D51CA5 /* LSCollectionViewFlowLayout.h */,
+				EDC958AE1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m */,
 			);
 			name = Bible;
 			sourceTree = "<group>";
@@ -206,6 +219,7 @@
 				TargetAttributes = {
 					ED4298541CC0637000FCD799 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = XNC7CRYM5X;
 					};
 				};
 			};
@@ -234,6 +248,7 @@
 			files = (
 				ED42986B1CC0637000FCD799 /* LaunchScreen.storyboard in Resources */,
 				ED0221C61CC330BB004D6514 /* TableCellView.xib in Resources */,
+				EDC958A91CC5109A00D51CA5 /* LSBookDetailCell.xib in Resources */,
 				ED4298681CC0637000FCD799 /* Assets.xcassets in Resources */,
 				ED0221DC1CC37CAC004D6514 /* LSBookCollectionViewCell.xib in Resources */,
 				ED4298631CC0637000FCD799 /* Main.storyboard in Resources */,
@@ -257,9 +272,11 @@
 				ED4298661CC0637000FCD799 /* LiveStone.xcdatamodeld in Sources */,
 				ED0221C91CC33424004D6514 /* TestContactsSearchResultController.m in Sources */,
 				ED0221C41CC330A4004D6514 /* TableCellView.m in Sources */,
+				EDC958AC1CC5174400D51CA5 /* RoundButton.m in Sources */,
 				ED0221BF1CC32FC1004D6514 /* TestTableViewController.m in Sources */,
 				EDFA40901CC123D80054E77C /* LSUserTableViewController.m in Sources */,
 				EDFA409A1CC139D90054E77C /* LSMainTabBarController.m in Sources */,
+				EDC958AF1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +388,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LiveStone/PrefixHeader.pch";
@@ -378,6 +397,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cocos.LiveStone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -385,6 +405,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LiveStone/PrefixHeader.pch";
@@ -392,6 +414,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cocos.LiveStone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
