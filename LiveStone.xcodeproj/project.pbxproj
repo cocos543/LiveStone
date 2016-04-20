@@ -13,6 +13,7 @@
 		ED0221C91CC33424004D6514 /* TestContactsSearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0221C81CC33424004D6514 /* TestContactsSearchResultController.m */; };
 		ED0221DA1CC37956004D6514 /* CCSimpleTools.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0221D91CC37956004D6514 /* CCSimpleTools.m */; };
 		ED0221DC1CC37CAC004D6514 /* LSBookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED0221DB1CC37CAC004D6514 /* LSBookCollectionViewCell.xib */; };
+		ED358B991CC5C2C00016D1C1 /* LSBookDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED358B981CC5C2C00016D1C1 /* LSBookDetailCell.m */; };
 		ED42985A1CC0637000FCD799 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4298591CC0637000FCD799 /* main.m */; };
 		ED42985D1CC0637000FCD799 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42985C1CC0637000FCD799 /* AppDelegate.m */; };
 		ED4298601CC0637000FCD799 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42985F1CC0637000FCD799 /* ViewController.m */; };
@@ -42,6 +43,8 @@
 		ED0221D81CC37956004D6514 /* CCSimpleTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSimpleTools.h; sourceTree = "<group>"; };
 		ED0221D91CC37956004D6514 /* CCSimpleTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSimpleTools.m; sourceTree = "<group>"; };
 		ED0221DB1CC37CAC004D6514 /* LSBookCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBookCollectionViewCell.xib; sourceTree = "<group>"; };
+		ED358B971CC5C2C00016D1C1 /* LSBookDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBookDetailCell.h; sourceTree = "<group>"; };
+		ED358B981CC5C2C00016D1C1 /* LSBookDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBookDetailCell.m; sourceTree = "<group>"; };
 		ED4298551CC0637000FCD799 /* LiveStone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveStone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED4298591CC0637000FCD799 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ED42985B1CC0637000FCD799 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -88,6 +91,8 @@
 				EDFA40961CC134A00054E77C /* LSBibleViewController.m */,
 				ED0221DB1CC37CAC004D6514 /* LSBookCollectionViewCell.xib */,
 				EDC958A81CC5109A00D51CA5 /* LSBookDetailCell.xib */,
+				ED358B971CC5C2C00016D1C1 /* LSBookDetailCell.h */,
+				ED358B981CC5C2C00016D1C1 /* LSBookDetailCell.m */,
 				EDC958AA1CC5174400D51CA5 /* RoundButton.h */,
 				EDC958AB1CC5174400D51CA5 /* RoundButton.m */,
 				EDC958AD1CC5186300D51CA5 /* LSCollectionViewFlowLayout.h */,
@@ -272,6 +277,7 @@
 				ED4298661CC0637000FCD799 /* LiveStone.xcdatamodeld in Sources */,
 				ED0221C91CC33424004D6514 /* TestContactsSearchResultController.m in Sources */,
 				ED0221C41CC330A4004D6514 /* TableCellView.m in Sources */,
+				ED358B991CC5C2C00016D1C1 /* LSBookDetailCell.m in Sources */,
 				EDC958AC1CC5174400D51CA5 /* RoundButton.m in Sources */,
 				ED0221BF1CC32FC1004D6514 /* TestTableViewController.m in Sources */,
 				EDFA40901CC123D80054E77C /* LSUserTableViewController.m in Sources */,

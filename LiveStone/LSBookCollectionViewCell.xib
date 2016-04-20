@@ -12,36 +12,33 @@
             <rect key="frame" x="0.0" y="0.0" width="100" height="45"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQT-QH-fPH">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQT-QH-fPH">
                     <rect key="frame" x="8" y="8" width="30" height="30"/>
-                    <attributedString key="attributedText">
-                        <fragment content="创">
-                            <attributes>
-                                <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <font key="NSFont" size="19" name="PingFangSC-Medium"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
-                    </attributedString>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="V7F-0Y-elY"/>
+                        <constraint firstAttribute="height" constant="30" id="d8f-uL-LOW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="世纪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82k-lo-oLx">
-                    <rect key="frame" x="33" y="15" width="34" height="21"/>
+                    <rect key="frame" x="33" y="15" width="35" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="3VK-O3-M5A"/>
+                        <constraint firstAttribute="height" constant="20" id="Dhs-LI-7Pz"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="oQT-QH-fPH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="6Gk-7q-Hzs"/>
-                <constraint firstAttribute="trailing" secondItem="oQT-QH-fPH" secondAttribute="trailing" constant="62" id="84i-6O-e2P"/>
-                <constraint firstItem="82k-lo-oLx" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="F9E-S7-Cfd"/>
-                <constraint firstItem="82k-lo-oLx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="33" id="F9I-S0-Yt2"/>
-                <constraint firstItem="oQT-QH-fPH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="iY1-hw-x6U"/>
-                <constraint firstItem="oQT-QH-fPH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="qgz-Yr-tm3"/>
-                <constraint firstItem="82k-lo-oLx" firstAttribute="centerY" secondItem="oQT-QH-fPH" secondAttribute="centerY" constant="2.5" id="xO4-o1-fm4"/>
-                <constraint firstItem="82k-lo-oLx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="ynG-b7-zGw"/>
+                <constraint firstItem="82k-lo-oLx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" constant="25" id="1cs-G9-G3x"/>
+                <constraint firstItem="oQT-QH-fPH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fm9-th-PSl"/>
+                <constraint firstItem="oQT-QH-fPH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="tVx-AF-dqR"/>
+                <constraint firstItem="82k-lo-oLx" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="2" id="xtc-Nk-Arz"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

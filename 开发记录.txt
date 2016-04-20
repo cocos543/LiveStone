@@ -19,3 +19,5 @@
 8. 按照第7步修改之后,要设置tab里面每一个页面的标题,必须使用self.navigationItem.title = @"活石";而不是原来的self.tabBarController.title = @"活石";
 
 9. CollectView 新增或者删除Cell的时候,系统会自动在指定位置添加cell,其他原有的cell不会重新加载
+
+10. CollectViewCell 里面的label用特殊字体,导致在iOS8.4中Cell的加载速度异常慢,切换默认字体则正常.

@@ -1,6 +1,6 @@
 platform :ios, '8.0'
 use_frameworks!
 
-target 'LetsShow' do
+target 'LiveStone' do
   
 end
