@@ -253,6 +253,32 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     [collectionView deleteItemsAtIndexPaths:@[indexPath]];
 }
 
+/**
+ *  Adjust indexPath
+ *  Besause, when the collectionView hava a detail cell,other book cells which after detail cell will increase 1 in indexPath's item.So,here must be adjust it and then calculate the origin selected book cell's indexPath.
+ *
+ *  @param collectionView CollectionView
+ *  @param indexPath      Before adjust indexPath
+ *
+ *  @return After adjust indexPath
+ */
+-(NSIndexPath *)getAdjustIndexPathAfterDetailCellInsertFromeCollectionView:(UICollectionView *)collectionView indexPath:(NSIndexPath *)indexPath{
+    BOOL isNeedAdjust = NO;
+    if (collectionView == self.theOldCollectionView) {
+        if (self.theOldBookDetailIndexPath && [indexPath compare:self.theOldBookDetailIndexPath] == NSOrderedDescending) {
+            isNeedAdjust = YES;
+        }
+    }else{
+        if (self.theNewBookDetailIndexPath && [indexPath compare:self.theNewBookDetailIndexPath] == NSOrderedDescending) {
+            isNeedAdjust = YES;
+        }
+    }
+    if (isNeedAdjust) {
+        return [NSIndexPath indexPathForItem:indexPath.item - 1 inSection:indexPath.section];
+    }else{
+        return indexPath;
+    }
+}
 #pragma mark - 界面事件响应处理
 
 /**
@@ -340,6 +366,8 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
         }else{
             cell.backgroundColor = [UIColor whiteColor];
         }
+        UILabel *label = [cell viewWithTag:1];
+        label.text = [NSString stringWithFormat:@"%d",indexPath.item];
     }
     return cell;
 }
@@ -374,26 +402,32 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
             self.theOldSelectedIndexPath = nil;
             isSelected = NO;
         }else{
+            NSIndexPath *adjustIndexPath = [self getAdjustIndexPathAfterDetailCellInsertFromeCollectionView:collectionView indexPath:indexPath];
+            
             if (self.theOldBookDetailIndexPath) {
                 //说明已经存在detail,移除
                 [self removeBookDetailCellFromCollectionView:collectionView];
             }
             NSLog(@"%@",indexPath);
-            self.theOldSelectedIndexPath = indexPath;
+            NSLog(@"adjust :%@",adjustIndexPath);
+            self.theOldSelectedIndexPath = adjustIndexPath;
             self.theOldBookDetailIndexPath = [NSIndexPath indexPathForItem:item inSection:indexPath.section];
         }
     }else if(collectionView == self.theNewCollectionView){
         if (self.theNewSelectedIndexPath && [indexPath compare:self.theNewSelectedIndexPath] == NSOrderedSame) {
-            UICollectionViewCell *deSelectedCell = [collectionView cellForItemAtIndexPath:self.theOldSelectedIndexPath];
+            UICollectionViewCell *deSelectedCell = [collectionView cellForItemAtIndexPath:self.theNewSelectedIndexPath];
             deSelectedCell.backgroundColor = [UIColor whiteColor];
             self.theNewSelectedIndexPath = nil;
             isSelected = NO;
         }else{
+            NSIndexPath *adjustIndexPath = [self getAdjustIndexPathAfterDetailCellInsertFromeCollectionView:collectionView indexPath:indexPath];
+            
             if (self.theNewBookDetailIndexPath) {
                 //说明已经存在detail,移除
                 [self removeBookDetailCellFromCollectionView:collectionView];
             }
-            self.theNewSelectedIndexPath = indexPath;
+            
+            self.theNewSelectedIndexPath = adjustIndexPath;
             self.theNewBookDetailIndexPath = [NSIndexPath indexPathForItem:item inSection:indexPath.section];
         }
     }
