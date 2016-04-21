@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface LSBookDetailCell : UICollectionViewCell
+/**
+ *  Chapters number
+ */
+@property (nonatomic) NSInteger chaptersNumber;
 
-@property (nonatomic) NSInteger chapterNumber;
+/**
+ *  Reload collection's data
+ */
+-(void)reloadCollectionViewData;
 @end

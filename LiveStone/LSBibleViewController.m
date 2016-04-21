@@ -8,6 +8,7 @@
 
 #import "LSBibleViewController.h"
 #import "LSCollectionViewFlowLayout.h"
+#import "LSBookDetailCell.h"
 
 #define LINE_VIEW_HIGHT 3
 #define COLLECTVIEW_SPACE 5
@@ -309,17 +310,36 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     UICollectionViewCell *cell;
+    
+    BOOL isSelectedCell = NO;
     if (self.theOldCollectionView == collectionView) {
+        //For reuse,cell must adjust attribute
+        if (self.theOldSelectedIndexPath && [indexPath compare:self.theOldSelectedIndexPath] == NSOrderedSame) {
+            isSelectedCell = YES;
+        }
         if (self.theOldBookDetailIndexPath && [indexPath compare:self.theOldBookDetailIndexPath] == NSOrderedSame) {
             cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierDetailCell forIndexPath:indexPath];
         }
     }else{
+        if (self.theNewSelectedIndexPath && [indexPath compare:self.theNewSelectedIndexPath] == NSOrderedSame) {
+            isSelectedCell = YES;
+        }
         if (self.theNewBookDetailIndexPath && [indexPath compare:self.theNewBookDetailIndexPath] == NSOrderedSame) {
             cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierDetailCell forIndexPath:indexPath];
         }
     }
-    if (!cell) {
+    if (cell) {
+        //Cell is LSBookDetailCell
+        LSBookDetailCell *detailCell = (LSBookDetailCell *)cell;
+        detailCell.chaptersNumber = arc4random_uniform(10) + 1;
+        [detailCell reloadCollectionViewData];
+    }else{
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierBookCell forIndexPath:indexPath];
+        if (isSelectedCell) {
+            cell.backgroundColor = [CCSimpleTools stringToColor:COLLECTIONVIEWCELL_FOCUSED opacity:1.0f];
+        }else{
+            cell.backgroundColor = [UIColor whiteColor];
+        }
     }
     return cell;
 }
@@ -358,6 +378,7 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
                 //说明已经存在detail,移除
                 [self removeBookDetailCellFromCollectionView:collectionView];
             }
+            NSLog(@"%@",indexPath);
             self.theOldSelectedIndexPath = indexPath;
             self.theOldBookDetailIndexPath = [NSIndexPath indexPathForItem:item inSection:indexPath.section];
         }
@@ -391,6 +412,18 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     cell.backgroundColor = [UIColor whiteColor];
 }
 
+-(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (collectionView == self.theOldCollectionView) {
+        if (self.theOldBookDetailIndexPath && [indexPath compare:self.theOldBookDetailIndexPath] == NSOrderedSame) {
+            return NO;
+        }
+    }else if(collectionView == self.theNewCollectionView){
+        if (self.theNewBookDetailIndexPath && [indexPath compare:self.theNewBookDetailIndexPath] == NSOrderedSame) {
+            return NO;
+        }
+    }
+    return YES;
+}
 #pragma mark - <UICollectionViewDelegateFlowLayout>
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (collectionView == self.theOldCollectionView) {

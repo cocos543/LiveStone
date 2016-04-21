@@ -21,6 +21,7 @@
 		ED4298661CC0637000FCD799 /* LiveStone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED4298641CC0637000FCD799 /* LiveStone.xcdatamodeld */; };
 		ED4298681CC0637000FCD799 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED4298671CC0637000FCD799 /* Assets.xcassets */; };
 		ED42986B1CC0637000FCD799 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED4298691CC0637000FCD799 /* LaunchScreen.storyboard */; };
+		ED4848F61CC85D080093E29E /* LSBookChapterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4848F51CC85D080093E29E /* LSBookChapterCell.xib */; };
 		ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */; };
 		EDC958A91CC5109A00D51CA5 /* LSBookDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC958A81CC5109A00D51CA5 /* LSBookDetailCell.xib */; };
 		EDC958AC1CC5174400D51CA5 /* RoundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC958AB1CC5174400D51CA5 /* RoundButton.m */; };
@@ -56,6 +57,7 @@
 		ED4298671CC0637000FCD799 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED42986A1CC0637000FCD799 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED42986C1CC0637000FCD799 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED4848F51CC85D080093E29E /* LSBookChapterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBookChapterCell.xib; sourceTree = "<group>"; };
 		ED5F94BF1CC1B83D00D8D626 /* LSLiveStoneTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSLiveStoneTableViewController.h; sourceTree = "<group>"; };
 		ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSLiveStoneTableViewController.m; sourceTree = "<group>"; };
 		EDC958A81CC5109A00D51CA5 /* LSBookDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBookDetailCell.xib; sourceTree = "<group>"; };
@@ -89,10 +91,11 @@
 			children = (
 				EDFA40951CC134A00054E77C /* LSBibleViewController.h */,
 				EDFA40961CC134A00054E77C /* LSBibleViewController.m */,
-				ED0221DB1CC37CAC004D6514 /* LSBookCollectionViewCell.xib */,
-				EDC958A81CC5109A00D51CA5 /* LSBookDetailCell.xib */,
 				ED358B971CC5C2C00016D1C1 /* LSBookDetailCell.h */,
 				ED358B981CC5C2C00016D1C1 /* LSBookDetailCell.m */,
+				ED0221DB1CC37CAC004D6514 /* LSBookCollectionViewCell.xib */,
+				EDC958A81CC5109A00D51CA5 /* LSBookDetailCell.xib */,
+				ED4848F51CC85D080093E29E /* LSBookChapterCell.xib */,
 				EDC958AA1CC5174400D51CA5 /* RoundButton.h */,
 				EDC958AB1CC5174400D51CA5 /* RoundButton.m */,
 				EDC958AD1CC5186300D51CA5 /* LSCollectionViewFlowLayout.h */,
@@ -254,6 +257,7 @@
 				ED42986B1CC0637000FCD799 /* LaunchScreen.storyboard in Resources */,
 				ED0221C61CC330BB004D6514 /* TableCellView.xib in Resources */,
 				EDC958A91CC5109A00D51CA5 /* LSBookDetailCell.xib in Resources */,
+				ED4848F61CC85D080093E29E /* LSBookChapterCell.xib in Resources */,
 				ED4298681CC0637000FCD799 /* Assets.xcassets in Resources */,
 				ED0221DC1CC37CAC004D6514 /* LSBookCollectionViewCell.xib in Resources */,
 				ED4298631CC0637000FCD799 /* Main.storyboard in Resources */,

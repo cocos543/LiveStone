@@ -26,4 +26,4 @@
 
 12. collectionView可以设置allowsMultipleSelection,NO时,点击同一个cell只会触发didSelectItemAtIndexPath方法,点击其他cell则先触发上一次点击的cell的didDeSelectItemAtIndexPath,再触发当前点击cell的didSelectItemAtIndexPath.YES时,则点击不同的cell都触发didSelectItemAtIndexPath,点击同一个cell则轮流触发didSelectItemAtIndexPath和didDeSelectItemAtIndexPath
 
-13. 
+13. 一定要留意如果移除了一个cell,则在这个cell之后的所有cell对应的indxPath都会变化.所以如果在移除cell之前有记录了某个cell的位置,移除cell之后,这个cell的indexPath可能会发生变化,要特别注意.....
