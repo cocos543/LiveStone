@@ -10,4 +10,5 @@
 
 @interface LSBookDetailCell : UICollectionViewCell
 
+@property (nonatomic) NSInteger chapterNumber;
 @end

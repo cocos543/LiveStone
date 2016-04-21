@@ -8,6 +8,20 @@
 
 #import "LSBookDetailCell.h"
 
+@interface LSBookDetailCell ()
+
+@end
+
 @implementation LSBookDetailCell
 
+//-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+//    return 1;
+//}
+//- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+//    return self.chapterNumber;
+//}
+//
+//-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+//    return nil;
+//}
 @end

@@ -21,3 +21,9 @@
 9. CollectView 新增或者删除Cell的时候,系统会自动在指定位置添加cell,其他原有的cell不会重新加载
 
 10. CollectViewCell 里面的label用特殊字体,导致在iOS8.4中Cell的加载速度异常慢,切换默认字体则正常.
+
+11. 每一个collectionView 都必须独享一个UICollectionViewLayout对象,否则做插入操作会报EXC_BAD_ACCESS错误😩
+
+12. collectionView可以设置allowsMultipleSelection,NO时,点击同一个cell只会触发didSelectItemAtIndexPath方法,点击其他cell则先触发上一次点击的cell的didDeSelectItemAtIndexPath,再触发当前点击cell的didSelectItemAtIndexPath.YES时,则点击不同的cell都触发didSelectItemAtIndexPath,点击同一个cell则轮流触发didSelectItemAtIndexPath和didDeSelectItemAtIndexPath
+
+13. 
