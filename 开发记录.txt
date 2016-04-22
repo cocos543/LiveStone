@@ -27,3 +27,9 @@
 12. collectionView可以设置allowsMultipleSelection,NO时,点击同一个cell只会触发didSelectItemAtIndexPath方法,点击其他cell则先触发上一次点击的cell的didDeSelectItemAtIndexPath,再触发当前点击cell的didSelectItemAtIndexPath.YES时,则点击不同的cell都触发didSelectItemAtIndexPath,点击同一个cell则轮流触发didSelectItemAtIndexPath和didDeSelectItemAtIndexPath
 
 13. 一定要留意如果移除了一个cell,则在这个cell之后的所有cell对应的indxPath都会变化.所以如果在移除cell之前有记录了某个cell的位置,移除cell之后,这个cell的indexPath可能会发生变化,要特别注意.....
+
+14. collectionViewCell.xib文件中对cell加入的任何元素,比如按钮,最终都无法响应任何事件.因为这些元素会被cell的contentView覆盖了.所以要把这些元素加到cell的contentView里面才行.有一个巧妙的方法,就是先在xib文件里面编辑好元素,然后等到元素要显示之前,用addSubView把他们重新添加到contentView里面就好
+
+15. collectionViewCell嵌套collectionView,被嵌套的collectionView里面的cell里的按钮点击之后,按钮和collectionView的selected事件不会同时响应
+
+16. 设置UIButton标题的时候,不能误用titleLabel.text属性去设置,因为不管你怎么设置,这个label的frame是0,0,0,0..所以应该使用官方提供的-setTitle:forState:方法......

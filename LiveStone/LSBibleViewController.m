@@ -7,24 +7,13 @@
 //
 
 #import "LSBibleViewController.h"
+#import "LSBibleCollectionView.h"
 #import "LSCollectionViewFlowLayout.h"
 #import "LSBookDetailCell.h"
 
 #define LINE_VIEW_HIGHT 3
 #define COLLECTVIEW_SPACE 5
-//CollectionView每一行的Cell数量
-#define COLLECTIONVIEW_ROW_ITMES 3
-//整体背景颜色
-#define VIEW_BACAGROUND_COLOR @"#EFEFEF"
-//顶部选中按钮颜色
-#define TOPVIEW_HIGHLIGHT_COLOR @"#40D9FF"
-//顶部按钮默认颜色
-#define TOPVIEW_DEFAULT_COLOR @"#7D7D7D"
-//book cell选中颜色
-#define COLLECTIONVIEWCELL_FOCUSED @"#E2E2E2"
 
-//book detail圆圈边颜色
-#define COLLECTIONVIEWCELL_DETAIL_ROUND @"#E2E2E2"
 
 @interface LSBibleViewController () <UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -53,32 +42,12 @@
 /**
  *  存放旧约书本
  */
-@property (strong, nonatomic) UICollectionView *theOldCollectionView;
+@property (strong, nonatomic) LSBibleCollectionView *theOldCollectionView;
 /**
  *  存放新约书本
  */
-@property (strong, nonatomic) UICollectionView *theNewCollectionView;
+@property (strong, nonatomic) LSBibleCollectionView *theNewCollectionView;
 
-/**
- *  书本布局
- */
-@property (nonatomic, strong) LSCollectionViewFlowLayout *theOldBookLayout;
-@property (nonatomic, strong) LSCollectionViewFlowLayout *theNewBookLayout;
-/**
- *  书本章节详情布局
- */
-@property (nonatomic, strong) LSCollectionViewFlowLayout *theOldDetailLayout;
-@property (nonatomic, strong) LSCollectionViewFlowLayout *theNewDetailLayout;
-/**
- *  Detail Cell出现的位置
- */
-@property (nonatomic, strong) NSIndexPath *theOldBookDetailIndexPath;
-@property (nonatomic, strong) NSIndexPath *theNewBookDetailIndexPath;
-/**
- *  当前选中的Cell位置
- */
-@property (nonatomic, strong) NSIndexPath *theOldSelectedIndexPath;
-@property (nonatomic, strong) NSIndexPath *theNewSelectedIndexPath;
 
 @property (nonatomic) NSInteger theOldItemsNumber;
 @property (nonatomic) NSInteger theNewItemsNumber;
@@ -165,24 +134,40 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     self.theOldItemsNumber = 33;
     self.theNewItemsNumber = 33;
     
-    UICollectionView *theOldCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout: self.theOldBookLayout];
+    LSBibleCollectionView *theOldCollectionView = [[LSBibleCollectionView alloc] initWithFrame:CGRectZero bookCollectionViewLayout:[self calcBookLayout] detailCollectionViewLayout:[self calcDetailLayout]];
     theOldCollectionView.backgroundColor = [CCSimpleTools stringToColor:VIEW_BACAGROUND_COLOR opacity:1.0f];
 
-    UICollectionView *theNewCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout: self.theNewBookLayout];
+    LSBibleCollectionView *theNewCollectionView = [[LSBibleCollectionView alloc] initWithFrame:CGRectZero bookCollectionViewLayout:[self calcBookLayout] detailCollectionViewLayout:[self calcDetailLayout]];
     theNewCollectionView.backgroundColor = [CCSimpleTools stringToColor:VIEW_BACAGROUND_COLOR opacity:1.0f];
-    
-    theOldCollectionView.delegate = self;
+    theOldCollectionView.delegate = theOldCollectionView;
     theOldCollectionView.dataSource = self;
-    theNewCollectionView.delegate = self;
+    
+    theNewCollectionView.delegate = theNewCollectionView;
     theNewCollectionView.dataSource = self;
+    
     theOldCollectionView.allowsMultipleSelection = NO;
     theNewCollectionView.allowsMultipleSelection = NO;
+    
+    theOldCollectionView.addingDetailCellBlock = ^void(UICollectionView *collectionView,NSIndexPath *indexPath) {
+        self.theOldItemsNumber++;
+    };
+    theOldCollectionView.removingDetailCellBlock = ^void(UICollectionView *collectionView,NSIndexPath *indexPath) {
+        self.theOldItemsNumber--;
+    };
+    
+    theNewCollectionView.addingDetailCellBlock = ^void(UICollectionView *collectionView,NSIndexPath *indexPath) {
+        self.theNewItemsNumber++;
+    };
+    theNewCollectionView.removingDetailCellBlock = ^void(UICollectionView *collectionView,NSIndexPath *indexPath) {
+        self.theNewItemsNumber--;
+    };
+    
     //注册cell
     [theOldCollectionView registerNib:[UINib nibWithNibName:@"LSBookCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierBookCell];
     [theOldCollectionView registerNib:[UINib nibWithNibName:@"LSBookDetailCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierDetailCell];
     [theNewCollectionView registerNib:[UINib nibWithNibName:@"LSBookCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierBookCell];
     [theNewCollectionView registerNib:[UINib nibWithNibName:@"LSBookDetailCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierDetailCell];
-    
+
     [self.scrollView addSubview:theOldCollectionView];
     [self.scrollView addSubview:theNewCollectionView];
     
@@ -190,95 +175,27 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     self.theNewCollectionView = theNewCollectionView;
     
 }
+
 /**
  *  计算书本布局
  */
--(void)calcBookLayout{
+-(LSCollectionViewFlowLayout *)calcBookLayout{
     LSCollectionViewFlowLayout *layout = [[LSCollectionViewFlowLayout alloc] init];
     layout.itemSize = CGSizeMake(SCREEN_WIDTH / (COLLECTIONVIEW_ROW_ITMES + 0.4), 30);
     layout.sectionInset = UIEdgeInsetsMake(0, 8, 0, 8);
-    self.theOldBookLayout = layout;
-    //一定要分成两个对象..否则报错报错报错... EXC_BAD_ACCESS~!~
-    layout = [[LSCollectionViewFlowLayout alloc] init];
-    layout.itemSize = self.theOldBookLayout.itemSize;
-    self.theNewBookLayout = layout;
+    return layout;
 }
 /**
  *  计算章节详情布局
  *  章节高度需要动态计算出来.
  */
--(void)calcDetailLayout{
+-(LSCollectionViewFlowLayout *)calcDetailLayout{
     LSCollectionViewFlowLayout *layout = [[LSCollectionViewFlowLayout alloc] init];
     layout.itemSize = CGSizeMake(SCREEN_WIDTH - 16, 60);
     
-    self.theOldDetailLayout = layout;
-    
-    layout = [[LSCollectionViewFlowLayout alloc] init];
-    layout.itemSize = self.theOldDetailLayout.itemSize;
-    self.theNewDetailLayout = layout;
-}
-/**
- *  显示书本详情Cell
- *
- *  @param collectionView 需要操作的目标
- */
--(void)addBookDetailCellFromCollectionView:(UICollectionView *)collectionView{
-    NSIndexPath *indexPath;
-    if (collectionView == self.theOldCollectionView) {
-        indexPath = self.theOldBookDetailIndexPath;
-        self.theOldItemsNumber++;
-    }else{
-        indexPath = self.theNewBookDetailIndexPath;
-        self.theNewItemsNumber++;
-    }
-    [collectionView insertItemsAtIndexPaths:@[indexPath]];
-}
-/**
- *  移除书本详情Cell
- *  @param collectionView 需要操作的目标
- */
--(void)removeBookDetailCellFromCollectionView:(UICollectionView *)collectionView{
-    NSIndexPath *indexPath;
-    if (collectionView == self.theOldCollectionView) {
-        indexPath = self.theOldBookDetailIndexPath;
-        self.theOldBookDetailIndexPath = nil;
-        self.theOldSelectedIndexPath = nil;
-        self.theOldItemsNumber--;
-    }else{
-        indexPath = self.theNewBookDetailIndexPath;
-        self.theNewBookDetailIndexPath = nil;
-        self.theNewSelectedIndexPath = nil;
-        self.theNewItemsNumber--;
-    }
-    [collectionView deleteItemsAtIndexPaths:@[indexPath]];
+    return layout;
 }
 
-/**
- *  Adjust indexPath
- *  Besause, when the collectionView hava a detail cell,other book cells which after detail cell will increase 1 in indexPath's item.So,here must be adjust it and then calculate the origin selected book cell's indexPath.
- *
- *  @param collectionView CollectionView
- *  @param indexPath      Before adjust indexPath
- *
- *  @return After adjust indexPath
- */
--(NSIndexPath *)getAdjustIndexPathAfterDetailCellInsertFromeCollectionView:(UICollectionView *)collectionView indexPath:(NSIndexPath *)indexPath{
-    BOOL isNeedAdjust = NO;
-    if (collectionView == self.theOldCollectionView) {
-        if (self.theOldBookDetailIndexPath && [indexPath compare:self.theOldBookDetailIndexPath] == NSOrderedDescending) {
-            isNeedAdjust = YES;
-        }
-    }else{
-        if (self.theNewBookDetailIndexPath && [indexPath compare:self.theNewBookDetailIndexPath] == NSOrderedDescending) {
-            isNeedAdjust = YES;
-        }
-    }
-    if (isNeedAdjust) {
-        return [NSIndexPath indexPathForItem:indexPath.item - 1 inSection:indexPath.section];
-    }else{
-        return indexPath;
-    }
-}
 #pragma mark - 界面事件响应处理
 
 /**
@@ -340,17 +257,17 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     BOOL isSelectedCell = NO;
     if (self.theOldCollectionView == collectionView) {
         //For reuse,cell must adjust attribute
-        if (self.theOldSelectedIndexPath && [indexPath compare:self.theOldSelectedIndexPath] == NSOrderedSame) {
+        if (self.theOldCollectionView.theSelectedIndexPath && [indexPath compare:self.theOldCollectionView.theSelectedIndexPath] == NSOrderedSame) {
             isSelectedCell = YES;
         }
-        if (self.theOldBookDetailIndexPath && [indexPath compare:self.theOldBookDetailIndexPath] == NSOrderedSame) {
+        if (self.theOldCollectionView.theBookDetailIndexPath && [indexPath compare:self.theOldCollectionView.theBookDetailIndexPath] == NSOrderedSame) {
             cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierDetailCell forIndexPath:indexPath];
         }
     }else{
-        if (self.theNewSelectedIndexPath && [indexPath compare:self.theNewSelectedIndexPath] == NSOrderedSame) {
+        if (self.theNewCollectionView.theSelectedIndexPath && [indexPath compare:self.theNewCollectionView.theSelectedIndexPath] == NSOrderedSame) {
             isSelectedCell = YES;
         }
-        if (self.theNewBookDetailIndexPath && [indexPath compare:self.theNewBookDetailIndexPath] == NSOrderedSame) {
+        if (self.theNewCollectionView.theBookDetailIndexPath && [indexPath compare:self.theNewCollectionView.theBookDetailIndexPath] == NSOrderedSame) {
             cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierDetailCell forIndexPath:indexPath];
         }
     }
@@ -370,110 +287,6 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
         label.text = [NSString stringWithFormat:@"%d",indexPath.item];
     }
     return cell;
-}
-
-#pragma mark - <UICollectionViewDelegate>
-//选择了某个cell
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    //点击后检查是否已经存在detail,存在则先移除
-    //如果同个按钮被第二次点中,则以取消点击的方式对当它
-    //detail出现位置公式为 item / COLLECTIONVIEW_ROW_ITMES * COLLECTIONVIEW_ROW_ITMES + COLLECTIONVIEW_ROW_ITMES;
-    //修复公式,当detail出现之后,在detail位置之后的item需要将自己的位置-1,再进行计算
-    NSInteger item = indexPath.item / COLLECTIONVIEW_ROW_ITMES * COLLECTIONVIEW_ROW_ITMES + COLLECTIONVIEW_ROW_ITMES;
-    if (collectionView == self.theOldCollectionView) {
-        if (self.theOldBookDetailIndexPath && indexPath.item > self.theOldBookDetailIndexPath.item && indexPath.section == self.theOldBookDetailIndexPath.section) {
-            item = (indexPath.item - 1) / COLLECTIONVIEW_ROW_ITMES * COLLECTIONVIEW_ROW_ITMES + COLLECTIONVIEW_ROW_ITMES;
-        }
-    }else if (collectionView == self.theNewCollectionView){
-        if (self.theNewBookDetailIndexPath && indexPath.item > self.theNewBookDetailIndexPath.item && indexPath.section == self.theNewBookDetailIndexPath.section) {
-            item = (indexPath.item - 1) / COLLECTIONVIEW_ROW_ITMES * COLLECTIONVIEW_ROW_ITMES + COLLECTIONVIEW_ROW_ITMES;
-        }
-    }
-    NSLog(@"Detail position is :%ld",(long)item);
-    
-    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    BOOL isSelected = YES;
-    if (collectionView == self.theOldCollectionView) {
-        if (self.theOldSelectedIndexPath && [indexPath compare:self.theOldSelectedIndexPath] == NSOrderedSame ) {
-            //selected设置为NO并不会自动触发didDeselectItemAtIndexPath
-            //cell.selected = NO;
-            UICollectionViewCell *deSelectedCell = [collectionView cellForItemAtIndexPath:self.theOldSelectedIndexPath];
-            deSelectedCell.backgroundColor = [UIColor whiteColor];
-            self.theOldSelectedIndexPath = nil;
-            isSelected = NO;
-        }else{
-            NSIndexPath *adjustIndexPath = [self getAdjustIndexPathAfterDetailCellInsertFromeCollectionView:collectionView indexPath:indexPath];
-            
-            if (self.theOldBookDetailIndexPath) {
-                //说明已经存在detail,移除
-                [self removeBookDetailCellFromCollectionView:collectionView];
-            }
-            NSLog(@"%@",indexPath);
-            NSLog(@"adjust :%@",adjustIndexPath);
-            self.theOldSelectedIndexPath = adjustIndexPath;
-            self.theOldBookDetailIndexPath = [NSIndexPath indexPathForItem:item inSection:indexPath.section];
-        }
-    }else if(collectionView == self.theNewCollectionView){
-        if (self.theNewSelectedIndexPath && [indexPath compare:self.theNewSelectedIndexPath] == NSOrderedSame) {
-            UICollectionViewCell *deSelectedCell = [collectionView cellForItemAtIndexPath:self.theNewSelectedIndexPath];
-            deSelectedCell.backgroundColor = [UIColor whiteColor];
-            self.theNewSelectedIndexPath = nil;
-            isSelected = NO;
-        }else{
-            NSIndexPath *adjustIndexPath = [self getAdjustIndexPathAfterDetailCellInsertFromeCollectionView:collectionView indexPath:indexPath];
-            
-            if (self.theNewBookDetailIndexPath) {
-                //说明已经存在detail,移除
-                [self removeBookDetailCellFromCollectionView:collectionView];
-            }
-            
-            self.theNewSelectedIndexPath = adjustIndexPath;
-            self.theNewBookDetailIndexPath = [NSIndexPath indexPathForItem:item inSection:indexPath.section];
-        }
-    }
-
-    
-    if (!isSelected) {
-        [self removeBookDetailCellFromCollectionView:collectionView];
-    }else{
-        [self addBookDetailCellFromCollectionView:collectionView];
-        [cell setBackgroundColor:[CCSimpleTools stringToColor:COLLECTIONVIEWCELL_FOCUSED opacity:1.0f]];
-    }
-}
-//取消选择了某个cell
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
-    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    cell.backgroundColor = [UIColor whiteColor];
-}
-
--(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    if (collectionView == self.theOldCollectionView) {
-        if (self.theOldBookDetailIndexPath && [indexPath compare:self.theOldBookDetailIndexPath] == NSOrderedSame) {
-            return NO;
-        }
-    }else if(collectionView == self.theNewCollectionView){
-        if (self.theNewBookDetailIndexPath && [indexPath compare:self.theNewBookDetailIndexPath] == NSOrderedSame) {
-            return NO;
-        }
-    }
-    return YES;
-}
-#pragma mark - <UICollectionViewDelegateFlowLayout>
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    if (collectionView == self.theOldCollectionView) {
-        if (self.theOldBookDetailIndexPath && indexPath.item == self.theOldBookDetailIndexPath.item && indexPath.section == self.theOldBookDetailIndexPath.section) {
-            return self.theOldDetailLayout.itemSize;
-        }else{
-            return self.theOldBookLayout.itemSize;
-        }
-    }else if(collectionView == self.theNewCollectionView){
-        if (self.theNewBookDetailIndexPath && indexPath.item == self.theNewBookDetailIndexPath.item && indexPath.section == self.theNewBookDetailIndexPath.section) {
-            return self.theNewDetailLayout.itemSize;
-        }else{
-            return self.theNewBookLayout.itemSize;
-        }
-    }
-    return CGSizeMake(0, 0);
 }
 
 @end

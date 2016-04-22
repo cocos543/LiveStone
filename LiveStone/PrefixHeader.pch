@@ -28,4 +28,23 @@
 #define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
 #define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 
+
+//CollectionView每一行的Cell数量
+#define COLLECTIONVIEW_ROW_ITMES 3
+//整体背景颜色
+#define VIEW_BACAGROUND_COLOR @"#EFEFEF"
+//顶部选中按钮颜色
+#define TOPVIEW_HIGHLIGHT_COLOR @"#40D9FF"
+//顶部按钮默认颜色
+#define TOPVIEW_DEFAULT_COLOR @"#7D7D7D"
+//book cell选中颜色
+#define COLLECTIONVIEWCELL_FOCUSED @"#E2E2E2"
+
+//book detail圆圈边颜色
+#define COLLECTIONVIEWCELL_DETAIL_ROUND @"#E2E2E2"
+// chapter 被选中的颜色
+#define COLLECTIOINVIEWCELL_CHAPTER_SELECTED_COLOR @"#40C6FF"
+// chapter 一次点击动作之后的留存的颜色
+#define COLLECTIOINVIEWCELL_CHAPTER_UPINSIDE_COLOR @"#EFEFEF"
+
 #endif /* PrefixHeader_pch */
