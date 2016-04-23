@@ -13,7 +13,7 @@
 /**
  *  Use for display book chapters
  */
-@property (strong, nonatomic) UICollectionView *bookDetailCollectionView;
+@property (strong, nonatomic) UICollectionView *bookChaptersCollectionView;
 
 @property (strong, nonatomic) UICollectionViewFlowLayout *detailFlowLayout;
 /**
@@ -30,39 +30,56 @@ static NSString * const reuseIdentifierChapterCell = @"reuseIdentifierChapterCel
 -(void)willMoveToSuperview:(UIView *)newSuperview{
     if (newSuperview) {
         self.detailFlowLayout = [[UICollectionViewFlowLayout alloc] init];
-        self.detailFlowLayout.itemSize = CGSizeMake(40, 40);
-        self.bookDetailCollectionView = [[UICollectionView alloc] initWithFrame:self.contentView.bounds collectionViewLayout:self.detailFlowLayout];
-        self.bookDetailCollectionView.dataSource = self;
-        self.bookDetailCollectionView.delegate   = self;
-        self.bookDetailCollectionView.allowsMultipleSelection = NO;
+        CGRect cellFrame = CHAPTER_CELL_FRAME;
+        self.detailFlowLayout.itemSize = CGSizeMake(cellFrame.size.width, cellFrame.size.width);
+        self.detailFlowLayout.minimumInteritemSpacing = CHAPTER_CELL_MINIMUM_INTERITEM_SPACING;
+        self.detailFlowLayout.minimumLineSpacing = CHAPTER_CELL_MINIMUM_LINE_SPACING;
+        self.bookChaptersCollectionView = [[UICollectionView alloc] initWithFrame:self.contentView.bounds collectionViewLayout:self.detailFlowLayout];
+        self.bookChaptersCollectionView.dataSource = self;
+        self.bookChaptersCollectionView.delegate   = self;
+        self.bookChaptersCollectionView.allowsMultipleSelection = NO;
         
         //Register cell
-        [self.bookDetailCollectionView registerNib:[UINib nibWithNibName:@"LSBookChapterCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierChapterCell];
-        [self.contentView addSubview:self.bookDetailCollectionView];
-        self.bookDetailCollectionView.backgroundColor = [UIColor whiteColor];
+        [self.bookChaptersCollectionView registerNib:[UINib nibWithNibName:@"LSBookChapterCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierChapterCell];
+        [self.contentView addSubview:self.bookChaptersCollectionView];
+        self.bookChaptersCollectionView.backgroundColor = [UIColor whiteColor];
     }
 }
 -(void)reloadCollectionViewData {
-    [self.bookDetailCollectionView reloadData];
+    [self.bookChaptersCollectionView reloadData];
+    self.selectedIndexPath = nil;
 }
 /**
  *  选择某一个章节
  */
 -(void)selectingChapter:(NSIndexPath *)indexPath{
     NSLog(@"%@",indexPath);
+    LSBookChapterCell *cell;
+    if (self.selectedIndexPath) {
+        cell = (LSBookChapterCell *)[self.bookChaptersCollectionView cellForItemAtIndexPath:self.selectedIndexPath];
+        [cell resetCellAttribute];
+    }
+    self.selectedIndexPath = indexPath;
+    cell = (LSBookChapterCell *)[self.bookChaptersCollectionView cellForItemAtIndexPath:indexPath];
+    [cell setChapterSelected];
 }
 
 #pragma mark - <UICollectionViewDataSource>
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
 }
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.chaptersNumber;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     LSBookChapterCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierChapterCell forIndexPath:indexPath];
-    [cell resetCellAttribute];
+    if (self.selectedIndexPath && [indexPath compare:self.selectedIndexPath] == NSOrderedSame) {
+        [cell setChapterSelected];
+    }else{
+        [cell resetCellAttribute];
+    }
     cell.delegate = self;
     cell.indexPath = indexPath;
     cell.chapterTitle = [NSString stringWithFormat:@"%u",indexPath.item + 1];

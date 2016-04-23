@@ -47,4 +47,13 @@
 // chapter 一次点击动作之后的留存的颜色
 #define COLLECTIOINVIEWCELL_CHAPTER_UPINSIDE_COLOR @"#EFEFEF"
 
+//Chapter cell frame
+#define CHAPTER_CELL_FRAME CGRectMake(0, 0, 40, 40)
+
+#define CHAPTER_CELL_MINIMUM_INTERITEM_SPACING 1
+
+#define CHAPTER_CELL_MINIMUM_LINE_SPACING 1
+
+// For temp test
+#define TEST_CHAPTER_NUMBERS 50;
 #endif /* PrefixHeader_pch */

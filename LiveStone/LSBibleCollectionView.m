@@ -9,24 +9,21 @@
 #import "LSBibleCollectionView.h"
 
 @interface LSBibleCollectionView ()
+
 /**
- *  书本布局
+ *  临时数量,表示detail的chapter数量
  */
-@property (nonatomic, strong) LSCollectionViewFlowLayout *theBookLayout;
-/**
- *  书本章节详情布局
- */
-@property (nonatomic, strong) LSCollectionViewFlowLayout *theDetailLayout;
+@property (nonatomic) NSInteger tempNumber;
 
 @end
 
 @implementation LSBibleCollectionView
 
--(instancetype)initWithFrame:(CGRect)frame bookCollectionViewLayout:(LSCollectionViewFlowLayout *)layout detailCollectionViewLayout:(LSCollectionViewFlowLayout *)layout2{
+-(instancetype)initWithFrame:(CGRect)frame bookCollectionViewLayout:(LSCollectionViewFlowLayout *)layout{
     self = [super initWithFrame:frame collectionViewLayout:layout];
+    self.tempNumber = TEST_CHAPTER_NUMBERS;
     if (self) {
         self.theBookLayout = layout;
-        self.theDetailLayout = layout2;
     }
     return self;
 }
@@ -39,7 +36,23 @@
 }
 
 
-
+/**
+ *  计算章节详情布局
+ *  章节高度需要动态计算出来.
+ */
+-(void)calcDetailLayoutWithChaptersNumber:(NSInteger) number{
+    if (!self.theDetailLayout) {
+        self.theDetailLayout = [[LSCollectionViewFlowLayout alloc] init];
+    }
+    CGFloat detailCellWidth = SCREEN_WIDTH - 16;
+    //计算需要的高度
+    CGRect chapterCellFrame = CHAPTER_CELL_FRAME;
+    //Chapter cell counts in the same row
+    int cellCountInRow = floorf(detailCellWidth / (chapterCellFrame.size.width + CHAPTER_CELL_MINIMUM_INTERITEM_SPACING));
+    int cellRow = ceilf(self.tempNumber / (float)cellCountInRow);
+    
+    self.theDetailLayout.itemSize = CGSizeMake(detailCellWidth, cellRow * (chapterCellFrame.size.height + CHAPTER_CELL_MINIMUM_LINE_SPACING));
+}
 /**
  *  显示书本详情Cell
  *
@@ -150,6 +163,7 @@
 #pragma mark - <UICollectionViewDelegateFlowLayout>
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.theBookDetailIndexPath && indexPath.item == self.theBookDetailIndexPath.item && indexPath.section == self.theBookDetailIndexPath.section) {
+        [self calcDetailLayoutWithChaptersNumber:self.tempNumber];
         return self.theDetailLayout.itemSize;
     }else{
         return self.theBookLayout.itemSize;

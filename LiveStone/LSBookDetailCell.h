@@ -18,4 +18,6 @@
  *  Reload collection's data
  */
 -(void)reloadCollectionViewData;
+
+
 @end

@@ -52,6 +52,11 @@
 @property (nonatomic) NSInteger theOldItemsNumber;
 @property (nonatomic) NSInteger theNewItemsNumber;
 
+/**
+ *  临时数量,表示detail的chapter数量
+ */
+@property (nonatomic) NSInteger tempNumber;
+
 @end
 
 @implementation LSBibleViewController
@@ -129,15 +134,13 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
  *  两部分CollectionView的加载
  */
 -(void)loadCollectionView{
-    [self calcBookLayout];
-    [self calcDetailLayout];
     self.theOldItemsNumber = 33;
     self.theNewItemsNumber = 33;
-    
-    LSBibleCollectionView *theOldCollectionView = [[LSBibleCollectionView alloc] initWithFrame:CGRectZero bookCollectionViewLayout:[self calcBookLayout] detailCollectionViewLayout:[self calcDetailLayout]];
+    self.tempNumber = TEST_CHAPTER_NUMBERS;
+    LSBibleCollectionView *theOldCollectionView = [[LSBibleCollectionView alloc] initWithFrame:CGRectZero bookCollectionViewLayout:[self calcBookLayout]];
     theOldCollectionView.backgroundColor = [CCSimpleTools stringToColor:VIEW_BACAGROUND_COLOR opacity:1.0f];
 
-    LSBibleCollectionView *theNewCollectionView = [[LSBibleCollectionView alloc] initWithFrame:CGRectZero bookCollectionViewLayout:[self calcBookLayout] detailCollectionViewLayout:[self calcDetailLayout]];
+    LSBibleCollectionView *theNewCollectionView = [[LSBibleCollectionView alloc] initWithFrame:CGRectZero bookCollectionViewLayout:[self calcBookLayout]];
     theNewCollectionView.backgroundColor = [CCSimpleTools stringToColor:VIEW_BACAGROUND_COLOR opacity:1.0f];
     theOldCollectionView.delegate = theOldCollectionView;
     theOldCollectionView.dataSource = self;
@@ -183,16 +186,6 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     LSCollectionViewFlowLayout *layout = [[LSCollectionViewFlowLayout alloc] init];
     layout.itemSize = CGSizeMake(SCREEN_WIDTH / (COLLECTIONVIEW_ROW_ITMES + 0.4), 30);
     layout.sectionInset = UIEdgeInsetsMake(0, 8, 0, 8);
-    return layout;
-}
-/**
- *  计算章节详情布局
- *  章节高度需要动态计算出来.
- */
--(LSCollectionViewFlowLayout *)calcDetailLayout{
-    LSCollectionViewFlowLayout *layout = [[LSCollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(SCREEN_WIDTH - 16, 60);
-    
     return layout;
 }
 
@@ -274,7 +267,7 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     if (cell) {
         //Cell is LSBookDetailCell
         LSBookDetailCell *detailCell = (LSBookDetailCell *)cell;
-        detailCell.chaptersNumber = arc4random_uniform(10) + 1;
+        detailCell.chaptersNumber = self.tempNumber;
         [detailCell reloadCollectionViewData];
     }else{
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierBookCell forIndexPath:indexPath];

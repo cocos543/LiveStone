@@ -10,7 +10,14 @@
 #import "LSCollectionViewFlowLayout.h"
 
 @interface LSBibleCollectionView : UICollectionView <UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
-
+/**
+ *  书本布局
+ */
+@property (nonatomic, strong) LSCollectionViewFlowLayout *theBookLayout;
+/**
+ *  书本章节详情布局
+ */
+@property (nonatomic, strong) LSCollectionViewFlowLayout *theDetailLayout;
 
 /**
  *  Detail Cell出现的位置
@@ -20,6 +27,10 @@
  *  当前选中的Cell位置
  */
 @property (nonatomic, strong) NSIndexPath *theSelectedIndexPath;
+/**
+ *  用于存放当前数据模型属性,数据模型应该包括书本名字,书本里面的章节数量
+ */
+@property (nonatomic, strong) NSArray *dataModelArray;
 
 
 /**
@@ -31,7 +42,7 @@
  */
 @property (nonatomic, copy) void (^removingDetailCellBlock)(UICollectionView *collectionView, NSIndexPath *indexPath);
 
--(instancetype)initWithFrame:(CGRect)frame bookCollectionViewLayout:(LSCollectionViewFlowLayout *)layout detailCollectionViewLayout:(LSCollectionViewFlowLayout *)layout2;
+-(instancetype)initWithFrame:(CGRect)frame bookCollectionViewLayout:(LSCollectionViewFlowLayout *)layout;
 
 
 @end
