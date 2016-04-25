@@ -53,7 +53,6 @@ static NSString * const reuseIdentifierChapterCell = @"reuseIdentifierChapterCel
  *  选择某一个章节
  */
 -(void)selectingChapter:(NSIndexPath *)indexPath{
-    NSLog(@"%@",indexPath);
     LSBookChapterCell *cell;
     if (self.selectedIndexPath) {
         cell = (LSBookChapterCell *)[self.bookChaptersCollectionView cellForItemAtIndexPath:self.selectedIndexPath];
@@ -62,6 +61,9 @@ static NSString * const reuseIdentifierChapterCell = @"reuseIdentifierChapterCel
     self.selectedIndexPath = indexPath;
     cell = (LSBookChapterCell *)[self.bookChaptersCollectionView cellForItemAtIndexPath:indexPath];
     [cell setChapterSelected];
+    if (self.onChapterSelectBlock) {
+        self.onChapterSelectBlock(self.indexPathInBook,indexPath);
+    }
 }
 
 #pragma mark - <UICollectionViewDataSource>
@@ -82,7 +84,7 @@ static NSString * const reuseIdentifierChapterCell = @"reuseIdentifierChapterCel
     }
     cell.delegate = self;
     cell.indexPath = indexPath;
-    cell.chapterTitle = [NSString stringWithFormat:@"%u",indexPath.item + 1];
+    cell.chapterTitle = [NSString stringWithFormat:@"%@",@(indexPath.item + 1)];
     return cell;
 }
 

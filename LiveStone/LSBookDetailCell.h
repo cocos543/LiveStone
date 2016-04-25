@@ -14,10 +14,14 @@
  */
 @property (nonatomic) NSInteger chaptersNumber;
 
+@property (nonatomic,copy) NSIndexPath *indexPathInBook;
+
+@property (nonatomic,copy) void (^onChapterSelectBlock)(NSIndexPath *indexPathInBook,NSIndexPath *indexPathInDetail);
 /**
  *  Reload collection's data
  */
 -(void)reloadCollectionViewData;
+
 
 
 @end

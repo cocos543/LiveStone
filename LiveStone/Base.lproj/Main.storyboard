@@ -608,7 +608,7 @@
         <!--View Controller-->
         <scene sceneID="41m-ct-17c">
             <objects>
-                <viewController id="u9V-Vf-aNY" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="u9V-Vf-aNY" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lhg-Er-xZ0"/>
                         <viewControllerLayoutGuide type="bottom" id="lQr-zw-cjl"/>

@@ -255,6 +255,8 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
         }
         if (self.theOldCollectionView.theBookDetailIndexPath && [indexPath compare:self.theOldCollectionView.theBookDetailIndexPath] == NSOrderedSame) {
             cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierDetailCell forIndexPath:indexPath];
+            [(LSBookDetailCell *)cell setIndexPathInBook:self.theOldCollectionView.theSelectedIndexPath];
+
         }
     }else{
         if (self.theNewCollectionView.theSelectedIndexPath && [indexPath compare:self.theNewCollectionView.theSelectedIndexPath] == NSOrderedSame) {
@@ -262,12 +264,20 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
         }
         if (self.theNewCollectionView.theBookDetailIndexPath && [indexPath compare:self.theNewCollectionView.theBookDetailIndexPath] == NSOrderedSame) {
             cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierDetailCell forIndexPath:indexPath];
+            [(LSBookDetailCell *)cell setIndexPathInBook:self.theNewCollectionView.theSelectedIndexPath];
         }
     }
     if (cell) {
         //Cell is LSBookDetailCell
         LSBookDetailCell *detailCell = (LSBookDetailCell *)cell;
         detailCell.chaptersNumber = self.tempNumber;
+        detailCell.onChapterSelectBlock = ^(NSIndexPath *indexPathInBook,NSIndexPath *indexPathInDetail){
+            NSLog(@"in book:%@, in detail:%@",indexPathInBook,indexPathInDetail);
+            UIViewController *uvc = [[UIViewController alloc] init];
+            uvc.view.backgroundColor = [UIColor whiteColor];
+            uvc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:uvc animated:YES];
+        };
         [detailCell reloadCollectionViewData];
     }else{
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierBookCell forIndexPath:indexPath];
@@ -277,7 +287,7 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
             cell.backgroundColor = [UIColor whiteColor];
         }
         UILabel *label = [cell viewWithTag:1];
-        label.text = [NSString stringWithFormat:@"%d",indexPath.item];
+        label.text = [NSString stringWithFormat:@"%@",@(indexPath.item)];
     }
     return cell;
 }

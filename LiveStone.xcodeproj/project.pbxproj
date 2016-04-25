@@ -46,6 +46,7 @@
 		ED0221D81CC37956004D6514 /* CCSimpleTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSimpleTools.h; sourceTree = "<group>"; };
 		ED0221D91CC37956004D6514 /* CCSimpleTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSimpleTools.m; sourceTree = "<group>"; };
 		ED0221DB1CC37CAC004D6514 /* LSBookCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBookCollectionViewCell.xib; sourceTree = "<group>"; };
+		ED08C3F51CCEE3DB00AAC7AA /* huoshi.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = huoshi.db; sourceTree = "<group>"; };
 		ED2030541CC99AD800369ACE /* LSBibleCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBibleCollectionView.h; sourceTree = "<group>"; };
 		ED2030551CC99AD800369ACE /* LSBibleCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBibleCollectionView.m; sourceTree = "<group>"; };
 		ED2030571CC9ABD100369ACE /* LSBookChapterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBookChapterCell.h; sourceTree = "<group>"; };
@@ -154,6 +155,7 @@
 		ED4298581CC0637000FCD799 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ED08C3F51CCEE3DB00AAC7AA /* huoshi.db */,
 				ED4298591CC0637000FCD799 /* main.m */,
 				ED42985B1CC0637000FCD799 /* AppDelegate.h */,
 				ED42985C1CC0637000FCD799 /* AppDelegate.m */,
