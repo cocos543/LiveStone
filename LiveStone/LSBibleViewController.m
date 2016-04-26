@@ -10,6 +10,7 @@
 #import "LSBibleCollectionView.h"
 #import "LSCollectionViewFlowLayout.h"
 #import "LSBookDetailCell.h"
+#import "LSBibleStore.h"
 
 #define LINE_VIEW_HIGHT 3
 #define COLLECTVIEW_SPACE 5
@@ -40,13 +41,21 @@
 @property (strong, nonatomic) UIView *lineView;
 
 /**
- *  存放旧约书本
+ *  展示旧约书本
  */
 @property (strong, nonatomic) LSBibleCollectionView *theOldCollectionView;
 /**
- *  存放新约书本
+ *  展示新约书本
  */
 @property (strong, nonatomic) LSBibleCollectionView *theNewCollectionView;
+/**
+ *  Store old book name
+ */
+@property (nonatomic, strong) NSMutableArray *theOldBooksArray;
+/**
+ *  Store new book name
+ */
+@property (nonatomic, strong) NSMutableArray *theNewBooksArray;
 
 
 @property (nonatomic) NSInteger theOldItemsNumber;
@@ -69,6 +78,7 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     // Do any additional setup after loading the view.
     [self loadHeaderView];
     [self loadContentView];
+    
 
 }
 
@@ -134,8 +144,6 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
  *  两部分CollectionView的加载
  */
 -(void)loadCollectionView{
-    self.theOldItemsNumber = 33;
-    self.theNewItemsNumber = 33;
     self.tempNumber = TEST_CHAPTER_NUMBERS;
     LSBibleCollectionView *theOldCollectionView = [[LSBibleCollectionView alloc] initWithFrame:CGRectZero bookCollectionViewLayout:[self calcBookLayout]];
     theOldCollectionView.backgroundColor = [CCSimpleTools stringToColor:VIEW_BACAGROUND_COLOR opacity:1.0f];
@@ -152,17 +160,17 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     theNewCollectionView.allowsMultipleSelection = NO;
     
     theOldCollectionView.addingDetailCellBlock = ^void(UICollectionView *collectionView,NSIndexPath *indexPath) {
-        self.theOldItemsNumber++;
+        [self.theOldBooksArray insertObject:@"" atIndex:indexPath.item];
     };
     theOldCollectionView.removingDetailCellBlock = ^void(UICollectionView *collectionView,NSIndexPath *indexPath) {
-        self.theOldItemsNumber--;
+        [self.theOldBooksArray removeObjectAtIndex:indexPath.item];
     };
     
     theNewCollectionView.addingDetailCellBlock = ^void(UICollectionView *collectionView,NSIndexPath *indexPath) {
-        self.theNewItemsNumber++;
+        [self.theNewBooksArray insertObject:@"" atIndex:indexPath.item];
     };
     theNewCollectionView.removingDetailCellBlock = ^void(UICollectionView *collectionView,NSIndexPath *indexPath) {
-        self.theNewItemsNumber--;
+        [self.theNewBooksArray removeObjectAtIndex:indexPath.item];
     };
     
     //注册cell
@@ -177,6 +185,10 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     self.theOldCollectionView = theOldCollectionView;
     self.theNewCollectionView = theNewCollectionView;
     
+    //Load book name from SQLite
+    LSBibleStore *store = [LSBibleStore sharedStore];
+    self.theOldBooksArray = [NSMutableArray arrayWithArray:[store booksWithType:LSBookTypeOld]];
+    self.theNewBooksArray = [NSMutableArray arrayWithArray:[store booksWithType:LSBookTypeNew]];
 }
 
 /**
@@ -184,7 +196,9 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
  */
 -(LSCollectionViewFlowLayout *)calcBookLayout{
     LSCollectionViewFlowLayout *layout = [[LSCollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(SCREEN_WIDTH / (COLLECTIONVIEW_ROW_ITMES + 0.4), 30);
+    layout.itemSize = CGSizeMake(SCREEN_WIDTH / (COLLECTIONVIEW_ROW_ITMES + 0.35), 30);
+    layout.minimumInteritemSpacing = 8;
+    layout.minimumLineSpacing = 8;
     layout.sectionInset = UIEdgeInsetsMake(0, 8, 0, 8);
     return layout;
 }
@@ -238,9 +252,9 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (collectionView == self.theOldCollectionView) {
-        return self.theOldItemsNumber;
+        return self.theOldBooksArray.count;
     }else{
-        return self.theNewItemsNumber;
+        return self.theNewBooksArray.count;
     }
 }
 
@@ -248,6 +262,7 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     UICollectionViewCell *cell;
     
     BOOL isSelectedCell = NO;
+    NSArray *booksArray;
     if (self.theOldCollectionView == collectionView) {
         //For reuse,cell must adjust attribute
         if (self.theOldCollectionView.theSelectedIndexPath && [indexPath compare:self.theOldCollectionView.theSelectedIndexPath] == NSOrderedSame) {
@@ -257,6 +272,8 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
             cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierDetailCell forIndexPath:indexPath];
             [(LSBookDetailCell *)cell setIndexPathInBook:self.theOldCollectionView.theSelectedIndexPath];
 
+        }else{
+            booksArray = self.theOldBooksArray;
         }
     }else{
         if (self.theNewCollectionView.theSelectedIndexPath && [indexPath compare:self.theNewCollectionView.theSelectedIndexPath] == NSOrderedSame) {
@@ -265,6 +282,8 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
         if (self.theNewCollectionView.theBookDetailIndexPath && [indexPath compare:self.theNewCollectionView.theBookDetailIndexPath] == NSOrderedSame) {
             cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierDetailCell forIndexPath:indexPath];
             [(LSBookDetailCell *)cell setIndexPathInBook:self.theNewCollectionView.theSelectedIndexPath];
+        }else{
+            booksArray = self.theNewBooksArray;
         }
     }
     if (cell) {
@@ -280,6 +299,9 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
         };
         [detailCell reloadCollectionViewData];
     }else{
+        NSString *bookName = [booksArray objectAtIndex:indexPath.item][@"bookName"];
+        NSString *firstName = [bookName substringToIndex:1];
+        
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierBookCell forIndexPath:indexPath];
         if (isSelectedCell) {
             cell.backgroundColor = [CCSimpleTools stringToColor:COLLECTIONVIEWCELL_FOCUSED opacity:1.0f];
@@ -287,7 +309,12 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
             cell.backgroundColor = [UIColor whiteColor];
         }
         UILabel *label = [cell viewWithTag:1];
-        label.text = [NSString stringWithFormat:@"%@",@(indexPath.item)];
+        label.text = firstName;
+        label = [cell viewWithTag:2];
+        label.text = [bookName substringFromIndex:1];
+        if (bookName.length > 6) {
+            label.font = [UIFont systemFontOfSize:10];
+        }
     }
     return cell;
 }
