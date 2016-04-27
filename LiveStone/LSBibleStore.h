@@ -27,4 +27,10 @@ typedef NS_ENUM(NSInteger,LSBookType){
 -(NSArray *)booksWithType:(LSBookType)type;
 
 -(NSInteger)chaptersNumberWithBookNo:(NSInteger)bookNo;
+/**
+ *  Get all book's chapter count
+ *
+ *  @return NSDictionary<NSString *,NSNumber *>
+ */
+-(NSDictionary<NSString *,NSNumber *> *)chaptersNumber;
 @end

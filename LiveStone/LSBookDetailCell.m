@@ -34,7 +34,8 @@ static NSString * const reuseIdentifierChapterCell = @"reuseIdentifierChapterCel
         self.detailFlowLayout.itemSize = CGSizeMake(cellFrame.size.width, cellFrame.size.width);
         self.detailFlowLayout.minimumInteritemSpacing = CHAPTER_CELL_MINIMUM_INTERITEM_SPACING;
         self.detailFlowLayout.minimumLineSpacing = CHAPTER_CELL_MINIMUM_LINE_SPACING;
-        self.bookChaptersCollectionView = [[UICollectionView alloc] initWithFrame:self.contentView.bounds collectionViewLayout:self.detailFlowLayout];
+        self.bookChaptersCollectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:self.detailFlowLayout];
+//        self.bookChaptersCollectionView.contentSize = self.bookChaptersCollectionView.frame.size;
         self.bookChaptersCollectionView.dataSource = self;
         self.bookChaptersCollectionView.delegate   = self;
         self.bookChaptersCollectionView.allowsMultipleSelection = NO;
@@ -43,9 +44,13 @@ static NSString * const reuseIdentifierChapterCell = @"reuseIdentifierChapterCel
         [self.bookChaptersCollectionView registerNib:[UINib nibWithNibName:@"LSBookChapterCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierChapterCell];
         [self.contentView addSubview:self.bookChaptersCollectionView];
         self.bookChaptersCollectionView.backgroundColor = [UIColor whiteColor];
+        NSLog(@"self :%@",self);
+        NSLog(@"bookChaptersCollectionView :%@",self.bookChaptersCollectionView);
     }
 }
 -(void)reloadCollectionViewData {
+    //Cause sometimes DetailCell has been reuse,so willMoveToSuperview may be not happen.
+    self.bookChaptersCollectionView.frame = self.bounds;
     [self.bookChaptersCollectionView reloadData];
     self.selectedIndexPath = nil;
 }

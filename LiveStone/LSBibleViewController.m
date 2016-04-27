@@ -56,7 +56,11 @@
  *  Store new book name
  */
 @property (nonatomic, strong) NSMutableArray *theNewBooksArray;
-
+/**
+ *  Store book's chapter count
+ */
+@property (nonatomic, strong) NSDictionary *theOldChaptersDic;
+@property (nonatomic, strong) NSDictionary *theNewChaptersDic;
 
 @property (nonatomic) NSInteger theOldItemsNumber;
 @property (nonatomic) NSInteger theNewItemsNumber;
@@ -189,6 +193,14 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     LSBibleStore *store = [LSBibleStore sharedStore];
     self.theOldBooksArray = [NSMutableArray arrayWithArray:[store booksWithType:LSBookTypeOld]];
     self.theNewBooksArray = [NSMutableArray arrayWithArray:[store booksWithType:LSBookTypeNew]];
+    self.theOldChaptersDic = [store chaptersNumber];
+    self.theNewChaptersDic = [store chaptersNumber];
+    
+    //shared chaptersDic with contionView
+    self.theOldCollectionView.theChaptersDic = self.theOldChaptersDic;
+    self.theNewCollectionView.theChaptersDic = self.theNewChaptersDic;
+    self.theOldCollectionView.theBooksArray = self.theOldBooksArray;
+    self.theNewCollectionView.theBooksArray = self.theNewBooksArray;
 }
 
 /**
@@ -196,8 +208,14 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
  */
 -(LSCollectionViewFlowLayout *)calcBookLayout{
     LSCollectionViewFlowLayout *layout = [[LSCollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(SCREEN_WIDTH / (COLLECTIONVIEW_ROW_ITMES + 0.35), 30);
-    layout.minimumInteritemSpacing = 8;
+    layout.itemSize = CGSizeMake(SCREEN_WIDTH / (COLLECTIONVIEW_ROW_ITMES + 0.40), 30);
+    //Here,I cant't use perfect formula @_@~
+    layout.minimumInteritemSpacing = floorf((SCREEN_WIDTH - layout.itemSize.width * COLLECTIONVIEW_ROW_ITMES) / 2 - 8);
+    if (IS_IPHONE_5) {
+        layout.minimumInteritemSpacing += 0.8;
+    }else if (IS_IPHONE_6P){
+        layout.minimumInteritemSpacing += 0.2;
+    }
     layout.minimumLineSpacing = 8;
     layout.sectionInset = UIEdgeInsetsMake(0, 8, 0, 8);
     return layout;
@@ -263,6 +281,7 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     
     BOOL isSelectedCell = NO;
     NSArray *booksArray;
+    NSNumber *chaptersNumber, *bookNo;
     if (self.theOldCollectionView == collectionView) {
         //For reuse,cell must adjust attribute
         if (self.theOldCollectionView.theSelectedIndexPath && [indexPath compare:self.theOldCollectionView.theSelectedIndexPath] == NSOrderedSame) {
@@ -271,6 +290,9 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
         if (self.theOldCollectionView.theBookDetailIndexPath && [indexPath compare:self.theOldCollectionView.theBookDetailIndexPath] == NSOrderedSame) {
             cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierDetailCell forIndexPath:indexPath];
             [(LSBookDetailCell *)cell setIndexPathInBook:self.theOldCollectionView.theSelectedIndexPath];
+            
+            bookNo = self.theOldBooksArray[self.theOldCollectionView.theSelectedIndexPath.item][@"bookNo"];
+            chaptersNumber = self.theOldChaptersDic[[bookNo stringValue]];
 
         }else{
             booksArray = self.theOldBooksArray;
@@ -282,14 +304,18 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
         if (self.theNewCollectionView.theBookDetailIndexPath && [indexPath compare:self.theNewCollectionView.theBookDetailIndexPath] == NSOrderedSame) {
             cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierDetailCell forIndexPath:indexPath];
             [(LSBookDetailCell *)cell setIndexPathInBook:self.theNewCollectionView.theSelectedIndexPath];
+            
+            bookNo = self.theNewBooksArray[self.theNewCollectionView.theSelectedIndexPath.item][@"bookNo"];
+            chaptersNumber = self.theNewChaptersDic[[bookNo stringValue]];
         }else{
             booksArray = self.theNewBooksArray;
         }
     }
     if (cell) {
         //Cell is LSBookDetailCell
+        
         LSBookDetailCell *detailCell = (LSBookDetailCell *)cell;
-        detailCell.chaptersNumber = self.tempNumber;
+        detailCell.chaptersNumber = [chaptersNumber integerValue];
         detailCell.onChapterSelectBlock = ^(NSIndexPath *indexPathInBook,NSIndexPath *indexPathInDetail){
             NSLog(@"in book:%@, in detail:%@",indexPathInBook,indexPathInDetail);
             UIViewController *uvc = [[UIViewController alloc] init];

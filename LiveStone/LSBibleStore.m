@@ -58,7 +58,7 @@
     FMResultSet *resultSet;
     [self openDB];
     
-    resultSet = [self.fmdb executeQueryWithFormat:@"SELECT bookNo,bookName FROM book where isNew = %d limit 0,2000", type];
+    resultSet = [self.fmdb executeQueryWithFormat:@"SELECT bookNo,bookName FROM book WHERE isNew = %d limit 0,2000", type];
     while ([resultSet next]) {
         [booksArray addObject:[resultSet resultDictionary]];
     }
@@ -66,8 +66,34 @@
     return booksArray;
 }
 
+/**
+ *  Query chapters number.If you like,here can use cache.
+ *
+ *  @param bookNo book id
+ *
+ *  @return chapter count
+ */
 -(NSInteger)chaptersNumberWithBookNo:(NSInteger)bookNo{
-    return 0;
+    NSInteger number;
+    FMResultSet *resultSet;
+    [self openDB];
+    resultSet = [self.fmdb executeQueryWithFormat:@"SELECT COUNT(*) FROM chapter WHERE bookId = %d",bookNo];
+    if ([resultSet next]) {
+        number = [resultSet intForColumnIndex:0];
+    }
+    [self closeDB];
+    return number;
 }
 
+-(NSDictionary<NSString *,NSNumber *> *)chaptersNumber{
+    FMResultSet *resultSet;
+    NSMutableDictionary *resultDic = [[NSMutableDictionary alloc] init];
+    [self openDB];
+    resultSet = [self.fmdb executeQuery:@"SELECT bookId,COUNT(*) as count FROM chapter GROUP BY bookId"];
+    while ([resultSet next]) {
+        [resultDic setObject:@([resultSet intForColumnIndex:1]) forKey:[resultSet stringForColumnIndex:0]];
+    }
+    [self closeDB];
+    return resultDic;
+}
 @end

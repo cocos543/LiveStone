@@ -21,7 +21,6 @@
 
 -(instancetype)initWithFrame:(CGRect)frame bookCollectionViewLayout:(LSCollectionViewFlowLayout *)layout{
     self = [super initWithFrame:frame collectionViewLayout:layout];
-    self.tempNumber = TEST_CHAPTER_NUMBERS;
     if (self) {
         self.theBookLayout = layout;
     }
@@ -49,7 +48,7 @@
     CGRect chapterCellFrame = CHAPTER_CELL_FRAME;
     //Chapter cell counts in the same row
     int cellCountInRow = floorf(detailCellWidth / (chapterCellFrame.size.width + CHAPTER_CELL_MINIMUM_INTERITEM_SPACING));
-    int cellRow = ceilf(self.tempNumber / (float)cellCountInRow);
+    int cellRow = ceilf(number / (float)cellCountInRow);
     
     self.theDetailLayout.itemSize = CGSizeMake(detailCellWidth, cellRow * (chapterCellFrame.size.height + CHAPTER_CELL_MINIMUM_LINE_SPACING));
 }
@@ -163,7 +162,9 @@
 #pragma mark - <UICollectionViewDelegateFlowLayout>
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.theBookDetailIndexPath && indexPath.item == self.theBookDetailIndexPath.item && indexPath.section == self.theBookDetailIndexPath.section) {
-        [self calcDetailLayoutWithChaptersNumber:self.tempNumber];
+        NSNumber *bookNo = self.theBooksArray[self.theSelectedIndexPath.item][@"bookNo"];
+        NSNumber *chaptersNumber = self.theChaptersDic[[bookNo stringValue]];
+        [self calcDetailLayoutWithChaptersNumber:[chaptersNumber integerValue]];
         return self.theDetailLayout.itemSize;
     }else{
         return self.theBookLayout.itemSize;

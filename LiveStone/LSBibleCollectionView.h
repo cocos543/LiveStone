@@ -28,9 +28,13 @@
  */
 @property (nonatomic, strong) NSIndexPath *theSelectedIndexPath;
 /**
- *  用于存放当前数据模型属性,数据模型应该包括书本名字,书本里面的章节数量
+ *  Store book name,Just read
  */
-@property (nonatomic, strong) NSArray *dataModelArray;
+@property (nonatomic, strong) NSArray *theBooksArray;
+/**
+ *  Store book's chapter count
+ */
+@property (nonatomic, strong) NSDictionary *theChaptersDic;
 
 
 /**
