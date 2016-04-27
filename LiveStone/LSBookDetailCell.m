@@ -44,8 +44,8 @@ static NSString * const reuseIdentifierChapterCell = @"reuseIdentifierChapterCel
         [self.bookChaptersCollectionView registerNib:[UINib nibWithNibName:@"LSBookChapterCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierChapterCell];
         [self.contentView addSubview:self.bookChaptersCollectionView];
         self.bookChaptersCollectionView.backgroundColor = [UIColor whiteColor];
-        NSLog(@"self :%@",self);
-        NSLog(@"bookChaptersCollectionView :%@",self.bookChaptersCollectionView);
+//        NSLog(@"self :%@",self);
+//        NSLog(@"bookChaptersCollectionView :%@",self.bookChaptersCollectionView);
     }
 }
 -(void)reloadCollectionViewData {

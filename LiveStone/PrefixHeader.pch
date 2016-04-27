@@ -56,4 +56,9 @@
 
 // For temp test
 #define TEST_CHAPTER_NUMBERS 50;
+
+typedef NS_ENUM(NSInteger,LSBookType){
+    LSBookTypeOld = 0,
+    LSBookTypeNew
+};
 #endif /* PrefixHeader_pch */

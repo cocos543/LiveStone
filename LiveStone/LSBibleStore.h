@@ -7,10 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-typedef NS_ENUM(NSInteger,LSBookType){
-    LSBookTypeOld = 0,
-    LSBookTypeNew
-};
 
 @interface LSBibleStore : NSObject
 

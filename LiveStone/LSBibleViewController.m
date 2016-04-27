@@ -6,11 +6,16 @@
 //  Copyright © 2016年 Cocos. All rights reserved.
 //
 
+#ifndef LS_Store
+#define LS_Store
+#import "LSBibleStore.h"
+#endif
+
 #import "LSBibleViewController.h"
 #import "LSBibleCollectionView.h"
 #import "LSCollectionViewFlowLayout.h"
 #import "LSBookDetailCell.h"
-#import "LSBibleStore.h"
+#import "LSChapterContentViewController.h"
 
 #define LINE_VIEW_HIGHT 3
 #define COLLECTVIEW_SPACE 5
@@ -82,8 +87,6 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     // Do any additional setup after loading the view.
     [self loadHeaderView];
     [self loadContentView];
-    
-
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -288,8 +291,10 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
             isSelectedCell = YES;
         }
         if (self.theOldCollectionView.theBookDetailIndexPath && [indexPath compare:self.theOldCollectionView.theBookDetailIndexPath] == NSOrderedSame) {
+            
             cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierDetailCell forIndexPath:indexPath];
             [(LSBookDetailCell *)cell setIndexPathInBook:self.theOldCollectionView.theSelectedIndexPath];
+            [(LSBookDetailCell *)cell setBookType:LSBookTypeOld];
             
             bookNo = self.theOldBooksArray[self.theOldCollectionView.theSelectedIndexPath.item][@"bookNo"];
             chaptersNumber = self.theOldChaptersDic[[bookNo stringValue]];
@@ -304,6 +309,7 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
         if (self.theNewCollectionView.theBookDetailIndexPath && [indexPath compare:self.theNewCollectionView.theBookDetailIndexPath] == NSOrderedSame) {
             cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierDetailCell forIndexPath:indexPath];
             [(LSBookDetailCell *)cell setIndexPathInBook:self.theNewCollectionView.theSelectedIndexPath];
+            [(LSBookDetailCell *)cell setBookType:LSBookTypeNew];
             
             bookNo = self.theNewBooksArray[self.theNewCollectionView.theSelectedIndexPath.item][@"bookNo"];
             chaptersNumber = self.theNewChaptersDic[[bookNo stringValue]];
@@ -316,12 +322,17 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
         
         LSBookDetailCell *detailCell = (LSBookDetailCell *)cell;
         detailCell.chaptersNumber = [chaptersNumber integerValue];
+        LSBookType bookType = detailCell.bookType;
         detailCell.onChapterSelectBlock = ^(NSIndexPath *indexPathInBook,NSIndexPath *indexPathInDetail){
+            
             NSLog(@"in book:%@, in detail:%@",indexPathInBook,indexPathInDetail);
-            UIViewController *uvc = [[UIViewController alloc] init];
-            uvc.view.backgroundColor = [UIColor whiteColor];
-            uvc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:uvc animated:YES];
+            LSChapterContentViewController *ccvc = [[LSChapterContentViewController alloc] init];
+            ccvc.bookType = bookType;
+            ccvc.chapterNo = indexPathInDetail.item + 1;
+            ccvc.bookNo = [bookNo integerValue];
+            ccvc.view.backgroundColor = [UIColor whiteColor];
+            ccvc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:ccvc animated:YES];
         };
         [detailCell reloadCollectionViewData];
     }else{

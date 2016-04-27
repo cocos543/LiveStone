@@ -10,6 +10,10 @@
 
 @interface LSBookDetailCell : UICollectionViewCell
 /**
+ *  The Old or The New
+ */
+@property (nonatomic) LSBookType bookType;
+/**
  *  Chapters number
  */
 @property (nonatomic) NSInteger chaptersNumber;
