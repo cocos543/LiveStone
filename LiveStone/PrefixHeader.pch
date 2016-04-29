@@ -54,8 +54,7 @@
 
 #define CHAPTER_CELL_MINIMUM_LINE_SPACING 1
 
-// For temp test
-#define TEST_CHAPTER_NUMBERS 50;
+#define BIBLE_CONTENT_CELL_SELECTED_UICOLOR  @"#38ACFF"
 
 typedef NS_ENUM(NSInteger,LSBookType){
     LSBookTypeOld = 0,

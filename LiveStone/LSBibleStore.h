@@ -29,4 +29,17 @@
  *  @return NSDictionary<NSString *,NSNumber *>
  */
 -(NSDictionary<NSString *,NSNumber *> *)chaptersNumber;
+/**
+ *  Get boble content
+ *
+ *  @param chapterNo Chapter no
+ *  @param bookNo    Book no
+ *
+ *  @return NSArray<NSDirectory *>
+ */
+-(NSArray *)bibleContentWithChapterNo:(NSInteger)chapterNo bookNo:(NSInteger)bookNo;
+
+
+
+
 @end

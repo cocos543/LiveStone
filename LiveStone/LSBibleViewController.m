@@ -151,7 +151,6 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
  *  两部分CollectionView的加载
  */
 -(void)loadCollectionView{
-    self.tempNumber = TEST_CHAPTER_NUMBERS;
     LSBibleCollectionView *theOldCollectionView = [[LSBibleCollectionView alloc] initWithFrame:CGRectZero bookCollectionViewLayout:[self calcBookLayout]];
     theOldCollectionView.backgroundColor = [CCSimpleTools stringToColor:VIEW_BACAGROUND_COLOR opacity:1.0f];
 
@@ -285,6 +284,7 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     BOOL isSelectedCell = NO;
     NSArray *booksArray;
     NSNumber *chaptersNumber, *bookNo;
+    NSString *bookName;
     if (self.theOldCollectionView == collectionView) {
         //For reuse,cell must adjust attribute
         if (self.theOldCollectionView.theSelectedIndexPath && [indexPath compare:self.theOldCollectionView.theSelectedIndexPath] == NSOrderedSame) {
@@ -297,6 +297,7 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
             [(LSBookDetailCell *)cell setBookType:LSBookTypeOld];
             
             bookNo = self.theOldBooksArray[self.theOldCollectionView.theSelectedIndexPath.item][@"bookNo"];
+            bookName = self.theOldBooksArray[self.theOldCollectionView.theSelectedIndexPath.item][@"bookName"];
             chaptersNumber = self.theOldChaptersDic[[bookNo stringValue]];
 
         }else{
@@ -312,6 +313,7 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
             [(LSBookDetailCell *)cell setBookType:LSBookTypeNew];
             
             bookNo = self.theNewBooksArray[self.theNewCollectionView.theSelectedIndexPath.item][@"bookNo"];
+            bookName = self.theNewBooksArray[self.theNewCollectionView.theSelectedIndexPath.item][@"bookName"];
             chaptersNumber = self.theNewChaptersDic[[bookNo stringValue]];
         }else{
             booksArray = self.theNewBooksArray;
@@ -330,6 +332,7 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
             ccvc.bookType = bookType;
             ccvc.chapterNo = indexPathInDetail.item + 1;
             ccvc.bookNo = [bookNo integerValue];
+            ccvc.bookName = bookName;
             ccvc.view.backgroundColor = [UIColor whiteColor];
             ccvc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:ccvc animated:YES];

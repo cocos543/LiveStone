@@ -8,6 +8,7 @@
 
 #import "LSBibleStore.h"
 #import "FMDatabase.h"
+#import "LSBibleItem.h"
 
 @interface LSBibleStore ()
 @property (nonatomic, strong) FMDatabase *fmdb;
@@ -58,7 +59,7 @@
     FMResultSet *resultSet;
     [self openDB];
     
-    resultSet = [self.fmdb executeQueryWithFormat:@"SELECT bookNo,bookName FROM book WHERE isNew = %d limit 0,2000", type];
+    resultSet = [self.fmdb executeQueryWithFormat:@"SELECT bookNo,bookName FROM book WHERE isNew = %@ limit 0,2000", @(type)];
     while ([resultSet next]) {
         [booksArray addObject:[resultSet resultDictionary]];
     }
@@ -77,7 +78,7 @@
     NSInteger number;
     FMResultSet *resultSet;
     [self openDB];
-    resultSet = [self.fmdb executeQueryWithFormat:@"SELECT COUNT(*) FROM chapter WHERE bookId = %d",bookNo];
+    resultSet = [self.fmdb executeQueryWithFormat:@"SELECT COUNT(*) FROM chapter WHERE bookId = %@",@(bookNo)];
     if ([resultSet next]) {
         number = [resultSet intForColumnIndex:0];
     }
@@ -96,4 +97,30 @@
     [self closeDB];
     return resultDic;
 }
+
+-(NSArray *)bibleContentWithChapterNo:(NSInteger)chapterNo bookNo:(NSInteger)bookNo {
+    FMResultSet *resultSet;
+    NSMutableArray *itemsArray = [[NSMutableArray alloc] init];
+    
+    [self openDB];
+    resultSet = [self.fmdb executeQueryWithFormat:@"SELECT sectionNo, sectionIndex, sectionText, noteText FROM section WHERE chapterNo = %@ AND bookId = %@ ORDER BY sectionIndex limit 0,2000",@(chapterNo), @(bookNo)];
+    while ([resultSet next]) {
+        LSBibleItem *item = [[LSBibleItem alloc] init];
+        item.no       = [resultSet intForColumn:@"sectionNo"];
+        item.index    = [resultSet intForColumn:@"sectionIndex"];
+        item.text     = [resultSet stringForColumn:@"sectionText"];
+        item.noteText = [resultSet stringForColumn:@"noteText"];
+        [itemsArray addObject:item];
+    }
+    [self closeDB];
+    return itemsArray;
+}
 @end
+
+
+
+
+
+
+
+

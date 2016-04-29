@@ -181,9 +181,14 @@
             <objects>
                 <navigationController id="01d-uZ-4bu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="圣经" id="Sau-Rm-Evo"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ycJ-Wh-hC9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ycJ-Wh-hC9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.45882352941176469" green="0.79607843137254897" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="NYC-ky-rse" kind="relationship" relationship="rootViewController" id="lOd-Qj-XKV"/>
@@ -202,11 +207,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Be3-80-yQp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mSJ-9a-gV6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="74G-iO-iCS" userLabel="TopView">
-                                <rect key="frame" x="0.0" y="64" width="600" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SzV-tg-dsI">
                                         <rect key="frame" x="250" y="5" width="100" height="35"/>
@@ -253,7 +258,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYR-uz-HSq">
-                                <rect key="frame" x="0.0" y="104" width="600" height="452"/>
+                                <rect key="frame" x="0.0" y="40" width="600" height="452"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

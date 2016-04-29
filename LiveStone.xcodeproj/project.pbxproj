@@ -14,6 +14,9 @@
 		ED0221C91CC33424004D6514 /* TestContactsSearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0221C81CC33424004D6514 /* TestContactsSearchResultController.m */; };
 		ED0221DA1CC37956004D6514 /* CCSimpleTools.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0221D91CC37956004D6514 /* CCSimpleTools.m */; };
 		ED0221DC1CC37CAC004D6514 /* LSBookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED0221DB1CC37CAC004D6514 /* LSBookCollectionViewCell.xib */; };
+		ED17E7311CD1819600F6F6CF /* LSBibleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED17E7301CD1819600F6F6CF /* LSBibleItem.m */; };
+		ED17E7331CD18EE500F6F6CF /* LSBibleContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED17E7321CD18EE500F6F6CF /* LSBibleContentCell.xib */; };
+		ED17E7351CD18F0800F6F6CF /* LSBibleTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED17E7341CD18F0800F6F6CF /* LSBibleTitleCell.xib */; };
 		ED2030561CC99AD800369ACE /* LSBibleCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2030551CC99AD800369ACE /* LSBibleCollectionView.m */; };
 		ED2030591CC9ABD100369ACE /* LSBookChapterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2030581CC9ABD100369ACE /* LSBookChapterCell.m */; };
 		ED2B50C01CD051B600B0909B /* LSChapterContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2B50BE1CD051B600B0909B /* LSChapterContentViewController.m */; };
@@ -29,8 +32,10 @@
 		ED42986B1CC0637000FCD799 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED4298691CC0637000FCD799 /* LaunchScreen.storyboard */; };
 		ED4848F61CC85D080093E29E /* LSBookChapterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4848F51CC85D080093E29E /* LSBookChapterCell.xib */; };
 		ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */; };
+		ED7A6F721CD2FD6E00EF1592 /* UILabel+CCStringFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7A6F711CD2FD6E00EF1592 /* UILabel+CCStringFrame.m */; };
 		EDC958A91CC5109A00D51CA5 /* LSBookDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC958A81CC5109A00D51CA5 /* LSBookDetailCell.xib */; };
 		EDC958AF1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC958AE1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m */; };
+		EDDC2E681CD2478B0054E4DD /* LSBibleNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDC2E671CD2478B0054E4DD /* LSBibleNoteView.xib */; };
 		EDFA40901CC123D80054E77C /* LSUserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA408F1CC123D80054E77C /* LSUserTableViewController.m */; };
 		EDFA40931CC132620054E77C /* LSDiscoveryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA40921CC132620054E77C /* LSDiscoveryTableViewController.m */; };
 		EDFA40971CC134A00054E77C /* LSBibleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA40961CC134A00054E77C /* LSBibleViewController.m */; };
@@ -53,6 +58,10 @@
 		ED0221D91CC37956004D6514 /* CCSimpleTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSimpleTools.m; sourceTree = "<group>"; };
 		ED0221DB1CC37CAC004D6514 /* LSBookCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBookCollectionViewCell.xib; sourceTree = "<group>"; };
 		ED08C3F51CCEE3DB00AAC7AA /* huoshi.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = huoshi.db; sourceTree = "<group>"; };
+		ED17E72F1CD1819600F6F6CF /* LSBibleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBibleItem.h; sourceTree = "<group>"; };
+		ED17E7301CD1819600F6F6CF /* LSBibleItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBibleItem.m; sourceTree = "<group>"; };
+		ED17E7321CD18EE500F6F6CF /* LSBibleContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBibleContentCell.xib; sourceTree = "<group>"; };
+		ED17E7341CD18F0800F6F6CF /* LSBibleTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBibleTitleCell.xib; sourceTree = "<group>"; };
 		ED2030541CC99AD800369ACE /* LSBibleCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBibleCollectionView.h; sourceTree = "<group>"; };
 		ED2030551CC99AD800369ACE /* LSBibleCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBibleCollectionView.m; sourceTree = "<group>"; };
 		ED2030571CC9ABD100369ACE /* LSBookChapterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBookChapterCell.h; sourceTree = "<group>"; };
@@ -77,9 +86,12 @@
 		ED4848F51CC85D080093E29E /* LSBookChapterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBookChapterCell.xib; sourceTree = "<group>"; };
 		ED5F94BF1CC1B83D00D8D626 /* LSLiveStoneTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSLiveStoneTableViewController.h; sourceTree = "<group>"; };
 		ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSLiveStoneTableViewController.m; sourceTree = "<group>"; };
+		ED7A6F701CD2FD6E00EF1592 /* UILabel+CCStringFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+CCStringFrame.h"; sourceTree = "<group>"; };
+		ED7A6F711CD2FD6E00EF1592 /* UILabel+CCStringFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CCStringFrame.m"; sourceTree = "<group>"; };
 		EDC958A81CC5109A00D51CA5 /* LSBookDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBookDetailCell.xib; sourceTree = "<group>"; };
 		EDC958AD1CC5186300D51CA5 /* LSCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		EDC958AE1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		EDDC2E671CD2478B0054E4DD /* LSBibleNoteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBibleNoteView.xib; sourceTree = "<group>"; };
 		EDFA408E1CC123D80054E77C /* LSUserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSUserTableViewController.h; sourceTree = "<group>"; };
 		EDFA408F1CC123D80054E77C /* LSUserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSUserTableViewController.m; sourceTree = "<group>"; };
 		EDFA40911CC132620054E77C /* LSDiscoveryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSDiscoveryTableViewController.h; sourceTree = "<group>"; };
@@ -133,8 +145,19 @@
 			children = (
 				ED0221D81CC37956004D6514 /* CCSimpleTools.h */,
 				ED0221D91CC37956004D6514 /* CCSimpleTools.m */,
+				ED7A6F701CD2FD6E00EF1592 /* UILabel+CCStringFrame.h */,
+				ED7A6F711CD2FD6E00EF1592 /* UILabel+CCStringFrame.m */,
 			);
 			name = Tools;
+			sourceTree = "<group>";
+		};
+		ED17E72E1CD1816C00F6F6CF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ED17E72F1CD1819600F6F6CF /* LSBibleItem.h */,
+				ED17E7301CD1819600F6F6CF /* LSBibleItem.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		ED2B50C21CD051C000B0909B /* Content */ = {
@@ -142,6 +165,9 @@
 			children = (
 				ED2B50BD1CD051B600B0909B /* LSChapterContentViewController.h */,
 				ED2B50BE1CD051B600B0909B /* LSChapterContentViewController.m */,
+				ED17E7321CD18EE500F6F6CF /* LSBibleContentCell.xib */,
+				ED17E7341CD18F0800F6F6CF /* LSBibleTitleCell.xib */,
+				EDDC2E671CD2478B0054E4DD /* LSBibleNoteView.xib */,
 			);
 			name = Content;
 			sourceTree = "<group>";
@@ -230,6 +256,7 @@
 		ED4298771CC07DBC00FCD799 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				ED17E72E1CD1816C00F6F6CF /* Model */,
 				ED3842961CCEEA560021EA06 /* LSBibleStore.h */,
 				ED3842971CCEEA560021EA06 /* LSBibleStore.m */,
 			);
@@ -319,8 +346,11 @@
 				ED42986B1CC0637000FCD799 /* LaunchScreen.storyboard in Resources */,
 				ED0221C61CC330BB004D6514 /* TableCellView.xib in Resources */,
 				EDC958A91CC5109A00D51CA5 /* LSBookDetailCell.xib in Resources */,
+				ED17E7351CD18F0800F6F6CF /* LSBibleTitleCell.xib in Resources */,
 				ED4848F61CC85D080093E29E /* LSBookChapterCell.xib in Resources */,
+				EDDC2E681CD2478B0054E4DD /* LSBibleNoteView.xib in Resources */,
 				ED4298681CC0637000FCD799 /* Assets.xcassets in Resources */,
+				ED17E7331CD18EE500F6F6CF /* LSBibleContentCell.xib in Resources */,
 				ED0221DC1CC37CAC004D6514 /* LSBookCollectionViewCell.xib in Resources */,
 				ED4298631CC0637000FCD799 /* Main.storyboard in Resources */,
 			);
@@ -389,10 +419,12 @@
 				ED42985A1CC0637000FCD799 /* main.m in Sources */,
 				EDFA40971CC134A00054E77C /* LSBibleViewController.m in Sources */,
 				ED4298661CC0637000FCD799 /* LiveStone.xcdatamodeld in Sources */,
+				ED7A6F721CD2FD6E00EF1592 /* UILabel+CCStringFrame.m in Sources */,
 				ED0221C91CC33424004D6514 /* TestContactsSearchResultController.m in Sources */,
 				ED0221C41CC330A4004D6514 /* TableCellView.m in Sources */,
 				ED358B991CC5C2C00016D1C1 /* LSBookDetailCell.m in Sources */,
 				ED3842981CCEEA560021EA06 /* LSBibleStore.m in Sources */,
+				ED17E7311CD1819600F6F6CF /* LSBibleItem.m in Sources */,
 				ED2030561CC99AD800369ACE /* LSBibleCollectionView.m in Sources */,
 				ED0221BF1CC32FC1004D6514 /* TestTableViewController.m in Sources */,
 				EDFA40901CC123D80054E77C /* LSUserTableViewController.m in Sources */,

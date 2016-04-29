@@ -18,6 +18,10 @@
 
 @property (nonatomic) LSBookType bookType;
 /**
+ *  Book name
+ */
+@property (nonatomic,strong) NSString *bookName;
+/**
  *  Book no, start from 1
  */
 @property (nonatomic) NSInteger bookNo;

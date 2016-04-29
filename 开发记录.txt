@@ -37,3 +37,9 @@
 17. 圣经页面的最终实现原理
     整体上是一个collectionView,数据源是这个界面上的UIViewController,然后UICollectionViewDelegate, UICollectionViewDelegateFlowLayout是collectionView(A)自身实现的(因为总共有2个collectionView),然后那个有详细章节的cell(detailCell),由UIViewController控制,detailCell里面又嵌套了一个collectionView(B),B的数据源detailCell,detailCell同时实现了UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout这三个协议,然后detailCell里面的章节cell(就是那些圆数字)里面是按钮,但是当你点击按钮的时候,并不会触发B的didSelectItemAtIndexPath,所以需要从章节cell里面再声明一个自定义代理然后由detailCell实现,按钮被点击时,通知detailCell,这样才能完整实现这个效果...........
     还有一个地方就是UIViewController要分配两个一样的数据(这里主要是每一本书的章节数量,我写死了50个)给A和detailCell,这样在A里面才能计算出detailCell的高度,然后detailCell里面才能计算出B的Cell的数量....
+
+18 字典转json,比较麻烦.NSMutableDictionary *jsonDic = [[NSMutableDictionary alloc] init];NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:0 error:nil];NSLog(@"%@",[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]);
+
+19 iOS8中发现UITableViewCellSelectionStyle中除了默认效果和UITableViewCellSelectionStyleNone,其他效果设置后均无效.
+
+20.
