@@ -159,11 +159,10 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
     }else{
         cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierContentCell forIndexPath:indexPath];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        cell.selectedBackgroundView.backgroundColor = [UIColor blueColor];
         UILabel *noLabel = (UILabel *)[cell viewWithTag:1];
-        noLabel.textColor = [UIColor blackColor];
-        UILabel *textLabel = (UILabel *)[cell viewWithTag:2];
+        noLabel.textColor = [UIColor grayColor];
         noLabel.text = [NSString stringWithFormat:@"%@",@(item.no)];
+        UILabel *textLabel = (UILabel *)[cell viewWithTag:2];
         textLabel.text = item.text;
         
     }
@@ -185,7 +184,7 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     if (self.isHiddenNoteView || !self.isSelectedAgain) {
         UILabel *noLabel = (UILabel *)[cell viewWithTag:1];
-        noLabel.textColor = [CCSimpleTools stringToColor:BIBLE_CONTENT_CELL_SELECTED_UICOLOR opacity:1];
+        noLabel.textColor = [UIColor blackColor];
         [self showNoteTextViewForIndexPath:indexPath];
     }else{
         [self hideNoteTextView];
@@ -196,7 +195,7 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     UILabel *noLabel = (UILabel *)[cell viewWithTag:1];
-    noLabel.textColor = [UIColor blackColor];
+    noLabel.textColor = [UIColor grayColor];
 }
 
 @end

@@ -17,6 +17,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //设置所有tab选中图标
+    NSArray *items = [[self tabBar] items];
+    UITabBarItem *liveStoneItem = items[0];
+    UITabBarItem *bibleItem = items[1];
+    UITabBarItem *discoveryItem = items[2];
+    UITabBarItem *meItem = items[3];
+    liveStoneItem.selectedImage = [[UIImage imageNamed:@"LiveStoneSelc"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    bibleItem.selectedImage = [[UIImage imageNamed:@"BibleSelc"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    discoveryItem.selectedImage = [[UIImage imageNamed:@"DiscoverySelc"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    meItem.selectedImage = [[UIImage imageNamed:@"MeSelc"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

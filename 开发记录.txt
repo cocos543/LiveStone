@@ -42,4 +42,5 @@
 
 19 iOS8中发现UITableViewCellSelectionStyle中除了默认效果和UITableViewCellSelectionStyleNone,其他效果设置后均无效.
 
-20.
+20.tabBarController 下的item的selected状态下的图标必须用代码设置:
+discoveryItem.selectedImage = [[UIImage imageNamed:@"DiscoverySelc"] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
