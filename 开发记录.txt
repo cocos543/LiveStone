@@ -74,6 +74,8 @@ NSDictionary *requestContents = @{
 
 24. 针对不同机型,如果需要设置scorllView和contentSize差不多大,需要在代码用对约束进行调整.比如确定元素底部离scorllView底部的实际距离,然后再赋值给约束.
 
+25.
+
 
 
 
