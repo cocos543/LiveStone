@@ -16,8 +16,12 @@
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="点击隐藏" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkv-0M-Edd">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击隐藏" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkv-0M-Edd">
                     <rect key="frame" x="126" y="0.0" width="68" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="IUZ-2u-vbd"/>
+                        <constraint firstAttribute="width" constant="68" id="u6g-eM-VO1"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -25,6 +29,8 @@
             </subviews>
             <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="Fkv-0M-Edd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Gg6-Jb-0lk"/>
+                <constraint firstItem="Fkv-0M-Edd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ifd-p2-SUE"/>
                 <constraint firstItem="f8r-RG-raK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="YRw-c9-PcZ"/>
                 <constraint firstAttribute="bottom" secondItem="f8r-RG-raK" secondAttribute="bottom" id="dKC-AA-8xP"/>
                 <constraint firstAttribute="trailing" secondItem="f8r-RG-raK" secondAttribute="trailing" constant="8" id="mPJ-FX-UUA"/>

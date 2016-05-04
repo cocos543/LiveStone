@@ -17,6 +17,7 @@
 		ED17E7311CD1819600F6F6CF /* LSBibleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED17E7301CD1819600F6F6CF /* LSBibleItem.m */; };
 		ED17E7331CD18EE500F6F6CF /* LSBibleContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED17E7321CD18EE500F6F6CF /* LSBibleContentCell.xib */; };
 		ED17E7351CD18F0800F6F6CF /* LSBibleTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED17E7341CD18F0800F6F6CF /* LSBibleTitleCell.xib */; };
+		ED1D09681CD96E1900C215DD /* LSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1D09671CD96E1900C215DD /* LSRegisterViewController.m */; };
 		ED2030561CC99AD800369ACE /* LSBibleCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2030551CC99AD800369ACE /* LSBibleCollectionView.m */; };
 		ED2030591CC9ABD100369ACE /* LSBookChapterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2030581CC9ABD100369ACE /* LSBookChapterCell.m */; };
 		ED2B50C01CD051B600B0909B /* LSChapterContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2B50BE1CD051B600B0909B /* LSChapterContentViewController.m */; };
@@ -32,6 +33,7 @@
 		ED42986B1CC0637000FCD799 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED4298691CC0637000FCD799 /* LaunchScreen.storyboard */; };
 		ED4848F61CC85D080093E29E /* LSBookChapterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4848F51CC85D080093E29E /* LSBookChapterCell.xib */; };
 		ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */; };
+		ED6FD8C01CD838DF00BA599D /* LSRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED6FD8BE1CD838DF00BA599D /* LSRegisterViewController.xib */; };
 		ED7A6F721CD2FD6E00EF1592 /* UILabel+CCStringFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7A6F711CD2FD6E00EF1592 /* UILabel+CCStringFrame.m */; };
 		EDC958A91CC5109A00D51CA5 /* LSBookDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC958A81CC5109A00D51CA5 /* LSBookDetailCell.xib */; };
 		EDC958AF1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC958AE1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m */; };
@@ -62,6 +64,8 @@
 		ED17E7301CD1819600F6F6CF /* LSBibleItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBibleItem.m; sourceTree = "<group>"; };
 		ED17E7321CD18EE500F6F6CF /* LSBibleContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBibleContentCell.xib; sourceTree = "<group>"; };
 		ED17E7341CD18F0800F6F6CF /* LSBibleTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBibleTitleCell.xib; sourceTree = "<group>"; };
+		ED1D09661CD96E1900C215DD /* LSRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSRegisterViewController.h; sourceTree = "<group>"; };
+		ED1D09671CD96E1900C215DD /* LSRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSRegisterViewController.m; sourceTree = "<group>"; };
 		ED2030541CC99AD800369ACE /* LSBibleCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBibleCollectionView.h; sourceTree = "<group>"; };
 		ED2030551CC99AD800369ACE /* LSBibleCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBibleCollectionView.m; sourceTree = "<group>"; };
 		ED2030571CC9ABD100369ACE /* LSBookChapterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBookChapterCell.h; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 		ED4848F51CC85D080093E29E /* LSBookChapterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBookChapterCell.xib; sourceTree = "<group>"; };
 		ED5F94BF1CC1B83D00D8D626 /* LSLiveStoneTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSLiveStoneTableViewController.h; sourceTree = "<group>"; };
 		ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSLiveStoneTableViewController.m; sourceTree = "<group>"; };
+		ED6FD8BE1CD838DF00BA599D /* LSRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSRegisterViewController.xib; sourceTree = "<group>"; };
 		ED7A6F701CD2FD6E00EF1592 /* UILabel+CCStringFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+CCStringFrame.h"; sourceTree = "<group>"; };
 		ED7A6F711CD2FD6E00EF1592 /* UILabel+CCStringFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CCStringFrame.m"; sourceTree = "<group>"; };
 		EDC958A81CC5109A00D51CA5 /* LSBookDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBookDetailCell.xib; sourceTree = "<group>"; };
@@ -266,6 +271,7 @@
 		EDFA408D1CC11A450054E77C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				ED0221CA1CC3389E004D6514 /* Bible */,
 				ED42985E1CC0637000FCD799 /* ViewController.h */,
 				ED42985F1CC0637000FCD799 /* ViewController.m */,
 				EDFA408E1CC123D80054E77C /* LSUserTableViewController.h */,
@@ -276,7 +282,9 @@
 				EDFA40991CC139D90054E77C /* LSMainTabBarController.m */,
 				ED5F94BF1CC1B83D00D8D626 /* LSLiveStoneTableViewController.h */,
 				ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */,
-				ED0221CA1CC3389E004D6514 /* Bible */,
+				ED1D09661CD96E1900C215DD /* LSRegisterViewController.h */,
+				ED1D09671CD96E1900C215DD /* LSRegisterViewController.m */,
+				ED6FD8BE1CD838DF00BA599D /* LSRegisterViewController.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -346,6 +354,7 @@
 				ED42986B1CC0637000FCD799 /* LaunchScreen.storyboard in Resources */,
 				ED0221C61CC330BB004D6514 /* TableCellView.xib in Resources */,
 				EDC958A91CC5109A00D51CA5 /* LSBookDetailCell.xib in Resources */,
+				ED6FD8C01CD838DF00BA599D /* LSRegisterViewController.xib in Resources */,
 				ED17E7351CD18F0800F6F6CF /* LSBibleTitleCell.xib in Resources */,
 				ED4848F61CC85D080093E29E /* LSBookChapterCell.xib in Resources */,
 				EDDC2E681CD2478B0054E4DD /* LSBibleNoteView.xib in Resources */,
@@ -411,6 +420,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED1D09681CD96E1900C215DD /* LSRegisterViewController.m in Sources */,
 				ED4298601CC0637000FCD799 /* ViewController.m in Sources */,
 				ED42985D1CC0637000FCD799 /* AppDelegate.m in Sources */,
 				ED0221DA1CC37956004D6514 /* CCSimpleTools.m in Sources */,

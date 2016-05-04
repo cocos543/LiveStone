@@ -7,25 +7,33 @@
 //
 
 #import "LSUserTableViewController.h"
+#import "LSRegisterViewController.h"
 
 @interface LSUserTableViewController () <UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *readingTimeLabel;
 
 @end
 
 @implementation LSUserTableViewController
-
+static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    //self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.tableView registerNib:[UINib nibWithNibName:@"LSBibleContentCell" bundle:nil] forCellReuseIdentifier:reuseIdentifierCell];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     //这样表格才不会被盖在navigationBar下面..
+    self.userNameLabel.text = @"您还未登录";
+//    self.readingTimeLabel.text = @"阅读时间：360分钟";
     self.navigationItem.title = @"我";
     self.navigationController.navigationBarHidden = NO;
 }
@@ -35,19 +43,38 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Event
+//Show userinfo or marking login..
+- (void)openUserInfo{
+    LSRegisterViewController *regVC = [[LSRegisterViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:regVC];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+
+#pragma mark - TableViewDelegate
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) {
         return 15.0f;
     }
     return 5.0f;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        [self openUserInfo];
+    }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+#pragma mark - Table view data source
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
+    if (indexPath.row == 0 && indexPath.section == 0) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierCell forIndexPath:indexPath];
+        return cell;
+    }
+    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
 }
 */
 
@@ -71,19 +98,6 @@
 }
 */
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation

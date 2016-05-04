@@ -57,6 +57,10 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
     self.title = [NSString stringWithFormat:@"%@ 第%@章",self.bookName,@(self.chapterNo)];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [self hideNoteTextView];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

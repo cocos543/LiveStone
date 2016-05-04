@@ -47,6 +47,11 @@
 // chapter 一次点击动作之后的留存的颜色
 #define COLLECTIOINVIEWCELL_CHAPTER_UPINSIDE_COLOR @"#EFEFEF"
 
+//Register background color F2F2F2
+
+// chapter 一次点击动作之后的留存的颜色
+#define NAVIGATIONBAR_BACKGROUND_COLOR @"#75CBEC"
+
 //Chapter cell frame
 #define CHAPTER_CELL_FRAME CGRectMake(0, 0, 40, 40)
 
