@@ -28,6 +28,10 @@
 #define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
 #define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 
+//当前版本号,对应bundle,一般为数字:312
+#define BUNDLE_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey]
+//版本号,对应version,一般为字符串:3.1.2
+#define BUNDLE_SHORT_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 
 //CollectionView每一行的Cell数量
 #define COLLECTIONVIEW_ROW_ITMES 3
@@ -54,6 +58,10 @@
 
 #define LIVESTONE_GRAY_COLOR @"#F2F2F2"
 
+#define LIVESTONE_AUTH_BUTTON_DISABLE_COLOR @"#91D8FD"
+
+#define LIVESTONE_AUTH_BUTTON_ENABLE_COLOR @"#3DD8FD"
+
 //Chapter cell frame
 #define CHAPTER_CELL_FRAME CGRectMake(0, 0, 40, 40)
 
@@ -66,4 +74,49 @@ typedef NS_ENUM(NSInteger,LSBookType){
     LSBookTypeOld = 0,
     LSBookTypeNew
 };
+
+//Network constant
+#define LIVESTRONE_APPKEY @"8B79509E413BBFD5470D1A219C31E67B180CD2CE"
+#define LIVESTRONE_APPSECRET @"31DAB2BF005BE3312CF50577562D0D5367368D42"
+#define LIVESTRONE_SECRET_KEY @"huoshi2016!"
+#define LIVESTRONE_PLATFORM @"ios"
+
+#define LIVESTRONE_AUTH_PHONE @"phone"
+#define LIVESTRONE_AUTH_PASSWORD @"password"
+
+/**
+ *  网络响应状态
+ */
+typedef NS_ENUM(NSInteger, LSNetworkResponseCode) {
+    /**
+     *  服务器内部错误
+     */
+    LSNetworkResponseCodeInternalError     = 500,
+    /**
+     *  用户登录已过期
+     */
+    LSNetworkResponseCodeAuthExpired       = 426,
+    /**
+     *  基本认证未通过
+     */
+    LSNetworkResponseCodeBaseAuthError     = 401,
+    /**
+     *  签名错误
+     */
+    LSNetworkResponseCodeSignError         = 412,
+    /**
+     *  请求频率过快
+     */
+    LSNetworkResponseCodeRequestFrequently = 405,
+    /**
+     *  参数错误
+     */
+    LSNetworkResponseCodeParameError       = 400,
+    /**
+     *  请求链接已过期
+     */
+    LSNetworkResponseCodeRequestExpired    = 406
+};
+
+
 #endif /* PrefixHeader_pch */

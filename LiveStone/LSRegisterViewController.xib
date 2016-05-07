@@ -8,9 +8,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LSRegisterViewController">
             <connections>
-                <outlet property="inputView" destination="PrB-Kd-d7e" id="5yE-be-Bc1"/>
                 <outlet property="loginBtnBottomConstraint" destination="XGk-A4-ot2" id="LRk-NR-Qbo"/>
                 <outlet property="loginButton" destination="Ckk-xs-UoG" id="JrL-hJ-UdX"/>
+                <outlet property="myInputView" destination="PrB-Kd-d7e" id="EMN-0p-HoM"/>
                 <outlet property="passwordTextField" destination="WWv-Aj-ciV" id="Jho-XG-BH2"/>
                 <outlet property="phoneTextField" destination="h0c-ea-e2o" id="urh-uH-NEK"/>
                 <outlet property="scrollView" destination="Wby-YC-cQI" id="X6r-kV-fgX"/>
@@ -151,7 +151,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h0c-ea-e2o">
                                     <rect key="frame" x="74" y="15" width="451" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="52T-wt-lUK"/>
                                     </connections>
@@ -181,6 +181,9 @@
                             <state key="normal" title="登  录">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="loginAction:" destination="-1" eventType="touchUpInside" id="RKn-yl-c8G"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPn-2x-TIf">
                             <rect key="frame" x="515" y="396" width="60" height="30"/>

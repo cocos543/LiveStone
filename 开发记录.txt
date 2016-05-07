@@ -74,11 +74,21 @@ NSDictionary *requestContents = @{
 
 24. 针对不同机型,如果需要设置scorllView和contentSize差不多大,需要在代码用对约束进行调整.比如确定元素底部离scorllView底部的实际距离,然后再赋值给约束.
 
-25.
+25. 视图设置了约束后,如果要让视图执行动画的同时,约束也能跟着执行动画,那么需要这样做:
+先改变约束self.upConstraint.constant = 10;
+然后再执行动画
+[UIView animateWithDuration:3 animations:^{
+    [self.view layoutIfNeeded];
+}];
+需要注意的是,视图移动的同时,视图内的子视图约束如果设置对了也会跟着移动.比如子视图设置了bottom,centerX,这样就可以移动了.
 
 
+26.一个安全的post,get 的api设计方法
+将所有的参数还有时间搓进行某种排序,然后加上本地密钥做一个md5,再放在请求的sign参数中发给服务器,这样服务器可以通过验证sign是否合法来确定这次请求是否合法.
+例如要请求的参数是timestamp=1462501827&phone=13129285435&password=95d47be0d380a7cd3bb5bbe78e8bed49
+然后,将参数按照ascii顺序排列,就是password=95d47be0d380a7cd3bb5bbe78e8bed49&phone=13129285435&timestamp=1462501827+密钥,然后再做一个base64,把结果放在sign里面,变成timestamp=1462501827&phone=13129285435&password=95d47be0d380a7cd3bb5bbe78e8bed49&sign=****
 
-
-
+27. http请求头不一定有Content-Length,如果被设置成了Transfer-Encoding为chunked的话,就是分块传输了.
+参考:https://zh.wikipedia.org/wiki/分块传输编码
 
 

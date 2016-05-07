@@ -14,6 +14,8 @@
 		ED0221C91CC33424004D6514 /* TestContactsSearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0221C81CC33424004D6514 /* TestContactsSearchResultController.m */; };
 		ED0221DA1CC37956004D6514 /* CCSimpleTools.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0221D91CC37956004D6514 /* CCSimpleTools.m */; };
 		ED0221DC1CC37CAC004D6514 /* LSBookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED0221DB1CC37CAC004D6514 /* LSBookCollectionViewCell.xib */; };
+		ED029CE91CDABD9C00B76272 /* LSJoinUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED029CE71CDABD9C00B76272 /* LSJoinUsViewController.m */; };
+		ED029CEA1CDABD9C00B76272 /* LSJoinUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED029CE81CDABD9C00B76272 /* LSJoinUsViewController.xib */; };
 		ED17E7311CD1819600F6F6CF /* LSBibleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED17E7301CD1819600F6F6CF /* LSBibleItem.m */; };
 		ED17E7331CD18EE500F6F6CF /* LSBibleContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED17E7321CD18EE500F6F6CF /* LSBibleContentCell.xib */; };
 		ED17E7351CD18F0800F6F6CF /* LSBibleTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED17E7341CD18F0800F6F6CF /* LSBibleTitleCell.xib */; };
@@ -31,10 +33,17 @@
 		ED4298661CC0637000FCD799 /* LiveStone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED4298641CC0637000FCD799 /* LiveStone.xcdatamodeld */; };
 		ED4298681CC0637000FCD799 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED4298671CC0637000FCD799 /* Assets.xcassets */; };
 		ED42986B1CC0637000FCD799 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED4298691CC0637000FCD799 /* LaunchScreen.storyboard */; };
+		ED45E7061CDC1A9C00FAC93A /* LSServiceBase.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45E7051CDC1A9C00FAC93A /* LSServiceBase.m */; };
+		ED45E7091CDC2C6700FAC93A /* LSAuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45E7081CDC2C6700FAC93A /* LSAuthService.m */; };
+		ED45E70F1CDC776400FAC93A /* UserInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45E70E1CDC776400FAC93A /* UserInfoItem.m */; };
+		ED45E71A1CDC8E4E00FAC93A /* LSIntercessionService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45E7191CDC8E4E00FAC93A /* LSIntercessionService.m */; };
 		ED4848F61CC85D080093E29E /* LSBookChapterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4848F51CC85D080093E29E /* LSBookChapterCell.xib */; };
 		ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */; };
 		ED6FD8C01CD838DF00BA599D /* LSRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED6FD8BE1CD838DF00BA599D /* LSRegisterViewController.xib */; };
 		ED7A6F721CD2FD6E00EF1592 /* UILabel+CCStringFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7A6F711CD2FD6E00EF1592 /* UILabel+CCStringFrame.m */; };
+		ED9815961CDB75F500CF7944 /* UIViewController+ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9815951CDB75F500CF7944 /* UIViewController+ProgressHUD.m */; };
+		ED98159A1CDB848500CF7944 /* LSServiceCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9815991CDB848500CF7944 /* LSServiceCenter.m */; };
+		EDB797DA1CDDC2E4005CB768 /* UserAuthItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB797D91CDDC2E4005CB768 /* UserAuthItem.m */; };
 		EDC958A91CC5109A00D51CA5 /* LSBookDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC958A81CC5109A00D51CA5 /* LSBookDetailCell.xib */; };
 		EDC958AF1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC958AE1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m */; };
 		EDDC2E681CD2478B0054E4DD /* LSBibleNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDC2E671CD2478B0054E4DD /* LSBibleNoteView.xib */; };
@@ -59,6 +68,9 @@
 		ED0221D81CC37956004D6514 /* CCSimpleTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSimpleTools.h; sourceTree = "<group>"; };
 		ED0221D91CC37956004D6514 /* CCSimpleTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSimpleTools.m; sourceTree = "<group>"; };
 		ED0221DB1CC37CAC004D6514 /* LSBookCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBookCollectionViewCell.xib; sourceTree = "<group>"; };
+		ED029CE61CDABD9C00B76272 /* LSJoinUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJoinUsViewController.h; sourceTree = "<group>"; };
+		ED029CE71CDABD9C00B76272 /* LSJoinUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJoinUsViewController.m; sourceTree = "<group>"; };
+		ED029CE81CDABD9C00B76272 /* LSJoinUsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSJoinUsViewController.xib; sourceTree = "<group>"; };
 		ED08C3F51CCEE3DB00AAC7AA /* huoshi.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = huoshi.db; sourceTree = "<group>"; };
 		ED17E72F1CD1819600F6F6CF /* LSBibleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBibleItem.h; sourceTree = "<group>"; };
 		ED17E7301CD1819600F6F6CF /* LSBibleItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBibleItem.m; sourceTree = "<group>"; };
@@ -87,12 +99,27 @@
 		ED4298671CC0637000FCD799 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED42986A1CC0637000FCD799 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED42986C1CC0637000FCD799 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED45E7041CDC1A9C00FAC93A /* LSServiceBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSServiceBase.h; sourceTree = "<group>"; };
+		ED45E7051CDC1A9C00FAC93A /* LSServiceBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSServiceBase.m; sourceTree = "<group>"; };
+		ED45E7071CDC2C6700FAC93A /* LSAuthService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSAuthService.h; sourceTree = "<group>"; };
+		ED45E7081CDC2C6700FAC93A /* LSAuthService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSAuthService.m; sourceTree = "<group>"; };
+		ED45E70D1CDC776400FAC93A /* UserInfoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoItem.h; sourceTree = "<group>"; };
+		ED45E70E1CDC776400FAC93A /* UserInfoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoItem.m; sourceTree = "<group>"; };
+		ED45E7101CDC807200FAC93A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		ED45E7181CDC8E4E00FAC93A /* LSIntercessionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionService.h; sourceTree = "<group>"; };
+		ED45E7191CDC8E4E00FAC93A /* LSIntercessionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionService.m; sourceTree = "<group>"; };
 		ED4848F51CC85D080093E29E /* LSBookChapterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBookChapterCell.xib; sourceTree = "<group>"; };
 		ED5F94BF1CC1B83D00D8D626 /* LSLiveStoneTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSLiveStoneTableViewController.h; sourceTree = "<group>"; };
 		ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSLiveStoneTableViewController.m; sourceTree = "<group>"; };
 		ED6FD8BE1CD838DF00BA599D /* LSRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSRegisterViewController.xib; sourceTree = "<group>"; };
 		ED7A6F701CD2FD6E00EF1592 /* UILabel+CCStringFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+CCStringFrame.h"; sourceTree = "<group>"; };
 		ED7A6F711CD2FD6E00EF1592 /* UILabel+CCStringFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CCStringFrame.m"; sourceTree = "<group>"; };
+		ED9815941CDB75F500CF7944 /* UIViewController+ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ProgressHUD.h"; sourceTree = "<group>"; };
+		ED9815951CDB75F500CF7944 /* UIViewController+ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ProgressHUD.m"; sourceTree = "<group>"; };
+		ED9815981CDB848500CF7944 /* LSServiceCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSServiceCenter.h; sourceTree = "<group>"; };
+		ED9815991CDB848500CF7944 /* LSServiceCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSServiceCenter.m; sourceTree = "<group>"; };
+		EDB797D81CDDC2E4005CB768 /* UserAuthItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAuthItem.h; sourceTree = "<group>"; };
+		EDB797D91CDDC2E4005CB768 /* UserAuthItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAuthItem.m; sourceTree = "<group>"; };
 		EDC958A81CC5109A00D51CA5 /* LSBookDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBookDetailCell.xib; sourceTree = "<group>"; };
 		EDC958AD1CC5186300D51CA5 /* LSCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		EDC958AE1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCollectionViewFlowLayout.m; sourceTree = "<group>"; };
@@ -131,6 +158,7 @@
 		EB884FBB348E237927AA1146 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ED45E7101CDC807200FAC93A /* Security.framework */,
 				17024251391FD01DFA5B3037 /* Pods_LiveStone.framework */,
 			);
 			name = Frameworks;
@@ -148,6 +176,8 @@
 		ED0221CE1CC3771F004D6514 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				ED9815941CDB75F500CF7944 /* UIViewController+ProgressHUD.h */,
+				ED9815951CDB75F500CF7944 /* UIViewController+ProgressHUD.m */,
 				ED0221D81CC37956004D6514 /* CCSimpleTools.h */,
 				ED0221D91CC37956004D6514 /* CCSimpleTools.m */,
 				ED7A6F701CD2FD6E00EF1592 /* UILabel+CCStringFrame.h */,
@@ -156,11 +186,30 @@
 			name = Tools;
 			sourceTree = "<group>";
 		};
+		ED029CE51CDABD7200B76272 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				ED1D09661CD96E1900C215DD /* LSRegisterViewController.h */,
+				ED1D09671CD96E1900C215DD /* LSRegisterViewController.m */,
+				ED6FD8BE1CD838DF00BA599D /* LSRegisterViewController.xib */,
+				ED029CE61CDABD9C00B76272 /* LSJoinUsViewController.h */,
+				ED029CE71CDABD9C00B76272 /* LSJoinUsViewController.m */,
+				ED029CE81CDABD9C00B76272 /* LSJoinUsViewController.xib */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
 		ED17E72E1CD1816C00F6F6CF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ED3842961CCEEA560021EA06 /* LSBibleStore.h */,
+				ED3842971CCEEA560021EA06 /* LSBibleStore.m */,
 				ED17E72F1CD1819600F6F6CF /* LSBibleItem.h */,
 				ED17E7301CD1819600F6F6CF /* LSBibleItem.m */,
+				ED45E70D1CDC776400FAC93A /* UserInfoItem.h */,
+				ED45E70E1CDC776400FAC93A /* UserInfoItem.m */,
+				EDB797D81CDDC2E4005CB768 /* UserAuthItem.h */,
+				EDB797D91CDDC2E4005CB768 /* UserAuthItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -262,15 +311,30 @@
 			isa = PBXGroup;
 			children = (
 				ED17E72E1CD1816C00F6F6CF /* Model */,
-				ED3842961CCEEA560021EA06 /* LSBibleStore.h */,
-				ED3842971CCEEA560021EA06 /* LSBibleStore.m */,
+				ED9815971CDB83C800CF7944 /* Service */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		ED9815971CDB83C800CF7944 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				ED9815981CDB848500CF7944 /* LSServiceCenter.h */,
+				ED9815991CDB848500CF7944 /* LSServiceCenter.m */,
+				ED45E7041CDC1A9C00FAC93A /* LSServiceBase.h */,
+				ED45E7051CDC1A9C00FAC93A /* LSServiceBase.m */,
+				ED45E7071CDC2C6700FAC93A /* LSAuthService.h */,
+				ED45E7081CDC2C6700FAC93A /* LSAuthService.m */,
+				ED45E7181CDC8E4E00FAC93A /* LSIntercessionService.h */,
+				ED45E7191CDC8E4E00FAC93A /* LSIntercessionService.m */,
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 		EDFA408D1CC11A450054E77C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				ED029CE51CDABD7200B76272 /* Register */,
 				ED0221CA1CC3389E004D6514 /* Bible */,
 				ED42985E1CC0637000FCD799 /* ViewController.h */,
 				ED42985F1CC0637000FCD799 /* ViewController.m */,
@@ -282,9 +346,6 @@
 				EDFA40991CC139D90054E77C /* LSMainTabBarController.m */,
 				ED5F94BF1CC1B83D00D8D626 /* LSLiveStoneTableViewController.h */,
 				ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */,
-				ED1D09661CD96E1900C215DD /* LSRegisterViewController.h */,
-				ED1D09671CD96E1900C215DD /* LSRegisterViewController.m */,
-				ED6FD8BE1CD838DF00BA599D /* LSRegisterViewController.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -323,7 +384,6 @@
 				TargetAttributes = {
 					ED4298541CC0637000FCD799 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = XNC7CRYM5X;
 					};
 				};
 			};
@@ -362,6 +422,7 @@
 				ED17E7331CD18EE500F6F6CF /* LSBibleContentCell.xib in Resources */,
 				ED0221DC1CC37CAC004D6514 /* LSBookCollectionViewCell.xib in Resources */,
 				ED4298631CC0637000FCD799 /* Main.storyboard in Resources */,
+				ED029CEA1CDABD9C00B76272 /* LSJoinUsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,18 +488,26 @@
 				EDFA40931CC132620054E77C /* LSDiscoveryTableViewController.m in Sources */,
 				ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */,
 				ED42985A1CC0637000FCD799 /* main.m in Sources */,
+				ED45E70F1CDC776400FAC93A /* UserInfoItem.m in Sources */,
 				EDFA40971CC134A00054E77C /* LSBibleViewController.m in Sources */,
 				ED4298661CC0637000FCD799 /* LiveStone.xcdatamodeld in Sources */,
+				ED45E71A1CDC8E4E00FAC93A /* LSIntercessionService.m in Sources */,
 				ED7A6F721CD2FD6E00EF1592 /* UILabel+CCStringFrame.m in Sources */,
 				ED0221C91CC33424004D6514 /* TestContactsSearchResultController.m in Sources */,
+				ED45E7061CDC1A9C00FAC93A /* LSServiceBase.m in Sources */,
 				ED0221C41CC330A4004D6514 /* TableCellView.m in Sources */,
+				EDB797DA1CDDC2E4005CB768 /* UserAuthItem.m in Sources */,
 				ED358B991CC5C2C00016D1C1 /* LSBookDetailCell.m in Sources */,
 				ED3842981CCEEA560021EA06 /* LSBibleStore.m in Sources */,
+				ED029CE91CDABD9C00B76272 /* LSJoinUsViewController.m in Sources */,
+				ED9815961CDB75F500CF7944 /* UIViewController+ProgressHUD.m in Sources */,
+				ED98159A1CDB848500CF7944 /* LSServiceCenter.m in Sources */,
 				ED17E7311CD1819600F6F6CF /* LSBibleItem.m in Sources */,
 				ED2030561CC99AD800369ACE /* LSBibleCollectionView.m in Sources */,
 				ED0221BF1CC32FC1004D6514 /* TestTableViewController.m in Sources */,
 				EDFA40901CC123D80054E77C /* LSUserTableViewController.m in Sources */,
 				EDFA409A1CC139D90054E77C /* LSMainTabBarController.m in Sources */,
+				ED45E7091CDC2C6700FAC93A /* LSAuthService.m in Sources */,
 				ED2B50C01CD051B600B0909B /* LSChapterContentViewController.m in Sources */,
 				EDC958AF1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m in Sources */,
 				ED2030591CC9ABD100369ACE /* LSBookChapterCell.m in Sources */,
