@@ -35,7 +35,7 @@
 		ED42986B1CC0637000FCD799 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED4298691CC0637000FCD799 /* LaunchScreen.storyboard */; };
 		ED45E7061CDC1A9C00FAC93A /* LSServiceBase.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45E7051CDC1A9C00FAC93A /* LSServiceBase.m */; };
 		ED45E7091CDC2C6700FAC93A /* LSAuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45E7081CDC2C6700FAC93A /* LSAuthService.m */; };
-		ED45E70F1CDC776400FAC93A /* UserInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45E70E1CDC776400FAC93A /* UserInfoItem.m */; };
+		ED45E70F1CDC776400FAC93A /* LSUserInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45E70E1CDC776400FAC93A /* LSUserInfoItem.m */; };
 		ED45E71A1CDC8E4E00FAC93A /* LSIntercessionService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45E7191CDC8E4E00FAC93A /* LSIntercessionService.m */; };
 		ED4848F61CC85D080093E29E /* LSBookChapterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4848F51CC85D080093E29E /* LSBookChapterCell.xib */; };
 		ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */; };
@@ -43,7 +43,7 @@
 		ED7A6F721CD2FD6E00EF1592 /* UILabel+CCStringFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7A6F711CD2FD6E00EF1592 /* UILabel+CCStringFrame.m */; };
 		ED9815961CDB75F500CF7944 /* UIViewController+ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9815951CDB75F500CF7944 /* UIViewController+ProgressHUD.m */; };
 		ED98159A1CDB848500CF7944 /* LSServiceCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9815991CDB848500CF7944 /* LSServiceCenter.m */; };
-		EDB797DA1CDDC2E4005CB768 /* UserAuthItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB797D91CDDC2E4005CB768 /* UserAuthItem.m */; };
+		EDB797DA1CDDC2E4005CB768 /* LSUserAuthItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB797D91CDDC2E4005CB768 /* LSUserAuthItem.m */; };
 		EDC958A91CC5109A00D51CA5 /* LSBookDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC958A81CC5109A00D51CA5 /* LSBookDetailCell.xib */; };
 		EDC958AF1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC958AE1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m */; };
 		EDDC2E681CD2478B0054E4DD /* LSBibleNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDC2E671CD2478B0054E4DD /* LSBibleNoteView.xib */; };
@@ -103,8 +103,8 @@
 		ED45E7051CDC1A9C00FAC93A /* LSServiceBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSServiceBase.m; sourceTree = "<group>"; };
 		ED45E7071CDC2C6700FAC93A /* LSAuthService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSAuthService.h; sourceTree = "<group>"; };
 		ED45E7081CDC2C6700FAC93A /* LSAuthService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSAuthService.m; sourceTree = "<group>"; };
-		ED45E70D1CDC776400FAC93A /* UserInfoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoItem.h; sourceTree = "<group>"; };
-		ED45E70E1CDC776400FAC93A /* UserInfoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoItem.m; sourceTree = "<group>"; };
+		ED45E70D1CDC776400FAC93A /* LSUserInfoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSUserInfoItem.h; sourceTree = "<group>"; };
+		ED45E70E1CDC776400FAC93A /* LSUserInfoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSUserInfoItem.m; sourceTree = "<group>"; };
 		ED45E7101CDC807200FAC93A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		ED45E7181CDC8E4E00FAC93A /* LSIntercessionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionService.h; sourceTree = "<group>"; };
 		ED45E7191CDC8E4E00FAC93A /* LSIntercessionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionService.m; sourceTree = "<group>"; };
@@ -118,8 +118,8 @@
 		ED9815951CDB75F500CF7944 /* UIViewController+ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ProgressHUD.m"; sourceTree = "<group>"; };
 		ED9815981CDB848500CF7944 /* LSServiceCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSServiceCenter.h; sourceTree = "<group>"; };
 		ED9815991CDB848500CF7944 /* LSServiceCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSServiceCenter.m; sourceTree = "<group>"; };
-		EDB797D81CDDC2E4005CB768 /* UserAuthItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAuthItem.h; sourceTree = "<group>"; };
-		EDB797D91CDDC2E4005CB768 /* UserAuthItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAuthItem.m; sourceTree = "<group>"; };
+		EDB797D81CDDC2E4005CB768 /* LSUserAuthItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSUserAuthItem.h; sourceTree = "<group>"; };
+		EDB797D91CDDC2E4005CB768 /* LSUserAuthItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSUserAuthItem.m; sourceTree = "<group>"; };
 		EDC958A81CC5109A00D51CA5 /* LSBookDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBookDetailCell.xib; sourceTree = "<group>"; };
 		EDC958AD1CC5186300D51CA5 /* LSCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		EDC958AE1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCollectionViewFlowLayout.m; sourceTree = "<group>"; };
@@ -206,10 +206,10 @@
 				ED3842971CCEEA560021EA06 /* LSBibleStore.m */,
 				ED17E72F1CD1819600F6F6CF /* LSBibleItem.h */,
 				ED17E7301CD1819600F6F6CF /* LSBibleItem.m */,
-				ED45E70D1CDC776400FAC93A /* UserInfoItem.h */,
-				ED45E70E1CDC776400FAC93A /* UserInfoItem.m */,
-				EDB797D81CDDC2E4005CB768 /* UserAuthItem.h */,
-				EDB797D91CDDC2E4005CB768 /* UserAuthItem.m */,
+				ED45E70D1CDC776400FAC93A /* LSUserInfoItem.h */,
+				ED45E70E1CDC776400FAC93A /* LSUserInfoItem.m */,
+				EDB797D81CDDC2E4005CB768 /* LSUserAuthItem.h */,
+				EDB797D91CDDC2E4005CB768 /* LSUserAuthItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -488,7 +488,7 @@
 				EDFA40931CC132620054E77C /* LSDiscoveryTableViewController.m in Sources */,
 				ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */,
 				ED42985A1CC0637000FCD799 /* main.m in Sources */,
-				ED45E70F1CDC776400FAC93A /* UserInfoItem.m in Sources */,
+				ED45E70F1CDC776400FAC93A /* LSUserInfoItem.m in Sources */,
 				EDFA40971CC134A00054E77C /* LSBibleViewController.m in Sources */,
 				ED4298661CC0637000FCD799 /* LiveStone.xcdatamodeld in Sources */,
 				ED45E71A1CDC8E4E00FAC93A /* LSIntercessionService.m in Sources */,
@@ -496,7 +496,7 @@
 				ED0221C91CC33424004D6514 /* TestContactsSearchResultController.m in Sources */,
 				ED45E7061CDC1A9C00FAC93A /* LSServiceBase.m in Sources */,
 				ED0221C41CC330A4004D6514 /* TableCellView.m in Sources */,
-				EDB797DA1CDDC2E4005CB768 /* UserAuthItem.m in Sources */,
+				EDB797DA1CDDC2E4005CB768 /* LSUserAuthItem.m in Sources */,
 				ED358B991CC5C2C00016D1C1 /* LSBookDetailCell.m in Sources */,
 				ED3842981CCEEA560021EA06 /* LSBibleStore.m in Sources */,
 				ED029CE91CDABD9C00B76272 /* LSJoinUsViewController.m in Sources */,

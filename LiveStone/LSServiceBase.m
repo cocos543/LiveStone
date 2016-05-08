@@ -46,7 +46,7 @@
 
 - (void)setHttpHeader{
     // Base authorizetion
-    [self.httpManager.requestSerializer setAuthorizationHeaderFieldWithUsername:LIVESTRONE_APPKEY password:LIVESTRONE_APPSECRET];
+    [self.httpManager.requestSerializer setAuthorizationHeaderFieldWithUsername:LIVESTONE_APPKEY password:LIVESTONE_APPSECRET];
 }
 
 - (NSDictionary *)supplementInfomation:(NSDictionary *)msgDic{
@@ -54,7 +54,7 @@
     NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithDictionary:msgDic];
     //Supplement something, such as timestamp,version,uuid...
     //NSLog(@"%@",[[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]);
-    data[@"platform"]  = LIVESTRONE_PLATFORM;
+    data[@"platform"]  = LIVESTONE_PLATFORM;
     data[@"version"]   = BUNDLE_SHORT_VERSION;
     data[@"uuid"]      = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     data[@"timestamp"] = @(ceil([NSDate date].timeIntervalSince1970));
@@ -76,7 +76,7 @@
         [rawSignString appendString:s];
     }
     [rawSignString deleteCharactersInRange:NSMakeRange([rawSignString length] - 1, 1)];
-    [rawSignString appendString:[[NSString alloc]initWithFormat:@":%@", LIVESTRONE_SECRET_KEY]];
+    [rawSignString appendString:[[NSString alloc]initWithFormat:@":%@", LIVESTONE_SECRET_KEY]];
     NSString *signSH1 = [CocoaSecurity sha1:rawSignString].hexLower;
     return signSH1;
 }
@@ -85,9 +85,10 @@
     msgDic = [self supplementInfomation:msgDic];
     NSLog(@"%@", msgDic);
     [self.httpManager POST:@"http://119.29.108.48/bible/frontend/web/index.php/v1/users/login" parameters:msgDic progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        responseObject = (NSDictionary *)responseObject;
+        respondHander(responseObject);
         NSLog(@"%@",responseObject);
     } failure:^(NSURLSessionTask *operation, NSError *error) {
+        respondHander(@{@"status": @([(NSHTTPURLResponse*)operation.response statusCode])});
         NSLog(@"Error: %@", error);
     }];
 }

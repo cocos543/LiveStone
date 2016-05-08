@@ -6,8 +6,8 @@
 //  Copyright © 2016年 Cocos. All rights reserved.
 //
 
-#import "UserAuthItem.h"
+#import "LSUserAuthItem.h"
 
-@implementation UserAuthItem
+@implementation LSUserAuthItem
 
 @end

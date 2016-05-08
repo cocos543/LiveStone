@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface UserAuthItem : NSObject
+@interface LSUserAuthItem : NSObject
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) NSString *password;
 @end

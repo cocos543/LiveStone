@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "LSUserInfoItem.h"
 @interface AppDelegate ()
 
 @end
@@ -17,6 +18,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSData *data = [defaults objectForKey:LIVESTONE_DEFAULTS_USERINFO];
+//    LSUserInfoItem *info = [LSUserInfoItem userinfoItemWithNSData:data];
+//    NSLog(@"%@",info.nickName);
     return YES;
 }
 

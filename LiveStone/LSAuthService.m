@@ -33,36 +33,69 @@
     @throw [NSException exceptionWithName:@"Singleton" reason:@"Use +[LSAuthService sharedService]" userInfo:nil];
 }
 
--(void)authLogin:(UserAuthItem *)authItem {
+#pragma mark - Private Method
+/**
+ *  Sava user's info to NSUserDefaults
+ *
+ *  @return LSUserInfoItem *
+ */
+- (LSUserInfoItem *)saveUserInfo:(NSDictionary *)dic{
+    LSUserInfoItem *userinfo = [LSUserInfoItem userinfoItemWithDictionary:dic];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[userinfo userinfoData] forKey:LIVESTONE_DEFAULTS_USERINFO];
+    return userinfo;
+}
+
+#pragma mark - Open Method
+
+-(void)authLogin:(LSUserAuthItem *)authItem {
     /**
      *  Do something
      */
     CocoaSecurityResult *pwdMD5 = [CocoaSecurity md5:authItem.password];
-    NSDictionary *msgDic = @{LIVESTRONE_AUTH_PHONE : authItem.phone, LIVESTRONE_AUTH_PASSWORD : pwdMD5.hexLower};
+    NSDictionary *msgDic = @{LIVESTONE_AUTH_PHONE : authItem.phone, LIVESTONE_AUTH_PASSWORD : pwdMD5.hexLower};
     
     [self httpPOSTMessage:msgDic respondHandle:^(NSDictionary *respond) {
-        
+        if (respond[@"status"] != nil) {
+            NSLog(@"error");
+            if ([self.delegate respondsToSelector:@selector(authServiceDidLoginFail:)]) {
+                [self.delegate authServiceDidLoginFail:[respond[@"status"] intValue]];
+            }
+        }else{
+            LSUserInfoItem *userinfo = [self saveUserInfo:respond];
+            if ([self.delegate respondsToSelector:@selector(authServiceDidLogin:)]) {
+                [self.delegate authServiceDidLogin:userinfo];
+            }
+        }
     }];
 }
 
--(void)authLogout:(UserAuthItem *)authItem {
+-(void)authLogout:(LSUserAuthItem *)authItem {
     /**
      *  Do something
      */
     [self httpPOSTMessage:nil respondHandle:nil];
 }
 
-- (void)authGetCode:(UserAuthItem *)authItem {
+- (void)authGetCode:(LSUserAuthItem *)authItem {
     /**
      *  Do something
      */
     [self httpPOSTMessage:nil respondHandle:nil];
 }
 
--(void)authRegister:(UserAuthItem *)authItem {
+-(void)authRegister:(LSUserAuthItem *)authItem {
     /**
      *  Do something
      */
     [self httpPOSTMessage:nil respondHandle:nil];
+}
+
+- (LSUserInfoItem *)getUserInfo {
+    return nil;
+}
+
+- (BOOL)isLogin {
+    return NO;
 }
 @end

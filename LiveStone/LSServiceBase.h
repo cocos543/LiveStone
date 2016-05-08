@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 
-@class UserInfoItem;
+@class LSUserInfoItem;
 
 @interface LSServiceBase : NSObject
 
-@property (nonatomic, strong) UserInfoItem *userinfoItem;
+@property (nonatomic, strong) LSUserInfoItem *userinfoItem;
 
 +(instancetype)shardService;
 /**

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface UserInfoItem : NSObject
+@interface LSUserInfoItem : NSObject <NSCoding>
 @property (nonatomic, strong) NSNumber *userID;
 @property (nonatomic, strong) NSNumber *nationCode;
 @property (nonatomic, strong) NSString *avatar;
@@ -41,5 +41,20 @@
  */
 @property (nonatomic, strong) NSNumber *todayMinutes;
 @property (nonatomic, strong) NSNumber *lastReadLong;
+
+/**
+ *  Init userinfoItem with a dictionary
+ *
+ *  @param dic Dictionary
+ *
+ *  @return LSUserInfoItem
+ */
++ (instancetype)userinfoItemWithDictionary:(NSDictionary *)dic;
+
++ (instancetype)userinfoItemWithNSData:(NSData *)data;
+
+- (NSData *)userinfoData;
+
+
 
 @end

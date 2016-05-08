@@ -138,7 +138,7 @@
 //    }];
     LSAuthService *authService = [[LSServiceCenter defaultCenter] getService:[LSAuthService class]];
     authService.delegate = self;
-    UserAuthItem *item = [[UserAuthItem alloc] init];
+    LSUserAuthItem *item = [[LSUserAuthItem alloc] init];
     item.phone = self.phoneTextField.text;
     item.password = self.passwordTextField.text;
     [authService authLogin:item];
@@ -188,11 +188,15 @@
 }
 
 #pragma  mark - LSAuthServiceDelegate
-- (void)authServiceDidLogin:(UserInfoItem *)userinfo{
+- (void)authServiceDidLogin:(LSUserInfoItem *)userinfo{
+
+}
+
+- (void)authServiceDidLogout:(LSUserInfoItem *)userinfo{
     NSLog(@"%@",userinfo);
 }
 
-- (void)authServiceDidLogout:(UserInfoItem *)userinfo{
-    NSLog(@"%@",userinfo);
+- (void)authServiceDidLoginFail:(LSNetworkResponseCode)statusCode{
+    NSLog(@"%@",@(statusCode));
 }
 @end
