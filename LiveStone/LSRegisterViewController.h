@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class LSUserInfoItem;
+
+typedef void(^DismissBlock)(LSUserInfoItem *userInfoObject);
+
 @interface LSRegisterViewController : UIViewController
+
+@property (nonatomic,copy) DismissBlock dismissBlock;
 
 @end

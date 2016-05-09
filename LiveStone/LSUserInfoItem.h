@@ -43,17 +43,17 @@
 @property (nonatomic, strong) NSNumber *lastReadLong;
 
 /**
- *  Init userinfoItem with a dictionary
+ *  Init userInfoItem with a dictionary
  *
  *  @param dic Dictionary
  *
  *  @return LSUserInfoItem
  */
-+ (instancetype)userinfoItemWithDictionary:(NSDictionary *)dic;
++ (instancetype)userInfoItemWithDictionary:(NSDictionary *)dic;
 
-+ (instancetype)userinfoItemWithNSData:(NSData *)data;
++ (instancetype)userInfoItemWithNSData:(NSData *)data;
 
-- (NSData *)userinfoData;
+- (NSData *)userInfoData;
 
 
 

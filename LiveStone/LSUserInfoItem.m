@@ -34,7 +34,7 @@
 @property (nonatomic, strong) NSNumber *todayMinutes;
 @property (nonatomic, strong) NSNumber *lastReadLong;
  */
-+ (instancetype)userinfoItemWithDictionary:(NSDictionary *)dic {
++ (instancetype)userInfoItemWithDictionary:(NSDictionary *)dic {
     LSUserInfoItem *item = [[LSUserInfoItem alloc] init];
     item.userID = [dic valueForKey:@"user_id"];
     item.nationCode = [dic valueForKey:@"nation_code"];
@@ -59,11 +59,11 @@
     return item;
 }
 
-+ (instancetype)userinfoItemWithNSData:(NSData *)data {
++ (instancetype)userInfoItemWithNSData:(NSData *)data {
     return [NSKeyedUnarchiver unarchiveObjectWithData:data];
 }
 
-- (NSData *)userinfoData {
+- (NSData *)userInfoData {
     return [NSKeyedArchiver archivedDataWithRootObject:self];
 }
 

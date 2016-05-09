@@ -8,6 +8,7 @@
 
 #import "LSAuthService.h"
 #import "CocoaSecurity.h"
+@import SSKeychain;
 
 @implementation LSAuthService
 
@@ -35,15 +36,41 @@
 
 #pragma mark - Private Method
 /**
- *  Sava user's info to NSUserDefaults
+ *  Sava user's info to NSUserDefaults and save password to keychain
  *
  *  @return LSUserInfoItem *
  */
 - (LSUserInfoItem *)saveUserInfo:(NSDictionary *)dic{
-    LSUserInfoItem *userinfo = [LSUserInfoItem userinfoItemWithDictionary:dic];
+    LSUserInfoItem *userInfo = [LSUserInfoItem userInfoItemWithDictionary:dic];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[userinfo userinfoData] forKey:LIVESTONE_DEFAULTS_USERINFO];
-    return userinfo;
+    [defaults setObject:[userInfo userInfoData] forKey:LIVESTONE_DEFAULTS_USERINFO];
+    return userInfo;
+}
+
+- (void)deleteUserInfo{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:LIVESTONE_DEFAULTS_USERINFO];
+}
+
+- (void)saveUserAuth:(LSUserAuthItem *)item{
+    [SSKeychain setPassword:item.password forService:LIVESTONE_KEYCHAIN_AUTH_SERVICE account:item.phone];
+}
+
+- (void)deleteUserAuth:(LSUserAuthItem *)authItem{
+    NSError *error;
+    [SSKeychain deletePasswordForService:LIVESTONE_KEYCHAIN_AUTH_SERVICE account:authItem.phone error:&error];
+    NSLog(@"%@",error);
+}
+
+- (LSUserAuthItem *)loadUserAuth:(NSString *)account{
+    NSString *password = [SSKeychain passwordForService:LIVESTONE_KEYCHAIN_AUTH_SERVICE account:account];
+    if (password.length == 0) {
+        return nil;
+    }
+    LSUserAuthItem *authItem = [[LSUserAuthItem alloc] init];
+    authItem.phone = account;
+    authItem.password = password;
+    return authItem;
 }
 
 #pragma mark - Open Method
@@ -57,24 +84,41 @@
     
     [self httpPOSTMessage:msgDic respondHandle:^(NSDictionary *respond) {
         if (respond[@"status"] != nil) {
-            NSLog(@"error");
+            NSLog(@"Login fail~");
+            switch ([respond[@"status"] intValue]) {
+                case LSNetworkResponseCodePasswordError:
+                    [self deleteUserInfo];
+                    //delete password
+                    [self deleteUserAuth:authItem];
+                    break;
+                    
+                default:
+                    break;
+            }
+            
             if ([self.delegate respondsToSelector:@selector(authServiceDidLoginFail:)]) {
                 [self.delegate authServiceDidLoginFail:[respond[@"status"] intValue]];
             }
         }else{
-            LSUserInfoItem *userinfo = [self saveUserInfo:respond];
+            [self saveUserAuth:authItem];
+            LSUserInfoItem *userInfo = [self saveUserInfo:respond];
             if ([self.delegate respondsToSelector:@selector(authServiceDidLogin:)]) {
-                [self.delegate authServiceDidLogin:userinfo];
+                [self.delegate authServiceDidLogin:userInfo];
             }
         }
     }];
 }
 
+- (void)authReLogin:(NSString *)account {
+    LSUserAuthItem *authItem = [self loadUserAuth:account];
+    [self authLogin:authItem];
+}
+
 -(void)authLogout:(LSUserAuthItem *)authItem {
-    /**
-     *  Do something
-     */
-    [self httpPOSTMessage:nil respondHandle:nil];
+    [self deleteUserInfo];
+    //delete password
+    [self deleteUserAuth:authItem];
+    
 }
 
 - (void)authGetCode:(LSUserAuthItem *)authItem {
@@ -92,10 +136,18 @@
 }
 
 - (LSUserInfoItem *)getUserInfo {
-    return nil;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [defaults objectForKey:LIVESTONE_DEFAULTS_USERINFO];
+    if (!data) {
+        return nil;
+    }
+    LSUserInfoItem *info = [LSUserInfoItem userInfoItemWithNSData:data];
+    return info;
 }
 
 - (BOOL)isLogin {
-    return NO;
+    return [self getUserInfo] ? YES :NO;
 }
+
+
 @end

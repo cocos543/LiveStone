@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class LSUserInfoItem;
+
+typedef void(^DismissBlock)(LSUserInfoItem *userInfoObject);
+
 @interface LSJoinUsViewController : UIViewController
+
+@property (nonatomic,copy) DismissBlock dismissBlock;
 
 @end

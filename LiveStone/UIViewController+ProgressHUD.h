@@ -15,8 +15,15 @@
 -(void)startLoadingHUDWhileUserInteractionDisabledWithTitle:(NSString *)labelText;
 
 -(void)endLoadingHUD;
+-(void)endLoadingHUDAfterDelay:(NSTimeInterval)delay;
 -(void)endLoadingIndicatorWhileUserInteractionEnabled;
+-(void)endLoadingIndicatorWhileUserInteractionEnabledAfterDelay:(NSTimeInterval)delay;
 
 -(void)changeHUDLabelText:(NSString *)labelText;
-
+/**
+ *  Show text continue for 3 sec
+ *
+ *  @param text
+ */
+- (void)toastMessage:(NSString *)text;
 @end

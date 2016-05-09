@@ -7,4 +7,5 @@ target 'LiveStone' do
   pod 'MBProgressHUD', '~> 0.9.2'
   pod 'SSKeychain'
   pod 'CocoaSecurity'
+  pod 'SDWebImage', '~>3.7'
 end

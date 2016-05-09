@@ -119,23 +119,6 @@
 
 - (IBAction)loginAction:(id)sender {
     NSLog(@"Click login button~");
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:@"8B79509E413BBFD5470D1A219C31E67B180CD2CE" password:@"31DAB2BF005BE3312CF50577562D0D5367368D42"];
-//    // manager.responseSerializer默认就是期望JSON类型的response
-//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//    params[@"timestamp"] = @"1462504416";
-//    params[@"platform"] = @"android";
-//    params[@"version"] = @"1.0.0412";
-//    params[@"uuid"] = @"990002591732779";
-//    params[@"user_id"] = @"7";
-//    params[@"start_page"] = @"1";
-//    params[@"sign"] = @"0f06796864963379624480c18fdd70c3e9331830";
-//    //echo sha1("platform=android&start_page=1&timestamp=1462504416&user_id=7&uuid=990002591732779&version=1.0.0412:huoshi2016!");
-//    [manager POST:@"http://119.29.108.48/bible/frontend/web/index.php/v1/intercession/list" parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-//        responseObject = (NSDictionary *)responseObject;
-//    } failure:^(NSURLSessionTask *operation, NSError *error) {
-//        NSLog(@"Error: %@", error);
-//    }];
     LSAuthService *authService = [[LSServiceCenter defaultCenter] getService:[LSAuthService class]];
     authService.delegate = self;
     LSUserAuthItem *item = [[LSUserAuthItem alloc] init];
@@ -188,15 +171,23 @@
 }
 
 #pragma  mark - LSAuthServiceDelegate
-- (void)authServiceDidLogin:(LSUserInfoItem *)userinfo{
-
+- (void)authServiceDidLogin:(LSUserInfoItem *)userInfo{
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+        if (self.dismissBlock) {
+            self.dismissBlock(userInfo);
+        }
+    }];
 }
 
-- (void)authServiceDidLogout:(LSUserInfoItem *)userinfo{
-    NSLog(@"%@",userinfo);
+- (void)authServiceDidLogout:(LSUserInfoItem *)userInfo{
+    NSLog(@"%@",userInfo);
 }
 
 - (void)authServiceDidLoginFail:(LSNetworkResponseCode)statusCode{
     NSLog(@"%@",@(statusCode));
+    if (statusCode == LSNetworkResponseCodePasswordError) {
+        [self endLoadingHUD];
+        [self toastMessage:@"密码错误"];
+    }
 }
 @end

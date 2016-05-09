@@ -91,4 +91,8 @@ NSDictionary *requestContents = @{
 27. http请求头不一定有Content-Length,如果被设置成了Transfer-Encoding为chunked的话,就是分块传输了.
 参考:https://zh.wikipedia.org/wiki/分块传输编码
 
+28.
+
+
+
 

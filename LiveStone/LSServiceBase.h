@@ -13,7 +13,7 @@
 
 @interface LSServiceBase : NSObject
 
-@property (nonatomic, strong) LSUserInfoItem *userinfoItem;
+@property (nonatomic, strong) LSUserInfoItem *userInfoItem;
 
 +(instancetype)shardService;
 /**

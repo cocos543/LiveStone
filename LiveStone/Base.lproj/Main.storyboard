@@ -312,6 +312,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserDefaultAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="oMn-H4-m7f">
                                                     <rect key="frame" x="14" y="15" width="70" height="70"/>
+                                                    <color key="backgroundColor" red="0.8862745098" green="0.8862745098" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="8BL-SF-TZt"/>
                                                         <constraint firstAttribute="height" constant="70" id="RFg-VO-g1s"/>

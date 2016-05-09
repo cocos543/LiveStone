@@ -16,9 +16,9 @@
 /**
  *  Notifies the delegate that user has been logined on server
  *
- *  @param userinfo user's information
+ *  @param userInfo user's information
  */
-- (void)authServiceDidLogin:(LSUserInfoItem *)userinfo;
+- (void)authServiceDidLogin:(LSUserInfoItem *)userInfo;
 
 /**
  *  Notifies the delegate that user login is fail
@@ -30,16 +30,16 @@
 /**
  *  Notifies the delegate that user has been logged out on server
  *
- *  @param userinfo user's information
+ *  @param userInfo user's information
  */
-- (void)authServiceDidLogout:(LSUserInfoItem *)userinfo;
+- (void)authServiceDidLogout:(LSUserInfoItem *)userInfo;
 
 /**
  *  Notifies the delegate that user info has been updated
  *
- *  @param userinfo user's information
+ *  @param userInfo user's information
  */
-- (void)authServiceDidUpdatedUserInfo:(LSUserInfoItem *)userinfo;
+- (void)authServiceDidUpdatedUserInfo:(LSUserInfoItem *)userInfo;
 
 
 @end
@@ -49,6 +49,12 @@
 @property (nonatomic, weak) id<LSAuthServiceDelegate> delegate;
 
 - (void)authLogin:(LSUserAuthItem *)authItem;
+/**
+ *  Log in again without password
+ *
+ *  @param account user account
+ */
+- (void)authReLogin:(NSString *)account;
 
 - (void)authLogout:(LSUserAuthItem *)authItem;
 
@@ -59,14 +65,14 @@
 /**
  *  Update user info
  *
- *  @param userinfo user's information
+ *  @param userInfo user's information
  */
-//- (void)authUpdateUserInfo:(LSUserInfoItem *)userinfo;
+//- (void)authUpdateUserInfo:(LSUserInfoItem *)userInfo;
 
 //- (void)authUploadUserAvatar:(id)iiid;
 
 /**
- *  Get userinfo if user has been log in.Return nil if user has been log out.
+ *  Return userInfo if user has been log in.Return nil if user has been log out.
  *
  *  @return UserInfoItem
  */

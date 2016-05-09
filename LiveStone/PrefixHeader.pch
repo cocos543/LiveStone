@@ -86,6 +86,9 @@ typedef NS_ENUM(NSInteger,LSBookType){
 
 //NSUserDefaults constant
 #define LIVESTONE_DEFAULTS_USERINFO @"LiveStoneUserinfo"
+
+#define LIVESTONE_KEYCHAIN_AUTH_SERVICE @"LiveStoneKeyChainAuthService"
+
 /**
  *  网络响应状态
  */
@@ -117,7 +120,11 @@ typedef NS_ENUM(NSInteger, LSNetworkResponseCode) {
     /**
      *  请求链接已过期
      */
-    LSNetworkResponseCodeRequestExpired    = 406
+    LSNetworkResponseCodeRequestExpired    = 406,
+    /**
+     *  密码错误
+     */
+    LSNetworkResponseCodePasswordError     = 450
 };
 
 

@@ -37,13 +37,34 @@
     [hud hide:YES];
 }
 
+-(void)endLoadingHUDAfterDelay:(NSTimeInterval)delay {
+    MBProgressHUD *hud=[self.view viewWithTag:1008];
+    [hud hide:YES afterDelay:delay];
+}
+
 -(void)endLoadingIndicatorWhileUserInteractionEnabled {
 	[[[UIApplication sharedApplication].delegate window]setUserInteractionEnabled:YES];
     [self endLoadingHUD];
 }
 
+-(void)endLoadingIndicatorWhileUserInteractionEnabledAfterDelay:(NSTimeInterval)delay{
+    [[[UIApplication sharedApplication].delegate window]setUserInteractionEnabled:YES];
+    [self endLoadingHUDAfterDelay:delay];
+}
+
 -(void)changeHUDLabelText:(NSString *)labelText {
     MBProgressHUD *hud=[self.view viewWithTag:1008];
     hud.labelText = labelText;
+}
+
+- (void)toastMessage:(NSString *)text {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    // Set the annular determinate mode to show task progress.
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = text;
+    // Move to bottm center.
+//    hud.offset = CGPointMake(0.f, MBProgressMaxOffset);
+    [hud hide:YES afterDelay:2];
 }
 @end

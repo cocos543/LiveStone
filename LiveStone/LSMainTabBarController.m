@@ -7,9 +7,11 @@
 //
 
 #import "LSMainTabBarController.h"
+#import "LSRegisterViewController.h"
+#import "LSServiceCenter.h"
 
 @interface LSMainTabBarController ()
-
+@property (nonatomic) BOOL isAppearAgain;
 @end
 
 @implementation LSMainTabBarController
@@ -27,6 +29,7 @@
     bibleItem.selectedImage = [[UIImage imageNamed:@"BibleSelc"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     discoveryItem.selectedImage = [[UIImage imageNamed:@"DiscoverySelc"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     meItem.selectedImage = [[UIImage imageNamed:@"MeSelc"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -35,19 +38,29 @@
 //    self.navigationController.navigationBarHidden = NO;
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    if (!self.isAppearAgain) {
+        [self autoLogin];
+    }
+    self.isAppearAgain = YES;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)autoLogin{
+    LSAuthService *authService = [[LSServiceCenter defaultCenter] getService:[LSAuthService class]];
+    
+    if ([authService isLogin]) {
+        LSUserInfoItem *info = [authService getUserInfo];
+        [authService authReLogin:info.phone];
+    }
+    
+//    LSRegisterViewController *regVC = [[LSRegisterViewController alloc] init];
+//    
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:regVC];
+//    [self presentViewController:nav animated:YES completion:nil];
 }
-*/
-
 @end
