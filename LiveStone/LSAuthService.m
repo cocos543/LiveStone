@@ -82,7 +82,7 @@
     CocoaSecurityResult *pwdMD5 = [CocoaSecurity md5:authItem.password];
     NSDictionary *msgDic = @{LIVESTONE_AUTH_PHONE : authItem.phone, LIVESTONE_AUTH_PASSWORD : pwdMD5.hexLower};
     
-    [self httpPOSTMessage:msgDic respondHandle:^(NSDictionary *respond) {
+    [self httpPOSTMessage:msgDic toURLString:@"http://119.29.108.48/bible/frontend/web/index.php/v1/users/login" respondHandle:^(NSDictionary *respond) {
         if (respond[@"status"] != nil) {
             NSLog(@"Login fail~");
             switch ([respond[@"status"] intValue]) {
@@ -96,8 +96,8 @@
                     break;
             }
             
-            if ([self.delegate respondsToSelector:@selector(authServiceDidLoginFail:)]) {
-                [self.delegate authServiceDidLoginFail:[respond[@"status"] intValue]];
+            if ([self.delegate respondsToSelector:@selector(authServiceLoginFail:)]) {
+                [self.delegate authServiceLoginFail:[respond[@"status"] intValue]];
             }
         }else{
             [self saveUserAuth:authItem];
@@ -122,17 +122,55 @@
 }
 
 - (void)authGetCode:(LSUserAuthItem *)authItem {
-    /**
-     *  Do something
-     */
-    [self httpPOSTMessage:nil respondHandle:nil];
+    NSDictionary *msgDic = @{LIVESTONE_AUTH_PHONE : authItem.phone};
+    [self httpPOSTMessage:msgDic toURLString:@"http://119.29.108.48/bible/frontend/web/index.php/v1/register/code" respondHandle:^(NSDictionary *respond) {
+        
+        if (respond[@"status"] != nil) {
+            NSLog(@"Get code fail~");
+            switch ([respond[@"status"] intValue]) {
+                case LSNetworkResponseCodePasswordError:
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+            if ([self.delegate respondsToSelector:@selector(authServiceSendCodeFail:)]) {
+                [self.delegate authServiceSendCodeFail:[respond[@"status"] intValue]];
+            }
+        }else{
+            if ([self.delegate respondsToSelector:@selector(authServiceDidSendCode)]) {
+                [self.delegate authServiceDidSendCode];
+            }
+        }
+    }];
 }
 
 -(void)authRegister:(LSUserAuthItem *)authItem {
-    /**
-     *  Do something
-     */
-    [self httpPOSTMessage:nil respondHandle:nil];
+    CocoaSecurityResult *pwdMD5 = [CocoaSecurity md5:authItem.password];
+    NSDictionary *msgDic = @{LIVESTONE_AUTH_PHONE : authItem.phone, @"sms_code": authItem.code, LIVESTONE_AUTH_PASSWORD: pwdMD5.hexLower};
+    [self httpPOSTMessage:msgDic toURLString:@"http://119.29.108.48/bible/frontend/web/index.php/v1/users/register" respondHandle:^(NSDictionary *respond) {
+        if (respond[@"status"] != nil) {
+            NSLog(@"Register fail~");
+            switch ([respond[@"status"] intValue]) {
+                case LSNetworkResponseCodePasswordError:
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+            if ([self.delegate respondsToSelector:@selector(authServiceRegisterFail:)]) {
+                [self.delegate authServiceRegisterFail:[respond[@"status"] intValue]];
+            }
+        }else{
+            [self saveUserAuth:authItem];
+            LSUserInfoItem *userInfo = [self saveUserInfo:respond];
+            if ([self.delegate respondsToSelector:@selector(authServiceDidRegister:)]) {
+                [self.delegate authServiceDidRegister:userInfo];
+            }
+        }
+    }];
 }
 
 - (LSUserInfoItem *)getUserInfo {

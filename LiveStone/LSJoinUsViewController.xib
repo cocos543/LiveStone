@@ -91,6 +91,9 @@
                                     <state key="normal" title="获取验证码">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="codeAction:" destination="-1" eventType="touchUpInside" id="x0w-Q1-jYf"/>
+                                    </connections>
                                 </button>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PO6-qV-PCd">
                                     <rect key="frame" x="74" y="67" width="88" height="17"/>

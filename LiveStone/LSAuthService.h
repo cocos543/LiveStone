@@ -25,7 +25,7 @@
  *
  *  @param statusCode Fail's status code
  */
-- (void)authServiceDidLoginFail:(LSNetworkResponseCode)statusCode;
+- (void)authServiceLoginFail:(LSNetworkResponseCode)statusCode;
 
 /**
  *  Notifies the delegate that user has been logged out on server
@@ -41,6 +41,31 @@
  */
 - (void)authServiceDidUpdatedUserInfo:(LSUserInfoItem *)userInfo;
 
+/**
+ *  Notifies the delegate that server has been sent code to user's phone.
+ */
+- (void)authServiceDidSendCode;
+
+/**
+ *  Notifies the delegate that get code is fail.
+ *
+ *  @param statusCode Failure statusCode
+ */
+- (void)authServiceSendCodeFail:(LSNetworkResponseCode)statusCode;
+
+/**
+ *  Notifies the delegate that register is fail.
+ *
+ *  @param statusCode Failure statusCode
+ */
+- (void)authServiceRegisterFail:(LSNetworkResponseCode)statusCode;
+
+/**
+ *  Notifies the delegate that user register successfully
+ *
+ *  @param userInfo user's information
+ */
+- (void)authServiceDidRegister:(LSUserInfoItem *)userInfo;
 
 @end
 
@@ -58,6 +83,11 @@
 
 - (void)authLogout:(LSUserAuthItem *)authItem;
 
+/**
+ *  Get code from server, authItem's phone must exist.
+ *
+ *  @param authItem include user's phone.
+ */
 - (void)authGetCode:(LSUserAuthItem *)authItem;
 
 - (void)authRegister:(LSUserAuthItem *)authItem;

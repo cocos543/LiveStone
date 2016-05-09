@@ -61,10 +61,11 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
 }
 
 - (void)displayUserInfo:(LSUserInfoItem *)userInfo{
-    self.readingTimeLabel.text = [NSString stringWithFormat:@"阅读时间:%@分钟",userInfo.totalMinutes];
-    self.userNameLabel.text = userInfo.nickName;
-    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.avatar]];
-    self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.size.width / 2.0f;
+    self.readingTimeLabel.text = [NSString stringWithFormat:@"阅读时间:%@分钟",userInfo.totalMinutes ?userInfo.totalMinutes : @(0)];
+    self.userNameLabel.text = userInfo.nickName.length > 0 ?userInfo.nickName : [NSString stringWithFormat:@"活石%@",userInfo.nickID];
+    if (userInfo.avatar.length > 0) {
+        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.avatar]];
+    }
 }
 
 - (void)showRegisterViewController{

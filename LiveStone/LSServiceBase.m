@@ -81,10 +81,12 @@
     return signSH1;
 }
 
-- (void)httpPOSTMessage:(NSDictionary *)msgDic respondHandle:(void(^)(NSDictionary *respond))respondHander{
+- (void)httpPOSTMessage:(NSDictionary *)msgDic toURLString:(NSString *)urlString respondHandle:(void(^)(NSDictionary *respond))respondHander{
     msgDic = [self supplementInfomation:msgDic];
-    NSLog(@"%@", msgDic);
-    [self.httpManager POST:@"http://119.29.108.48/bible/frontend/web/index.php/v1/users/login" parameters:msgDic progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    [self.httpManager POST:urlString parameters:msgDic progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        if ([responseObject count] == 0) {
+            responseObject = @{};
+        }
         respondHander(responseObject);
         NSLog(@"%@",responseObject);
     } failure:^(NSURLSessionTask *operation, NSError *error) {
@@ -93,7 +95,7 @@
     }];
 }
 
-- (void)httpGETMessage:(NSDictionary *)msgDic respondHandle:(void(^)(NSDictionary *respond))respondHander{
+- (void)httpGETMessage:(NSDictionary *)msgDic toURLString:(NSString *)urlString respondHandle:(void(^)(NSDictionary *respond))respondHander{
 	msgDic = [self supplementInfomation:msgDic];
     
 }

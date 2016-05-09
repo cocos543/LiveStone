@@ -88,10 +88,13 @@ NSDictionary *requestContents = @{
 例如要请求的参数是timestamp=1462501827&phone=13129285435&password=95d47be0d380a7cd3bb5bbe78e8bed49
 然后,将参数按照ascii顺序排列,就是password=95d47be0d380a7cd3bb5bbe78e8bed49&phone=13129285435&timestamp=1462501827+密钥,然后再做一个base64,把结果放在sign里面,变成timestamp=1462501827&phone=13129285435&password=95d47be0d380a7cd3bb5bbe78e8bed49&sign=****
 
-27. http请求头不一定有Content-Length,如果被设置成了Transfer-Encoding为chunked的话,就是分块传输了.
+27.http请求头不一定有Content-Length,如果被设置成了Transfer-Encoding为chunked的话,就是分块传输了.
 参考:https://zh.wikipedia.org/wiki/分块传输编码
 
-28.
+28.网络服务层的架构设计,采用工厂模式,所有子服务都从LSServiceCenter中产生.这里要区别于策略模式,LSServiceCenter产生的的服务都是具体的子服务.
+子服务都继承自LSServiceBase.LSServiceBase提供基础的网络服务功能,同时包含了参数签名等.
+
+29.
 
 
 

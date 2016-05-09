@@ -10,5 +10,6 @@
 
 @interface LSUserAuthItem : NSObject
 @property (nonatomic, strong) NSString *phone;
+@property (nonatomic, strong) NSString *code;
 @property (nonatomic, strong) NSString *password;
 @end

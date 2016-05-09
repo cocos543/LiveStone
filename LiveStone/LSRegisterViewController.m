@@ -9,7 +9,6 @@
 #import "LSRegisterViewController.h"
 #import "LSJoinUsViewController.h"
 #import "UIViewController+ProgressHUD.h"
-#import "AFNetworking.h"
 #import "LSServiceCenter.h"
 
 @interface LSRegisterViewController () <UITextFieldDelegate, LSAuthServiceDelegate>
@@ -130,6 +129,7 @@
 
 - (IBAction)joinUsAction:(id)sender {
     LSJoinUsViewController *joinVC = [[LSJoinUsViewController alloc] init];
+    joinVC.dismissBlock = self.dismissBlock;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:joinVC];
     [self presentViewController:nav animated:YES completion:nil];
 }
@@ -151,12 +151,6 @@
     return YES;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-    if (self.phoneTextField.text.length == 0 || self.passwordTextField.text.length == 0) {
-        self.loginButton.enabled = NO;
-        self.loginButton.backgroundColor = [CCSimpleTools stringToColor:LIVESTONE_AUTH_BUTTON_DISABLE_COLOR opacity:1];
-    }
-}
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     NSCharacterSet * set;
     if (textField == self.phoneTextField) {
@@ -183,7 +177,7 @@
     NSLog(@"%@",userInfo);
 }
 
-- (void)authServiceDidLoginFail:(LSNetworkResponseCode)statusCode{
+- (void)authServiceLoginFail:(LSNetworkResponseCode)statusCode{
     NSLog(@"%@",@(statusCode));
     if (statusCode == LSNetworkResponseCodePasswordError) {
         [self endLoadingHUD];
