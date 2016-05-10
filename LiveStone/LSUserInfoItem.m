@@ -44,7 +44,7 @@
     item.nickID = [dic valueForKey:@"nick_id"];
     item.gender = [dic valueForKey:@"gender"];
     item.birthday = [item stringToDate:[dic valueForKey:@"birthday"]];
-    item.believeDate = [item stringToDate:[dic valueForKey:@"believe_date"]];
+    item.believeDate = [item stringToDate:[NSString stringWithFormat:@"%@-01-01", [dic valueForKey:@"believe_date"]]];
     item.provinceID = [dic valueForKey:@"province_id"];
     item.cityID = [dic valueForKey:@"city_id"];
     item.provinceName = [dic valueForKey:@"province_name"];

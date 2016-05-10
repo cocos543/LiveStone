@@ -17,6 +17,9 @@
 @property (nonatomic, strong) NSString *nickID;
 @property (nonatomic, strong) NSNumber *gender;
 @property (nonatomic, strong) NSDate   *birthday;
+/**
+ *  Only years for believe date.
+ */
 @property (nonatomic, strong) NSDate   *believeDate;
 @property (nonatomic, strong) NSNumber *provinceID;
 @property (nonatomic, strong) NSNumber *cityID;

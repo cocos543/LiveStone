@@ -26,6 +26,10 @@
 
 @property (nonatomic, strong) LSAuthService *authService;
 
+@property (nonatomic) BOOL isSendingCode;
+
+@property (nonatomic, strong) NSTimer *codeTimer;
+
 @end
 
 @implementation LSJoinUsViewController
@@ -54,7 +58,11 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
+    
+}
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.codeTimer invalidate];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -118,6 +126,34 @@
     target.backgroundColor = [CCSimpleTools stringToColor:LIVESTONE_AUTH_BUTTON_DISABLE_COLOR opacity:1];
 }
 
+- (void)startFireDateTimerForCode {
+    NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
+    self.codeTimer = [[NSTimer alloc] initWithFireDate:fireDate
+                                              interval:1.0f
+                                                target:self
+                                              selector:@selector(countedTimerFireForCode:)
+                                              userInfo:nil
+                                               repeats:YES];
+    
+    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+    [runLoop addTimer:self.codeTimer forMode:NSDefaultRunLoopMode];
+}
+
+- (void)countedTimerFireForCode:(NSTimer*)theTimer {
+    NSLog(@"timer fire");
+    static int remaining = 60;
+    remaining--;
+    [self.codeBtn setTitle:[NSString stringWithFormat:@"%ds后重发",remaining] forState:UIControlStateDisabled];
+    if (remaining == 0) {
+        remaining = 60;
+        self.isSendingCode = NO;
+        [self setEnableStatus:self.codeBtn];
+        [self.codeBtn setTitle:@"获取验证码" forState:UIControlStateDisabled];
+        [self.codeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [self.codeTimer invalidate];
+    }
+}
+
 #pragma mark - Event
 
 - (void)backgroundTapped:(id)sender {
@@ -154,13 +190,12 @@
     authItem.phone = self.phoneTextField.text;
     [self.authService authGetCode:authItem];
     [self setDisableStatus:self.codeBtn];
-    [self.codeBtn setTitle:@"60s后重发" forState:UIControlStateDisabled];
     [self startLoadingHUDWithTitle:@"请稍候..."];
 }
 
 
 - (void)didTextChange:(NSNotification *)notification{
-    if (self.phoneTextField.text.length > 0) {
+    if (self.phoneTextField.text.length > 0 && self.isSendingCode == NO) {
         self.codeBtn.enabled = YES;
         self.codeBtn.backgroundColor = [CCSimpleTools stringToColor:LIVESTONE_AUTH_BUTTON_ENABLE_COLOR opacity:1];
     }else{
@@ -212,6 +247,9 @@
 - (void)authServiceDidSendCode{
     [self endLoadingHUD];
     [self toastMessage:@"验证码已发送"];
+    self.isSendingCode = YES;
+    [self.codeBtn setTitle:@"60s后重发" forState:UIControlStateDisabled];
+    [self startFireDateTimerForCode];
 }
 
 - (void)authServiceDidRegister:(LSUserInfoItem *)userInfo{
@@ -230,7 +268,7 @@
     [self endLoadingHUD];
     [self toastMessage:@"用户已注册"];
     [self setEnableStatus:self.codeBtn];
-    [self.codeBtn setTitle:@"获取验证码" forState:UIControlStateDisabled];
+    [self.codeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
 }
 
 - (void)authServiceRegisterFail:(LSNetworkResponseCode)statusCode{

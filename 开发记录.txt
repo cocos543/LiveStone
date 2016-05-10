@@ -94,7 +94,9 @@ NSDictionary *requestContents = @{
 28.网络服务层的架构设计,采用工厂模式,所有子服务都从LSServiceCenter中产生.这里要区别于策略模式,LSServiceCenter产生的的服务都是具体的子服务.
 子服务都继承自LSServiceBase.LSServiceBase提供基础的网络服务功能,同时包含了参数签名等.
 
-29.
+29.对象属性中有NSTimer对象,导致对象无法被释放的可能原因
+使用了NSTimer定时器同时开启了repeats重复执行时,将target设置为self(也就是对象本身,简称A对象).这时候A对象的引用计数被定时器+1了.导致无法释放,唯一要释放的方法就是调用定时器的invalidate方法.
+如果如果是在定时器初始化的地方使用了Block去捕获定时器对象,则需要等到块被释放了.定时器才会被释放,A对象才会被释放,所以不推荐在Block中捕获定时器.
 
 
 
