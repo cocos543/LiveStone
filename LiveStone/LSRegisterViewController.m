@@ -179,9 +179,15 @@
 
 - (void)authServiceLoginFail:(LSNetworkResponseCode)statusCode{
     NSLog(@"%@",@(statusCode));
-    if (statusCode == LSNetworkResponseCodePasswordError) {
+    if (statusCode == LSNetworkResponseCodeUnkonwError) {
         [self endLoadingHUD];
         [self toastMessage:@"密码错误"];
     }
 }
+
+- (void)serviceConnectFail:(NSInteger)errorCode{
+    [self endLoadingHUD];
+    [self toastMessage:@"网络错误"];
+}
+
 @end

@@ -90,7 +90,7 @@
         respondHander(responseObject);
         NSLog(@"%@",responseObject);
     } failure:^(NSURLSessionTask *operation, NSError *error) {
-        respondHander(@{@"status": @([(NSHTTPURLResponse*)operation.response statusCode])});
+        respondHander(@{@"status": @([(NSHTTPURLResponse*)operation.response statusCode]), @"errorCode": @(error.code)});
         NSLog(@"Error: %@", error);
     }];
 }
@@ -100,4 +100,12 @@
     
 }
 
+- (void)handleConnectError:(NSDictionary *)errDic {
+    if ([self.delegate respondsToSelector:@selector(serviceConnectFail:)]) {
+        [self.delegate serviceConnectFail:[errDic[@"errorCode"] intValue]];
+    }
+}
+
 @end
+
+

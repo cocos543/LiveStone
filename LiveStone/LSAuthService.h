@@ -10,7 +10,8 @@
 #import "LSUserInfoItem.h"
 #import "LSUserAuthItem.h"
 
-@protocol LSAuthServiceDelegate <NSObject>
+@protocol LSAuthServiceDelegate <LSServiceBaseProtocol>
+
 @optional
 
 /**

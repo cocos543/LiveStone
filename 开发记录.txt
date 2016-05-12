@@ -86,7 +86,7 @@ NSDictionary *requestContents = @{
 26.一个安全的post,get 的api设计方法
 将所有的参数还有时间搓进行某种排序,然后加上本地密钥做一个md5,再放在请求的sign参数中发给服务器,这样服务器可以通过验证sign是否合法来确定这次请求是否合法.
 例如要请求的参数是timestamp=1462501827&phone=13129285435&password=95d47be0d380a7cd3bb5bbe78e8bed49
-然后,将参数按照ascii顺序排列,就是password=95d47be0d380a7cd3bb5bbe78e8bed49&phone=13129285435&timestamp=1462501827+密钥,然后再做一个base64,把结果放在sign里面,变成timestamp=1462501827&phone=13129285435&password=95d47be0d380a7cd3bb5bbe78e8bed49&sign=****
+然后,将参数按照ascii顺序排列,就是password=95d47be0d380a7cd3bb5bbe78e8bed49&phone=13129285435&timestamp=1462501827+密钥,然后再做一个sha256编码,把结果放在sign里面,变成timestamp=1462501827&phone=13129285435&password=95d47be0d380a7cd3bb5bbe78e8bed49&sign=****
 
 27.http请求头不一定有Content-Length,如果被设置成了Transfer-Encoding为chunked的话,就是分块传输了.
 参考:https://zh.wikipedia.org/wiki/分块传输编码
@@ -98,6 +98,8 @@ NSDictionary *requestContents = @{
 使用了NSTimer定时器同时开启了repeats重复执行时,将target设置为self(也就是对象本身,简称A对象).这时候A对象的引用计数被定时器+1了.导致无法释放,唯一要释放的方法就是调用定时器的invalidate方法.
 如果如果是在定时器初始化的地方使用了Block去捕获定时器对象,则需要等到块被释放了.定时器才会被释放,A对象才会被释放,所以不推荐在Block中捕获定时器.
 
+30. 物理网络链接错误,由ServiceBase处理错误,同时调用ServiceBase的delegate<LSServiceBaseProtocol>中的serviceConnectFail方法.
+注意,如果子类和父类用同名属性,需要在子类实现的地方对属性加上"@dynamic 属性名".
 
 
 

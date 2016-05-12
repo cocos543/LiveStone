@@ -124,7 +124,7 @@ typedef NS_ENUM(NSInteger, LSNetworkResponseCode) {
     /**
      *  密码错误
      */
-    LSNetworkResponseCodePasswordError     = 450
+    LSNetworkResponseCodeUnkonwError     = 450
 };
 
 

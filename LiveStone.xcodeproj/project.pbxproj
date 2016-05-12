@@ -16,6 +16,7 @@
 		ED0221DC1CC37CAC004D6514 /* LSBookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED0221DB1CC37CAC004D6514 /* LSBookCollectionViewCell.xib */; };
 		ED029CE91CDABD9C00B76272 /* LSJoinUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED029CE71CDABD9C00B76272 /* LSJoinUsViewController.m */; };
 		ED029CEA1CDABD9C00B76272 /* LSJoinUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED029CE81CDABD9C00B76272 /* LSJoinUsViewController.xib */; };
+		ED064A181CE3103F00FA2745 /* LSTimePanelViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED064A171CE3103F00FA2745 /* LSTimePanelViewCell.xib */; };
 		ED17E7311CD1819600F6F6CF /* LSBibleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED17E7301CD1819600F6F6CF /* LSBibleItem.m */; };
 		ED17E7331CD18EE500F6F6CF /* LSBibleContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED17E7321CD18EE500F6F6CF /* LSBibleContentCell.xib */; };
 		ED17E7351CD18F0800F6F6CF /* LSBibleTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED17E7341CD18F0800F6F6CF /* LSBibleTitleCell.xib */; };
@@ -71,6 +72,7 @@
 		ED029CE61CDABD9C00B76272 /* LSJoinUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJoinUsViewController.h; sourceTree = "<group>"; };
 		ED029CE71CDABD9C00B76272 /* LSJoinUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJoinUsViewController.m; sourceTree = "<group>"; };
 		ED029CE81CDABD9C00B76272 /* LSJoinUsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSJoinUsViewController.xib; sourceTree = "<group>"; };
+		ED064A171CE3103F00FA2745 /* LSTimePanelViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSTimePanelViewCell.xib; sourceTree = "<group>"; };
 		ED08C3F51CCEE3DB00AAC7AA /* huoshi.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = huoshi.db; sourceTree = "<group>"; };
 		ED17E72F1CD1819600F6F6CF /* LSBibleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBibleItem.h; sourceTree = "<group>"; };
 		ED17E7301CD1819600F6F6CF /* LSBibleItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBibleItem.m; sourceTree = "<group>"; };
@@ -197,6 +199,16 @@
 				ED029CE81CDABD9C00B76272 /* LSJoinUsViewController.xib */,
 			);
 			name = Register;
+			sourceTree = "<group>";
+		};
+		ED064A161CE30FBB00FA2745 /* LiveStone */ = {
+			isa = PBXGroup;
+			children = (
+				ED5F94BF1CC1B83D00D8D626 /* LSLiveStoneTableViewController.h */,
+				ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */,
+				ED064A171CE3103F00FA2745 /* LSTimePanelViewCell.xib */,
+			);
+			name = LiveStone;
 			sourceTree = "<group>";
 		};
 		ED17E72E1CD1816C00F6F6CF /* Model */ = {
@@ -334,6 +346,7 @@
 		EDFA408D1CC11A450054E77C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				ED064A161CE30FBB00FA2745 /* LiveStone */,
 				ED029CE51CDABD7200B76272 /* Register */,
 				ED0221CA1CC3389E004D6514 /* Bible */,
 				ED42985E1CC0637000FCD799 /* ViewController.h */,
@@ -344,8 +357,6 @@
 				EDFA40921CC132620054E77C /* LSDiscoveryTableViewController.m */,
 				EDFA40981CC139D90054E77C /* LSMainTabBarController.h */,
 				EDFA40991CC139D90054E77C /* LSMainTabBarController.m */,
-				ED5F94BF1CC1B83D00D8D626 /* LSLiveStoneTableViewController.h */,
-				ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -422,6 +433,7 @@
 				ED17E7331CD18EE500F6F6CF /* LSBibleContentCell.xib in Resources */,
 				ED0221DC1CC37CAC004D6514 /* LSBookCollectionViewCell.xib in Resources */,
 				ED4298631CC0637000FCD799 /* Main.storyboard in Resources */,
+				ED064A181CE3103F00FA2745 /* LSTimePanelViewCell.xib in Resources */,
 				ED029CEA1CDABD9C00B76272 /* LSJoinUsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
