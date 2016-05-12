@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LSUserReadingItem.h"
 
 @interface LSUserInfoItem : NSObject <NSCoding>
 @property (nonatomic, strong) NSNumber *userID;
@@ -26,25 +27,9 @@
 @property (nonatomic, strong) NSString *provinceName;
 @property (nonatomic, strong) NSString *cityName;
 @property (nonatomic, strong) NSNumber *continuousIntercessionDays;
-/**
- *  Read bible's running days
- */
-@property (nonatomic, strong) NSNumber *continuousDays;
-/**
- *  Total duration time for reading bible
- */
-@property (nonatomic, strong) NSNumber *totalMinutes;
 @property (nonatomic, strong) NSNumber *totalShareTimes;
-/**
- *  Duration time for reading bible at yesterday
- */
-@property (nonatomic, strong) NSNumber *yesterdayMinutes;
-/**
- *  Duration time for reading bible at totay
- */
-@property (nonatomic, strong) NSNumber *todayMinutes;
-@property (nonatomic, strong) NSNumber *lastReadLong;
 
+@property (nonatomic,strong) LSUserReadingItem *readingItem;
 /**
  *  Init userInfoItem with a dictionary
  *

@@ -10,32 +10,9 @@
 
 @implementation LSUserInfoItem
 
-/*
- @property (nonatomic, strong) NSNumber *userID;
- @property (nonatomic, strong) NSNumber *nationCode;
- @property (nonatomic, strong) NSString *avatar;
- @property (nonatomic, strong) NSString *phone;
- @property (nonatomic, strong) NSString *nickName;
- @property (nonatomic, strong) NSString *nickID;
- @property (nonatomic, strong) NSNumber *gender;
- @property (nonatomic, strong) NSDate   *birthday;
- @property (nonatomic, strong) NSDate   *believeDate;
- @property (nonatomic, strong) NSNumber *provinceID;
- @property (nonatomic, strong) NSNumber *cityID;
- @property (nonatomic, strong) NSString *provinceName;
- @property (nonatomic, strong) NSString *cityName;
- @property (nonatomic, strong) NSNumber *continuousIntercessionDays;
- @property (nonatomic, strong) NSNumber *continuousDays;
-
-@property (nonatomic, strong) NSNumber *totalMinutes;
-@property (nonatomic, strong) NSNumber *totalShareTimes;
-
-@property (nonatomic, strong) NSNumber *yesterdayMinutes;
-@property (nonatomic, strong) NSNumber *todayMinutes;
-@property (nonatomic, strong) NSNumber *lastReadLong;
- */
 + (instancetype)userInfoItemWithDictionary:(NSDictionary *)dic {
     LSUserInfoItem *item = [[LSUserInfoItem alloc] init];
+    item.readingItem = [[LSUserReadingItem alloc] init];
     item.userID = [dic valueForKey:@"user_id"];
     item.nationCode = [dic valueForKey:@"nation_code"];
     item.avatar = [dic valueForKey:@"avatar"];
@@ -50,12 +27,12 @@
     item.provinceName = [dic valueForKey:@"province_name"];
     item.cityName = [dic valueForKey:@"city_name"];
     item.continuousIntercessionDays = [dic valueForKey:@"continuous_interces_days"];
-    item.continuousDays = [dic valueForKey:@"continuous_days"];
-    item.totalMinutes = [dic valueForKey:@"total_minutes"];
+    item.readingItem.continuousDays = [dic valueForKey:@"continuous_days"];
+    item.readingItem.totalMinutes = [dic valueForKey:@"total_minutes"];
     item.totalShareTimes = [dic valueForKey:@"total_share_times"];
-    item.yesterdayMinutes = [dic valueForKey:@"yesterday_minutes"];
-    item.todayMinutes = [dic valueForKey:@"today_minutes"];
-    item.lastReadLong = [dic valueForKey:@"last_read_long"];
+    item.readingItem.yesterdayMinutes = [dic valueForKey:@"yesterday_minutes"];
+    item.readingItem.todayMinutes = [dic valueForKey:@"today_minutes"];
+    item.readingItem.lastReadLong = [dic valueForKey:@"last_read_long"];
     return item;
 }
 
@@ -92,13 +69,9 @@
     [aCoder encodeObject:self.provinceName forKey:@"provinceName"];
     [aCoder encodeObject:self.cityName forKey:@"cityName"];
     [aCoder encodeObject:self.continuousIntercessionDays forKey:@"continuousIntercessionDays"];
-    [aCoder encodeObject:self.continuousDays forKey:@"continuousDays"];
-    
-    [aCoder encodeObject:self.totalMinutes forKey:@"totalMinutes"];
     [aCoder encodeObject:self.totalShareTimes forKey:@"totalShareTimes"];
-    [aCoder encodeObject:self.yesterdayMinutes forKey:@"yesterdayMinutes"];
-    [aCoder encodeObject:self.todayMinutes forKey:@"todayMinutes"];
-    [aCoder encodeObject:self.lastReadLong forKey:@"lastReadLong"];
+    
+    [aCoder encodeObject:self.readingItem forKey:@"readingItem"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder{
@@ -120,13 +93,9 @@
         _provinceName = [aDecoder decodeObjectForKey:@"provinceName"];
         _cityName = [aDecoder decodeObjectForKey:@"cityName"];
         _continuousIntercessionDays = [aDecoder decodeObjectForKey:@"continuousIntercessionDays"];
-        _continuousDays = [aDecoder decodeObjectForKey:@"continuousDays"];
-        
-        _totalMinutes = [aDecoder decodeObjectForKey:@"totalMinutes"];
         _totalShareTimes = [aDecoder decodeObjectForKey:@"totalShareTimes"];
-        _yesterdayMinutes = [aDecoder decodeObjectForKey:@"yesterdayMinutes"];
-        _todayMinutes = [aDecoder decodeObjectForKey:@"todayMinutes"];
-        _lastReadLong = [aDecoder decodeObjectForKey:@"lastReadLong"];
+        
+        _readingItem = [aDecoder decodeObjectForKey:@"readingItem"];
     }
     return self;
 }

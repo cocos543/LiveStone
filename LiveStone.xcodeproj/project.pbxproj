@@ -39,6 +39,8 @@
 		ED45E70F1CDC776400FAC93A /* LSUserInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45E70E1CDC776400FAC93A /* LSUserInfoItem.m */; };
 		ED45E71A1CDC8E4E00FAC93A /* LSIntercessionService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED45E7191CDC8E4E00FAC93A /* LSIntercessionService.m */; };
 		ED4848F61CC85D080093E29E /* LSBookChapterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4848F51CC85D080093E29E /* LSBookChapterCell.xib */; };
+		ED4CFE601CE427FD00A166C4 /* LSExtraService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4CFE5F1CE427FD00A166C4 /* LSExtraService.m */; };
+		ED4CFE631CE46AE700A166C4 /* LSUserReadingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4CFE621CE46AE700A166C4 /* LSUserReadingItem.m */; };
 		ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */; };
 		ED6FD8C01CD838DF00BA599D /* LSRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED6FD8BE1CD838DF00BA599D /* LSRegisterViewController.xib */; };
 		ED7A6F721CD2FD6E00EF1592 /* UILabel+CCStringFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7A6F711CD2FD6E00EF1592 /* UILabel+CCStringFrame.m */; };
@@ -111,6 +113,10 @@
 		ED45E7181CDC8E4E00FAC93A /* LSIntercessionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionService.h; sourceTree = "<group>"; };
 		ED45E7191CDC8E4E00FAC93A /* LSIntercessionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionService.m; sourceTree = "<group>"; };
 		ED4848F51CC85D080093E29E /* LSBookChapterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBookChapterCell.xib; sourceTree = "<group>"; };
+		ED4CFE5E1CE427FD00A166C4 /* LSExtraService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSExtraService.h; sourceTree = "<group>"; };
+		ED4CFE5F1CE427FD00A166C4 /* LSExtraService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSExtraService.m; sourceTree = "<group>"; };
+		ED4CFE611CE46AE700A166C4 /* LSUserReadingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSUserReadingItem.h; sourceTree = "<group>"; };
+		ED4CFE621CE46AE700A166C4 /* LSUserReadingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSUserReadingItem.m; sourceTree = "<group>"; };
 		ED5F94BF1CC1B83D00D8D626 /* LSLiveStoneTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSLiveStoneTableViewController.h; sourceTree = "<group>"; };
 		ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSLiveStoneTableViewController.m; sourceTree = "<group>"; };
 		ED6FD8BE1CD838DF00BA599D /* LSRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSRegisterViewController.xib; sourceTree = "<group>"; };
@@ -222,6 +228,8 @@
 				ED45E70E1CDC776400FAC93A /* LSUserInfoItem.m */,
 				EDB797D81CDDC2E4005CB768 /* LSUserAuthItem.h */,
 				EDB797D91CDDC2E4005CB768 /* LSUserAuthItem.m */,
+				ED4CFE611CE46AE700A166C4 /* LSUserReadingItem.h */,
+				ED4CFE621CE46AE700A166C4 /* LSUserReadingItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -339,6 +347,8 @@
 				ED45E7081CDC2C6700FAC93A /* LSAuthService.m */,
 				ED45E7181CDC8E4E00FAC93A /* LSIntercessionService.h */,
 				ED45E7191CDC8E4E00FAC93A /* LSIntercessionService.m */,
+				ED4CFE5E1CE427FD00A166C4 /* LSExtraService.h */,
+				ED4CFE5F1CE427FD00A166C4 /* LSExtraService.m */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -498,6 +508,7 @@
 				ED42985D1CC0637000FCD799 /* AppDelegate.m in Sources */,
 				ED0221DA1CC37956004D6514 /* CCSimpleTools.m in Sources */,
 				EDFA40931CC132620054E77C /* LSDiscoveryTableViewController.m in Sources */,
+				ED4CFE601CE427FD00A166C4 /* LSExtraService.m in Sources */,
 				ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */,
 				ED42985A1CC0637000FCD799 /* main.m in Sources */,
 				ED45E70F1CDC776400FAC93A /* LSUserInfoItem.m in Sources */,
@@ -513,6 +524,7 @@
 				ED3842981CCEEA560021EA06 /* LSBibleStore.m in Sources */,
 				ED029CE91CDABD9C00B76272 /* LSJoinUsViewController.m in Sources */,
 				ED9815961CDB75F500CF7944 /* UIViewController+ProgressHUD.m in Sources */,
+				ED4CFE631CE46AE700A166C4 /* LSUserReadingItem.m in Sources */,
 				ED98159A1CDB848500CF7944 /* LSServiceCenter.m in Sources */,
 				ED17E7311CD1819600F6F6CF /* LSBibleItem.m in Sources */,
 				ED2030561CC99AD800369ACE /* LSBibleCollectionView.m in Sources */,

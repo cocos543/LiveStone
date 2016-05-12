@@ -63,7 +63,7 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
 }
 
 - (void)displayUserInfo:(LSUserInfoItem *)userInfo{
-    self.readingTimeLabel.text = [NSString stringWithFormat:@"阅读时间:%@分钟",userInfo.totalMinutes ?userInfo.totalMinutes : @(0)];
+    self.readingTimeLabel.text = [NSString stringWithFormat:@"阅读时间:%@分钟",userInfo.readingItem.totalMinutes ?userInfo.readingItem.totalMinutes : @(0)];
     self.userNameLabel.text = userInfo.nickName.length > 0 ?userInfo.nickName : [NSString stringWithFormat:@"活石%@",userInfo.nickID];
     if (userInfo.avatar.length > 0) {
         [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.avatar]];
