@@ -103,7 +103,15 @@ NSDictionary *requestContents = @{
 
 31. iOS中的NSDate时区问题.如果是通过字符串生成NSDate的,默认字符串就是参照设备时区再转换的.得到的NSdate可以看成是一个记录了时间戳的对象,如果要从NSDate里面获取到实际的年月日,一种是打印成字符串的,则需要使用descriptionWithLocale:,明确选择一个时区再打印,否则就是显示默认的Greenwich Mean Time (GMT)了.另一种是要获取到年月日的,可以使用日历对象.[NSCalendar currentCalendar],这个实例化出来的就是一个本地日历了.不需要再设置成本地时区了.然后结合- (NSDateComponents *)components:(NSCalendarUnit)unitFlags fromDate:(NSDate *)date方法,就可以获取到一个完整的日期组件对象了.
 
-32. 时间统计部分,在阅读界面监听了UIApplicationWillResignActiveNotification这个事件,但是每次用户锁屏(或者回到桌面)时,系统会先触发AppDelegate类里面的applicationWillResignActive方法,而我刚好在这里做了一个upload的请求.所以说,有时候用户在阅读界面锁屏时,程序先发起upload请求,再执行stop.所以upload实际上是被忽略的.等用户打开屏幕时,程序调用start,接着用户第二次锁屏时,这个时候程序也是先upload,再stop,但是第二次的upload就不会被忽略了,因为在此之前已经有了一个完整的start,stop了,所以upload会被框架接受.
+32. 时间统计部分,在阅读界面监听了UIApplicationWillResignActiveNotification这个事件,但是每次用户锁屏(或者回到桌面)时,系统会先触发AppDelegate类里面的applicationWillResignActive方法,而我刚好在这里做了一个upload的请求.所以说,用户在阅读界面第一次锁屏时,程序先发起upload请求,再执行stop.所以upload实际上是被忽略的.等用户打开屏幕时,程序调用start,接着用户第二次锁屏时,这个时候程序也是先upload,再stop,但是第二次的upload就不会被忽略了,因为在此之前已经有了一个完整的start,stop了,所以upload会被框架接受.
+
+33. 让按钮显示多行字的方法:首先Line Break 设置成word wrap,然后要换行的地方用command + enter
+
+34. 无论是tableview cell 还是collectionview cell,如果要自定义cell,都需要把视图加到contentview上..在interface界面上编辑的时候,要从对象库面板从拉出一个cell的视图,不要用xib自己生成的那个view,因为那个只是普通的view,会缺少很多属性,会要命的是会缺少一个contentView,导致无法直接在界面文件上编辑 ......
+
+35. 在xcode左边的视图导航栏上下拖动子视图的位置可以改变子视图的层级....这样写约束的时候才比较规整(好像跟写约束没任何关系.....)
+
+36.
 
 
 

@@ -8,9 +8,10 @@
 
 #import "LSLiveStoneTableViewController.h"
 #import "LSRegisterViewController.h"
+#import "LSBibleSearchController.h"
 #import "LSServiceCenter.h"
 
-@interface LSLiveStoneTableViewController () <UITableViewDelegate>
+@interface LSLiveStoneTableViewController () <UITableViewDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 
 /**
@@ -75,6 +76,7 @@ static NSString *reuseIdentifierTimePanelCell = @"reuseIdentifierTimePanelCell";
 #pragma mark - TableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     if (indexPath.section == 1 && indexPath.row == 0) {
         if ([self.authService isLogin]) {
             return 80;
@@ -144,5 +146,11 @@ static NSString *reuseIdentifierTimePanelCell = @"reuseIdentifierTimePanelCell";
     return YES;
 }
 */
+
+#pragma mark - SearchBarDelegate
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    [self presentViewController:[[LSBibleSearchController alloc] init] animated:NO completion:nil];
+    return NO;
+}
 
 @end

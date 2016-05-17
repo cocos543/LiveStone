@@ -8,11 +8,22 @@
 
 #import "LSTimePanelViewCell.h"
 
+@interface LSTimePanelViewCell ()
+@property (weak, nonatomic) IBOutlet UIButton *intercessionBtn;
+
+@end
+
 @implementation LSTimePanelViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+}
+
+
+-(void)layoutSubviews{
+    self.intercessionBtn.layer.cornerRadius = self.intercessionBtn.frame.size.height / 2;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
