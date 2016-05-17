@@ -17,6 +17,8 @@
     [aCoder encodeObject:self.yesterdayMinutes forKey:@"yesterdayMinutes"];
     [aCoder encodeObject:self.todayMinutes forKey:@"todayMinutes"];
     [aCoder encodeObject:self.lastReadLong forKey:@"lastReadLong"];
+    
+    [aCoder encodeObject:self.lastMinutes forKey:@"lastMinutes"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder{
@@ -27,6 +29,8 @@
         _yesterdayMinutes = [aDecoder decodeObjectForKey:@"yesterdayMinutes"];
         _todayMinutes = [aDecoder decodeObjectForKey:@"todayMinutes"];
         _lastReadLong = [aDecoder decodeObjectForKey:@"lastReadLong"];
+        
+        _lastMinutes = [aDecoder decodeObjectForKey:@"lastMinutes"];
     }
     return self;
 }

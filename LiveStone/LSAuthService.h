@@ -110,6 +110,13 @@
 - (LSUserInfoItem *)getUserInfo;
 
 /**
+ *  Save userInfoItem to disk.
+ *
+ *  @param userInfoItem LSUserInfoItem
+ */
+- (void)saveUserInfoWithItem:(LSUserInfoItem *)userInfoItem;
+
+/**
  *  Return user auth status.
  *
  *  @return YES or NO

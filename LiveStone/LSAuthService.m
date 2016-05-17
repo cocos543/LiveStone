@@ -185,9 +185,16 @@
     return info;
 }
 
+- (void)saveUserInfoWithItem:(LSUserInfoItem *)userInfoItem {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[userInfoItem userInfoData] forKey:LIVESTONE_DEFAULTS_USERINFO];
+}
+
 - (BOOL)isLogin {
     return [self getUserInfo] ? YES :NO;
 }
+
+
 
 
 @end

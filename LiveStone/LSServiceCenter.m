@@ -30,6 +30,10 @@
         
         baseService = [LSIntercessionService shardService];
         
+    }else if (service == [LSStatisticsService class]){
+        
+        baseService = [LSStatisticsService shardService];
+        
     }
     return baseService;
 }

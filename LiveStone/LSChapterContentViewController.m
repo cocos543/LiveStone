@@ -6,15 +6,10 @@
 //  Copyright © 2016年 Cocos. All rights reserved.
 //
 
-#ifndef LS_Store
-#define LS_Store
-#import "LSBibleStore.h"
-#endif
-
-
 #import "LSChapterContentViewController.h"
 #import "LSBibleItem.h"
 #import "UILabel+CCStringFrame.h"
+#import "LSServiceCenter.h"
 
 @interface LSChapterContentViewController ()
 @property (nonatomic,strong) NSArray *itemsModel;
@@ -57,13 +52,47 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
     self.title = [NSString stringWithFormat:@"%@ 第%@章",self.bookName,@(self.chapterNo)];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [self startCalcTime];
+    [self addNotification];
+}
+
 -(void)viewWillDisappear:(BOOL)animated{
     [self hideNoteTextView];
+    [self stopCalcTime];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)startCalcTime{
+    LSServiceCenter *center = [LSServiceCenter defaultCenter];
+    LSStatisticsService *statisticsService = [center getService:[LSStatisticsService class]];
+    LSAuthService *authService = [center getService:[LSAuthService class]];
+    [statisticsService statisticsStartCalcReadingTime:[authService getUserInfo].readingItem];
+}
+
+- (void)stopCalcTime{
+    LSServiceCenter *center = [LSServiceCenter defaultCenter];
+    LSStatisticsService *statisticsService = [center getService:[LSStatisticsService class]];
+    LSAuthService *authService = [center getService:[LSAuthService class]];
+    LSUserInfoItem *item = [authService getUserInfo];
+    item.readingItem = [statisticsService statisticsEndCalcReadingTime];
+    //Until now the data has not uploaded.The data will be uploaded when the app into the background.
+    [authService saveUserInfoWithItem:item];
+}
+
+- (void)addNotification{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopCalcTime) name:UIApplicationWillResignActiveNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startCalcTime) name:UIApplicationDidBecomeActiveNotification object:nil];
+    
 }
 
 #pragma mark - Data

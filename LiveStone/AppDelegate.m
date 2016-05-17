@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "LSUserInfoItem.h"
+#import "LSServiceCenter.h"
 @interface AppDelegate ()
 
 @end
@@ -24,6 +24,12 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    LSServiceCenter *center = [LSServiceCenter defaultCenter];
+    LSStatisticsService *statisticsService = [center getService:[LSStatisticsService class]];
+    LSAuthService *authService = [center getService:[LSAuthService class]];
+    //Until now the data has not uploaded.The data will be uploaded when the app into the background.
+    [statisticsService statisticsUploadReadingTime:[authService getUserInfo].readingItem];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

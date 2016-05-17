@@ -41,6 +41,7 @@
 		ED4848F61CC85D080093E29E /* LSBookChapterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4848F51CC85D080093E29E /* LSBookChapterCell.xib */; };
 		ED4CFE601CE427FD00A166C4 /* LSExtraService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4CFE5F1CE427FD00A166C4 /* LSExtraService.m */; };
 		ED4CFE631CE46AE700A166C4 /* LSUserReadingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4CFE621CE46AE700A166C4 /* LSUserReadingItem.m */; };
+		ED4CFE661CE47B8200A166C4 /* LSStatisticsService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4CFE651CE47B8200A166C4 /* LSStatisticsService.m */; };
 		ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */; };
 		ED6FD8C01CD838DF00BA599D /* LSRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED6FD8BE1CD838DF00BA599D /* LSRegisterViewController.xib */; };
 		ED7A6F721CD2FD6E00EF1592 /* UILabel+CCStringFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7A6F711CD2FD6E00EF1592 /* UILabel+CCStringFrame.m */; };
@@ -117,6 +118,8 @@
 		ED4CFE5F1CE427FD00A166C4 /* LSExtraService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSExtraService.m; sourceTree = "<group>"; };
 		ED4CFE611CE46AE700A166C4 /* LSUserReadingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSUserReadingItem.h; sourceTree = "<group>"; };
 		ED4CFE621CE46AE700A166C4 /* LSUserReadingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSUserReadingItem.m; sourceTree = "<group>"; };
+		ED4CFE641CE47B8200A166C4 /* LSStatisticsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSStatisticsService.h; sourceTree = "<group>"; };
+		ED4CFE651CE47B8200A166C4 /* LSStatisticsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSStatisticsService.m; sourceTree = "<group>"; };
 		ED5F94BF1CC1B83D00D8D626 /* LSLiveStoneTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSLiveStoneTableViewController.h; sourceTree = "<group>"; };
 		ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSLiveStoneTableViewController.m; sourceTree = "<group>"; };
 		ED6FD8BE1CD838DF00BA599D /* LSRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSRegisterViewController.xib; sourceTree = "<group>"; };
@@ -349,6 +352,8 @@
 				ED45E7191CDC8E4E00FAC93A /* LSIntercessionService.m */,
 				ED4CFE5E1CE427FD00A166C4 /* LSExtraService.h */,
 				ED4CFE5F1CE427FD00A166C4 /* LSExtraService.m */,
+				ED4CFE641CE47B8200A166C4 /* LSStatisticsService.h */,
+				ED4CFE651CE47B8200A166C4 /* LSStatisticsService.m */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -522,6 +527,7 @@
 				EDB797DA1CDDC2E4005CB768 /* LSUserAuthItem.m in Sources */,
 				ED358B991CC5C2C00016D1C1 /* LSBookDetailCell.m in Sources */,
 				ED3842981CCEEA560021EA06 /* LSBibleStore.m in Sources */,
+				ED4CFE661CE47B8200A166C4 /* LSStatisticsService.m in Sources */,
 				ED029CE91CDABD9C00B76272 /* LSJoinUsViewController.m in Sources */,
 				ED9815961CDB75F500CF7944 /* UIViewController+ProgressHUD.m in Sources */,
 				ED4CFE631CE46AE700A166C4 /* LSUserReadingItem.m in Sources */,

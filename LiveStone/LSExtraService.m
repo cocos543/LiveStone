@@ -8,7 +8,6 @@
 
 #import "LSExtraService.h"
 #import "LSAuthService.h"
-#import "LSUserReadingItem.h"
 
 @interface LSExtraService ()
 
@@ -18,8 +17,4 @@
 
 @implementation LSExtraService
 
-
-- (void)extraUpdateReadingTime:(LSUserReadingItem *)readingItem {
-	
-}
 @end

@@ -25,5 +25,12 @@
  *  Duration time for reading bible at totay
  */
 @property (nonatomic, strong) NSNumber *todayMinutes;
+/**
+ *  This is a timestamp,such as 1463023958,stupid.
+ */
 @property (nonatomic, strong) NSNumber *lastReadLong;
+/**
+ *  This is a time duration,use for post time's statistics
+ */
+@property (nonatomic, strong) NSNumber *lastMinutes;
 @end

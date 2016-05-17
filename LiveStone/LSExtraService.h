@@ -8,13 +8,10 @@
 
 /**
  *  LSExtraService provices a variety of functions which is covering the entire program.
- *  Such as time statistics.
+ *
  */
 #import "LSServiceBase.h"
 
-@class LSUserReadingItem;
-
 @interface LSExtraService : LSServiceBase
 
-- (void)extraUpdateReadingTime:(LSUserReadingItem *)readingItem;
 @end

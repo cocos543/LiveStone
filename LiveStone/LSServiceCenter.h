@@ -12,6 +12,8 @@
 #import "LSServiceBase.h"
 #import "LSAuthService.h"
 #import "LSIntercessionService.h"
+#import "LSExtraService.h"
+#import "LSStatisticsService.h"
 
 @interface LSServiceCenter : NSObject
 

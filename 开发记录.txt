@@ -101,5 +101,9 @@ NSDictionary *requestContents = @{
 30. 物理网络链接错误,由ServiceBase处理错误,同时调用ServiceBase的delegate<LSServiceBaseProtocol>中的serviceConnectFail方法.
 注意,如果子类和父类用同名属性,需要在子类实现的地方对属性加上"@dynamic 属性名".
 
+31. iOS中的NSDate时区问题.如果是通过字符串生成NSDate的,默认字符串就是参照设备时区再转换的.得到的NSdate可以看成是一个记录了时间戳的对象,如果要从NSDate里面获取到实际的年月日,一种是打印成字符串的,则需要使用descriptionWithLocale:,明确选择一个时区再打印,否则就是显示默认的Greenwich Mean Time (GMT)了.另一种是要获取到年月日的,可以使用日历对象.[NSCalendar currentCalendar],这个实例化出来的就是一个本地日历了.不需要再设置成本地时区了.然后结合- (NSDateComponents *)components:(NSCalendarUnit)unitFlags fromDate:(NSDate *)date方法,就可以获取到一个完整的日期组件对象了.
+
+32. 时间统计部分,在阅读界面监听了UIApplicationWillResignActiveNotification这个事件,但是每次用户锁屏(或者回到桌面)时,系统会先触发AppDelegate类里面的applicationWillResignActive方法,而我刚好在这里做了一个upload的请求.所以说,有时候用户在阅读界面锁屏时,程序先发起upload请求,再执行stop.所以upload实际上是被忽略的.等用户打开屏幕时,程序调用start,接着用户第二次锁屏时,这个时候程序也是先upload,再stop,但是第二次的upload就不会被忽略了,因为在此之前已经有了一个完整的start,stop了,所以upload会被框架接受.
+
 
 
