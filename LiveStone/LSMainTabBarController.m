@@ -10,7 +10,7 @@
 #import "LSRegisterViewController.h"
 #import "LSServiceCenter.h"
 
-@interface LSMainTabBarController ()
+@interface LSMainTabBarController () <LSAuthServiceDelegate>
 @property (nonatomic) BOOL isAppearAgain;
 @end
 
@@ -52,7 +52,7 @@
 
 - (void)autoLogin{
     LSAuthService *authService = [[LSServiceCenter defaultCenter] getService:[LSAuthService class]];
-    
+    authService.delegate = self;
     if ([authService isLogin]) {
         LSUserInfoItem *info = [authService getUserInfo];
         [authService authReLogin:info.phone];
@@ -62,5 +62,16 @@
 //    
 //    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:regVC];
 //    [self presentViewController:nav animated:YES completion:nil];
+}
+
+
+#pragma mark LSAuthServiceDelegate
+- (void)authServiceDidLogin:(LSUserInfoItem *)userInfo{
+    LSServiceCenter *center = [LSServiceCenter defaultCenter];
+    LSStatisticsService *statisticsService = [center getService:[LSStatisticsService class]];
+    LSAuthService *authService = [center getService:[LSAuthService class]];
+    LSUserInfoItem *item = [authService getUserInfo];
+    [statisticsService statisticsReCalcReadingTime:item.readingItem];
+    [authService saveUserInfoWithItem:item];
 }
 @end

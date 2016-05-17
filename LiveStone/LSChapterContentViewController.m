@@ -55,6 +55,7 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
 - (void)viewDidAppear:(BOOL)animated{
     [self startCalcTime];
     [self addNotification];
+    [self addLeftRightGesture];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -95,21 +96,20 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
     
 }
 
-#pragma mark - Data
-/**
- *  Load bible item
- */
-- (void)loadData{
-    self.itemsModel = [[LSBibleStore sharedStore] bibleContentWithChapterNo:self.chapterNo bookNo:self.bookNo];
+- (void)addLeftRightGesture{
+    UISwipeGestureRecognizer *leftSwipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipes:)];
+    UISwipeGestureRecognizer *rightSwipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipes:)];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSMutableArray *indexPathsArray = [[NSMutableArray alloc] init];
-        for (int i = 0; i < self.itemsModel.count; i++) {
-            [indexPathsArray addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-            self.itemsNumber++;
-        }
-        [self.tableView insertRowsAtIndexPaths:indexPathsArray withRowAnimation:UITableViewRowAnimationAutomatic];
-    });
+    leftSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    rightSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    [self.view addGestureRecognizer:leftSwipeGestureRecognizer];
+    [self.view addGestureRecognizer:rightSwipeGestureRecognizer];
+}
+#pragma mark - Event
+
+- (void)handleSwipes:(id)sender{
+    NSLog(@"%@",sender);
 }
 
 - (void)showNoteTextViewForIndexPath:(NSIndexPath *)indexPath{
@@ -166,6 +166,23 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
     }
     self.isHiddenNoteView = YES;
     [self.tableView reloadData];
+}
+
+#pragma mark - Data
+/**
+ *  Load bible item
+ */
+- (void)loadData{
+    self.itemsModel = [[LSBibleStore sharedStore] bibleContentWithChapterNo:self.chapterNo bookNo:self.bookNo];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSMutableArray *indexPathsArray = [[NSMutableArray alloc] init];
+        for (int i = 0; i < self.itemsModel.count; i++) {
+            [indexPathsArray addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+            self.itemsNumber++;
+        }
+        [self.tableView insertRowsAtIndexPaths:indexPathsArray withRowAnimation:UITableViewRowAnimationAutomatic];
+    });
 }
 
 #pragma mark - Table view data source

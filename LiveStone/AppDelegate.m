@@ -29,7 +29,9 @@
     LSStatisticsService *statisticsService = [center getService:[LSStatisticsService class]];
     LSAuthService *authService = [center getService:[LSAuthService class]];
     //Until now the data has not uploaded.The data will be uploaded when the app into the background.
-    [statisticsService statisticsUploadReadingTime:[authService getUserInfo].readingItem];
+    LSUserInfoItem *item = [authService getUserInfo];
+    [statisticsService statisticsReCalcReadingTime:item.readingItem];
+    [statisticsService statisticsUploadReadingTime:item.readingItem];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

@@ -30,4 +30,10 @@
  */
 - (LSUserReadingItem *)statisticsEndCalcReadingTime;
 
+/**
+ *  You need to recalculate the LSUserReadingItem because the last time you read were more than one day from now.
+ *
+ *  @param readingItem LSUserReadingItem *
+ */
+- (void)statisticsReCalcReadingTime:(LSUserReadingItem *)readingItem;
 @end

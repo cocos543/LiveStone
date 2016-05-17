@@ -47,8 +47,51 @@
 
 #pragma mark - Private Method
 
+- (BOOL)isTheSameDayBetween:(NSDate *)firstDate and:(NSDate *)secondDate{
+    NSDateComponents *firstComponents = [[NSCalendar currentCalendar]
+                                        components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
+                                        fromDate:firstDate];
+    NSDateComponents *secondComponents = [[NSCalendar currentCalendar]
+                                       components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
+                                       fromDate:secondDate];
+    
+    if (firstComponents.year == secondComponents.year && firstComponents.month == secondComponents.month && firstComponents.day == secondComponents.day) {
+        //the same day
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)isTheNextDayBetween:(NSDate *)firstDate and:(NSDate *)secondDate{
+    NSDateComponents *firstComponents = [[NSCalendar currentCalendar]
+                                        components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
+                                        fromDate:firstDate];
+    NSDateComponents *secondComponents = [[NSCalendar currentCalendar]
+                                       components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
+                                       fromDate:secondDate];
+    if (firstComponents.year == secondComponents.year && firstComponents.month == secondComponents.month &&  (secondComponents.day - firstComponents.day) == 1) {
+        //Next day
+        return YES;
+    }
+    return NO;
+}
 
 #pragma mark - Open Method
+- (void)statisticsReCalcReadingTime:(LSUserReadingItem *)readingItem {
+    NSDate *nowDate = [NSDate date];
+    NSDate *lastDate = [NSDate dateWithTimeIntervalSince1970:readingItem.lastReadLong.integerValue];
+    if (![self isTheSameDayBetween:lastDate and:nowDate] && ![self isTheNextDayBetween:lastDate and:nowDate]) {
+        //If this is not the same day and not the next day,must recount whether reading or not.
+        if (readingItem.todayMinutes.integerValue != 0 || readingItem.yesterdayMinutes.integerValue != 0) {
+            readingItem.lastMinutes = @(0);
+            readingItem.continuousDays = @(1);
+            readingItem.yesterdayMinutes = @(0);
+            readingItem.todayMinutes = @(0);
+            self.isNeedUpload = YES;
+        }
+    }
+}
+
 - (void)statisticsUploadReadingTime:(LSUserReadingItem *)readingItem {
     
     if (!self.isNeedUpload) {
@@ -56,7 +99,7 @@
     }else{
         self.isNeedUpload = NO;
     }
-    //Here the readingItem.lastMinutes man be nil. Because userInfo will be updated from server when the app launch every time.If user does not read book after app launch, the readingItem.lastMinutes will always be empty(nil).
+    //Here the readingItem's lastMinutes man be nil. Because userInfo will be updated from server when the app launch every time.If user does not read book after app launch, the readingItem.lastMinutes will always be empty(nil).
     if (!readingItem.lastMinutes) {
         return;
     }
@@ -99,13 +142,6 @@
     NSDate *endDate = [NSDate date];
     NSDate *theLastDate =[NSDate dateWithTimeIntervalSince1970:self.readingTime.lastReadLong.integerValue];
     
-    NSDateComponents *lastComponents = [[NSCalendar currentCalendar]
-                                    components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
-                                    fromDate:theLastDate];
-    NSDateComponents *endComponents = [[NSCalendar currentCalendar]
-                                         components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
-                                         fromDate:endDate];
-    
     NSInteger readingSec = floor([endDate timeIntervalSince1970]) - floor([startDate timeIntervalSince1970]);
     if (readingSec > 300) {
         readingSec = 300;
@@ -115,11 +151,11 @@
     NSUInteger theReadingMinutes = readingSec / 60;
     readingItem.lastMinutes  = @(theReadingMinutes);
     readingItem.totalMinutes = @(readingItem.totalMinutes.integerValue + theReadingMinutes);
-    if (lastComponents.year == endComponents.year && lastComponents.month == endComponents.month && lastComponents.day == endComponents.day) {
+    if ([self isTheSameDayBetween:theLastDate and:endDate]) {
         //the same day
         readingItem.todayMinutes = @(readingItem.todayMinutes.integerValue + theReadingMinutes);
     }else{
-        if (lastComponents.year == endComponents.year && lastComponents.month == endComponents.month && (endComponents.day - lastComponents.day) == 1) {
+        if ([self isTheNextDayBetween:theLastDate and:endDate]) {
             //One day difference
             readingItem.continuousDays = @(readingItem.continuousDays.integerValue + 1);
             readingItem.yesterdayMinutes = @(readingItem.todayMinutes.integerValue);
