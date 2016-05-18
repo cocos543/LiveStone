@@ -76,8 +76,9 @@ static NSString *reuseIdentifierTimePanelCell = @"reuseIdentifierTimePanelCell";
 #pragma mark - TableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (indexPath.section == 1 && indexPath.row == 0) {
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        return 0.388 * SCREEN_WIDTH;
+    }else if (indexPath.section == 1 && indexPath.row == 0) {
         if ([self.authService isLogin]) {
             return 80;
         }
@@ -105,7 +106,12 @@ static NSString *reuseIdentifierTimePanelCell = @"reuseIdentifierTimePanelCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0 && indexPath.section == 1) {
         if ([self.authService isLogin]) {
+            LSUserInfoItem *item = [self.authService getUserInfo];
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierTimePanelCell forIndexPath:indexPath];
+            UILabel *label1 = [cell viewWithTag:1];
+            label1.text = [NSString stringWithFormat:@"%@",item.readingItem.continuousDays];
+            UILabel *label2 = [cell viewWithTag:2];
+            label2.text = [NSString stringWithFormat:@"%@",item.continuousIntercessionDays];
             return cell;
         }
     }

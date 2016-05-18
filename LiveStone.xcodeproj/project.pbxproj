@@ -369,9 +369,17 @@
 			name = Service;
 			sourceTree = "<group>";
 		};
+		EDC02E7F1CEBF3F30049114B /* Prayer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Prayer;
+			sourceTree = "<group>";
+		};
 		EDFA408D1CC11A450054E77C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				EDC02E7F1CEBF3F30049114B /* Prayer */,
 				ED064A161CE30FBB00FA2745 /* LiveStone */,
 				ED029CE51CDABD7200B76272 /* Register */,
 				ED0221CA1CC3389E004D6514 /* Bible */,
