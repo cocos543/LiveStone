@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *relationshipLabel;
 @property (weak, nonatomic) IBOutlet LSCircleImageView *avaterImgView;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 
 @end

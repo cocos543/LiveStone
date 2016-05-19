@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="164"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="164.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56I-6z-sXj" customClass="LSCircleImageView">
@@ -55,10 +55,10 @@
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99999人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FiF-Ra-16Y">
-                        <rect key="frame" x="257" y="141" width="55" height="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FiF-Ra-16Y">
+                        <rect key="frame" x="290" y="141" width="21.5" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="55" id="Eht-lC-ywh"/>
+                            <constraint firstAttribute="width" priority="250" constant="25" id="Eht-lC-ywh"/>
                             <constraint firstAttribute="height" constant="15" id="Ia1-Fp-84m"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -66,13 +66,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQV-ST-Ne7">
-                        <rect key="frame" x="239" y="141" width="15" height="15"/>
+                        <rect key="frame" x="272.5" y="141" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="76t-ji-KLE"/>
                             <constraint firstAttribute="width" constant="15" id="XfZ-w0-MN8"/>
                         </constraints>
-                        <state key="normal" title="Button" image="Like"/>
-                        <state key="selected" image="Liked"/>
+                        <state key="normal" title="Button" image="IntercessionIcon"/>
                     </button>
                 </subviews>
                 <constraints>
@@ -98,6 +97,7 @@
             <connections>
                 <outlet property="avaterImgView" destination="56I-6z-sXj" id="PB8-90-agu"/>
                 <outlet property="contentLabel" destination="bfd-Lm-REA" id="M1H-Zc-ed8"/>
+                <outlet property="numberLabel" destination="FiF-Ra-16Y" id="6bu-g6-GlB"/>
                 <outlet property="relationshipLabel" destination="2Zs-EJ-n2E" id="a50-fN-8HV"/>
                 <outlet property="userNameLabel" destination="K7D-XZ-DNh" id="y0i-2g-vH0"/>
             </connections>
@@ -105,7 +105,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Like" width="12" height="15"/>
-        <image name="Liked" width="12" height="15"/>
+        <image name="IntercessionIcon" width="21" height="21"/>
     </resources>
 </document>

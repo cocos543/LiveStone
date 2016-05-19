@@ -143,6 +143,11 @@ NSDictionary *requestContents = @{
 
 44. 使用系统提供的tableView cell动态高度,需要设置self.tableView.estimatedRowHeight和self.tableView.rowHeight = UITableViewAutomaticDimension
 
+45. 为tableview添加toolBar的方法,如果是用了push他的navigationController,则直接在tableView控制器didload后设置[self.navigationController setToolbarHidden:NO];即可.注意消失前把它设置成隐藏的...
+
+46. 自定义toolbar上的UIBarButtonItem.思路就是先做一个UIButton,可以添加图片文字,可以用EdgeInsets属性设置图片文字的偏移,然后使用- (instancetype)initWithCustomView:(UIView *)customView方法把按钮转成UIBarButtonItem,再把item以数组的形式加到 toolbarItems 就可以了.加到toolbar的item会自动有左右空隙,系统会自动摆放item到toolbar的y轴居中位置,只需要设置UIButton的width和height就可以了,点击事件也需要在UIButton上面加.
+
+47.
 
 
 

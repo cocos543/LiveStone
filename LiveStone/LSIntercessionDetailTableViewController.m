@@ -1,23 +1,19 @@
 //
-//  LSIntercessionTableViewController.m
+//  LSIntercessionDetailTableViewController.m
 //  LiveStone
 //
-//  Created by 郑克明 on 16/5/18.
+//  Created by 郑克明 on 16/5/19.
 //  Copyright © 2016年 Cocos. All rights reserved.
 //
 
-#import "LSIntercessionTableViewController.h"
-#import "LSIntercessionCell.h"
-#import "LSCircleImageView.h"
 #import "LSIntercessionDetailTableViewController.h"
-#import "MJRefresh.h"
 
-@interface LSIntercessionTableViewController ()
+@interface LSIntercessionDetailTableViewController ()
 
 @end
 
-@implementation LSIntercessionTableViewController
-static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
+@implementation LSIntercessionDetailTableViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -26,11 +22,11 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [self.tableView registerNib:[UINib nibWithNibName:@"LSIntercessionCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuseIdentifierCell];
-    self.tableView.estimatedRowHeight = 140;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.hidesBottomBarWhenPushed = YES;
-    [self addRefreshHeader];
+    [self setupToolbar];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.navigationController setToolbarHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,41 +35,70 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
 }
 #pragma mark - UI
 
-- (void)addRefreshHeader{
-    MJRefreshNormalHeader *mjHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        // 进入刷新状态后会自动调用这个block
-        [self.tableView.mj_header endRefreshing];
-    }];
-    MJRefreshAutoNormalFooter *mjFooter = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        // 进入刷新状态后会自动调用这个block
-        [self.tableView.mj_footer endRefreshing];
-    }];
-    self.tableView.mj_header = mjHeader;
-    self.tableView.mj_footer = mjFooter;
+- (void)setupToolbar{
+    [self.navigationController setToolbarHidden:NO];
+    
+    UIButton *intercedeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *image = [UIImage imageNamed:@"IntercessionIcon"];
+    [intercedeBtn setImage:image forState:UIControlStateNormal];
+    [intercedeBtn setTitle:@"更新代祷" forState:UIControlStateNormal];
+    
+    intercedeBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [intercedeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [intercedeBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    intercedeBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    intercedeBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
+    intercedeBtn.frame = CGRectMake(0, 0 , SCREEN_WIDTH * 0.5625, 44);
+    
+    UIButton *blessBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *blessImg = [UIImage imageNamed:@"BlessingIcon"];
+    [blessBtn setImage:blessImg forState:UIControlStateNormal];
+    [blessBtn setTitle:@"祝福Ta" forState:UIControlStateNormal];
+    blessBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [blessBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [blessBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    blessBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    blessBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
+    blessBtn.frame = CGRectMake(0, 0, SCREEN_WIDTH * 0.3125, 44);
+    
+    UIButton *spaceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    spaceBtn.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.3f];
+    spaceBtn.frame = CGRectMake(0, 0, 1, 44 * 0.7);
+    
+    [intercedeBtn addTarget:self action:@selector(tabItemClick:) forControlEvents:UIControlEventTouchUpInside];
+    [blessBtn addTarget:self action:@selector(tabItemClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *intercedeItem = [[UIBarButtonItem alloc] initWithCustomView:intercedeBtn];
+    UIBarButtonItem *blessItem = [[UIBarButtonItem alloc] initWithCustomView:blessBtn];
+    UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc] initWithCustomView:spaceBtn];
+
+    self.toolbarItems = @[intercedeItem, spaceItem, blessItem];
 }
 
+- (void)tabItemClick:(id)sender{
+    NSLog(@"item click");
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+#warning Incomplete implementation, return the number of sections
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+#warning Incomplete implementation, return the number of rows
+    return 0;
 }
 
-
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    LSIntercessionCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierCell forIndexPath:indexPath];
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    cell.avaterImgView.image = [UIImage imageNamed:@"TestAvatar"];
-    if (indexPath.row == 1) {
-        cell.numberLabel.text = @"9999人";
-    }
+    // Configure the cell...
+    
     return cell;
 }
-
+*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -109,21 +134,21 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
 }
 */
 
-
+/*
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    LSIntercessionDetailTableViewController *detailViewController = [[LSIntercessionDetailTableViewController alloc] init];
+    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
     
     // Pass the selected object to the new view controller.
     
     // Push the view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
-
+*/
 
 /*
 #pragma mark - Navigation
