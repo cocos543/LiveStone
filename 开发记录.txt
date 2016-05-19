@@ -111,7 +111,40 @@ NSDictionary *requestContents = @{
 
 35. 在xcode左边的视图导航栏上下拖动子视图的位置可以改变子视图的层级....这样写约束的时候才比较规整(好像跟写约束没任何关系.....)
 
-36.
+36.在活石tab上使用textView,发现启动速度没有Label快.
+
+37.在storyBoard中设计控制器的导航栏按钮时,需要先放一个Navigation Item上去,然后才可以在导航栏地方上摆放BarButtonItem
+
+38.Navagation Bar可以设置标题颜色和上面的item的颜色.
+设置标题颜色,需要设置Title Color.
+设置所有item颜色则需要设置View Tint属性,设置的item颜色会在push一个视图后,变成新视图的Bar Button item的默认颜色.
+如果要设置整个Bar的背景颜色,需要设置Bar Tint属性.
+
+下面总结一下用代码设置导航栏相关颜色和按钮的方法.
+(1)设置导航栏标题颜色self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                           [UIColor whiteColor],
+                                           UITextAttributeTextColor];
+
+(2)设置导航栏背景颜色self.navigationController.navigationBar.barTintColor
+(3)设置导航栏上面的bar button items文字颜色self.navigationController.navigationBar.tintColor;单独对item进行设置则是self.navigationItem.leftBarButtonItem.tintColor
+(4)设置导航栏上的按钮,需要设置self.navigationItem属性.
+* 注意,navigationController.navigationBar在viewDidLoad是nil,只有在控制器触发viewWillAppear方法后才有值
+
+39. 代码写宽度约束是这样的
+[self.userContactInfoView addConstraint:[NSLayoutConstraint constraintWithItem:self.userContactInfoView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:100]];
+
+40. 从xib文件中加载出来的视图初始化方法是initWithCoder:(NSCoder *)aDecoder
+
+41. 如何自定义控件?
+
+42. 子类化UIImageView的时候需要注意,开发文档中说明了UIImageView 并不是通过drawRect:方法渲染的,所以子类里重载这个方法是没有任何作用的.
+
+43. 如果需要把图层的内容绘制到Frame之外,则必须将view.clipsToBounds设置成NO
+
+
+
+
+
 
 
 

@@ -188,19 +188,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="　　滕王高阁临江渚，佩玉鸣鸾罢歌舞。画栋朝飞南浦云，珠帘暮卷西山雨。闲云潭影日悠悠，物换星移几度秋。阁中帝子今何在？槛外长江空自流。" translatesAutoresizingMaskIntoConstraints="NO" id="sD7-ca-vJe">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　　滕王高阁临江渚，佩玉鸣鸾罢歌舞。画栋朝飞南浦云，珠帘暮卷西山雨。闲云潭影日悠悠，物换星移几度秋。阁中帝子今何在？槛外长江空自流。" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="620-Ph-cBS">
                                                     <rect key="frame" x="8" y="0.0" width="584" height="89"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="sD7-ca-vJe" secondAttribute="trailing" constant="8" id="Acd-JY-iTL"/>
-                                                <constraint firstItem="sD7-ca-vJe" firstAttribute="top" secondItem="ckz-ej-RBW" secondAttribute="top" id="OwN-7S-D5a"/>
-                                                <constraint firstItem="sD7-ca-vJe" firstAttribute="leading" secondItem="ckz-ej-RBW" secondAttribute="leading" constant="8" id="jQX-Nj-SbA"/>
-                                                <constraint firstAttribute="bottom" secondItem="sD7-ca-vJe" secondAttribute="bottom" id="z3h-Bb-mNx"/>
+                                                <constraint firstItem="620-Ph-cBS" firstAttribute="leading" secondItem="ckz-ej-RBW" secondAttribute="leading" constant="8" id="EAc-yn-CCF"/>
+                                                <constraint firstAttribute="trailing" secondItem="620-Ph-cBS" secondAttribute="trailing" constant="8" id="N1g-nH-qYz"/>
+                                                <constraint firstAttribute="bottom" secondItem="620-Ph-cBS" secondAttribute="bottom" id="XWN-xt-Nku"/>
+                                                <constraint firstItem="620-Ph-cBS" firstAttribute="top" secondItem="ckz-ej-RBW" secondAttribute="top" id="xkJ-Un-yYH"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -622,6 +621,9 @@
                                                 <constraint firstItem="aZ7-Nb-art" firstAttribute="centerY" secondItem="OZx-oO-e2t" secondAttribute="centerY" id="vxA-OZ-Wlk"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="9ko-HB-QOD" kind="show" id="yN5-9B-umm"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -670,6 +672,37 @@
             </objects>
             <point key="canvasLocation" x="1507" y="1451"/>
         </scene>
+        <!--代祷-->
+        <scene sceneID="Sbu-ml-pyL">
+            <objects>
+                <tableViewController id="9ko-HB-QOD" customClass="LSIntercessionTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2b4-B0-j32">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="H4z-Fh-Sj0">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H4z-Fh-Sj0" id="tpW-jR-3kz">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9ko-HB-QOD" id="YL6-Sj-tsG"/>
+                            <outlet property="delegate" destination="9ko-HB-QOD" id="bgp-yz-p0Y"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="代祷" id="Yw2-Iq-6Hr">
+                        <barButtonItem key="rightBarButtonItem" image="PublishIntercession" id="ABc-G7-soC"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dP0-II-djp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2159" y="1451"/>
+        </scene>
         <!--我-->
         <scene sceneID="85m-en-kO0">
             <objects>
@@ -699,6 +732,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="qf7-ha-llk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.45882352941176469" green="0.79607843137254897" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -725,6 +759,7 @@
         <image name="Me" width="35" height="35"/>
         <image name="PrayFor" width="24" height="24"/>
         <image name="PrayerBox" width="24" height="24"/>
+        <image name="PublishIntercession" width="24" height="24"/>
         <image name="ShareApp" width="24" height="24"/>
         <image name="UserDefaultAvatar" width="60" height="60"/>
     </resources>

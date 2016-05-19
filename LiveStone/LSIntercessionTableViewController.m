@@ -1,19 +1,20 @@
 //
-//  LSDiscoveryTableViewController.m
+//  LSIntercessionTableViewController.m
 //  LiveStone
 //
-//  Created by 郑克明 on 16/4/15.
+//  Created by 郑克明 on 16/5/18.
 //  Copyright © 2016年 Cocos. All rights reserved.
 //
 
-#import "LSDiscoveryTableViewController.h"
+#import "LSIntercessionTableViewController.h"
+#import "LSIntercessionCell.h"
 
-@interface LSDiscoveryTableViewController () <UITableViewDelegate>
+@interface LSIntercessionTableViewController ()
 
 @end
 
-@implementation LSDiscoveryTableViewController
-
+@implementation LSIntercessionTableViewController
+static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -22,7 +23,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.navigationItem.title = @"发现";
+    [self.tableView registerNib:[UINib nibWithNibName:@"LSIntercessionCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuseIdentifierCell];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,34 +31,23 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    
-}
-
-
-#pragma mark - Table view delegate
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
-        return 15.0f;
-    }
-    return 5.0f;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
 #pragma mark - Table view data source
-/*
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierCell forIndexPath:indexPath];
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -90,6 +80,32 @@
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
+}
+*/
+
+/*
+#pragma mark - Table view delegate
+
+// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Navigation logic may go here, for example:
+    // Create the next view controller.
+    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+    
+    // Pass the selected object to the new view controller.
+    
+    // Push the view controller.
+    [self.navigationController pushViewController:detailViewController animated:YES];
+}
+*/
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
 */
 
