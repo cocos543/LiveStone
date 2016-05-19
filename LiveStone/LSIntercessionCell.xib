@@ -3,18 +3,109 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="130" id="KGk-i7-Jjw" customClass="LSIntercessionCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="164" id="KGk-i7-Jjw" customClass="LSIntercessionCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="164"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56I-6z-sXj" customClass="LSCircleImageView">
+                        <rect key="frame" x="16" y="16" width="50" height="50"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="3fv-07-Dq6"/>
+                            <constraint firstAttribute="width" constant="50" id="zSG-4v-Ayn"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="百里抱信" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7D-XZ-DNh">
+                        <rect key="frame" x="72" y="16" width="68" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" red="0.27450980392156865" green="0.68235294117647061" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朋友的朋友" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Zs-EJ-n2E">
+                        <rect key="frame" x="72" y="41" width="74" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="HvG-Uy-g4P"/>
+                            <constraint firstAttribute="width" constant="74" id="Qzg-WF-eQX"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="海上生明月，天涯共此时。情人怨遥夜，竟夕起相思。灭烛怜光满，披衣觉露滋。不堪盈手赠，还寝梦佳期。" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfd-Lm-REA">
+                        <rect key="frame" x="16" y="74" width="296" height="59"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一个月前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7N-ux-APn">
+                        <rect key="frame" x="16" y="141" width="68" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="OX7-Gf-Oo7"/>
+                            <constraint firstAttribute="width" constant="68" id="huY-hV-3T6"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99999人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FiF-Ra-16Y">
+                        <rect key="frame" x="257" y="141" width="55" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="55" id="Eht-lC-ywh"/>
+                            <constraint firstAttribute="height" constant="15" id="Ia1-Fp-84m"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQV-ST-Ne7">
+                        <rect key="frame" x="239" y="141" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="76t-ji-KLE"/>
+                            <constraint firstAttribute="width" constant="15" id="XfZ-w0-MN8"/>
+                        </constraints>
+                        <state key="normal" title="Button" image="Like"/>
+                        <state key="selected" image="Liked"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="2Zs-EJ-n2E" firstAttribute="top" secondItem="K7D-XZ-DNh" secondAttribute="bottom" constant="4" id="8Om-FC-4W5"/>
+                    <constraint firstItem="K7D-XZ-DNh" firstAttribute="leading" secondItem="56I-6z-sXj" secondAttribute="trailing" constant="6" id="Asb-EP-9re"/>
+                    <constraint firstItem="tQV-ST-Ne7" firstAttribute="bottom" secondItem="p7N-ux-APn" secondAttribute="bottom" id="Bvi-zr-yRl"/>
+                    <constraint firstItem="bfd-Lm-REA" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="HZp-4Y-Zot"/>
+                    <constraint firstItem="2Zs-EJ-n2E" firstAttribute="leading" secondItem="K7D-XZ-DNh" secondAttribute="leading" id="IaH-g6-pmD"/>
+                    <constraint firstItem="tQV-ST-Ne7" firstAttribute="top" secondItem="bfd-Lm-REA" secondAttribute="bottom" constant="8" id="JPH-wl-khn"/>
+                    <constraint firstItem="bfd-Lm-REA" firstAttribute="top" secondItem="56I-6z-sXj" secondAttribute="bottom" constant="8" id="Uxe-pX-Asf"/>
+                    <constraint firstItem="bfd-Lm-REA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="da7-c4-0oD"/>
+                    <constraint firstItem="56I-6z-sXj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="egJ-P2-o9v"/>
+                    <constraint firstItem="FiF-Ra-16Y" firstAttribute="bottom" secondItem="p7N-ux-APn" secondAttribute="bottom" id="jcj-4f-6E7"/>
+                    <constraint firstItem="FiF-Ra-16Y" firstAttribute="leading" secondItem="tQV-ST-Ne7" secondAttribute="trailing" constant="3" id="nP4-Wa-i9f"/>
+                    <constraint firstItem="p7N-ux-APn" firstAttribute="leading" secondItem="bfd-Lm-REA" secondAttribute="leading" id="pfB-b1-w1b"/>
+                    <constraint firstItem="FiF-Ra-16Y" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="qYP-99-jra"/>
+                    <constraint firstItem="p7N-ux-APn" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="rwA-Oi-xj8"/>
+                    <constraint firstItem="p7N-ux-APn" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="uBD-Ho-6MJ"/>
+                    <constraint firstItem="K7D-XZ-DNh" firstAttribute="top" secondItem="56I-6z-sXj" secondAttribute="top" id="vZp-nh-Aoq"/>
+                    <constraint firstItem="56I-6z-sXj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="xqf-fC-sJg"/>
+                </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="453" y="293"/>
+            <connections>
+                <outlet property="avaterImgView" destination="56I-6z-sXj" id="PB8-90-agu"/>
+                <outlet property="contentLabel" destination="bfd-Lm-REA" id="M1H-Zc-ed8"/>
+                <outlet property="relationshipLabel" destination="2Zs-EJ-n2E" id="a50-fN-8HV"/>
+                <outlet property="userNameLabel" destination="K7D-XZ-DNh" id="y0i-2g-vH0"/>
+            </connections>
+            <point key="canvasLocation" x="453" y="310.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Like" width="12" height="15"/>
+        <image name="Liked" width="12" height="15"/>
+    </resources>
 </document>

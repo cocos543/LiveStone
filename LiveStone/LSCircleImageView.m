@@ -74,7 +74,7 @@
     UIGraphicsBeginImageContextWithOptions(newRect.size, NO, 0);
     
     UIBezierPath *imagePath = [UIBezierPath bezierPath];
-    [imagePath addArcWithCenter:CGPointMake(newRect.size.width / 2, newRect.size.height / 2) radius:MIN(image.size.width, image.size.height) / 2.f - 8 startAngle:0.f endAngle:M_PI * 2.f clockwise:YES];
+    [imagePath addArcWithCenter:CGPointMake(newRect.size.width / 2, newRect.size.height / 2) radius:(MIN(image.size.width, image.size.height) / 2.f) * 0.88f startAngle:0.f endAngle:M_PI * 2.f clockwise:YES];
     [imagePath addClip];
     [image drawInRect:projectRect];
     

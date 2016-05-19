@@ -141,6 +141,9 @@ NSDictionary *requestContents = @{
 
 43. 如果需要把图层的内容绘制到Frame之外,则必须将view.clipsToBounds设置成NO
 
+44. 使用系统提供的tableView cell动态高度,需要设置self.tableView.estimatedRowHeight和self.tableView.rowHeight = UITableViewAutomaticDimension
+
+
 
 
 

@@ -69,6 +69,10 @@
 
 #define CHAPTER_CELL_MINIMUM_LINE_SPACING 1
 
+//Prayer
+#define PRAYER_HEADER_CIRCLE_BOY @"#89D4FF"
+#define PRAYER_HEADER_CIRCLE_GIRL @"#FFB0B0"
+
 
 typedef NS_ENUM(NSInteger,LSBookType){
     LSBookTypeOld = 0,

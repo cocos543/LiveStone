@@ -8,6 +8,7 @@
 
 #import "LSIntercessionTableViewController.h"
 #import "LSIntercessionCell.h"
+#import "LSCircleImageView.h"
 
 @interface LSIntercessionTableViewController ()
 
@@ -24,6 +25,9 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self.tableView registerNib:[UINib nibWithNibName:@"LSIntercessionCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuseIdentifierCell];
+    self.tableView.estimatedRowHeight = 140;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.hidesBottomBarWhenPushed = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,7 +48,10 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierCell forIndexPath:indexPath];
+    LSIntercessionCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierCell forIndexPath:indexPath];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    cell.avaterImgView.image = [UIImage imageNamed:@"TestAvatar"];
+    
     return cell;
 }
 
