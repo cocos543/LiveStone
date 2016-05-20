@@ -13,7 +13,7 @@
 @interface LSIntercessionCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *relationshipLabel;
-@property (weak, nonatomic) IBOutlet LSCircleImageView *avaterImgView;
+@property (weak, nonatomic) IBOutlet LSCircleImageView *avatarImgView;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 

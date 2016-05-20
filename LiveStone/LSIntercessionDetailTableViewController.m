@@ -7,12 +7,24 @@
 //
 
 #import "LSIntercessionDetailTableViewController.h"
+#import "LSCircleImageView.h"
+#import "LSIntercessionCell.h"
+#import "LSIntercessionWarriorCell.h"
+#import "LSIntercessionBlessingCell.h"
+#import "LSIntercessionUpdateCell.h"
+
+#define BLESSING_SECTION_HEIGHT 28.f
 
 @interface LSIntercessionDetailTableViewController ()
 
 @end
 
 @implementation LSIntercessionDetailTableViewController
+
+static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
+static NSString *reuseIdentifierWarriorCell = @"reuseIdentifierWarriorCell";
+static NSString *reuseIdentifierIntercessionBlessingCell = @"reuseIdentifierIntercessionBlessingCell";
+static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,6 +34,17 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    //table view
+    [self.tableView registerNib:[UINib nibWithNibName:@"LSIntercessionCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuseIdentifierCell];
+    [self.tableView registerNib:[UINib nibWithNibName:@"LSIntercessionWarriorCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuseIdentifierWarriorCell];
+    [self.tableView registerNib:[UINib nibWithNibName:@"LSIntercessionBlessingCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuseIdentifierIntercessionBlessingCell];
+    [self.tableView registerNib:[UINib nibWithNibName:@"LSIntercessionUpdateCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuseIntercessionUpdateCell];
+    
+    self.tableView.estimatedRowHeight = 140;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
+    
     [self setupToolbar];
 }
 
@@ -81,24 +104,42 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    if (section == 0) {
+        return 4;
+    }
+    return 50;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            LSIntercessionCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierCell forIndexPath:indexPath];
+            cell.avatarImgView.image = [UIImage imageNamed:@"TestAvatar"];
+            cell.avatarImgView.sex = 1;
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            return cell;
+        }else if (indexPath.row != 3){
+            LSIntercessionUpdateCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIntercessionUpdateCell forIndexPath:indexPath];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            return cell;
+        }else{
+            LSIntercessionWarriorCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierWarriorCell forIndexPath:indexPath];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            return cell;
+        }
+    }else if (indexPath.section == 1){
+        LSIntercessionBlessingCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierIntercessionBlessingCell forIndexPath:indexPath];
+        cell.avatarImgView.image = [UIImage imageNamed:@"TestAvatarGirl"];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        return cell;
+    }
     
-    // Configure the cell...
-    
-    return cell;
+    return nil;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -134,9 +175,43 @@
 }
 */
 
-/*
-#pragma mark - Table view delegate
 
+#pragma mark - Table view delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 1) {
+        return BLESSING_SECTION_HEIGHT;
+    }
+    return [super tableView:tableView heightForHeaderInSection:section];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *view;
+    if (section == 1) {
+        UILabel *leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 8, BLESSING_SECTION_HEIGHT)];
+        leftLabel.backgroundColor = [CCSimpleTools stringToColor:@"#46AEFF" opacity:1];
+        
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 50, BLESSING_SECTION_HEIGHT)];
+        titleLabel.text = @"祝福";
+        titleLabel.font = [UIFont systemFontOfSize:16];
+        titleLabel.textColor = [[UIColor grayColor] colorWithAlphaComponent:1.f];
+        
+        view = [[UIView alloc] initWithFrame:CGRectZero];
+        view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8f];
+        [view addSubview:leftLabel];
+        [view addSubview:titleLabel];
+        return view;
+    }
+    return [super tableView:tableView viewForHeaderInSection:section];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //Here must set height for warrior's cell
+    if (indexPath.section == 0 && indexPath.row == 3) {
+        return 70;
+    }
+    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+}
+/*
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:
@@ -149,15 +224,4 @@
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 */
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

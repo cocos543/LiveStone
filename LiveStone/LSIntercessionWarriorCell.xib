@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="KGk-i7-Jjw" customClass="LSIntercessionWarriorCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2h-QE-vCO">
+                        <rect key="frame" x="8" y="8" width="304" height="52"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　　祷告勇士: 含蕊、亦玉、靖荷、碧萱、寒云、向南、书雁、怀薇、思菱、忆文、翠巧、怀山、若山、向秋、凡白、绮烟、从蕾、天曼、又亦、依琴、曼彤、沛槐、又槐" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UhM-Sd-3yM">
+                                <rect key="frame" x="8" y="0.0" width="288" height="52"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IntercessionIcon" translatesAutoresizingMaskIntoConstraints="NO" id="U7K-Y9-zb5">
+                                <rect key="frame" x="10" y="9" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="Qot-mS-bHh"/>
+                                    <constraint firstAttribute="width" constant="15" id="jw7-MG-ex4"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="UhM-Sd-3yM" secondAttribute="bottom" id="8Tb-dU-AXj"/>
+                            <constraint firstAttribute="trailing" secondItem="UhM-Sd-3yM" secondAttribute="trailing" constant="8" id="DtN-yF-sei"/>
+                            <constraint firstItem="UhM-Sd-3yM" firstAttribute="top" secondItem="z2h-QE-vCO" secondAttribute="top" id="MaE-Nj-Lqc"/>
+                            <constraint firstItem="U7K-Y9-zb5" firstAttribute="leading" secondItem="UhM-Sd-3yM" secondAttribute="leading" constant="2" id="aGU-b4-iWq"/>
+                            <constraint firstItem="U7K-Y9-zb5" firstAttribute="top" secondItem="z2h-QE-vCO" secondAttribute="top" constant="9" id="e9A-OH-hLT"/>
+                            <constraint firstItem="UhM-Sd-3yM" firstAttribute="leading" secondItem="z2h-QE-vCO" secondAttribute="leading" constant="8" id="gvC-pO-D3B"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="z2h-QE-vCO" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="UYa-1s-fGA"/>
+                    <constraint firstItem="z2h-QE-vCO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Ugs-no-m6d"/>
+                    <constraint firstItem="z2h-QE-vCO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="clo-Xz-sQe"/>
+                    <constraint firstItem="z2h-QE-vCO" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="deB-Iu-y8r"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="343" y="345.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="IntercessionIcon" width="21" height="21"/>
+    </resources>
+</document>

@@ -67,7 +67,7 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
     
     LSIntercessionCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierCell forIndexPath:indexPath];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    cell.avaterImgView.image = [UIImage imageNamed:@"TestAvatar"];
+    cell.avatarImgView.image = [UIImage imageNamed:@"TestAvatarGirl"];
     if (indexPath.row == 1) {
         cell.numberLabel.text = @"9999人";
     }
