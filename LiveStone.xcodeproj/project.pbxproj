@@ -25,6 +25,7 @@
 		ED2030591CC9ABD100369ACE /* LSBookChapterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2030581CC9ABD100369ACE /* LSBookChapterCell.m */; };
 		ED2076C91CF0888100D5BD4B /* LSIntercessionUpdateOrBlessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2076C81CF0888100D5BD4B /* LSIntercessionUpdateOrBlessViewController.m */; };
 		ED2076EF1CF0A04D00D5BD4B /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2076EE1CF0A04D00D5BD4B /* UIPlaceHolderTextView.m */; };
+		ED2076F21CF0A9D500D5BD4B /* LSIntercessionPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2076F11CF0A9D500D5BD4B /* LSIntercessionPublishViewController.m */; };
 		ED2994051CEE8A340017BC3E /* LSIntercessionWarriorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2994031CEE8A340017BC3E /* LSIntercessionWarriorCell.m */; };
 		ED2994061CEE8A340017BC3E /* LSIntercessionWarriorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED2994041CEE8A340017BC3E /* LSIntercessionWarriorCell.xib */; };
 		ED29940A1CEE923B0017BC3E /* LSIntercessionBlessingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2994081CEE923B0017BC3E /* LSIntercessionBlessingCell.m */; };
@@ -35,7 +36,6 @@
 		ED3842991CCEF2FE0021EA06 /* huoshi.db in Resources */ = {isa = PBXBuildFile; fileRef = ED08C3F51CCEE3DB00AAC7AA /* huoshi.db */; };
 		ED42985A1CC0637000FCD799 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4298591CC0637000FCD799 /* main.m */; };
 		ED42985D1CC0637000FCD799 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42985C1CC0637000FCD799 /* AppDelegate.m */; };
-		ED4298601CC0637000FCD799 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42985F1CC0637000FCD799 /* ViewController.m */; };
 		ED4298631CC0637000FCD799 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED4298611CC0637000FCD799 /* Main.storyboard */; };
 		ED4298661CC0637000FCD799 /* LiveStone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED4298641CC0637000FCD799 /* LiveStone.xcdatamodeld */; };
 		ED4298681CC0637000FCD799 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED4298671CC0637000FCD799 /* Assets.xcassets */; };
@@ -107,6 +107,8 @@
 		ED2076C81CF0888100D5BD4B /* LSIntercessionUpdateOrBlessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionUpdateOrBlessViewController.m; sourceTree = "<group>"; };
 		ED2076ED1CF0A04D00D5BD4B /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
 		ED2076EE1CF0A04D00D5BD4B /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
+		ED2076F01CF0A9D500D5BD4B /* LSIntercessionPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionPublishViewController.h; sourceTree = "<group>"; };
+		ED2076F11CF0A9D500D5BD4B /* LSIntercessionPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionPublishViewController.m; sourceTree = "<group>"; };
 		ED2994021CEE8A340017BC3E /* LSIntercessionWarriorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionWarriorCell.h; sourceTree = "<group>"; };
 		ED2994031CEE8A340017BC3E /* LSIntercessionWarriorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionWarriorCell.m; sourceTree = "<group>"; };
 		ED2994041CEE8A340017BC3E /* LSIntercessionWarriorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSIntercessionWarriorCell.xib; sourceTree = "<group>"; };
@@ -123,8 +125,6 @@
 		ED4298591CC0637000FCD799 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ED42985B1CC0637000FCD799 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ED42985C1CC0637000FCD799 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		ED42985E1CC0637000FCD799 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		ED42985F1CC0637000FCD799 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		ED4298621CC0637000FCD799 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED4298651CC0637000FCD799 /* LiveStone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LiveStone.xcdatamodel; sourceTree = "<group>"; };
 		ED4298671CC0637000FCD799 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -413,6 +413,8 @@
 				EDD8561E1CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.m */,
 				ED2076C71CF0888100D5BD4B /* LSIntercessionUpdateOrBlessViewController.h */,
 				ED2076C81CF0888100D5BD4B /* LSIntercessionUpdateOrBlessViewController.m */,
+				ED2076F01CF0A9D500D5BD4B /* LSIntercessionPublishViewController.h */,
+				ED2076F11CF0A9D500D5BD4B /* LSIntercessionPublishViewController.m */,
 				EDC02E851CEC0F890049114B /* LSIntercessionCell.h */,
 				EDC02E861CEC0F890049114B /* LSIntercessionCell.m */,
 				EDC02E871CEC0F890049114B /* LSIntercessionCell.xib */,
@@ -448,8 +450,6 @@
 				ED064A161CE30FBB00FA2745 /* LiveStone */,
 				ED029CE51CDABD7200B76272 /* Register */,
 				ED0221CA1CC3389E004D6514 /* Bible */,
-				ED42985E1CC0637000FCD799 /* ViewController.h */,
-				ED42985F1CC0637000FCD799 /* ViewController.m */,
 				EDFA408E1CC123D80054E77C /* LSUserTableViewController.h */,
 				EDFA408F1CC123D80054E77C /* LSUserTableViewController.m */,
 				EDFA40911CC132620054E77C /* LSDiscoveryTableViewController.h */,
@@ -601,7 +601,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED1D09681CD96E1900C215DD /* LSRegisterViewController.m in Sources */,
-				ED4298601CC0637000FCD799 /* ViewController.m in Sources */,
 				ED42985D1CC0637000FCD799 /* AppDelegate.m in Sources */,
 				ED2076C91CF0888100D5BD4B /* LSIntercessionUpdateOrBlessViewController.m in Sources */,
 				ED0221DA1CC37956004D6514 /* CCSimpleTools.m in Sources */,
@@ -631,6 +630,7 @@
 				ED029CE91CDABD9C00B76272 /* LSJoinUsViewController.m in Sources */,
 				EDC02E831CEBF79F0049114B /* LSIntercessionTableViewController.m in Sources */,
 				ED9815961CDB75F500CF7944 /* UIViewController+ProgressHUD.m in Sources */,
+				ED2076F21CF0A9D500D5BD4B /* LSIntercessionPublishViewController.m in Sources */,
 				ED4CFE631CE46AE700A166C4 /* LSUserReadingItem.m in Sources */,
 				ED98159A1CDB848500CF7944 /* LSServiceCenter.m in Sources */,
 				ED17E7311CD1819600F6F6CF /* LSBibleItem.m in Sources */,

@@ -696,7 +696,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="代祷" id="Yw2-Iq-6Hr">
-                        <barButtonItem key="rightBarButtonItem" image="PublishIntercession" id="ABc-G7-soC"/>
+                        <barButtonItem key="rightBarButtonItem" image="PublishIntercession" id="ABc-G7-soC">
+                            <connections>
+                                <segue destination="oMT-AG-bke" kind="presentation" id="Hy0-bL-PLM"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="Ntm-uF-JCz" kind="show" identifier="LSIntercessionDetailSegue" id="UwV-e2-upN"/>
@@ -705,6 +709,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dP0-II-djp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2159" y="1451"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jRE-dO-Bum">
+            <objects>
+                <navigationController id="oMT-AG-bke" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Xdg-KI-PV5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.45882352939999999" green="0.79607843140000001" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Ba1-Nd-Qo4" kind="relationship" relationship="rootViewController" id="svE-Gu-5fc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XsG-U6-D4m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2254" y="775"/>
+        </scene>
+        <!--发布代祷-->
+        <scene sceneID="rbT-SK-fJR">
+            <objects>
+                <viewController id="Ba1-Nd-Qo4" customClass="LSIntercessionPublishViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NdR-2t-2hP"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dpa-Kw-3ZM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="USJ-kD-JJM">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="发布代祷" id="xhH-d8-0WZ">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="fB4-6l-Sqc">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancelClick:" destination="Ba1-Nd-Qo4" id="g2y-BW-bBL"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="发布" id="UOI-Am-ogO">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x7Y-Hh-WQI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2958" y="775"/>
         </scene>
         <!--Intercession Detail Table View Controller-->
         <scene sceneID="g9K-kH-mxr">

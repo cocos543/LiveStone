@@ -26,6 +26,8 @@
     }
     self.layer.borderWidth = 1.f;
     [self.image drawInRect:rect];
+    
+    [super drawRect:rect];
 }
 
 - (instancetype)initWithImage:(UIImage *)image{

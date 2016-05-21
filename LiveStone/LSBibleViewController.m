@@ -90,6 +90,8 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
     self.navigationItem.title = @"圣经";
     self.navigationController.navigationBarHidden = NO;
     //右侧加2个按钮...

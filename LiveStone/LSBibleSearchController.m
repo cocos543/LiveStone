@@ -22,6 +22,8 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     [self presentViewController:self.searchController animated:YES completion:nil];
 }

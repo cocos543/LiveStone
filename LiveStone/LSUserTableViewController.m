@@ -40,6 +40,7 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     //这样表格才不会被盖在navigationBar下面..
     self.navigationController.navigationBarHidden = NO;
     

@@ -55,7 +55,7 @@ static NSString *reuseIdentifierTimePanelCell = @"reuseIdentifierTimePanelCell";
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
-
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
