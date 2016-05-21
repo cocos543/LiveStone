@@ -16,7 +16,7 @@
 
 @implementation UIPlaceHolderTextView
 
-CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.25;
+CGFloat const UI_PLACEHOLDER_TEXT_CHANGED_ANIMATION_DURATION = 0.5;
 
 - (void)dealloc
 {

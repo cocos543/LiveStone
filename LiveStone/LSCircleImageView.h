@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-
+IB_DESIGNABLE
 @interface LSCircleImageView : UIView
 /**
  *  0-woman 1-man
  */
-@property (nonatomic) NSInteger sex;
+@property (nonatomic) IBInspectable NSInteger sex;
 /**
  *   Default is nil
  */
-@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) IBInspectable UIImage *image;
 
 - (instancetype)initWithImage:(UIImage *)image;
 

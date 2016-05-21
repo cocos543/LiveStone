@@ -151,7 +151,11 @@ NSDictionary *requestContents = @{
 
 48.在tab控制器里面加一个item页是nav控制器，然后这个nav里push了几个页面，在最后的页面模态一个新的nav控制器，然后关闭模态后，返回页面时有异常，提示动画begin end有问题.原因就是tab控制器里重写了appear,disappear方法但是没有调用父类方法....
 
+49. UITextView本身并不支持placeholder,所以需要自定义一个视图.原理就是自定义一个label加载TextView上,在有文字的时候隐藏TextView上面的label,没有文字的时候显示label.
 
+50. 自定义的视图也支持在xib,Storyboard中预览.参考https://onevcat.com/2014/10/ib-customize-view/
+
+51. 
 
 
 

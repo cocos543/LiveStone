@@ -7,9 +7,10 @@
 //
 
 #import "LSIntercessionUpdateOrBlessViewController.h"
+#import "UIPlaceHolderTextView.h"
 
 @interface LSIntercessionUpdateOrBlessViewController () <UITextViewDelegate>
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIPlaceHolderTextView *textView;
 
 @property (nonatomic, strong) UILabel *placeholderLabel;
 
@@ -35,7 +36,7 @@
 }
 
 - (void)viewDidLayoutSubviews{
-    self.placeholderLabel.frame = CGRectMake(5.0, 0.0, self.textView.frame.size.width - 20.0, 34.0);
+//    self.placeholderLabel.frame = CGRectMake(5.0, 0.0, self.textView.frame.size.width - 20.0, 34.0);
 }
 
 - (IBAction)downClick:(UIBarButtonItem *)sender {
@@ -48,46 +49,51 @@
 
 #pragma mark - Modify UI
 - (void)setupTextViewPlacheholder{
-    self.placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 0.0, self.textView.frame.size.width - 20.0, 34.0)];
     if (self.actionType == IntercessionActionTypeUpdate) {
-        [self.placeholderLabel setText:@"请及时更新你的代祷~"];
+        self.textView.placeholder = @"请及时更新你的代祷~";
     }else if (self.actionType == IntercessionActionTypeBless){
-        [self.placeholderLabel setText:@"请写下你的祝福~"];
+        self.textView.placeholder = @"请写下你的祝福~";
     }
-    // placeholderLabel is instance variable retained by view controller
-    [self.placeholderLabel setBackgroundColor:[UIColor clearColor]];
-    [self.placeholderLabel setFont:[UIFont systemFontOfSize:15]];
-    [self.placeholderLabel setTextColor:[UIColor lightGrayColor]];
-    
-    [self.textView addSubview:self.placeholderLabel];
+//    self.placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 0.0, self.textView.frame.size.width - 20.0, 34.0)];
+//    if (self.actionType == IntercessionActionTypeUpdate) {
+//        [self.placeholderLabel setText:@"请及时更新你的代祷~"];
+//    }else if (self.actionType == IntercessionActionTypeBless){
+//        [self.placeholderLabel setText:@"请写下你的祝福~"];
+//    }
+//    // placeholderLabel is instance variable retained by view controller
+//    [self.placeholderLabel setBackgroundColor:[UIColor clearColor]];
+//    [self.placeholderLabel setFont:[UIFont systemFontOfSize:15]];
+//    [self.placeholderLabel setTextColor:[UIColor lightGrayColor]];
+//    
+//    [self.textView addSubview:self.placeholderLabel];
 }
 
 #pragma mark - text view delegate
 
-- (void) textViewDidChange:(UITextView *)theTextView{
-    if(![self.textView hasText]) {
-        [self.textView addSubview:self.placeholderLabel];
-        [UIView animateWithDuration:0.5 animations:^{
-            self.placeholderLabel.alpha = 1.0;
-        }];
-    } else if ([[self.textView subviews] containsObject:self.placeholderLabel]) {
-        [UIView animateWithDuration:0.5 animations:^{
-            self.placeholderLabel.alpha = 0.0;
-        } completion:^(BOOL finished) {
-            [self.placeholderLabel removeFromSuperview];
-        }];
-    }
-}
-
-
-- (void)textViewDidEndEditing:(UITextView *)theTextView{
-    if (![self.textView hasText]) {
-        [self.textView addSubview:self.placeholderLabel];
-        [UIView animateWithDuration:0.5 animations:^{
-            self.placeholderLabel.alpha = 1.0;
-        }];
-    }
-}
+//- (void) textViewDidChange:(UITextView *)theTextView{
+//    if(![self.textView hasText]) {
+//        [self.textView addSubview:self.placeholderLabel];
+//        [UIView animateWithDuration:0.5 animations:^{
+//            self.placeholderLabel.alpha = 1.0;
+//        }];
+//    } else if ([[self.textView subviews] containsObject:self.placeholderLabel]) {
+//        [UIView animateWithDuration:0.5 animations:^{
+//            self.placeholderLabel.alpha = 0.0;
+//        } completion:^(BOOL finished) {
+//            [self.placeholderLabel removeFromSuperview];
+//        }];
+//    }
+//}
+//
+//
+//- (void)textViewDidEndEditing:(UITextView *)theTextView{
+//    if (![self.textView hasText]) {
+//        [self.textView addSubview:self.placeholderLabel];
+//        [UIView animateWithDuration:0.5 animations:^{
+//            self.placeholderLabel.alpha = 1.0;
+//        }];
+//    }
+//}
 /*
 #pragma mark - Navigation
 
