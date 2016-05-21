@@ -12,6 +12,8 @@
 #import "LSIntercessionWarriorCell.h"
 #import "LSIntercessionBlessingCell.h"
 #import "LSIntercessionUpdateCell.h"
+#import "LSIntercessionUpdateOrBlessViewController.h"
+
 
 #define BLESSING_SECTION_HEIGHT 28.f
 
@@ -48,8 +50,18 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     [self setupToolbar];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setToolbarHidden:NO];
+    NSLog(@"detail apper~~~~");
+}
+
 - (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
     [self.navigationController setToolbarHidden:YES];
+    NSLog(@"detail disappear~~~");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,8 +100,8 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     spaceBtn.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.3f];
     spaceBtn.frame = CGRectMake(0, 0, 1, 44 * 0.7);
     
-    [intercedeBtn addTarget:self action:@selector(tabItemClick:) forControlEvents:UIControlEventTouchUpInside];
-    [blessBtn addTarget:self action:@selector(tabItemClick:) forControlEvents:UIControlEventTouchUpInside];
+    [intercedeBtn addTarget:self action:@selector(intercedeClick:) forControlEvents:UIControlEventTouchUpInside];
+    [blessBtn addTarget:self action:@selector(blessClick:) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *intercedeItem = [[UIBarButtonItem alloc] initWithCustomView:intercedeBtn];
     UIBarButtonItem *blessItem = [[UIBarButtonItem alloc] initWithCustomView:blessBtn];
@@ -98,9 +110,16 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     self.toolbarItems = @[intercedeItem, spaceItem, blessItem];
 }
 
-- (void)tabItemClick:(id)sender{
-    NSLog(@"item click");
+- (void)intercedeClick:(id)sender{
+    NSLog(@"intercede click");
+    [self performSegueWithIdentifier:@"LSIntercessionUpdateSegue" sender:sender];
 }
+
+- (void)blessClick:(id)sender{
+    NSLog(@"bless click");
+    [self performSegueWithIdentifier:@"LSIntercessionBlessSegue" sender:sender];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -224,4 +243,20 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 */
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if ([((UINavigationController *)segue.destinationViewController).visibleViewController isKindOfClass:[LSIntercessionUpdateOrBlessViewController class]]) {
+        LSIntercessionUpdateOrBlessViewController *vc = (LSIntercessionUpdateOrBlessViewController *)((UINavigationController *)segue.destinationViewController).visibleViewController;
+        if ([segue.identifier isEqualToString:@"LSIntercessionUpdateSegue"]) {
+            vc.actionType = IntercessionActionTypeUpdate;
+        }else if ([segue.identifier isEqualToString:@"LSIntercessionBlessSegue"]){
+            vc.actionType = IntercessionActionTypeBless;
+        }
+    }
+}
 @end

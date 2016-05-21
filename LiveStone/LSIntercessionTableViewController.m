@@ -116,12 +116,11 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    LSIntercessionDetailTableViewController *detailViewController = [[LSIntercessionDetailTableViewController alloc] init];
     
     // Pass the selected object to the new view controller.
     
     // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    [self performSegueWithIdentifier:@"LSIntercessionDetailSegue" sender:nil];
 }
 
 

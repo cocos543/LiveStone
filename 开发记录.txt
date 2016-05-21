@@ -147,7 +147,9 @@ NSDictionary *requestContents = @{
 
 46. 自定义toolbar上的UIBarButtonItem.思路就是先做一个UIButton,可以添加图片文字,可以用EdgeInsets属性设置图片文字的偏移,然后使用- (instancetype)initWithCustomView:(UIView *)customView方法把按钮转成UIBarButtonItem,再把item以数组的形式加到 toolbarItems 就可以了.加到toolbar的item会自动有左右空隙,系统会自动摆放item到toolbar的y轴居中位置,只需要设置UIButton的width和height就可以了,点击事件也需要在UIButton上面加.
 
-47.
+47. 如果sotryboard 里面放的是navigationController,而且也是直接在navigationController上指定一个自定义类(比如叫MynavigationController)的时候,navigationController的rootViewController上面添加的按钮(包括导航栏的item)就无法从sotryboard关联按钮的点击事件到MynavigationController.m里,拖线的时候xcode不让放.所以最好就是把自定义的类弄成UIViewController的子类,然后就可以给navigationController的rootController设置上
+
+48.在tab控制器里面加一个item页是nav控制器，然后这个nav里push了几个页面，在最后的页面模态一个新的nav控制器，然后关闭模态后，返回页面时有异常，提示动画begin end有问题.原因就是tab控制器里重写了appear,disappear方法但是没有调用父类方法....
 
 
 

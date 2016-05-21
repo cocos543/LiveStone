@@ -33,12 +33,14 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
 //    self.navigationController.navigationBar.translucent = NO;
 //    self.tabBarController.tabBar.translucent = NO;
 //    self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     if (!self.isAppearAgain) {
         [self autoLogin];
     }
