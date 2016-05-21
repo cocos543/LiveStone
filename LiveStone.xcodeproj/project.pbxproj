@@ -24,6 +24,7 @@
 		ED2030561CC99AD800369ACE /* LSBibleCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2030551CC99AD800369ACE /* LSBibleCollectionView.m */; };
 		ED2030591CC9ABD100369ACE /* LSBookChapterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2030581CC9ABD100369ACE /* LSBookChapterCell.m */; };
 		ED2076C91CF0888100D5BD4B /* LSIntercessionUpdateOrBlessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2076C81CF0888100D5BD4B /* LSIntercessionUpdateOrBlessViewController.m */; };
+		ED2076EF1CF0A04D00D5BD4B /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2076EE1CF0A04D00D5BD4B /* UIPlaceHolderTextView.m */; };
 		ED2994051CEE8A340017BC3E /* LSIntercessionWarriorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2994031CEE8A340017BC3E /* LSIntercessionWarriorCell.m */; };
 		ED2994061CEE8A340017BC3E /* LSIntercessionWarriorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED2994041CEE8A340017BC3E /* LSIntercessionWarriorCell.xib */; };
 		ED29940A1CEE923B0017BC3E /* LSIntercessionBlessingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2994081CEE923B0017BC3E /* LSIntercessionBlessingCell.m */; };
@@ -104,6 +105,8 @@
 		ED2030581CC9ABD100369ACE /* LSBookChapterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBookChapterCell.m; sourceTree = "<group>"; };
 		ED2076C71CF0888100D5BD4B /* LSIntercessionUpdateOrBlessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionUpdateOrBlessViewController.h; sourceTree = "<group>"; };
 		ED2076C81CF0888100D5BD4B /* LSIntercessionUpdateOrBlessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionUpdateOrBlessViewController.m; sourceTree = "<group>"; };
+		ED2076ED1CF0A04D00D5BD4B /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
+		ED2076EE1CF0A04D00D5BD4B /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
 		ED2994021CEE8A340017BC3E /* LSIntercessionWarriorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionWarriorCell.h; sourceTree = "<group>"; };
 		ED2994031CEE8A340017BC3E /* LSIntercessionWarriorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionWarriorCell.m; sourceTree = "<group>"; };
 		ED2994041CEE8A340017BC3E /* LSIntercessionWarriorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSIntercessionWarriorCell.xib; sourceTree = "<group>"; };
@@ -431,6 +434,8 @@
 			children = (
 				EDCF45BF1CEC97DE00AA7E56 /* LSCircleImageView.h */,
 				EDCF45C01CEC97DE00AA7E56 /* LSCircleImageView.m */,
+				ED2076ED1CF0A04D00D5BD4B /* UIPlaceHolderTextView.h */,
+				ED2076EE1CF0A04D00D5BD4B /* UIPlaceHolderTextView.m */,
 			);
 			name = CustomUIElement;
 			sourceTree = "<group>";
@@ -602,6 +607,7 @@
 				ED0221DA1CC37956004D6514 /* CCSimpleTools.m in Sources */,
 				EDFA40931CC132620054E77C /* LSDiscoveryTableViewController.m in Sources */,
 				ED4CFE601CE427FD00A166C4 /* LSExtraService.m in Sources */,
+				ED2076EF1CF0A04D00D5BD4B /* UIPlaceHolderTextView.m in Sources */,
 				ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */,
 				ED42985A1CC0637000FCD799 /* main.m in Sources */,
 				ED45E70F1CDC776400FAC93A /* LSUserInfoItem.m in Sources */,
