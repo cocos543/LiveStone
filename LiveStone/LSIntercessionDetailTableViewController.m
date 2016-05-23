@@ -76,6 +76,7 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     UIButton *intercedeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     UIImage *image = [UIImage imageNamed:@"IntercessionIcon"];
     [intercedeBtn setImage:image forState:UIControlStateNormal];
+    // the title can be 参与代祷
     [intercedeBtn setTitle:@"更新代祷" forState:UIControlStateNormal];
     
     intercedeBtn.titleLabel.font = [UIFont systemFontOfSize:15];

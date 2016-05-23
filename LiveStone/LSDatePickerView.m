@@ -77,7 +77,7 @@
     self.hoursArray = hoursArr;
     
     //Set tool bar
-    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 44)];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelClick:)];
     
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(confirmClick:)];
@@ -86,7 +86,7 @@
     [self addSubview:toolBar];
     
     //Set picker view
-    UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44, 0, self.frame.size.height - 44)];
+    UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44, self.frame.size.width, self.frame.size.height - 44)];
     pickerView.showsSelectionIndicator=YES;
     pickerView.dataSource = self;
     pickerView.delegate = self;
