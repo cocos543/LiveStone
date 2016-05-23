@@ -65,6 +65,7 @@
 		EDC958A91CC5109A00D51CA5 /* LSBookDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC958A81CC5109A00D51CA5 /* LSBookDetailCell.xib */; };
 		EDC958AF1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC958AE1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m */; };
 		EDCF45C11CEC97DE00AA7E56 /* LSCircleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDCF45C01CEC97DE00AA7E56 /* LSCircleImageView.m */; };
+		EDD623291CF2B08300C2C1FC /* LSDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD623281CF2B08300C2C1FC /* LSDatePickerView.m */; };
 		EDD856201CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD8561E1CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.m */; };
 		EDDC2E681CD2478B0054E4DD /* LSBibleNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDC2E671CD2478B0054E4DD /* LSBibleNoteView.xib */; };
 		EDFA40901CC123D80054E77C /* LSUserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA408F1CC123D80054E77C /* LSUserTableViewController.m */; };
@@ -176,6 +177,8 @@
 		EDC958AE1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		EDCF45BF1CEC97DE00AA7E56 /* LSCircleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCircleImageView.h; sourceTree = "<group>"; };
 		EDCF45C01CEC97DE00AA7E56 /* LSCircleImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCircleImageView.m; sourceTree = "<group>"; };
+		EDD623271CF2B08300C2C1FC /* LSDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSDatePickerView.h; sourceTree = "<group>"; };
+		EDD623281CF2B08300C2C1FC /* LSDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSDatePickerView.m; sourceTree = "<group>"; };
 		EDD8561D1CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionDetailTableViewController.h; sourceTree = "<group>"; };
 		EDD8561E1CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionDetailTableViewController.m; sourceTree = "<group>"; };
 		EDDC2E671CD2478B0054E4DD /* LSBibleNoteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBibleNoteView.xib; sourceTree = "<group>"; };
@@ -438,6 +441,8 @@
 				EDCF45C01CEC97DE00AA7E56 /* LSCircleImageView.m */,
 				ED2076ED1CF0A04D00D5BD4B /* UIPlaceHolderTextView.h */,
 				ED2076EE1CF0A04D00D5BD4B /* UIPlaceHolderTextView.m */,
+				EDD623271CF2B08300C2C1FC /* LSDatePickerView.h */,
+				EDD623281CF2B08300C2C1FC /* LSDatePickerView.m */,
 			);
 			name = CustomUIElement;
 			sourceTree = "<group>";
@@ -625,6 +630,7 @@
 				EDC02E881CEC0F890049114B /* LSIntercessionCell.m in Sources */,
 				ED358B991CC5C2C00016D1C1 /* LSBookDetailCell.m in Sources */,
 				ED94FB6D1CEF27FD00ECD199 /* LSIntercessionUpdateCell.m in Sources */,
+				EDD623291CF2B08300C2C1FC /* LSDatePickerView.m in Sources */,
 				ED3842981CCEEA560021EA06 /* LSBibleStore.m in Sources */,
 				ED4CFE661CE47B8200A166C4 /* LSStatisticsService.m in Sources */,
 				ED029CE91CDABD9C00B76272 /* LSJoinUsViewController.m in Sources */,
