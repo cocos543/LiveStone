@@ -38,6 +38,8 @@
 		ED4270451CF3E63400B901CE /* LSBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4270441CF3E63400B901CE /* LSBaseModel.m */; };
 		ED4270481CF3E9C900B901CE /* LSIntercessorsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4270471CF3E9C900B901CE /* LSIntercessorsItem.m */; };
 		ED42704B1CF3EAE300B901CE /* LSIntercessionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42704A1CF3EAE300B901CE /* LSIntercessionItem.m */; };
+		ED42704F1CF4294900B901CE /* LSIntercessionRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42704E1CF4294900B901CE /* LSIntercessionRequestItem.m */; };
+		ED4270521CF45DBE00B901CE /* UITableView+NetworkStateDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4270511CF45DBE00B901CE /* UITableView+NetworkStateDisplay.m */; };
 		ED42985A1CC0637000FCD799 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4298591CC0637000FCD799 /* main.m */; };
 		ED42985D1CC0637000FCD799 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42985C1CC0637000FCD799 /* AppDelegate.m */; };
 		ED4298631CC0637000FCD799 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED4298611CC0637000FCD799 /* Main.storyboard */; };
@@ -134,6 +136,10 @@
 		ED4270471CF3E9C900B901CE /* LSIntercessorsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessorsItem.m; sourceTree = "<group>"; };
 		ED4270491CF3EAE300B901CE /* LSIntercessionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionItem.h; sourceTree = "<group>"; };
 		ED42704A1CF3EAE300B901CE /* LSIntercessionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionItem.m; sourceTree = "<group>"; };
+		ED42704D1CF4294900B901CE /* LSIntercessionRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionRequestItem.h; sourceTree = "<group>"; };
+		ED42704E1CF4294900B901CE /* LSIntercessionRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionRequestItem.m; sourceTree = "<group>"; };
+		ED4270501CF45DBE00B901CE /* UITableView+NetworkStateDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+NetworkStateDisplay.h"; sourceTree = "<group>"; };
+		ED4270511CF45DBE00B901CE /* UITableView+NetworkStateDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+NetworkStateDisplay.m"; sourceTree = "<group>"; };
 		ED4298551CC0637000FCD799 /* LiveStone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveStone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED4298591CC0637000FCD799 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ED42985B1CC0637000FCD799 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -252,6 +258,8 @@
 				ED0221D91CC37956004D6514 /* CCSimpleTools.m */,
 				ED7A6F701CD2FD6E00EF1592 /* UILabel+CCStringFrame.h */,
 				ED7A6F711CD2FD6E00EF1592 /* UILabel+CCStringFrame.m */,
+				ED4270501CF45DBE00B901CE /* UITableView+NetworkStateDisplay.h */,
+				ED4270511CF45DBE00B901CE /* UITableView+NetworkStateDisplay.m */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -284,6 +292,7 @@
 		ED17E72E1CD1816C00F6F6CF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ED42704C1CF4291D00B901CE /* Request */,
 				ED3842961CCEEA560021EA06 /* LSBibleStore.h */,
 				ED3842971CCEEA560021EA06 /* LSBibleStore.m */,
 				ED17E72F1CD1819600F6F6CF /* LSBibleItem.h */,
@@ -336,6 +345,15 @@
 				EDC958AE1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m */,
 			);
 			name = Book;
+			sourceTree = "<group>";
+		};
+		ED42704C1CF4291D00B901CE /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				ED42704D1CF4294900B901CE /* LSIntercessionRequestItem.h */,
+				ED42704E1CF4294900B901CE /* LSIntercessionRequestItem.m */,
+			);
+			name = Request;
 			sourceTree = "<group>";
 		};
 		ED42984C1CC0637000FCD799 = {
@@ -627,6 +645,7 @@
 			files = (
 				ED1D09681CD96E1900C215DD /* LSRegisterViewController.m in Sources */,
 				ED42985D1CC0637000FCD799 /* AppDelegate.m in Sources */,
+				ED42704F1CF4294900B901CE /* LSIntercessionRequestItem.m in Sources */,
 				ED4270481CF3E9C900B901CE /* LSIntercessorsItem.m in Sources */,
 				ED2076C91CF0888100D5BD4B /* LSIntercessionUpdateOrBlessViewController.m in Sources */,
 				ED0221DA1CC37956004D6514 /* CCSimpleTools.m in Sources */,
@@ -655,6 +674,7 @@
 				ED358B991CC5C2C00016D1C1 /* LSBookDetailCell.m in Sources */,
 				ED94FB6D1CEF27FD00ECD199 /* LSIntercessionUpdateCell.m in Sources */,
 				EDD623291CF2B08300C2C1FC /* LSDatePickerView.m in Sources */,
+				ED4270521CF45DBE00B901CE /* UITableView+NetworkStateDisplay.m in Sources */,
 				ED3842981CCEEA560021EA06 /* LSBibleStore.m in Sources */,
 				ED4CFE661CE47B8200A166C4 /* LSStatisticsService.m in Sources */,
 				ED029CE91CDABD9C00B76272 /* LSJoinUsViewController.m in Sources */,

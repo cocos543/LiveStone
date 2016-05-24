@@ -11,13 +11,26 @@
 #import "LSCircleImageView.h"
 #import "LSIntercessionDetailTableViewController.h"
 #import "MJRefresh.h"
+#import "UIViewController+ProgressHUD.h"
+#import "UITableView+NetworkStateDisplay.h"
 
-@interface LSIntercessionTableViewController ()
+#import "LSServiceCenter.h"
+
+@import SDWebImage;
+
+@interface LSIntercessionTableViewController () <LSIntercessionServiceDelegate>
+
+@property (nonatomic, strong) NSArray<LSIntercessionItem *> *intercessionList;
+
+// For load data
+@property (nonatomic, strong) LSIntercessionRequestItem *requestItem;
+@property (nonatomic, strong) LSIntercessionService *intercessionService;
 
 @end
 
 @implementation LSIntercessionTableViewController
 static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -30,26 +43,89 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
     self.tableView.estimatedRowHeight = 140;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.hidesBottomBarWhenPushed = YES;
-    [self addRefreshHeader];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.bounces = NO;
+    [self initializeService];
+    [self loadIntercessionData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)initializeService{
+    self.intercessionService = [[LSServiceCenter defaultCenter] getService:[LSIntercessionService class]];
+    self.intercessionService.delegate = self;
+    
+    LSAuthService *authService = [[LSServiceCenter defaultCenter] getService:[LSAuthService class]];
+    self.requestItem = [[LSIntercessionRequestItem alloc] init];
+    self.requestItem.userId = [authService getUserInfo].userID;
+}
+
 #pragma mark - UI
 
 - (void)addRefreshHeader{
+    if (self.tableView.mj_header) {
+        return;
+    }
+    
     MJRefreshNormalHeader *mjHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        // 进入刷新状态后会自动调用这个block
-        [self.tableView.mj_header endRefreshing];
+        self.requestItem.startPage = @(1);
+        [self loadIntercessionData];
     }];
     MJRefreshAutoNormalFooter *mjFooter = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        // 进入刷新状态后会自动调用这个block
-        [self.tableView.mj_footer endRefreshing];
+        self.requestItem.startPage = @(self.requestItem.startPage.integerValue + 1);
+        [self loadIntercessionData];
+        
     }];
     self.tableView.mj_header = mjHeader;
     self.tableView.mj_footer = mjFooter;
+}
+
+- (void)removeRefreshHeader{
+    self.tableView.mj_header = nil;
+    self.tableView.mj_footer = nil;
+}
+
+#pragma mark - DATA
+- (void)loadIntercessionData{
+    [self startLoadingHUD];
+    [self.intercessionService intercessionLoadList:self.requestItem];
+}
+
+#pragma mark - LSIntercessionServiceDelegate
+- (void)intercessionServiceDidLoadList:(NSArray<LSIntercessionItem *> *)intercessionList forIntercessionType:(IntercessionType)type{
+    self.tableView.bounces = YES;
+    if (self.requestItem.startPage.integerValue == 1) {
+        self.intercessionList = intercessionList;
+//        NSMutableArray *indexPathsArray = [[NSMutableArray alloc] init];
+//        for (int i = 0; i < self.intercessionList.count; i++) {
+//            [indexPathsArray addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+//        }
+//        [self.tableView insertRowsAtIndexPaths:indexPathsArray withRowAnimation:UITableViewRowAnimationAutomatic];
+    }else{
+        self.intercessionList = [self.intercessionList arrayByAddingObjectsFromArray:intercessionList];
+        
+    }
+    
+    [self endLoadingHUD];
+    [self addRefreshHeader];
+    [self.tableView reloadData];
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
+}
+
+- (void)serviceConnectFail:(NSInteger)errorCode{
+    [self endLoadingHUD];
+    [self toastMessage:@"网络错误~"];
+    [self removeRefreshHeader];
+    if ([self.intercessionList count] == 0) {
+        [self.tableView displayOfflineBackgroundView];
+        self.tableView.bounces = NO;
+    }
+    
+    NSLog(@"网络出错");
 }
 
 #pragma mark - Table view data source
@@ -59,7 +135,7 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return [self.intercessionList count];
 }
 
 
@@ -67,10 +143,26 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
     
     LSIntercessionCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierCell forIndexPath:indexPath];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    cell.avatarImgView.image = [UIImage imageNamed:@"TestAvatarGirl"];
-    if (indexPath.row == 1) {
-        cell.numberLabel.text = @"9999人";
-    }
+    LSIntercessionItem *item = self.intercessionList[indexPath.row];
+    cell.userNameLabel.text = item.nickName;
+    cell.numberLabel.text = [NSString stringWithFormat:@"%@",item.intercessionNumber];
+    LSIntercessionUpdateContentItem *contentItem = (LSIntercessionUpdateContentItem *)[item.contentList lastObject];
+    cell.contentLabel.text = contentItem.content;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    cell.updateLabel.text = [dateFormatter stringFromDate:contentItem.createTime];
+    cell.relationshipLabel.text = [self.intercessionService intercessionGetRelationship:item.relationship.integerValue];
+    
+    [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:item.avatar] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {} completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        cell.avatarImgView.image = image;
+    }];
+    
+//    if (![cell.contentView viewWithTag:1009]) {
+//        UIImageView *separatorLine = [[UIImageView alloc] initWithFrame:CGRectMake(cell.frame.size.width / 20, cell.frame.size.height - 6.0f, cell.frame.size.width - (cell.frame.size.width / 20), 1.0f)];
+//        separatorLine.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
+//        separatorLine.tag = 1009;
+//        [cell.contentView addSubview:separatorLine];
+//    }
     return cell;
 }
 
@@ -112,6 +204,11 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
 
 #pragma mark - Table view delegate
 
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    if (indexPath.row == ([self.intercessionList count] - 1 ) && indexPath.section == 0) {
+//        [self addRefreshHeader];
+//    }
+//}
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:

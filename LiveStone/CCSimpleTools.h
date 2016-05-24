@@ -10,4 +10,6 @@
 
 @interface CCSimpleTools : NSObject
 + (UIColor *) stringToColor:(NSString *)str opacity:(CGFloat)opacity;
+
+
 @end

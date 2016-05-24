@@ -81,7 +81,7 @@
     return signSH1;
 }
 
-- (void)httpPOSTMessage:(NSDictionary *)msgDic toURLString:(NSString *)urlString respondHandle:(void(^)(NSDictionary *respond))respondHander{
+- (void)httpPOSTMessage:(NSDictionary *)msgDic toURLString:(NSString *)urlString respondHandle:(void(^)(id respond))respondHander{
     msgDic = [self supplementInfomation:msgDic];
     [self.httpManager POST:urlString parameters:msgDic progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         if ([responseObject count] == 0) {
@@ -95,7 +95,7 @@
     }];
 }
 
-- (void)httpGETMessage:(NSDictionary *)msgDic toURLString:(NSString *)urlString respondHandle:(void(^)(NSDictionary *respond))respondHander{
+- (void)httpGETMessage:(NSDictionary *)msgDic toURLString:(NSString *)urlString respondHandle:(void(^)(id respond))respondHander{
 	msgDic = [self supplementInfomation:msgDic];
     
 }

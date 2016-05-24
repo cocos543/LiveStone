@@ -157,6 +157,8 @@ NSDictionary *requestContents = @{
 
 51. 设置中开启位置信息闪退.因为NSLocationWhenInUseUsageDescription值为Bool类型，把类型改成String就可以了,同时添加的内容可以在设置位置信息时显示出来
 
+52. 去除tablevView中多余的分割线的办法,就是在cell中自定义分割线,然后加入到距离cell底部6个点的地方..
+
 
 
 

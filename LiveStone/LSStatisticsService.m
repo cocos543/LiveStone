@@ -114,7 +114,8 @@
                              @"last_read_long": readingItem.lastReadLong,
                              @"is_add": @"true"};
     
-    [self httpPOSTMessage:msgDic toURLString:@"http://119.29.108.48/bible/frontend/web/index.php/v1/reading/time" respondHandle:^(NSDictionary *respond) {
+    [self httpPOSTMessage:msgDic toURLString:@"http://119.29.108.48/bible/frontend/web/index.php/v1/reading/time" respondHandle:^(id respond) {
+
         if (respond[@"status"] != nil) {
             NSLog(@"Login fail~");
             self.isSuccessfulCurrentUploadReadingTime = NO;

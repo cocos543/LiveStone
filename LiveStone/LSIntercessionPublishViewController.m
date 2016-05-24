@@ -162,8 +162,7 @@
             
         }else if (error == nil && [array count] == 0){
             NSLog(@"No results were returned.");
-        }
-        else if (error != nil){
+        }else if (error != nil){
             NSLog(@"An error occurred = %@", error);
         }
     }];

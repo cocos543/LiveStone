@@ -10,4 +10,9 @@
 
 @implementation LSIntercessionUpdateContentItem
 
++ (NSString *)mj_replacedKeyFromPropertyName121:(NSString *)propertyName{
+    // nickName -> nick_name
+    return [propertyName mj_underlineFromCamel];
+}
+
 @end

@@ -34,14 +34,14 @@
  *
  *  @param msgDic post data
  */
--(void)httpPOSTMessage:(NSDictionary *)msgDic toURLString:(NSString *)urlString respondHandle:(void(^)(NSDictionary *respond))respondHander;
+-(void)httpPOSTMessage:(NSDictionary *)msgDic toURLString:(NSString *)urlString respondHandle:(void(^)(id respond))respondHander;
 
 /**
  *  Request with get`
  *
  *  @param msgDic get data
  */
--(void)httpGETMessage:(NSDictionary *)msgDic toURLString:(NSString *)urlString respondHandle:(void(^)(NSDictionary *respond))respondHander;
+-(void)httpGETMessage:(NSDictionary *)msgDic toURLString:(NSString *)urlString respondHandle:(void(^)(id respond))respondHander;
 
 - (void)handleConnectError:(NSDictionary *)errDic;
 
