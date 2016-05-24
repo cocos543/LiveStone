@@ -155,7 +155,7 @@ NSDictionary *requestContents = @{
 
 50. 自定义的视图也支持在xib,Storyboard中预览.参考https://onevcat.com/2014/10/ib-customize-view/
 
-51. 
+51. 设置中开启位置信息闪退.因为NSLocationWhenInUseUsageDescription值为Bool类型，把类型改成String就可以了,同时添加的内容可以在设置位置信息时显示出来
 
 
 

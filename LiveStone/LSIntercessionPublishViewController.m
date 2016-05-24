@@ -8,15 +8,21 @@
 
 #import "LSIntercessionPublishViewController.h"
 #import "LSDatePickerView.h"
+#import <CoreLocation/CoreLocation.h>
 
 #define LS_DATE_PICKVIEW_HEIGHT 206
 
-@interface LSIntercessionPublishViewController () <UITextFieldDelegate>
+@interface LSIntercessionPublishViewController () <UITextFieldDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *yearTextField;
 @property (weak, nonatomic) IBOutlet UITextField *monthTextField;
 @property (weak, nonatomic) IBOutlet UITextField *dayTextField;
 @property (weak, nonatomic) IBOutlet UITextField *hourTextField;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *yearWidthConstraint;
+
+//Location
+@property (weak, nonatomic) IBOutlet UILabel *locationInfo;
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic) BOOL locationEnbale;
 
 //@property (nonatomic, strong) LSDatePickerView *pickerView;
 
@@ -28,6 +34,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupTimeTextField];
+    [self initializeLocationService];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -126,6 +133,56 @@
         NSLog(@"%@", date);
     };
 }
+
+
+- (void)initializeLocationService {
+    // 初始化定位管理器
+    self.locationManager = [[CLLocationManager alloc] init];
+    // 设置代理
+    self.locationManager.delegate = self;
+    // 设置定位精确度到米
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    // 设置过滤器为无
+    self.locationManager.distanceFilter = 1000.f;
+    
+    [self.locationManager requestWhenInUseAuthorization];
+    // 开始定位
+    [self.locationManager startUpdatingLocation];
+}
+#pragma mark - CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    //Generate local infomation base on coordinate system.
+    [geocoder reverseGeocodeLocation:[locations lastObject] completionHandler:^(NSArray *array, NSError *error){
+        if (array.count > 0){
+            CLPlacemark *placemark = [array objectAtIndex:0];
+            
+            self.locationInfo.text = [NSString stringWithFormat:@"%@%@%@", placemark.administrativeArea, placemark.locality, placemark.subLocality];
+            self.locationEnbale = YES;
+            
+        }else if (error == nil && [array count] == 0){
+            NSLog(@"No results were returned.");
+        }
+        else if (error != nil){
+            NSLog(@"An error occurred = %@", error);
+        }
+    }];
+    //系统会一直更新数据，直到选择停止更新，因为我们只需要获得一次经纬度即可，所以获取之后就停止更新
+    [manager stopUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
+    switch (status) {
+        case kCLAuthorizationStatusDenied:
+            self.locationInfo.text = @"请允许获取位置信息";
+            self.locationEnbale = NO;
+            break;
+        default:
+            break;
+    }
+    NSLog(@"status = %d",status);
+}
+
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{

@@ -9,4 +9,5 @@ target 'LiveStone' do
   pod 'CocoaSecurity'
   pod 'SDWebImage', '~>3.7'
   pod 'MJRefresh'
+  pod 'MJExtension'
 end
