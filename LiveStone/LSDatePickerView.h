@@ -13,7 +13,7 @@
  *
  *  @param date Selected date
  */
-typedef void(^ClickConfirmBlock)(NSDate *date);
+typedef void(^ClickConfirmBlock)(NSDateComponents *dateComponents);
 
 /**
  *  Click cancel button

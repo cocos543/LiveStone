@@ -5,19 +5,26 @@
 //  Created by 郑克明 on 16/5/21.
 //  Copyright © 2016年 Cocos. All rights reserved.
 //
+#import <CoreLocation/CoreLocation.h>
 
 #import "LSIntercessionPublishViewController.h"
 #import "LSDatePickerView.h"
-#import <CoreLocation/CoreLocation.h>
+#import "UIPlaceHolderTextView.h"
+
+#import "LSServiceCenter.h"
+
+#import "UIViewController+ProgressHUD.h"
 
 #define LS_DATE_PICKVIEW_HEIGHT 206
 
-@interface LSIntercessionPublishViewController () <UITextFieldDelegate, CLLocationManagerDelegate>
+@interface LSIntercessionPublishViewController () <UITextFieldDelegate, CLLocationManagerDelegate, LSIntercessionServiceDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *yearTextField;
 @property (weak, nonatomic) IBOutlet UITextField *monthTextField;
 @property (weak, nonatomic) IBOutlet UITextField *dayTextField;
 @property (weak, nonatomic) IBOutlet UITextField *hourTextField;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *yearWidthConstraint;
+@property (weak, nonatomic) IBOutlet UIPlaceHolderTextView *contentTextView;
+@property (nonatomic) long long updateTime;
 
 //Location
 @property (weak, nonatomic) IBOutlet UILabel *locationInfo;
@@ -25,6 +32,10 @@
 @property (nonatomic) BOOL locationEnbale;
 
 //@property (nonatomic, strong) LSDatePickerView *pickerView;
+
+//For load data
+@property (nonatomic, strong) LSIntercessionService *intercessionService;
+@property (nonatomic, strong) LSIntercessionPublishRequestItem *requestItem;
 
 @end
 
@@ -34,12 +45,53 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupTimeTextField];
+    [self initializeService];
     [self initializeLocationService];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)initializeLocationService {
+    // 初始化定位管理器
+    self.locationManager = [[CLLocationManager alloc] init];
+    // 设置代理
+    self.locationManager.delegate = self;
+    // 设置定位精确度到米
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    // 设置过滤器为无
+    self.locationManager.distanceFilter = 1000.f;
+    
+    [self.locationManager requestWhenInUseAuthorization];
+    // 开始定位
+    [self.locationManager startUpdatingLocation];
+}
+
+- (void)initializeService{
+    self.intercessionService = [[LSServiceCenter defaultCenter] getService:[LSIntercessionService class]];
+    self.intercessionService.delegate = self;
+    
+    LSAuthService *authService = [[LSServiceCenter defaultCenter] getService:[LSAuthService class]];
+    self.requestItem = [[LSIntercessionPublishRequestItem alloc] init];
+    self.requestItem.userId = [authService getUserInfo].userID;
+}
+
+#pragma mark - Data
+
+- (void)publishIntercession{
+    [self startLoadingHUD];
+    self.requestItem.updatedAt = self.updateTime;
+    self.requestItem.content = self.contentTextView.text;
+    self.requestItem.position = self.locationInfo.text;
+    [self.intercessionService intercessionPublish:self.requestItem];
+}
+
+#pragma mark - Event
+
+- (IBAction)confirmClick:(id)sender {
+    [self publishIntercession];
 }
 
 - (IBAction)cancelClick:(id)sender {
@@ -53,8 +105,13 @@
     [self setTimeTextFieldState:btn.selected];
 }
 
+#pragma mark - UI
 
 - (void)setupTimeTextField{
+    NSDateComponents *dateComponents = [[NSCalendar currentCalendar]
+                                       components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | kCFCalendarUnitHour
+                                       fromDate:[NSDate date]];
+    
     self.yearTextField.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.yearTextField.layer.borderWidth = 1.0f;
     
@@ -70,6 +127,11 @@
     self.yearWidthConstraint.constant = SCREEN_WIDTH * 0.13;
     
     [self setTimeTextFieldState:NO];
+    
+    self.yearTextField.text = [NSString stringWithFormat:@"%@",@(dateComponents.year)];
+    self.monthTextField.text = [NSString stringWithFormat:@"%@",@(dateComponents.month)];
+    self.dayTextField.text = [NSString stringWithFormat:@"%@",@(dateComponents.day)];
+    self.hourTextField.text = [NSString stringWithFormat:@"%@",@(dateComponents.hour)];
     
 }
 
@@ -97,7 +159,7 @@
     }
     
     __block LSDatePickerView *pickerView = [[LSDatePickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, LS_DATE_PICKVIEW_HEIGHT)];
-//    pickerView.backgroundColor = [CCSimpleTools stringToColor:@"#75CBEC" opacity:0.5];
+    
     pickerView.backgroundColor = [self.navigationController.navigationBar.barTintColor colorWithAlphaComponent:0.6];
     pickerView.tag = 1008;
     [self.view addSubview:pickerView];
@@ -109,6 +171,7 @@
     } completion:nil];
     
     __weak LSDatePickerView *weakPv = pickerView;
+    __weak typeof(self) weakSelf = self;
     pickerView.cancelBlock = ^(void){
         LSDatePickerView *strongPv = weakPv;
         [UIView animateWithDuration:0.3 animations:^{
@@ -120,8 +183,18 @@
         }];
     };
     
-    pickerView.confirmBlock = ^(NSDate *date){
+    pickerView.confirmBlock = ^(NSDateComponents *dateComponents){
+        
         LSDatePickerView *strongPv = weakPv;
+        typeof(self) strongSelf = weakSelf;
+        if ([[[NSCalendar currentCalendar] dateFromComponents:dateComponents] timeIntervalSince1970] >= [[NSDate date] timeIntervalSince1970]) {
+            strongSelf.yearTextField.text = [NSString stringWithFormat:@"%@",@(dateComponents.year)];
+            strongSelf.monthTextField.text = [NSString stringWithFormat:@"%@",@(dateComponents.month)];
+            strongSelf.dayTextField.text = [NSString stringWithFormat:@"%@",@(dateComponents.day)];
+            strongSelf.hourTextField.text = [NSString stringWithFormat:@"%@",@(dateComponents.hour)];
+            self.updateTime = [[[NSCalendar currentCalendar] dateFromComponents:dateComponents] timeIntervalSince1970] * 1000;
+        }
+        
         [UIView animateWithDuration:0.3 animations:^{
             CGRect frame = strongPv.frame;
             frame.origin.y += frame.size.height;
@@ -130,25 +203,27 @@
             [strongPv removeFromSuperview];
         }];
         
-        NSLog(@"%@", date);
+        NSLog(@"%@", dateComponents);
     };
 }
 
-
-- (void)initializeLocationService {
-    // 初始化定位管理器
-    self.locationManager = [[CLLocationManager alloc] init];
-    // 设置代理
-    self.locationManager.delegate = self;
-    // 设置定位精确度到米
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    // 设置过滤器为无
-    self.locationManager.distanceFilter = 1000.f;
+#pragma mark - LSIntercessionServiceDelegate
+- (void)intercessionServiceDidPublished{
+    [self endLoadingHUD];
+    [self.contentTextView resignFirstResponder];
     
-    [self.locationManager requestWhenInUseAuthorization];
-    // 开始定位
-    [self.locationManager startUpdatingLocation];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+        if (self.dismissBlock) {
+            self.dismissBlock();
+        }
+    }];
 }
+
+- (void)serviceConnectFail:(NSInteger)errorCode{
+    [self endLoadingHUD];
+    [self toastMessage:@"网络错误~"];
+}
+
 #pragma mark - CLLocationManagerDelegate
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];

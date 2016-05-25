@@ -78,6 +78,7 @@
 		EDFA40931CC132620054E77C /* LSDiscoveryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA40921CC132620054E77C /* LSDiscoveryTableViewController.m */; };
 		EDFA40971CC134A00054E77C /* LSBibleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA40961CC134A00054E77C /* LSBibleViewController.m */; };
 		EDFA409A1CC139D90054E77C /* LSMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA40991CC139D90054E77C /* LSMainTabBarController.m */; };
+		EDFFE9661CF523EA004868E1 /* LSIntercessionPublishRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFFE9651CF523EA004868E1 /* LSIntercessionPublishRequestItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -208,6 +209,8 @@
 		EDFA40961CC134A00054E77C /* LSBibleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBibleViewController.m; sourceTree = "<group>"; };
 		EDFA40981CC139D90054E77C /* LSMainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSMainTabBarController.h; sourceTree = "<group>"; };
 		EDFA40991CC139D90054E77C /* LSMainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSMainTabBarController.m; sourceTree = "<group>"; };
+		EDFFE9641CF523EA004868E1 /* LSIntercessionPublishRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionPublishRequestItem.h; sourceTree = "<group>"; };
+		EDFFE9651CF523EA004868E1 /* LSIntercessionPublishRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionPublishRequestItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,6 +355,8 @@
 			children = (
 				ED42704D1CF4294900B901CE /* LSIntercessionRequestItem.h */,
 				ED42704E1CF4294900B901CE /* LSIntercessionRequestItem.m */,
+				EDFFE9641CF523EA004868E1 /* LSIntercessionPublishRequestItem.h */,
+				EDFFE9651CF523EA004868E1 /* LSIntercessionPublishRequestItem.m */,
 			);
 			name = Request;
 			sourceTree = "<group>";
@@ -661,6 +666,7 @@
 				ED4298661CC0637000FCD799 /* LiveStone.xcdatamodeld in Sources */,
 				ED4C7BE41CE94B580021D026 /* LSTimePanelViewCell.m in Sources */,
 				ED45E71A1CDC8E4E00FAC93A /* LSIntercessionService.m in Sources */,
+				EDFFE9661CF523EA004868E1 /* LSIntercessionPublishRequestItem.m in Sources */,
 				ED7A6F721CD2FD6E00EF1592 /* UILabel+CCStringFrame.m in Sources */,
 				ED0221C91CC33424004D6514 /* TestContactsSearchResultController.m in Sources */,
 				ED45E7061CDC1A9C00FAC93A /* LSServiceBase.m in Sources */,

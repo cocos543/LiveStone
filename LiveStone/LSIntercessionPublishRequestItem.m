@@ -10,4 +10,18 @@
 
 @implementation LSIntercessionPublishRequestItem
 
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        self.privacy = @"true";
+    }
+    
+    return self;
+}
+
++ (NSString *)mj_replacedKeyFromPropertyName121:(NSString *)propertyName{
+    // nickName -> nick_name
+    return [propertyName mj_underlineFromCamel];
+}
+
 @end

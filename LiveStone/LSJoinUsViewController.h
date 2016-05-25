@@ -10,10 +10,10 @@
 
 @class LSUserInfoItem;
 
-typedef void(^DismissBlock)(LSUserInfoItem *userInfoObject);
+typedef void(^LSJoinUsViewControllerDismissBlock)(LSUserInfoItem *userInfoObject);
 
 @interface LSJoinUsViewController : UIViewController
 
-@property (nonatomic,copy) DismissBlock dismissBlock;
+@property (nonatomic,copy) LSJoinUsViewControllerDismissBlock dismissBlock;
 
 @end

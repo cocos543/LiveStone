@@ -17,7 +17,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56I-6z-sXj" customClass="LSCircleImageView">
                         <rect key="frame" x="16" y="16" width="50" height="50"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="3fv-07-Dq6"/>
                             <constraint firstAttribute="width" constant="50" id="zSG-4v-Ayn"/>
@@ -26,7 +26,6 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="sex">
                                 <integer key="value" value="0"/>
                             </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="Logo"/>
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="百里抱信" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7D-XZ-DNh">
@@ -126,6 +125,5 @@
     </objects>
     <resources>
         <image name="IntercessionIcon" width="21" height="21"/>
-        <image name="Logo" width="85" height="85"/>
     </resources>
 </document>

@@ -28,7 +28,8 @@
         
     }else if (service == [LSIntercessionService class]){
         
-        baseService = [LSIntercessionService shardService];
+        baseService = [[LSIntercessionService alloc] init];
+        
         
     }else if (service == [LSStatisticsService class]){
         

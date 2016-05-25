@@ -11,6 +11,7 @@
 #import "LSIntercessionRequestItem.h"
 #import "LSIntercessionUpdateContentItem.h"
 #import "LSIntercessorsItem.h"
+#import "LSIntercessionPublishRequestItem.h"
 
 typedef NS_ENUM(NSUInteger, IntercessionType) {
     /**
@@ -39,6 +40,11 @@ typedef NS_ENUM(NSUInteger, IntercessionType) {
  */
 - (void)intercessionServiceDidLoadList:(NSArray<LSIntercessionItem *> *)intercessionList forIntercessionType:(IntercessionType)type;
 
+/**
+ *  Notifies the delegate that intercession's service did published intercession.
+ */
+- (void)intercessionServiceDidPublished;
+
 @end
 
 @interface LSIntercessionService : LSServiceBase
@@ -65,6 +71,14 @@ typedef NS_ENUM(NSUInteger, IntercessionType) {
  *  @param item LSUserInfoItem *
  */
 - (void)intercessionLoadComments:(LSIntercessionItem *)item;
+
+/**
+ *  Publish intercession
+ *
+ *  @param item Publish item
+ */
+- (void)intercessionPublish:(LSIntercessionPublishRequestItem *)item;
+
 
 - (NSString *)intercessionGetRelationship:(NSInteger)relationship;
 

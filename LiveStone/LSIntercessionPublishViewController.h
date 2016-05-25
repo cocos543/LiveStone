@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void(^LSIntercessionPublishViewControllerDismissBlock)(void);
 
 @interface LSIntercessionPublishViewController : UIViewController
+
+@property (nonatomic,copy) LSIntercessionPublishViewControllerDismissBlock dismissBlock;
 
 @end

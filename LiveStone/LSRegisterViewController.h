@@ -10,10 +10,10 @@
 
 @class LSUserInfoItem;
 
-typedef void(^DismissBlock)(LSUserInfoItem *userInfoObject);
+typedef void(^LSRegisterViewControllerDismissBlock)(LSUserInfoItem *userInfoObject);
 
 @interface LSRegisterViewController : UIViewController
 
-@property (nonatomic,copy) DismissBlock dismissBlock;
+@property (nonatomic,copy) LSRegisterViewControllerDismissBlock dismissBlock;
 
 @end

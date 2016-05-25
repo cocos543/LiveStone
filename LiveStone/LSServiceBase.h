@@ -20,6 +20,11 @@
  */
 - (void)serviceConnectFail:(NSInteger)errorCode;
 
+/**
+ *  User do not login.
+ */
+- (void)serviceDoNotLogin;
+
 @end
 
 @interface LSServiceBase : NSObject

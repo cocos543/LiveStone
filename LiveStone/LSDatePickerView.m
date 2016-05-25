@@ -115,7 +115,7 @@
     dateComponents.hour = [self.hoursArray[[self.pickerView selectedRowInComponent:3]] integerValue];
     
     if (self.confirmBlock) {
-        self.confirmBlock([[NSCalendar currentCalendar] dateFromComponents:dateComponents]);
+        self.confirmBlock(dateComponents);
     }
 }
 

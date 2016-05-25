@@ -7,6 +7,8 @@
 //
 
 #import "LSDiscoveryTableViewController.h"
+#import "LSRegisterViewController.h"
+#import "LSServiceCenter.h"
 
 @interface LSDiscoveryTableViewController () <UITableViewDelegate>
 
@@ -46,6 +48,27 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    if ([identifier isEqualToString:@"LSIntercessionSegue"]) {
+        LSAuthService *authService = [[LSServiceCenter defaultCenter] getService:[LSAuthService class]];
+        if (![authService isLogin]) {
+            LSRegisterViewController *regVC = [[LSRegisterViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:regVC];
+            [self presentViewController:nav animated:YES completion:nil];
+            return NO;
+        }
+    }
+    return YES;
 }
 
 #pragma mark - Table view data source

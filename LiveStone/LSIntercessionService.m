@@ -20,57 +20,37 @@
 @implementation LSIntercessionService
 @dynamic delegate;
 
-+ (instancetype)shardService{
-    static LSIntercessionService *service;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        service = [[LSIntercessionService alloc] initPrivate];
-    });
-    return service;
-}
-
-- (instancetype)initPrivate{
-    self = [super init];
-    return self;
-}
+//+ (instancetype)shardService{
+//    static LSIntercessionService *service;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        service = [[LSIntercessionService alloc] initPrivate];
+//        service.authService = [LSAuthService shardService];
+//    });
+//    return service;
+//}
+//
+//- (instancetype)initPrivate{
+//    self = [super init];
+//    return self;
+//}
 /**
  *  Clients uing is forbidden
  *
  *  @return instancetype
  */
 - (instancetype) init{
-    @throw [NSException exceptionWithName:@"Singleton" reason:@"Use +[LSAuthService sharedService]" userInfo:nil];
+    self = [super init];
+    if (self) {
+        self.authService = [LSAuthService shardService];
+    }
+    return self;
 }
+
+#pragma mark - Private Method
 
 
 #pragma mark - Open Method
-
-- (void)intercessionLoadList:(LSIntercessionRequestItem *)item {
-    NSDictionary *msgDic = item.mj_keyValues;
-    
-    [self httpPOSTMessage:msgDic toURLString:@"http://119.29.108.48/bible/frontend/web/index.php/v1/intercession/list" respondHandle:^(id respond) {
-        if ([respond isKindOfClass:[NSDictionary class]] && respond[@"status"] != nil) {
-            NSLog(@"Login fail~");
-            switch ([respond[@"status"] intValue]) {
-                case LSNetworkResponseCodeUnkonwError:
-//                    if ([self.delegate respondsToSelector:@selector(authServiceLoginFail:)]) {
-//                        
-//                    }
-                    break;
-                    
-                default:
-                    [self handleConnectError:respond];
-                    break;
-            }
-        }else{
-            if ([self.delegate respondsToSelector:@selector(intercessionServiceDidLoadList:forIntercessionType:)]) {
-                NSArray *list = [LSIntercessionItem mj_objectArrayWithKeyValuesArray:respond];
-                [self.delegate intercessionServiceDidLoadList:list forIntercessionType:item.intercessionType.integerValue];
-            }
-        }
-    }];
-}
-
 - (NSString *)intercessionGetRelationship:(NSInteger)relationship {
     switch (relationship) {
         case 0:
@@ -90,6 +70,62 @@
             break;
     }
     return @"";
+}
+
+- (void)intercessionLoadList:(LSIntercessionRequestItem *)item {
+    if (![self.authService isLogin]) {
+        if ([self.delegate respondsToSelector:@selector(serviceDoNotLogin)]) {
+            [self.delegate serviceDoNotLogin];
+        }
+        return;
+    }
+    
+    NSDictionary *msgDic = item.mj_keyValues;
+    
+    [self httpPOSTMessage:msgDic toURLString:@"http://119.29.108.48/bible/frontend/web/index.php/v1/intercession/list" respondHandle:^(id respond) {
+        if ([respond isKindOfClass:[NSDictionary class]] && respond[@"status"] != nil) {
+            NSLog(@"Login fail~");
+            switch ([respond[@"status"] intValue]) {
+                case LSNetworkResponseCodeUnkonwError:
+                default:
+                    [self handleConnectError:respond];
+                    break;
+            }
+        }else{
+            if ([self.delegate respondsToSelector:@selector(intercessionServiceDidLoadList:forIntercessionType:)]) {
+                NSArray *list = [LSIntercessionItem mj_objectArrayWithKeyValuesArray:respond];
+                [self.delegate intercessionServiceDidLoadList:list forIntercessionType:item.intercessionType.integerValue];
+            }
+        }
+    }];
+}
+
+- (void)intercessionPublish:(LSIntercessionPublishRequestItem *)item {
+    if (![self.authService isLogin]) {
+        if ([self.delegate respondsToSelector:@selector(serviceDoNotLogin)]) {
+            [self.delegate serviceDoNotLogin];
+        }
+        return;
+    }
+    
+    NSDictionary *msgDic = item.mj_keyValues;
+    
+    [self httpPOSTMessage:msgDic toURLString:@"http://119.29.108.48/bible/frontend/web/index.php/v1/intercession" respondHandle:^(id respond) {
+        if ([respond isKindOfClass:[NSDictionary class]] && respond[@"status"] != nil) {
+            NSLog(@"Login fail~");
+            switch ([respond[@"status"] intValue]) {
+                case LSNetworkResponseCodeUnkonwError:
+                default:
+                    [self handleConnectError:respond];
+                    break;
+            }
+        }else{
+            if ([self.delegate respondsToSelector:@selector(intercessionServiceDidPublished)]) {
+                [self.delegate intercessionServiceDidPublished];
+            }
+        }
+    }];
+    
 }
 
 @end

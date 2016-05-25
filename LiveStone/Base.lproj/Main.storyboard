@@ -622,7 +622,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="9ko-HB-QOD" kind="show" id="yN5-9B-umm"/>
+                                            <segue destination="9ko-HB-QOD" kind="show" identifier="LSIntercessionSegue" id="yN5-9B-umm"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -698,7 +698,7 @@
                     <navigationItem key="navigationItem" title="代祷" id="Yw2-Iq-6Hr">
                         <barButtonItem key="rightBarButtonItem" image="PublishIntercession" id="ABc-G7-soC">
                             <connections>
-                                <segue destination="oMT-AG-bke" kind="presentation" id="Hy0-bL-PLM"/>
+                                <segue destination="oMT-AG-bke" kind="presentation" identifier="LSIntercessionPublishSegue" id="Hy0-bL-PLM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -938,9 +938,13 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="发布" id="UOI-Am-ogO">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="confirmClick:" destination="Ba1-Nd-Qo4" id="Vh3-Yh-dlm"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="contentTextView" destination="OPC-XI-AJD" id="jV6-7E-b2Z"/>
                         <outlet property="dayTextField" destination="CKi-lG-U6f" id="mTF-pp-5Vj"/>
                         <outlet property="hourTextField" destination="qqu-ib-Fc2" id="sqP-Xw-MCV"/>
                         <outlet property="locationInfo" destination="sxb-Qf-wvM" id="msa-vu-7ip"/>

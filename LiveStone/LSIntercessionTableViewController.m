@@ -10,6 +10,8 @@
 #import "LSIntercessionCell.h"
 #import "LSCircleImageView.h"
 #import "LSIntercessionDetailTableViewController.h"
+#import "LSIntercessionPublishViewController.h"
+#import "LSRegisterViewController.h"
 #import "MJRefresh.h"
 #import "UIViewController+ProgressHUD.h"
 #import "UITableView+NetworkStateDisplay.h"
@@ -128,6 +130,11 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
     NSLog(@"网络出错");
 }
 
+- (void)serviceDoNotLogin{
+    [self endLoadingHUD];
+    NSLog(@"Do not login");
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -152,6 +159,7 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     cell.updateLabel.text = [dateFormatter stringFromDate:contentItem.createTime];
     cell.relationshipLabel.text = [self.intercessionService intercessionGetRelationship:item.relationship.integerValue];
+    cell.avatarImgView.sex = item.gender.integerValue;
     
     [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:item.avatar] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {} completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
         cell.avatarImgView.image = image;
@@ -221,14 +229,24 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]) {
+        if ([((UINavigationController *)segue.destinationViewController).visibleViewController isKindOfClass:[LSIntercessionPublishViewController class]]) {
+            LSIntercessionPublishViewController *vc = (LSIntercessionPublishViewController *)((UINavigationController *)segue.destinationViewController).visibleViewController;
+            if ([segue.identifier isEqualToString:@"LSIntercessionPublishSegue"]) {
+                vc.dismissBlock = ^{
+                    [self loadIntercessionData];
+                };
+            }
+        }
+    }
 }
-*/
+
 
 @end

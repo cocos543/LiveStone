@@ -68,6 +68,7 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 #pragma mark - UI
 
 - (void)setupToolbar{
@@ -251,12 +252,14 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([((UINavigationController *)segue.destinationViewController).visibleViewController isKindOfClass:[LSIntercessionUpdateOrBlessViewController class]]) {
-        LSIntercessionUpdateOrBlessViewController *vc = (LSIntercessionUpdateOrBlessViewController *)((UINavigationController *)segue.destinationViewController).visibleViewController;
-        if ([segue.identifier isEqualToString:@"LSIntercessionUpdateSegue"]) {
-            vc.actionType = IntercessionActionTypeUpdate;
-        }else if ([segue.identifier isEqualToString:@"LSIntercessionBlessSegue"]){
-            vc.actionType = IntercessionActionTypeBless;
+    if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]) {
+        if ([((UINavigationController *)segue.destinationViewController).visibleViewController isKindOfClass:[LSIntercessionUpdateOrBlessViewController class]]) {
+            LSIntercessionUpdateOrBlessViewController *vc = (LSIntercessionUpdateOrBlessViewController *)((UINavigationController *)segue.destinationViewController).visibleViewController;
+            if ([segue.identifier isEqualToString:@"LSIntercessionUpdateSegue"]) {
+                vc.actionType = IntercessionActionTypeUpdate;
+            }else if ([segue.identifier isEqualToString:@"LSIntercessionBlessSegue"]){
+                vc.actionType = IntercessionActionTypeBless;
+            }
         }
     }
 }
