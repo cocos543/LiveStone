@@ -159,8 +159,9 @@ NSDictionary *requestContents = @{
 
 52. 去除tablevView中多余的分割线的办法,就是在cell中自定义分割线,然后加入到距离cell底部6个点的地方..
 
+53. 　　祷告勇士: 含蕊、亦玉、靖荷、碧萱、寒云、向南、书雁、怀薇、思菱、忆文、翠巧、怀山、若山、向秋、凡白、绮烟、从蕾、天曼、又亦、依琴、曼彤、沛槐、又槐
 
-
+53. 如果在tablview还没显示好的时候就加载hud到 tableview上,则hud会被tableview上的线条啊,hearder view等覆盖了.解决方法就是在viewDidAppear:(BOOL)animated方法里面添加hud
 
 
 

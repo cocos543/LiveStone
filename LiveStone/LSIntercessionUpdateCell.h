@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LSIntercessionUpdateCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *updateLabel;
 
 @end

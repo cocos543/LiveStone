@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="83"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="闹花深处层楼，画帘半卷东风软。春归翠陌，平莎茸嫩，垂杨金浅。迟日催花，淡云阁雨，轻寒轻暖。恨芳菲世界，游人未赏，都付与、莺和燕。" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgM-Z6-cEU">
@@ -22,10 +22,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016-12-25 更新" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ely-e3-grF">
-                        <rect key="frame" x="16" y="54" width="118" height="21"/>
+                        <rect key="frame" x="16" y="54" width="102" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Ugn-aD-FjX"/>
-                            <constraint firstAttribute="width" constant="118" id="r16-Ev-3Ds"/>
+                            <constraint firstAttribute="width" priority="250" constant="118" id="r16-Ev-3Ds"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -41,6 +41,10 @@
                     <constraint firstItem="Ely-e3-grF" firstAttribute="top" secondItem="wgM-Z6-cEU" secondAttribute="bottom" constant="3" id="UrG-Za-vyB"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="contentLabel" destination="wgM-Z6-cEU" id="vCM-b1-2a3"/>
+                <outlet property="updateLabel" destination="Ely-e3-grF" id="ZtY-24-0og"/>
+            </connections>
             <point key="canvasLocation" x="509" y="347"/>
         </tableViewCell>
     </objects>

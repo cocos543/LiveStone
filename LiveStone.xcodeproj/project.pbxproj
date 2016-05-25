@@ -79,6 +79,9 @@
 		EDFA40971CC134A00054E77C /* LSBibleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA40961CC134A00054E77C /* LSBibleViewController.m */; };
 		EDFA409A1CC139D90054E77C /* LSMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA40991CC139D90054E77C /* LSMainTabBarController.m */; };
 		EDFFE9661CF523EA004868E1 /* LSIntercessionPublishRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFFE9651CF523EA004868E1 /* LSIntercessionPublishRequestItem.m */; };
+		EDFFE9691CF55507004868E1 /* LSIntercessionDetailRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFFE9681CF55507004868E1 /* LSIntercessionDetailRequestItem.m */; };
+		EDFFE96C1CF55860004868E1 /* LSIntercessionCommentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFFE96B1CF55860004868E1 /* LSIntercessionCommentItem.m */; };
+		EDFFE96F1CF5588F004868E1 /* LSIntercessionCommentRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFFE96E1CF5588F004868E1 /* LSIntercessionCommentRequestItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -211,6 +214,12 @@
 		EDFA40991CC139D90054E77C /* LSMainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSMainTabBarController.m; sourceTree = "<group>"; };
 		EDFFE9641CF523EA004868E1 /* LSIntercessionPublishRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionPublishRequestItem.h; sourceTree = "<group>"; };
 		EDFFE9651CF523EA004868E1 /* LSIntercessionPublishRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionPublishRequestItem.m; sourceTree = "<group>"; };
+		EDFFE9671CF55507004868E1 /* LSIntercessionDetailRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionDetailRequestItem.h; sourceTree = "<group>"; };
+		EDFFE9681CF55507004868E1 /* LSIntercessionDetailRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionDetailRequestItem.m; sourceTree = "<group>"; };
+		EDFFE96A1CF55860004868E1 /* LSIntercessionCommentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionCommentItem.h; sourceTree = "<group>"; };
+		EDFFE96B1CF55860004868E1 /* LSIntercessionCommentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionCommentItem.m; sourceTree = "<group>"; };
+		EDFFE96D1CF5588F004868E1 /* LSIntercessionCommentRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionCommentRequestItem.h; sourceTree = "<group>"; };
+		EDFFE96E1CF5588F004868E1 /* LSIntercessionCommentRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionCommentRequestItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +323,8 @@
 				ED4270471CF3E9C900B901CE /* LSIntercessorsItem.m */,
 				ED4270491CF3EAE300B901CE /* LSIntercessionItem.h */,
 				ED42704A1CF3EAE300B901CE /* LSIntercessionItem.m */,
+				EDFFE96A1CF55860004868E1 /* LSIntercessionCommentItem.h */,
+				EDFFE96B1CF55860004868E1 /* LSIntercessionCommentItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -357,6 +368,10 @@
 				ED42704E1CF4294900B901CE /* LSIntercessionRequestItem.m */,
 				EDFFE9641CF523EA004868E1 /* LSIntercessionPublishRequestItem.h */,
 				EDFFE9651CF523EA004868E1 /* LSIntercessionPublishRequestItem.m */,
+				EDFFE9671CF55507004868E1 /* LSIntercessionDetailRequestItem.h */,
+				EDFFE9681CF55507004868E1 /* LSIntercessionDetailRequestItem.m */,
+				EDFFE96D1CF5588F004868E1 /* LSIntercessionCommentRequestItem.h */,
+				EDFFE96E1CF5588F004868E1 /* LSIntercessionCommentRequestItem.m */,
 			);
 			name = Request;
 			sourceTree = "<group>";
@@ -649,6 +664,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED1D09681CD96E1900C215DD /* LSRegisterViewController.m in Sources */,
+				EDFFE96F1CF5588F004868E1 /* LSIntercessionCommentRequestItem.m in Sources */,
 				ED42985D1CC0637000FCD799 /* AppDelegate.m in Sources */,
 				ED42704F1CF4294900B901CE /* LSIntercessionRequestItem.m in Sources */,
 				ED4270481CF3E9C900B901CE /* LSIntercessorsItem.m in Sources */,
@@ -660,6 +676,7 @@
 				ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */,
 				ED42704B1CF3EAE300B901CE /* LSIntercessionItem.m in Sources */,
 				ED42985A1CC0637000FCD799 /* main.m in Sources */,
+				EDFFE96C1CF55860004868E1 /* LSIntercessionCommentItem.m in Sources */,
 				ED45E70F1CDC776400FAC93A /* LSUserInfoItem.m in Sources */,
 				ED4270421CF3E58D00B901CE /* LSIntercessionUpdateContentItem.m in Sources */,
 				EDFA40971CC134A00054E77C /* LSBibleViewController.m in Sources */,
@@ -674,6 +691,7 @@
 				ED4270451CF3E63400B901CE /* LSBaseModel.m in Sources */,
 				EDCF45C11CEC97DE00AA7E56 /* LSCircleImageView.m in Sources */,
 				ED2994051CEE8A340017BC3E /* LSIntercessionWarriorCell.m in Sources */,
+				EDFFE9691CF55507004868E1 /* LSIntercessionDetailRequestItem.m in Sources */,
 				EDB797DA1CDDC2E4005CB768 /* LSUserAuthItem.m in Sources */,
 				EDD856201CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.m in Sources */,
 				EDC02E881CEC0F890049114B /* LSIntercessionCell.m in Sources */,

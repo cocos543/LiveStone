@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class LSIntercessionItem;
+
 @interface LSIntercessionDetailTableViewController : UITableViewController
+
+@property (nonatomic, strong) LSIntercessionItem *intercessionItem;
 
 @end

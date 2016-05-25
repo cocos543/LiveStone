@@ -14,10 +14,30 @@
 #import "LSIntercessionUpdateCell.h"
 #import "LSIntercessionUpdateOrBlessViewController.h"
 
+#import "MJRefresh.h"
+#import "UIViewController+ProgressHUD.h"
+#import "UILabel+CCStringFrame.h"
+
+#import "LSServiceCenter.h"
+
+@import SDWebImage;
 
 #define BLESSING_SECTION_HEIGHT 28.f
 
-@interface LSIntercessionDetailTableViewController ()
+@interface LSIntercessionDetailTableViewController () <LSIntercessionServiceDelegate>
+
+// For load data
+@property (nonatomic, strong) LSIntercessionDetailRequestItem *requestItem;
+@property (nonatomic, strong) LSIntercessionCommentRequestItem *commentRequestItem;
+@property (nonatomic, strong) LSIntercessionService *intercessionService;
+
+@property (nonatomic, strong) NSArray<LSIntercessionCommentItem *> *commentList;
+
+//For calc warrior list height
+@property (nonatomic, strong) NSString *warriorString;
+@property (nonatomic, strong) NSString *blessingTitleString;
+
+@property (nonatomic) BOOL hasComments;
 
 @end
 
@@ -48,20 +68,28 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     
     [self setupToolbar];
+    [self initializeService];
+    [self initialzationWarriorString];
+    
+    self.blessingTitleString = @"祝福";
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    [self loadIntercessionCommentData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
     [self.navigationController setToolbarHidden:NO];
-    NSLog(@"detail apper~~~~");
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     
     [self.navigationController setToolbarHidden:YES];
-    NSLog(@"detail disappear~~~");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,7 +97,78 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     // Dispose of any resources that can be recreated.
 }
 
+- (void)initializeService{
+    self.intercessionService = [[LSServiceCenter defaultCenter] getService:[LSIntercessionService class]];
+    self.intercessionService.delegate = self;
+    
+    LSAuthService *authService = [[LSServiceCenter defaultCenter] getService:[LSAuthService class]];
+    self.requestItem = [[LSIntercessionDetailRequestItem alloc] init];
+    self.commentRequestItem = [[LSIntercessionCommentRequestItem alloc] init];
+    self.commentRequestItem.userId = self.requestItem.userId = [authService getUserInfo].userID;
+    self.commentRequestItem.intercessionId = self.intercessionItem.intercessionId;
+    
+}
+
+#pragma mark - DATA
+- (void)initialzationWarriorString{
+    if ([self.intercessionItem.intercessorsList count]) {
+        NSMutableString *string = [NSMutableString stringWithString:@" 　　祷告勇士: "];
+        for (LSIntercessorsItem *warrior in self.intercessionItem.intercessorsList) {
+            [string appendFormat:@"%@、", warrior.nickName];
+        }
+        self.warriorString = [string substringToIndex:string.length - 1];
+    }
+}
+//- (void)loadIntercessionData{
+//    [self.intercessionService intercessionLoadDetail:self.requestItem];
+//}
+
+- (void)loadIntercessionCommentData{
+    [self startLoadingHUDWithTitle:@"加载评论中"];
+    [self.intercessionService intercessionLoadComments:self.commentRequestItem];
+}
+
+#pragma mark - LSIntercessionServiceDelegate
+- (void)intercessionServiceDidLoadDetail:(LSIntercessionItem *)intercessionItem{
+    
+}
+
+- (void)intercessionServiceDidLoadDetailComments:(NSArray<LSIntercessionCommentItem *> *)commentList{
+    [self endLoadingHUD];
+    if (![commentList count]) {
+        self.blessingTitleString = @"快来写下祝福鼓励Ta";
+    }else{
+        [self addRefreshView];
+        self. hasComments = YES;
+        if ([commentList count] >= 10) {
+            self.commentRequestItem.startPage = @(self.commentRequestItem.startPage.integerValue + 1);
+        }
+        self.blessingTitleString = @"祝福";
+        self.commentList = commentList;
+    }
+    [self.tableView reloadData];
+    [self.tableView.mj_footer endRefreshing];
+}
+
+- (void)serviceConnectFail:(NSInteger)errorCode{
+    [self endLoadingHUD];
+    [self.tableView.mj_footer endRefreshing];
+}
+
 #pragma mark - UI
+
+- (void)addRefreshView{
+    if (self.tableView.mj_footer) {
+        return;
+    }
+    MJRefreshAutoNormalFooter *mjFooter = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        //Has been not loaded to the first page
+        //self.commentRequestItem.startPage = @(self.commentRequestItem.startPage.integerValue + 1);
+        [self loadIntercessionCommentData];
+        
+    }];
+    self.tableView.mj_footer = mjFooter;
+}
 
 - (void)setupToolbar{
     [self.navigationController setToolbarHidden:NO];
@@ -130,32 +229,77 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        return 4;
+        // Plus 1 for warrior list
+        if (![self.intercessionItem.intercessorsList count]) {
+            return [self.intercessionItem.contentList count];
+        }
+        return [self.intercessionItem.contentList count] + 1;
+    }else if (section == 1){
+        return [self.commentList count];
     }
-    return 50;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             LSIntercessionCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierCell forIndexPath:indexPath];
-            cell.avatarImgView.image = [UIImage imageNamed:@"TestAvatar"];
-            cell.avatarImgView.sex = 1;
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            LSIntercessionItem *item = self.intercessionItem;
+            cell.userNameLabel.text = item.nickName;
+            cell.numberLabel.text = [NSString stringWithFormat:@"%@",item.intercessionNumber];
+            LSIntercessionUpdateContentItem *contentItem = (LSIntercessionUpdateContentItem *)item.contentList[indexPath.row];
+            cell.contentLabel.text = contentItem.content;
+            cell.contentLabel.textColor = [UIColor blackColor];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+            cell.updateLabel.text = [dateFormatter stringFromDate:contentItem.createTime];
+            cell.updateLabel.textColor = [CCSimpleTools stringToColor:@"#75CBEC" opacity:1];
+            cell.relationshipLabel.text = [self.intercessionService intercessionGetRelationship:item.relationship.integerValue];
+            cell.avatarImgView.sex = item.gender.integerValue;
+            
+            [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:item.avatar] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {} completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                cell.avatarImgView.image = image;
+            }];
+            
             return cell;
-        }else if (indexPath.row != 3){
+        }else if (indexPath.row < [self.intercessionItem.contentList count]){
             LSIntercessionUpdateCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIntercessionUpdateCell forIndexPath:indexPath];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            LSIntercessionItem *item = self.intercessionItem;
+            LSIntercessionUpdateContentItem *contentItem = (LSIntercessionUpdateContentItem *)item.contentList[indexPath.row];
+            cell.contentLabel.text = contentItem.content;
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+            cell.updateLabel.text = [dateFormatter stringFromDate:contentItem.createTime];
             return cell;
         }else{
             LSIntercessionWarriorCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierWarriorCell forIndexPath:indexPath];
+            cell.contentLabel.text = self.warriorString;
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             return cell;
         }
     }else if (indexPath.section == 1){
         LSIntercessionBlessingCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierIntercessionBlessingCell forIndexPath:indexPath];
-        cell.avatarImgView.image = [UIImage imageNamed:@"TestAvatarGirl"];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        LSIntercessionCommentItem *item = self.commentList[indexPath.row];
+        cell.userNameLabel.text = item.nickName;
+        cell.contentLabel.text = item.content;
+        cell.likeNumberLabel.text = [NSString stringWithFormat:@"%d人", [item.praiseNumber intValue]];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        cell.dateLabel.text = [dateFormatter stringFromDate:item.createdAt];
+        
+        if (item.isPraised) {
+            cell.likeBtn.selected = YES;
+        }else{
+            cell.likeBtn.selected = NO;
+        }
+        
+        [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:item.avatar] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {} completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            cell.avatarImgView.image = image;
+        }];
+        
         return cell;
     }
     
@@ -211,8 +355,9 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
         UILabel *leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 8, BLESSING_SECTION_HEIGHT)];
         leftLabel.backgroundColor = [CCSimpleTools stringToColor:@"#46AEFF" opacity:1];
         
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 50, BLESSING_SECTION_HEIGHT)];
-        titleLabel.text = @"祝福";
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 200, BLESSING_SECTION_HEIGHT)];
+        
+        titleLabel.text = self.blessingTitleString;
         titleLabel.font = [UIFont systemFontOfSize:16];
         titleLabel.textColor = [[UIColor grayColor] colorWithAlphaComponent:1.f];
         
@@ -227,9 +372,18 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     //Here must set height for warrior's cell
-    if (indexPath.section == 0 && indexPath.row == 3) {
-        return 70;
+    if (indexPath.section == 0 && indexPath.row == [self.intercessionItem.contentList count]) {
+        UILabel *warriorLabel = [[UILabel alloc] init];
+        warriorLabel.text = self.warriorString;
+        warriorLabel.font = [UIFont systemFontOfSize:13];
+        CGRect frame = [warriorLabel boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 8 * 4, 0)];
+        NSLog(@"%@",NSStringFromCGRect(frame));
+        if (frame.size.height > 16) {
+            return 70;
+        }
+        return 50;
     }
+    
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 /*

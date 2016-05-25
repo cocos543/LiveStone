@@ -77,6 +77,7 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
         [self loadIntercessionData];
     }];
     MJRefreshAutoNormalFooter *mjFooter = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        //Has been loaded to the first page
         self.requestItem.startPage = @(self.requestItem.startPage.integerValue + 1);
         [self loadIntercessionData];
         
@@ -99,6 +100,11 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
 #pragma mark - LSIntercessionServiceDelegate
 - (void)intercessionServiceDidLoadList:(NSArray<LSIntercessionItem *> *)intercessionList forIntercessionType:(IntercessionType)type{
     self.tableView.bounces = YES;
+    
+    if ([intercessionList count] == 0 || [intercessionList count] < 10) {
+        self.requestItem.startPage = @(self.requestItem.startPage.integerValue - 1);
+    }
+    
     if (self.requestItem.startPage.integerValue == 1) {
         self.intercessionList = intercessionList;
 //        NSMutableArray *indexPathsArray = [[NSMutableArray alloc] init];
@@ -126,12 +132,13 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
         [self.tableView displayOfflineBackgroundView];
         self.tableView.bounces = NO;
     }
-    
+    self.requestItem.startPage = @(self.requestItem.startPage.integerValue - 1);
     NSLog(@"网络出错");
 }
 
 - (void)serviceDoNotLogin{
     [self endLoadingHUD];
+    self.requestItem.startPage = @(self.requestItem.startPage.integerValue - 1);
     NSLog(@"Do not login");
 }
 
@@ -225,7 +232,7 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
     // Pass the selected object to the new view controller.
     
     // Push the view controller.
-    [self performSegueWithIdentifier:@"LSIntercessionDetailSegue" sender:nil];
+    [self performSegueWithIdentifier:@"LSIntercessionDetailSegue" sender:indexPath];
 }
 
 
@@ -245,6 +252,10 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
                 };
             }
         }
+    }else if ([segue.destinationViewController isKindOfClass:[LSIntercessionDetailTableViewController class]]){
+        LSIntercessionDetailTableViewController *vc = (LSIntercessionDetailTableViewController *)segue.destinationViewController;
+        vc.intercessionItem = self.intercessionList[[(NSIndexPath *)sender row]];
+        
     }
 }
 

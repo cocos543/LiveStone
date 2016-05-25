@@ -1,25 +1,26 @@
 //
-//  LSIntercessionPublishRequestItem.m
+//  LSIntercessionCommentRequestItem.m
 //  LiveStone
 //
 //  Created by 郑克明 on 16/5/25.
 //  Copyright © 2016年 Cocos. All rights reserved.
 //
 
-#import "LSIntercessionPublishRequestItem.h"
+#import "LSIntercessionCommentRequestItem.h"
 
-@implementation LSIntercessionPublishRequestItem
+@implementation LSIntercessionCommentRequestItem
 
 - (instancetype)init{
     self = [super init];
     if (self) {
-        self.privacy = @"true";
+        self.startPage = @(1);
     }
-    
     return self;
 }
 
+
 + (NSString *)mj_replacedKeyFromPropertyName121:(NSString *)propertyName{
+    // nickName -> nick_name
     return [propertyName mj_underlineFromCamel];
 }
 

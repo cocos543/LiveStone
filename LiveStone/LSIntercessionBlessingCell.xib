@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PVC-fc-dhK" id="5S3-v8-Vlw">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="134"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Urj-Wu-sMl" customClass="LSCircleImageView">
@@ -62,7 +62,7 @@
                         <rect key="frame" x="72" y="110" width="72" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="20l-Ns-iYd"/>
-                            <constraint firstAttribute="width" constant="72" id="yjn-oQ-Kgz"/>
+                            <constraint firstAttribute="width" priority="250" constant="72" id="yjn-oQ-Kgz"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>

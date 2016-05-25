@@ -11,7 +11,11 @@
 #import "LSIntercessionRequestItem.h"
 #import "LSIntercessionUpdateContentItem.h"
 #import "LSIntercessorsItem.h"
+#import "LSIntercessionCommentItem.h"
+
 #import "LSIntercessionPublishRequestItem.h"
+#import "LSIntercessionDetailRequestItem.h"
+#import "LSIntercessionCommentRequestItem.h"
 
 typedef NS_ENUM(NSUInteger, IntercessionType) {
     /**
@@ -40,6 +44,10 @@ typedef NS_ENUM(NSUInteger, IntercessionType) {
  */
 - (void)intercessionServiceDidLoadList:(NSArray<LSIntercessionItem *> *)intercessionList forIntercessionType:(IntercessionType)type;
 
+- (void)intercessionServiceDidLoadDetail:(LSIntercessionItem *)intercessionItem;
+
+- (void)intercessionServiceDidLoadDetailComments:(NSArray<LSIntercessionCommentItem *>*)commentList;
+
 /**
  *  Notifies the delegate that intercession's service did published intercession.
  */
@@ -59,18 +67,18 @@ typedef NS_ENUM(NSUInteger, IntercessionType) {
 - (void)intercessionLoadList:(LSIntercessionRequestItem *)item;
 
 /**
- *  Load intercession's list from server
+ *  Load intercession detail from server
  *
- *  @param item LSUserInfoItem *
+ *  @param item LSIntercessionDetailRequestItem *
  */
-- (void)intercessionLoadDetail:(LSIntercessionItem *)item;
+- (void)intercessionLoadDetail:(LSIntercessionDetailRequestItem *)item;
 
 /**
- *  Load intercession's list from server
+ *  Load intercession comments from server
  *
- *  @param item LSUserInfoItem *
+ *  @param item LSIntercessionCommentRequestItem *
  */
-- (void)intercessionLoadComments:(LSIntercessionItem *)item;
+- (void)intercessionLoadComments:(LSIntercessionCommentRequestItem *)item;
 
 /**
  *  Publish intercession

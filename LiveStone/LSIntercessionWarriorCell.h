@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface LSIntercessionWarriorCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
 @end

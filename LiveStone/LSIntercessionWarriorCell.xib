@@ -18,7 +18,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2h-QE-vCO">
                         <rect key="frame" x="8" y="8" width="304" height="52"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　　祷告勇士: 含蕊、亦玉、靖荷、碧萱、寒云、向南、书雁、怀薇、思菱、忆文、翠巧、怀山、若山、向秋、凡白、绮烟、从蕾、天曼、又亦、依琴、曼彤、沛槐、又槐" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UhM-Sd-3yM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 　　祷告勇士: 含蕊、亦玉、靖荷、碧萱、寒云、向南、书雁、怀薇、思菱、忆文、翠巧、怀山、若山、向秋、凡白、绮烟、从蕾、天曼、又亦、依琴、曼彤、沛槐、又槐" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UhM-Sd-3yM">
                                 <rect key="frame" x="8" y="0.0" width="288" height="52"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -50,6 +50,9 @@
                     <constraint firstItem="z2h-QE-vCO" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="deB-Iu-y8r"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="contentLabel" destination="UhM-Sd-3yM" id="xLh-Zc-yJR"/>
+            </connections>
             <point key="canvasLocation" x="343" y="345.5"/>
         </tableViewCell>
     </objects>
