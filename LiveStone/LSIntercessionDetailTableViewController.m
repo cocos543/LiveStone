@@ -127,10 +127,16 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
         self.warriorString = [string substringToIndex:string.length - 1];
     }
 }
-//- (void)loadIntercessionData{
-//    [self.intercessionService intercessionLoadDetail:self.requestItem];
-//}
+/**
+ *  For update intercession
+ */
+- (void)loadIntercessionData{
+    [self.intercessionService intercessionLoadDetail:self.requestItem];
+}
 
+/**
+ *  For do blessing
+ */
 - (void)loadIntercessionCommentData{
     [self startLoadingHUDWithTitle:@"加载评论中"];
     [self.intercessionService intercessionLoadComments:self.commentRequestItem];
@@ -163,6 +169,7 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
 
 - (void)serviceConnectFail:(NSInteger)errorCode{
     [self endLoadingHUD];
+    [self toastMessage:@"网络不给力~"];
     [self.tableView.mj_footer endRefreshing];
 }
 
@@ -402,7 +409,6 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
         warriorLabel.text = self.warriorString;
         warriorLabel.font = [UIFont systemFontOfSize:13];
         CGRect frame = [warriorLabel boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 8 * 4, 0)];
-        NSLog(@"%@",NSStringFromCGRect(frame));
         if (frame.size.height > 16) {
             return 70;
         }
@@ -434,10 +440,17 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]) {
         if ([((UINavigationController *)segue.destinationViewController).visibleViewController isKindOfClass:[LSIntercessionUpdateOrBlessViewController class]]) {
             LSIntercessionUpdateOrBlessViewController *vc = (LSIntercessionUpdateOrBlessViewController *)((UINavigationController *)segue.destinationViewController).visibleViewController;
+            vc.intercessionItem = self.intercessionItem;
             if ([segue.identifier isEqualToString:@"LSIntercessionUpdateSegue"]) {
                 vc.actionType = IntercessionActionTypeUpdate;
+                vc.dismissBlock = ^{
+                    [self loadIntercessionData];
+                };
             }else if ([segue.identifier isEqualToString:@"LSIntercessionBlessSegue"]){
                 vc.actionType = IntercessionActionTypeBless;
+                vc.dismissBlock = ^{
+                    [self loadIntercessionCommentData];
+                };
             }
         }
     }

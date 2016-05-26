@@ -17,6 +17,7 @@
 #import "LSIntercessionDetailRequestItem.h"
 #import "LSIntercessionCommentRequestItem.h"
 #import "LSIntercessionPraiseRequestItem.h"
+#import "LSIntercessionDoCommentRequestItem.h"
 
 typedef NS_ENUM(NSUInteger, IntercessionType) {
     /**
@@ -54,6 +55,11 @@ typedef NS_ENUM(NSUInteger, IntercessionType) {
  */
 - (void)intercessionServiceDidPublished;
 
+/**
+ *  Notifies the delegate that intercession's service did published blessing.
+ */
+- (void)intercessionServiceDidComment;
+
 @end
 
 @interface LSIntercessionService : LSServiceBase
@@ -87,6 +93,13 @@ typedef NS_ENUM(NSUInteger, IntercessionType) {
  *  @param item Publish item
  */
 - (void)intercessionPublish:(LSIntercessionPublishRequestItem *)item;
+
+/**
+ *  Do comment,do blessing
+ *
+ *  @param item LSIntercessionDoCommentRequestItem *
+ */
+- (void)intercessionComment:(LSIntercessionDoCommentRequestItem *)item;
 
 /**
  *  Praising comment or cancel it

@@ -13,10 +13,14 @@
 
 #import "UIViewController+ProgressHUD.h"
 
-@interface LSIntercessionUpdateOrBlessViewController () <UITextViewDelegate>
+@interface LSIntercessionUpdateOrBlessViewController () <UITextViewDelegate, LSIntercessionServiceDelegate>
 @property (weak, nonatomic) IBOutlet UIPlaceHolderTextView *textView;
 
 @property (nonatomic, strong) UILabel *placeholderLabel;
+
+//For load data
+@property (nonatomic, strong) LSIntercessionService *intercessionService;
+@property (nonatomic, strong) LSIntercessionDoCommentRequestItem *requestItem;
 
 @end
 
@@ -32,6 +36,17 @@
     }
     
     [self setupTextViewPlacheholder];
+    [self initializeService];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.textView becomeFirstResponder];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.textView resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,11 +55,37 @@
 }
 
 - (IBAction)downClick:(UIBarButtonItem *)sender {
-
+    if ([self.textView.text length]) {
+        [self.textView resignFirstResponder];
+        if (self.actionType == IntercessionActionTypeBless) {
+            [self doBless];
+        }
+    }
 }
 
 - (IBAction)cancelClick:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)initializeService{
+    self.intercessionService = [[LSServiceCenter defaultCenter] getService:[LSIntercessionService class]];
+    self.intercessionService.delegate = self;
+    
+    LSAuthService *authService = [[LSServiceCenter defaultCenter] getService:[LSAuthService class]];
+    self.requestItem = [[LSIntercessionDoCommentRequestItem alloc] init];
+    self.requestItem.userId = [authService getUserInfo].userID;
+    self.requestItem.intercessionId = self.intercessionItem.intercessionId;
+}
+#pragma mark - DATA
+
+- (void)updateIntercession{
+    
+}
+
+- (void)doBless{
+    [self startLoadingHUD];
+    self.requestItem.content = self.textView.text;
+    [self.intercessionService intercessionComment:self.requestItem];
 }
 
 #pragma mark - Modify UI
@@ -54,6 +95,22 @@
     }else if (self.actionType == IntercessionActionTypeBless){
         self.textView.placeholder = @"请写下你的祝福~";
     }
+}
+
+#pragma mark - LSIntercessionServiceDelegate
+
+-(void)intercessionServiceDidComment{
+    [self endLoadingHUD];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+        if (self.dismissBlock) {
+            self.dismissBlock();
+        }
+    }];
+}
+
+- (void)serviceConnectFail:(NSInteger)errorCode{
+    [self endLoadingHUD];
+    [self toastMessage:@"网络不给力~"];
 }
 
 #pragma mark - text view delegate

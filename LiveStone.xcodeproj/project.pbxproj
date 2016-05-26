@@ -18,6 +18,7 @@
 		ED029CEA1CDABD9C00B76272 /* LSJoinUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED029CE81CDABD9C00B76272 /* LSJoinUsViewController.xib */; };
 		ED064A181CE3103F00FA2745 /* LSTimePanelViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED064A171CE3103F00FA2745 /* LSTimePanelViewCell.xib */; };
 		ED0A89891CF6749E0070770C /* LSIntercessionPraiseRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0A89881CF6749E0070770C /* LSIntercessionPraiseRequestItem.m */; };
+		ED0A898C1CF68D670070770C /* LSIntercessionDoCommentRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0A898B1CF68D670070770C /* LSIntercessionDoCommentRequestItem.m */; };
 		ED17E7311CD1819600F6F6CF /* LSBibleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED17E7301CD1819600F6F6CF /* LSBibleItem.m */; };
 		ED17E7331CD18EE500F6F6CF /* LSBibleContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED17E7321CD18EE500F6F6CF /* LSBibleContentCell.xib */; };
 		ED17E7351CD18F0800F6F6CF /* LSBibleTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED17E7341CD18F0800F6F6CF /* LSBibleTitleCell.xib */; };
@@ -107,6 +108,8 @@
 		ED08C3F51CCEE3DB00AAC7AA /* huoshi.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = huoshi.db; sourceTree = "<group>"; };
 		ED0A89871CF6749E0070770C /* LSIntercessionPraiseRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionPraiseRequestItem.h; sourceTree = "<group>"; };
 		ED0A89881CF6749E0070770C /* LSIntercessionPraiseRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionPraiseRequestItem.m; sourceTree = "<group>"; };
+		ED0A898A1CF68D670070770C /* LSIntercessionDoCommentRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionDoCommentRequestItem.h; sourceTree = "<group>"; };
+		ED0A898B1CF68D670070770C /* LSIntercessionDoCommentRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionDoCommentRequestItem.m; sourceTree = "<group>"; };
 		ED17E72F1CD1819600F6F6CF /* LSBibleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBibleItem.h; sourceTree = "<group>"; };
 		ED17E7301CD1819600F6F6CF /* LSBibleItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBibleItem.m; sourceTree = "<group>"; };
 		ED17E7321CD18EE500F6F6CF /* LSBibleContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBibleContentCell.xib; sourceTree = "<group>"; };
@@ -377,6 +380,8 @@
 				EDFFE96E1CF5588F004868E1 /* LSIntercessionCommentRequestItem.m */,
 				ED0A89871CF6749E0070770C /* LSIntercessionPraiseRequestItem.h */,
 				ED0A89881CF6749E0070770C /* LSIntercessionPraiseRequestItem.m */,
+				ED0A898A1CF68D670070770C /* LSIntercessionDoCommentRequestItem.h */,
+				ED0A898B1CF68D670070770C /* LSIntercessionDoCommentRequestItem.m */,
 			);
 			name = Request;
 			sourceTree = "<group>";
@@ -402,6 +407,8 @@
 		ED4298571CC0637000FCD799 /* LiveStone */ = {
 			isa = PBXGroup;
 			children = (
+				ED42985B1CC0637000FCD799 /* AppDelegate.h */,
+				ED42985C1CC0637000FCD799 /* AppDelegate.m */,
 				ED0221CE1CC3771F004D6514 /* Tools */,
 				ED4298761CC07DB400FCD799 /* ThirdLib */,
 				ED4298771CC07DBC00FCD799 /* Classes */,
@@ -416,8 +423,6 @@
 			children = (
 				ED08C3F51CCEE3DB00AAC7AA /* huoshi.db */,
 				ED4298591CC0637000FCD799 /* main.m */,
-				ED42985B1CC0637000FCD799 /* AppDelegate.h */,
-				ED42985C1CC0637000FCD799 /* AppDelegate.m */,
 				ED4298611CC0637000FCD799 /* Main.storyboard */,
 				ED4298671CC0637000FCD799 /* Assets.xcassets */,
 				ED4298691CC0637000FCD799 /* LaunchScreen.storyboard */,
@@ -686,6 +691,7 @@
 				ED4270421CF3E58D00B901CE /* LSIntercessionUpdateContentItem.m in Sources */,
 				EDFA40971CC134A00054E77C /* LSBibleViewController.m in Sources */,
 				ED4298661CC0637000FCD799 /* LiveStone.xcdatamodeld in Sources */,
+				ED0A898C1CF68D670070770C /* LSIntercessionDoCommentRequestItem.m in Sources */,
 				ED4C7BE41CE94B580021D026 /* LSTimePanelViewCell.m in Sources */,
 				ED45E71A1CDC8E4E00FAC93A /* LSIntercessionService.m in Sources */,
 				EDFFE9661CF523EA004868E1 /* LSIntercessionPublishRequestItem.m in Sources */,

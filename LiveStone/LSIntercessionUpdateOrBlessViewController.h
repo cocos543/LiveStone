@@ -8,14 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+@class LSIntercessionItem;
+
 typedef NS_ENUM(NSUInteger, IntercessionActionType)
 {
     IntercessionActionTypeUpdate = 0,
     IntercessionActionTypeBless,
 };
 
+typedef void(^LSIntercessionUpdateOrBlessViewControllerDismissBlock)(void);
+
 @interface LSIntercessionUpdateOrBlessViewController : UIViewController
 
+@property (nonatomic,copy) LSIntercessionUpdateOrBlessViewControllerDismissBlock dismissBlock;
+
 @property (nonatomic) IntercessionActionType actionType;
+
+@property (nonatomic, strong) LSIntercessionItem *intercessionItem;
 
 @end

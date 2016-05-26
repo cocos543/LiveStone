@@ -127,7 +127,7 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
 
 - (void)serviceConnectFail:(NSInteger)errorCode{
     [self endLoadingHUD];
-    [self toastMessage:@"网络错误~"];
+    [self toastMessage:@"网络不给力~"];
     [self removeRefreshHeader];
     if ([self.intercessionList count] == 0) {
         [self.tableView displayOfflineBackgroundView];
