@@ -18,6 +18,7 @@
 #import "LSIntercessionCommentRequestItem.h"
 #import "LSIntercessionPraiseRequestItem.h"
 #import "LSIntercessionDoCommentRequestItem.h"
+#import "LSIntercessionUpdateRequestItem.h"
 
 typedef NS_ENUM(NSUInteger, IntercessionType) {
     /**
@@ -25,11 +26,11 @@ typedef NS_ENUM(NSUInteger, IntercessionType) {
      */
     IntercessionTypeAll = 0,
     /**
-     *  All the data which is belong to the current user.
+     *  The data which is belong to the current user.
      */
     IntercessionTypeCurrent = 0,
     /**
-     *  All the data that the current user was involved.
+     *  The data that the current user was involved.
      */
     IntercessionTypeParticipant
 };
@@ -46,8 +47,18 @@ typedef NS_ENUM(NSUInteger, IntercessionType) {
  */
 - (void)intercessionServiceDidLoadList:(NSArray<LSIntercessionItem *> *)intercessionList forIntercessionType:(IntercessionType)type;
 
+/**
+ *  Notifies the delegate that intercession's service has been load the intercession.
+ *
+ *  @param intercessionItem LSIntercessionItem *
+ */
 - (void)intercessionServiceDidLoadDetail:(LSIntercessionItem *)intercessionItem;
 
+/**
+ *  Notifies the delegate that intercession's service has been load the intercession's comments
+ *
+ *  @param commentList Comment list
+ */
 - (void)intercessionServiceDidLoadDetailComments:(NSArray<LSIntercessionCommentItem *>*)commentList;
 
 /**
@@ -59,6 +70,11 @@ typedef NS_ENUM(NSUInteger, IntercessionType) {
  *  Notifies the delegate that intercession's service did published blessing.
  */
 - (void)intercessionServiceDidComment;
+
+/**
+ *  Notifies the delegate that intercession's service did update intercession.
+ */
+- (void)intercessionServiceDidUpdate;
 
 @end
 
@@ -100,6 +116,13 @@ typedef NS_ENUM(NSUInteger, IntercessionType) {
  *  @param item LSIntercessionDoCommentRequestItem *
  */
 - (void)intercessionComment:(LSIntercessionDoCommentRequestItem *)item;
+
+/**
+ *  Update intercession
+ *
+ *  @param item LSIntercessionUpdateRequestItem *
+ */
+- (void)intercessionUpdate:(LSIntercessionUpdateRequestItem *)item;
 
 /**
  *  Praising comment or cancel it

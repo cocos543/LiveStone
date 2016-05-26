@@ -19,6 +19,9 @@
 		ED064A181CE3103F00FA2745 /* LSTimePanelViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED064A171CE3103F00FA2745 /* LSTimePanelViewCell.xib */; };
 		ED0A89891CF6749E0070770C /* LSIntercessionPraiseRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0A89881CF6749E0070770C /* LSIntercessionPraiseRequestItem.m */; };
 		ED0A898C1CF68D670070770C /* LSIntercessionDoCommentRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0A898B1CF68D670070770C /* LSIntercessionDoCommentRequestItem.m */; };
+		ED0A898F1CF6CDF10070770C /* LSIntercessionUpdateRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0A898E1CF6CDF10070770C /* LSIntercessionUpdateRequestItem.m */; };
+		ED0A89921CF6EB830070770C /* LSIntercessionParticipateRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0A89911CF6EB830070770C /* LSIntercessionParticipateRequestItem.m */; };
+		ED0A89941CF6F10A0070770C /* LSIntercessionParticipateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED0A89931CF6F10A0070770C /* LSIntercessionParticipateView.xib */; };
 		ED17E7311CD1819600F6F6CF /* LSBibleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED17E7301CD1819600F6F6CF /* LSBibleItem.m */; };
 		ED17E7331CD18EE500F6F6CF /* LSBibleContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED17E7321CD18EE500F6F6CF /* LSBibleContentCell.xib */; };
 		ED17E7351CD18F0800F6F6CF /* LSBibleTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED17E7341CD18F0800F6F6CF /* LSBibleTitleCell.xib */; };
@@ -110,6 +113,11 @@
 		ED0A89881CF6749E0070770C /* LSIntercessionPraiseRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionPraiseRequestItem.m; sourceTree = "<group>"; };
 		ED0A898A1CF68D670070770C /* LSIntercessionDoCommentRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionDoCommentRequestItem.h; sourceTree = "<group>"; };
 		ED0A898B1CF68D670070770C /* LSIntercessionDoCommentRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionDoCommentRequestItem.m; sourceTree = "<group>"; };
+		ED0A898D1CF6CDF10070770C /* LSIntercessionUpdateRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionUpdateRequestItem.h; sourceTree = "<group>"; };
+		ED0A898E1CF6CDF10070770C /* LSIntercessionUpdateRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionUpdateRequestItem.m; sourceTree = "<group>"; };
+		ED0A89901CF6EB830070770C /* LSIntercessionParticipateRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionParticipateRequestItem.h; sourceTree = "<group>"; };
+		ED0A89911CF6EB830070770C /* LSIntercessionParticipateRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionParticipateRequestItem.m; sourceTree = "<group>"; };
+		ED0A89931CF6F10A0070770C /* LSIntercessionParticipateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSIntercessionParticipateView.xib; sourceTree = "<group>"; };
 		ED17E72F1CD1819600F6F6CF /* LSBibleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBibleItem.h; sourceTree = "<group>"; };
 		ED17E7301CD1819600F6F6CF /* LSBibleItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBibleItem.m; sourceTree = "<group>"; };
 		ED17E7321CD18EE500F6F6CF /* LSBibleContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBibleContentCell.xib; sourceTree = "<group>"; };
@@ -382,6 +390,10 @@
 				ED0A89881CF6749E0070770C /* LSIntercessionPraiseRequestItem.m */,
 				ED0A898A1CF68D670070770C /* LSIntercessionDoCommentRequestItem.h */,
 				ED0A898B1CF68D670070770C /* LSIntercessionDoCommentRequestItem.m */,
+				ED0A898D1CF6CDF10070770C /* LSIntercessionUpdateRequestItem.h */,
+				ED0A898E1CF6CDF10070770C /* LSIntercessionUpdateRequestItem.m */,
+				ED0A89901CF6EB830070770C /* LSIntercessionParticipateRequestItem.h */,
+				ED0A89911CF6EB830070770C /* LSIntercessionParticipateRequestItem.m */,
 			);
 			name = Request;
 			sourceTree = "<group>";
@@ -498,6 +510,7 @@
 				ED94FB6A1CEF27FD00ECD199 /* LSIntercessionUpdateCell.h */,
 				ED94FB6B1CEF27FD00ECD199 /* LSIntercessionUpdateCell.m */,
 				ED94FB6C1CEF27FD00ECD199 /* LSIntercessionUpdateCell.xib */,
+				ED0A89931CF6F10A0070770C /* LSIntercessionParticipateView.xib */,
 			);
 			name = Prayer;
 			sourceTree = "<group>";
@@ -608,6 +621,7 @@
 				ED4848F61CC85D080093E29E /* LSBookChapterCell.xib in Resources */,
 				EDDC2E681CD2478B0054E4DD /* LSBibleNoteView.xib in Resources */,
 				ED4298681CC0637000FCD799 /* Assets.xcassets in Resources */,
+				ED0A89941CF6F10A0070770C /* LSIntercessionParticipateView.xib in Resources */,
 				ED17E7331CD18EE500F6F6CF /* LSBibleContentCell.xib in Resources */,
 				ED29940B1CEE923B0017BC3E /* LSIntercessionBlessingCell.xib in Resources */,
 				ED0221DC1CC37CAC004D6514 /* LSBookCollectionViewCell.xib in Resources */,
@@ -706,8 +720,10 @@
 				EDB797DA1CDDC2E4005CB768 /* LSUserAuthItem.m in Sources */,
 				ED0A89891CF6749E0070770C /* LSIntercessionPraiseRequestItem.m in Sources */,
 				EDD856201CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.m in Sources */,
+				ED0A898F1CF6CDF10070770C /* LSIntercessionUpdateRequestItem.m in Sources */,
 				EDC02E881CEC0F890049114B /* LSIntercessionCell.m in Sources */,
 				ED358B991CC5C2C00016D1C1 /* LSBookDetailCell.m in Sources */,
+				ED0A89921CF6EB830070770C /* LSIntercessionParticipateRequestItem.m in Sources */,
 				ED94FB6D1CEF27FD00ECD199 /* LSIntercessionUpdateCell.m in Sources */,
 				EDD623291CF2B08300C2C1FC /* LSDatePickerView.m in Sources */,
 				ED4270521CF45DBE00B901CE /* UITableView+NetworkStateDisplay.m in Sources */,

@@ -40,6 +40,10 @@
 @property (nonatomic, strong) NSString *warriorString;
 @property (nonatomic, strong) NSString *blessingTitleString;
 
+@property (nonatomic, strong) NSNumber *currentUserID;
+
+//
+@property (nonatomic) BOOL isCurrentUser;
 @property (nonatomic) BOOL hasComments;
 
 @end
@@ -70,9 +74,9 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     
-    [self setupToolbar];
     [self initializeService];
     [self initialzationWarriorString];
+    [self setupToolbar];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self loadIntercessionCommentData];
@@ -112,9 +116,11 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     self.requestItem = [[LSIntercessionDetailRequestItem alloc] init];
     self.commentRequestItem = [[LSIntercessionCommentRequestItem alloc] init];
     self.praiseRequestItem = [[LSIntercessionPraiseRequestItem alloc] init];
-    self.praiseRequestItem.userId = self.commentRequestItem.userId = self.requestItem.userId = [authService getUserInfo].userID;
-    self.commentRequestItem.intercessionId = self.intercessionItem.intercessionId;
-    
+    self.currentUserID = self.praiseRequestItem.userId = self.commentRequestItem.userId = self.requestItem.userId = [authService getUserInfo].userID;
+    self.commentRequestItem.intercessionId = self.requestItem.intercessionId = self.intercessionItem.intercessionId;
+    if ([self.intercessionItem.userId isEqualToNumber:self.currentUserID]) {
+        self.isCurrentUser = YES;
+    }
 }
 
 #pragma mark - DATA
@@ -130,7 +136,8 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
 /**
  *  For update intercession
  */
-- (void)loadIntercessionData{
+- (void)loadIntercessionDetailData{
+    [self startLoadingHUD];
     [self.intercessionService intercessionLoadDetail:self.requestItem];
 }
 
@@ -144,7 +151,11 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
 
 #pragma mark - LSIntercessionServiceDelegate
 - (void)intercessionServiceDidLoadDetail:(LSIntercessionItem *)intercessionItem{
-    
+    [self endLoadingHUD];
+    if (intercessionItem) {
+        self.intercessionItem.contentList = intercessionItem.contentList;
+        [self.tableView reloadData];
+    }
 }
 
 - (void)intercessionServiceDidLoadDetailComments:(NSArray<LSIntercessionCommentItem *> *)commentList{
@@ -178,9 +189,9 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     self.praiseRequestItem.commentId = blessingID;
     UIButton *likeBtn = sender;
     if (likeBtn.selected) {
-        self.praiseRequestItem.isCancel = @"false";
+        self.praiseRequestItem.isCancel = false;
     }else{
-        self.praiseRequestItem.isCancel = @"true";
+        self.praiseRequestItem.isCancel = true;
     }
     [self.intercessionService intercessionPraise:self.praiseRequestItem];
 }
@@ -206,8 +217,13 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     UIButton *intercedeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     UIImage *image = [UIImage imageNamed:@"IntercessionIcon"];
     [intercedeBtn setImage:image forState:UIControlStateNormal];
+    
     // the title can be 参与代祷
-    [intercedeBtn setTitle:@"更新代祷" forState:UIControlStateNormal];
+    if (self.isCurrentUser) {
+        [intercedeBtn setTitle:@"更新代祷" forState:UIControlStateNormal];
+    }else{
+        [intercedeBtn setTitle:@"参与代祷" forState:UIControlStateNormal];
+    }
     
     intercedeBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [intercedeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -241,9 +257,19 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     self.toolbarItems = @[intercedeItem, spaceItem, blessItem];
 }
 
+#pragma mark Event
+
 - (void)intercedeClick:(id)sender{
     NSLog(@"intercede click");
-    [self performSegueWithIdentifier:@"LSIntercessionUpdateSegue" sender:sender];
+    if (self.isCurrentUser) {
+        [self performSegueWithIdentifier:@"LSIntercessionUpdateSegue" sender:sender];
+    }else{
+        if (self.intercessionItem.isInterceded) {
+            [self toastMessage:@"已参加过代祷~"];
+        }else{
+            
+        }
+    }
 }
 
 - (void)blessClick:(id)sender{
@@ -444,7 +470,7 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
             if ([segue.identifier isEqualToString:@"LSIntercessionUpdateSegue"]) {
                 vc.actionType = IntercessionActionTypeUpdate;
                 vc.dismissBlock = ^{
-                    [self loadIntercessionData];
+                    [self loadIntercessionDetailData];
                 };
             }else if ([segue.identifier isEqualToString:@"LSIntercessionBlessSegue"]){
                 vc.actionType = IntercessionActionTypeBless;

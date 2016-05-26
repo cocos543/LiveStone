@@ -21,6 +21,7 @@
 //For load data
 @property (nonatomic, strong) LSIntercessionService *intercessionService;
 @property (nonatomic, strong) LSIntercessionDoCommentRequestItem *requestItem;
+@property (nonatomic, strong) LSIntercessionUpdateRequestItem *updateRequestItem;
 
 @end
 
@@ -59,6 +60,8 @@
         [self.textView resignFirstResponder];
         if (self.actionType == IntercessionActionTypeBless) {
             [self doBless];
+        }else if (self.actionType == IntercessionActionTypeUpdate){
+            [self updateIntercession];
         }
     }
 }
@@ -73,13 +76,16 @@
     
     LSAuthService *authService = [[LSServiceCenter defaultCenter] getService:[LSAuthService class]];
     self.requestItem = [[LSIntercessionDoCommentRequestItem alloc] init];
-    self.requestItem.userId = [authService getUserInfo].userID;
-    self.requestItem.intercessionId = self.intercessionItem.intercessionId;
+    self.updateRequestItem = [[LSIntercessionUpdateRequestItem alloc] init];
+    self.updateRequestItem.userId = self.requestItem.userId = [authService getUserInfo].userID;
+    self.updateRequestItem.intercessionId = self.requestItem.intercessionId = self.intercessionItem.intercessionId;
 }
 #pragma mark - DATA
 
 - (void)updateIntercession{
-    
+    [self startLoadingHUD];
+    self.updateRequestItem.content = self.textView.text;
+    [self.intercessionService intercessionUpdate:self.updateRequestItem];
 }
 
 - (void)doBless{
@@ -98,6 +104,15 @@
 }
 
 #pragma mark - LSIntercessionServiceDelegate
+
+-(void)intercessionServiceDidUpdate{
+    [self endLoadingHUD];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+        if (self.dismissBlock) {
+            self.dismissBlock();
+        }
+    }];
+}
 
 -(void)intercessionServiceDidComment{
     [self endLoadingHUD];

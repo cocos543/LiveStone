@@ -11,7 +11,7 @@
 @interface LSIntercessionPraiseRequestItem : LSBaseModel
 
 @property (nonatomic, strong) NSNumber *userId;
-@property (nonatomic, strong) NSString *isCancel;
+@property (nonatomic) BOOL isCancel;
 @property (nonatomic, strong) NSNumber *commentId;
 
 @end
