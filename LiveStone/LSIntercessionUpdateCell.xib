@@ -31,18 +31,29 @@
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOJ-3Z-9Fr">
+                        <rect key="frame" x="16" y="75" width="304" height="1"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="uOW-yJ-YWd"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="AOJ-3Z-9Fr" secondAttribute="bottom" constant="7" id="07P-s7-QP7"/>
                     <constraint firstItem="wgM-Z6-cEU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="6Z0-Hk-Zbs"/>
                     <constraint firstItem="Ely-e3-grF" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="92F-dF-iyp"/>
                     <constraint firstItem="wgM-Z6-cEU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="MZA-4g-Ze4"/>
                     <constraint firstItem="Ely-e3-grF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="Q1Y-ds-dhU"/>
                     <constraint firstItem="wgM-Z6-cEU" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-8" id="ROk-dn-aQQ"/>
                     <constraint firstItem="Ely-e3-grF" firstAttribute="top" secondItem="wgM-Z6-cEU" secondAttribute="bottom" constant="3" id="UrG-Za-vyB"/>
+                    <constraint firstAttribute="trailing" secondItem="AOJ-3Z-9Fr" secondAttribute="trailing" id="X2v-GY-sfk"/>
+                    <constraint firstItem="AOJ-3Z-9Fr" firstAttribute="leading" secondItem="wgM-Z6-cEU" secondAttribute="leading" id="yhl-l5-s7S"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="contentLabel" destination="wgM-Z6-cEU" id="vCM-b1-2a3"/>
+                <outlet property="separatorView" destination="AOJ-3Z-9Fr" id="Fdn-jm-yTB"/>
                 <outlet property="updateLabel" destination="Ely-e3-grF" id="ZtY-24-0og"/>
             </connections>
             <point key="canvasLocation" x="509" y="347"/>

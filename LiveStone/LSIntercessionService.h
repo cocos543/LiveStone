@@ -16,6 +16,7 @@
 #import "LSIntercessionPublishRequestItem.h"
 #import "LSIntercessionDetailRequestItem.h"
 #import "LSIntercessionCommentRequestItem.h"
+#import "LSIntercessionPraiseRequestItem.h"
 
 typedef NS_ENUM(NSUInteger, IntercessionType) {
     /**
@@ -87,7 +88,20 @@ typedef NS_ENUM(NSUInteger, IntercessionType) {
  */
 - (void)intercessionPublish:(LSIntercessionPublishRequestItem *)item;
 
+/**
+ *  Praising comment or cancel it
+ *
+ *  @param item LSIntercessionPraiseRequestItem *
+ */
+- (void)intercessionPraise:(LSIntercessionPraiseRequestItem *)item;
 
+/**
+ *  Get relationship label to display
+ *
+ *  @param relationship relationship tag
+ *
+ *  @return label
+ */
 - (NSString *)intercessionGetRelationship:(NSInteger)relationship;
 
 @end

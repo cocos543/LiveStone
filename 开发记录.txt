@@ -161,7 +161,9 @@ NSDictionary *requestContents = @{
 
 53. 　　祷告勇士: 含蕊、亦玉、靖荷、碧萱、寒云、向南、书雁、怀薇、思菱、忆文、翠巧、怀山、若山、向秋、凡白、绮烟、从蕾、天曼、又亦、依琴、曼彤、沛槐、又槐
 
-53. 如果在tablview还没显示好的时候就加载hud到 tableview上,则hud会被tableview上的线条啊,hearder view等覆盖了.解决方法就是在viewDidAppear:(BOOL)animated方法里面添加hud
+53. 如果在tablview还没显示好的时候就加载hud到 tableview上,则hud会被tableview上的线条啊,hearder view等覆盖了.解决方法就是在viewDidAppear:(BOOL)animated方法里面添加hud.或者在didload方法中延迟0.5s加载就完美解决了
+
+54. 点赞互交设计:点赞的时候,指明是赞还是取消,然后交给后台去完成请求.UI默认点赞操作是成功的并且立即响应.
 
 
 

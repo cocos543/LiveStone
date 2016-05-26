@@ -50,11 +50,12 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oc1-mS-ukI">
                         <rect key="frame" x="272" y="111" width="15" height="15"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="dJi-y2-aB7"/>
                             <constraint firstAttribute="width" constant="15" id="pcl-uT-Lg1"/>
                         </constraints>
-                        <state key="normal" title="Button" image="Like"/>
+                        <state key="normal" image="Like"/>
                         <state key="selected" image="Liked"/>
                         <state key="highlighted" image="Liked"/>
                     </button>
@@ -68,10 +69,23 @@
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TlJ-0e-PNT" customClass="UIControl">
+                        <rect key="frame" x="253" y="104" width="59" height="30"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="WQI-ti-S1T"/>
+                        </constraints>
+                        <connections>
+                            <action selector="likeButtonClick:" destination="PVC-fc-dhK" eventType="touchUpInside" id="5po-Br-1hQ"/>
+                        </connections>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Oc1-mS-ukI" firstAttribute="leading" secondItem="TlJ-0e-PNT" secondAttribute="leading" constant="19" id="0GS-sP-ls1"/>
                     <constraint firstItem="Rz9-8W-JPD" firstAttribute="trailing" secondItem="5S3-v8-Vlw" secondAttribute="trailingMargin" id="786-B1-9mS"/>
+                    <constraint firstItem="Rz9-8W-JPD" firstAttribute="trailing" secondItem="TlJ-0e-PNT" secondAttribute="trailing" id="BdX-Nf-vqW"/>
                     <constraint firstItem="Urj-Wu-sMl" firstAttribute="leading" secondItem="5S3-v8-Vlw" secondAttribute="leadingMargin" constant="8" id="Bps-Gi-jhQ"/>
+                    <constraint firstItem="TlJ-0e-PNT" firstAttribute="centerY" secondItem="MTP-mQ-KOH" secondAttribute="centerY" constant="1" id="Fla-Rq-T9H"/>
                     <constraint firstItem="Oc1-mS-ukI" firstAttribute="bottom" secondItem="MTP-mQ-KOH" secondAttribute="bottom" id="NYt-5l-rdZ"/>
                     <constraint firstItem="ccC-DT-Dqo" firstAttribute="leading" secondItem="Urj-Wu-sMl" secondAttribute="trailing" constant="6" id="QEd-Ba-mTF"/>
                     <constraint firstItem="AcO-dy-chE" firstAttribute="top" secondItem="ccC-DT-Dqo" secondAttribute="bottom" constant="8" id="QgL-qG-GEO"/>

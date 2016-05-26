@@ -9,6 +9,10 @@
 #import "LSIntercessionUpdateOrBlessViewController.h"
 #import "UIPlaceHolderTextView.h"
 
+#import "LSServiceCenter.h"
+
+#import "UIViewController+ProgressHUD.h"
+
 @interface LSIntercessionUpdateOrBlessViewController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIPlaceHolderTextView *textView;
 

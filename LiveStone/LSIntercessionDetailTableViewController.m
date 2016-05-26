@@ -23,12 +23,15 @@
 @import SDWebImage;
 
 #define BLESSING_SECTION_HEIGHT 28.f
+#define BLESSING_WARRIOR_LABEL @"　　祷告勇士: "
 
-@interface LSIntercessionDetailTableViewController () <LSIntercessionServiceDelegate>
+@interface LSIntercessionDetailTableViewController () <LSIntercessionServiceDelegate, LSIntercessionBlessingCellDelegate>
 
 // For load data
 @property (nonatomic, strong) LSIntercessionDetailRequestItem *requestItem;
 @property (nonatomic, strong) LSIntercessionCommentRequestItem *commentRequestItem;
+@property (nonatomic, strong) LSIntercessionPraiseRequestItem *praiseRequestItem;
+
 @property (nonatomic, strong) LSIntercessionService *intercessionService;
 
 @property (nonatomic, strong) NSArray<LSIntercessionCommentItem *> *commentList;
@@ -71,13 +74,17 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     [self initializeService];
     [self initialzationWarriorString];
     
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self loadIntercessionCommentData];
+    });
+    
     self.blessingTitleString = @"祝福";
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    [self loadIntercessionCommentData];
+//    [self loadIntercessionCommentData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -104,7 +111,8 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     LSAuthService *authService = [[LSServiceCenter defaultCenter] getService:[LSAuthService class]];
     self.requestItem = [[LSIntercessionDetailRequestItem alloc] init];
     self.commentRequestItem = [[LSIntercessionCommentRequestItem alloc] init];
-    self.commentRequestItem.userId = self.requestItem.userId = [authService getUserInfo].userID;
+    self.praiseRequestItem = [[LSIntercessionPraiseRequestItem alloc] init];
+    self.praiseRequestItem.userId = self.commentRequestItem.userId = self.requestItem.userId = [authService getUserInfo].userID;
     self.commentRequestItem.intercessionId = self.intercessionItem.intercessionId;
     
 }
@@ -112,7 +120,7 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
 #pragma mark - DATA
 - (void)initialzationWarriorString{
     if ([self.intercessionItem.intercessorsList count]) {
-        NSMutableString *string = [NSMutableString stringWithString:@" 　　祷告勇士: "];
+        NSMutableString *string = [NSMutableString stringWithString:BLESSING_WARRIOR_LABEL];
         for (LSIntercessorsItem *warrior in self.intercessionItem.intercessorsList) {
             [string appendFormat:@"%@、", warrior.nickName];
         }
@@ -142,17 +150,32 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
         self. hasComments = YES;
         if ([commentList count] >= 10) {
             self.commentRequestItem.startPage = @(self.commentRequestItem.startPage.integerValue + 1);
+        }else{
+            self.tableView.mj_footer = nil;
         }
         self.blessingTitleString = @"祝福";
         self.commentList = commentList;
     }
-    [self.tableView reloadData];
+    
     [self.tableView.mj_footer endRefreshing];
+    [self.tableView reloadData];
 }
 
 - (void)serviceConnectFail:(NSInteger)errorCode{
     [self endLoadingHUD];
     [self.tableView.mj_footer endRefreshing];
+}
+
+#pragma mark - LSIntercessionBlessingCellDelegate
+- (void)blessingCellLikeButtonClick:(id)sender blessingID:(NSNumber *)blessingID{
+    self.praiseRequestItem.commentId = blessingID;
+    UIButton *likeBtn = sender;
+    if (likeBtn.selected) {
+        self.praiseRequestItem.isCancel = @"false";
+    }else{
+        self.praiseRequestItem.isCancel = @"true";
+    }
+    [self.intercessionService intercessionPraise:self.praiseRequestItem];
 }
 
 #pragma mark - UI
@@ -281,8 +304,10 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
         }
     }else if (indexPath.section == 1){
         LSIntercessionBlessingCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierIntercessionBlessingCell forIndexPath:indexPath];
+        cell.delegate = self;
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         LSIntercessionCommentItem *item = self.commentList[indexPath.row];
+        cell.blessingID = item.commentId;
         cell.userNameLabel.text = item.nickName;
         cell.contentLabel.text = item.content;
         cell.likeNumberLabel.text = [NSString stringWithFormat:@"%d人", [item.praiseNumber intValue]];

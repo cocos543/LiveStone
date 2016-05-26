@@ -117,6 +117,7 @@
                 <outlet property="contentLabel" destination="bfd-Lm-REA" id="M1H-Zc-ed8"/>
                 <outlet property="numberLabel" destination="FiF-Ra-16Y" id="6bu-g6-GlB"/>
                 <outlet property="relationshipLabel" destination="2Zs-EJ-n2E" id="a50-fN-8HV"/>
+                <outlet property="separatorView" destination="S8E-fh-dmp" id="v8Z-GW-KVZ"/>
                 <outlet property="updateLabel" destination="p7N-ux-APn" id="h0u-s3-Xw3"/>
                 <outlet property="userNameLabel" destination="K7D-XZ-DNh" id="y0i-2g-vH0"/>
             </connections>

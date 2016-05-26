@@ -103,6 +103,7 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
     
     if ([intercessionList count] == 0 || [intercessionList count] < 10) {
         self.requestItem.startPage = @(self.requestItem.startPage.integerValue - 1);
+        self.tableView.mj_footer = nil;
     }
     
     if (self.requestItem.startPage.integerValue == 1) {

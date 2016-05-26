@@ -17,6 +17,7 @@
 		ED029CE91CDABD9C00B76272 /* LSJoinUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED029CE71CDABD9C00B76272 /* LSJoinUsViewController.m */; };
 		ED029CEA1CDABD9C00B76272 /* LSJoinUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED029CE81CDABD9C00B76272 /* LSJoinUsViewController.xib */; };
 		ED064A181CE3103F00FA2745 /* LSTimePanelViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED064A171CE3103F00FA2745 /* LSTimePanelViewCell.xib */; };
+		ED0A89891CF6749E0070770C /* LSIntercessionPraiseRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0A89881CF6749E0070770C /* LSIntercessionPraiseRequestItem.m */; };
 		ED17E7311CD1819600F6F6CF /* LSBibleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED17E7301CD1819600F6F6CF /* LSBibleItem.m */; };
 		ED17E7331CD18EE500F6F6CF /* LSBibleContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED17E7321CD18EE500F6F6CF /* LSBibleContentCell.xib */; };
 		ED17E7351CD18F0800F6F6CF /* LSBibleTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED17E7341CD18F0800F6F6CF /* LSBibleTitleCell.xib */; };
@@ -104,6 +105,8 @@
 		ED029CE81CDABD9C00B76272 /* LSJoinUsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSJoinUsViewController.xib; sourceTree = "<group>"; };
 		ED064A171CE3103F00FA2745 /* LSTimePanelViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSTimePanelViewCell.xib; sourceTree = "<group>"; };
 		ED08C3F51CCEE3DB00AAC7AA /* huoshi.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = huoshi.db; sourceTree = "<group>"; };
+		ED0A89871CF6749E0070770C /* LSIntercessionPraiseRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionPraiseRequestItem.h; sourceTree = "<group>"; };
+		ED0A89881CF6749E0070770C /* LSIntercessionPraiseRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionPraiseRequestItem.m; sourceTree = "<group>"; };
 		ED17E72F1CD1819600F6F6CF /* LSBibleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBibleItem.h; sourceTree = "<group>"; };
 		ED17E7301CD1819600F6F6CF /* LSBibleItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBibleItem.m; sourceTree = "<group>"; };
 		ED17E7321CD18EE500F6F6CF /* LSBibleContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBibleContentCell.xib; sourceTree = "<group>"; };
@@ -372,6 +375,8 @@
 				EDFFE9681CF55507004868E1 /* LSIntercessionDetailRequestItem.m */,
 				EDFFE96D1CF5588F004868E1 /* LSIntercessionCommentRequestItem.h */,
 				EDFFE96E1CF5588F004868E1 /* LSIntercessionCommentRequestItem.m */,
+				ED0A89871CF6749E0070770C /* LSIntercessionPraiseRequestItem.h */,
+				ED0A89881CF6749E0070770C /* LSIntercessionPraiseRequestItem.m */,
 			);
 			name = Request;
 			sourceTree = "<group>";
@@ -693,6 +698,7 @@
 				ED2994051CEE8A340017BC3E /* LSIntercessionWarriorCell.m in Sources */,
 				EDFFE9691CF55507004868E1 /* LSIntercessionDetailRequestItem.m in Sources */,
 				EDB797DA1CDDC2E4005CB768 /* LSUserAuthItem.m in Sources */,
+				ED0A89891CF6749E0070770C /* LSIntercessionPraiseRequestItem.m in Sources */,
 				EDD856201CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.m in Sources */,
 				EDC02E881CEC0F890049114B /* LSIntercessionCell.m in Sources */,
 				ED358B991CC5C2C00016D1C1 /* LSBookDetailCell.m in Sources */,
