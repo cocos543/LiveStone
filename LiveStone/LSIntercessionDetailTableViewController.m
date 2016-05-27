@@ -13,6 +13,7 @@
 #import "LSIntercessionBlessingCell.h"
 #import "LSIntercessionUpdateCell.h"
 #import "LSIntercessionUpdateOrBlessViewController.h"
+#import "LSIntercessionParticipateViewController.h"
 
 #import "MJRefresh.h"
 #import "UIViewController+ProgressHUD.h"
@@ -267,7 +268,10 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
         if (self.intercessionItem.isInterceded) {
             [self toastMessage:@"已参加过代祷~"];
         }else{
-            
+            LSIntercessionParticipateViewController *vc = [[LSIntercessionParticipateViewController alloc] init];
+            vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+            [self presentViewController:vc animated:YES completion:nil];
         }
     }
 }

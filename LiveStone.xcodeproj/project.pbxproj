@@ -21,7 +21,8 @@
 		ED0A898C1CF68D670070770C /* LSIntercessionDoCommentRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0A898B1CF68D670070770C /* LSIntercessionDoCommentRequestItem.m */; };
 		ED0A898F1CF6CDF10070770C /* LSIntercessionUpdateRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0A898E1CF6CDF10070770C /* LSIntercessionUpdateRequestItem.m */; };
 		ED0A89921CF6EB830070770C /* LSIntercessionParticipateRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0A89911CF6EB830070770C /* LSIntercessionParticipateRequestItem.m */; };
-		ED0A89941CF6F10A0070770C /* LSIntercessionParticipateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED0A89931CF6F10A0070770C /* LSIntercessionParticipateView.xib */; };
+		ED0A89981CF6F2D90070770C /* LSIntercessionParticipateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0A89961CF6F2D90070770C /* LSIntercessionParticipateViewController.m */; };
+		ED0A89991CF6F2D90070770C /* LSIntercessionParticipateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED0A89971CF6F2D90070770C /* LSIntercessionParticipateViewController.xib */; };
 		ED17E7311CD1819600F6F6CF /* LSBibleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED17E7301CD1819600F6F6CF /* LSBibleItem.m */; };
 		ED17E7331CD18EE500F6F6CF /* LSBibleContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED17E7321CD18EE500F6F6CF /* LSBibleContentCell.xib */; };
 		ED17E7351CD18F0800F6F6CF /* LSBibleTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED17E7341CD18F0800F6F6CF /* LSBibleTitleCell.xib */; };
@@ -61,10 +62,14 @@
 		ED4CFE631CE46AE700A166C4 /* LSUserReadingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4CFE621CE46AE700A166C4 /* LSUserReadingItem.m */; };
 		ED4CFE661CE47B8200A166C4 /* LSStatisticsService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4CFE651CE47B8200A166C4 /* LSStatisticsService.m */; };
 		ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */; };
+		ED68C10E1CF7ECEB0045384F /* LSIntercessionParticipateMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED68C10D1CF7ECEB0045384F /* LSIntercessionParticipateMiddleView.m */; };
+		ED68C1101CF7ECFE0045384F /* LSIntercessionParticipateMiddleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED68C10F1CF7ECFE0045384F /* LSIntercessionParticipateMiddleView.xib */; };
 		ED6FD8C01CD838DF00BA599D /* LSRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED6FD8BE1CD838DF00BA599D /* LSRegisterViewController.xib */; };
 		ED7A6F721CD2FD6E00EF1592 /* UILabel+CCStringFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7A6F711CD2FD6E00EF1592 /* UILabel+CCStringFrame.m */; };
 		ED825A231CEA9C740035AD25 /* LSBibleSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED825A221CEA9C740035AD25 /* LSBibleSearchController.m */; };
 		ED825A261CEA9D2F0035AD25 /* LSSearchResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED825A251CEA9D2F0035AD25 /* LSSearchResultsController.m */; };
+		ED8DAD5E1CF828F500C7BB1F /* LSIntercessionParticipateFinishView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8DAD5D1CF828F500C7BB1F /* LSIntercessionParticipateFinishView.m */; };
+		ED8DAD601CF828FE00C7BB1F /* LSIntercessionParticipateFinishView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED8DAD5F1CF828FE00C7BB1F /* LSIntercessionParticipateFinishView.xib */; };
 		ED94FB6D1CEF27FD00ECD199 /* LSIntercessionUpdateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED94FB6B1CEF27FD00ECD199 /* LSIntercessionUpdateCell.m */; };
 		ED94FB6E1CEF27FD00ECD199 /* LSIntercessionUpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED94FB6C1CEF27FD00ECD199 /* LSIntercessionUpdateCell.xib */; };
 		ED9815961CDB75F500CF7944 /* UIViewController+ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9815951CDB75F500CF7944 /* UIViewController+ProgressHUD.m */; };
@@ -117,7 +122,9 @@
 		ED0A898E1CF6CDF10070770C /* LSIntercessionUpdateRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionUpdateRequestItem.m; sourceTree = "<group>"; };
 		ED0A89901CF6EB830070770C /* LSIntercessionParticipateRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionParticipateRequestItem.h; sourceTree = "<group>"; };
 		ED0A89911CF6EB830070770C /* LSIntercessionParticipateRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionParticipateRequestItem.m; sourceTree = "<group>"; };
-		ED0A89931CF6F10A0070770C /* LSIntercessionParticipateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSIntercessionParticipateView.xib; sourceTree = "<group>"; };
+		ED0A89951CF6F2D90070770C /* LSIntercessionParticipateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionParticipateViewController.h; sourceTree = "<group>"; };
+		ED0A89961CF6F2D90070770C /* LSIntercessionParticipateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionParticipateViewController.m; sourceTree = "<group>"; };
+		ED0A89971CF6F2D90070770C /* LSIntercessionParticipateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSIntercessionParticipateViewController.xib; sourceTree = "<group>"; };
 		ED17E72F1CD1819600F6F6CF /* LSBibleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBibleItem.h; sourceTree = "<group>"; };
 		ED17E7301CD1819600F6F6CF /* LSBibleItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBibleItem.m; sourceTree = "<group>"; };
 		ED17E7321CD18EE500F6F6CF /* LSBibleContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBibleContentCell.xib; sourceTree = "<group>"; };
@@ -187,6 +194,9 @@
 		ED4CFE651CE47B8200A166C4 /* LSStatisticsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSStatisticsService.m; sourceTree = "<group>"; };
 		ED5F94BF1CC1B83D00D8D626 /* LSLiveStoneTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSLiveStoneTableViewController.h; sourceTree = "<group>"; };
 		ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSLiveStoneTableViewController.m; sourceTree = "<group>"; };
+		ED68C10C1CF7ECEB0045384F /* LSIntercessionParticipateMiddleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionParticipateMiddleView.h; sourceTree = "<group>"; };
+		ED68C10D1CF7ECEB0045384F /* LSIntercessionParticipateMiddleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionParticipateMiddleView.m; sourceTree = "<group>"; };
+		ED68C10F1CF7ECFE0045384F /* LSIntercessionParticipateMiddleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSIntercessionParticipateMiddleView.xib; sourceTree = "<group>"; };
 		ED6FD8BE1CD838DF00BA599D /* LSRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSRegisterViewController.xib; sourceTree = "<group>"; };
 		ED7A6F701CD2FD6E00EF1592 /* UILabel+CCStringFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+CCStringFrame.h"; sourceTree = "<group>"; };
 		ED7A6F711CD2FD6E00EF1592 /* UILabel+CCStringFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CCStringFrame.m"; sourceTree = "<group>"; };
@@ -194,6 +204,9 @@
 		ED825A221CEA9C740035AD25 /* LSBibleSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBibleSearchController.m; sourceTree = "<group>"; };
 		ED825A241CEA9D2F0035AD25 /* LSSearchResultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSSearchResultsController.h; sourceTree = "<group>"; };
 		ED825A251CEA9D2F0035AD25 /* LSSearchResultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSSearchResultsController.m; sourceTree = "<group>"; };
+		ED8DAD5C1CF828F500C7BB1F /* LSIntercessionParticipateFinishView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionParticipateFinishView.h; sourceTree = "<group>"; };
+		ED8DAD5D1CF828F500C7BB1F /* LSIntercessionParticipateFinishView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionParticipateFinishView.m; sourceTree = "<group>"; };
+		ED8DAD5F1CF828FE00C7BB1F /* LSIntercessionParticipateFinishView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSIntercessionParticipateFinishView.xib; sourceTree = "<group>"; };
 		ED94FB6A1CEF27FD00ECD199 /* LSIntercessionUpdateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionUpdateCell.h; sourceTree = "<group>"; };
 		ED94FB6B1CEF27FD00ECD199 /* LSIntercessionUpdateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionUpdateCell.m; sourceTree = "<group>"; };
 		ED94FB6C1CEF27FD00ECD199 /* LSIntercessionUpdateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSIntercessionUpdateCell.xib; sourceTree = "<group>"; };
@@ -510,7 +523,15 @@
 				ED94FB6A1CEF27FD00ECD199 /* LSIntercessionUpdateCell.h */,
 				ED94FB6B1CEF27FD00ECD199 /* LSIntercessionUpdateCell.m */,
 				ED94FB6C1CEF27FD00ECD199 /* LSIntercessionUpdateCell.xib */,
-				ED0A89931CF6F10A0070770C /* LSIntercessionParticipateView.xib */,
+				ED0A89951CF6F2D90070770C /* LSIntercessionParticipateViewController.h */,
+				ED0A89961CF6F2D90070770C /* LSIntercessionParticipateViewController.m */,
+				ED0A89971CF6F2D90070770C /* LSIntercessionParticipateViewController.xib */,
+				ED68C10C1CF7ECEB0045384F /* LSIntercessionParticipateMiddleView.h */,
+				ED68C10D1CF7ECEB0045384F /* LSIntercessionParticipateMiddleView.m */,
+				ED68C10F1CF7ECFE0045384F /* LSIntercessionParticipateMiddleView.xib */,
+				ED8DAD5C1CF828F500C7BB1F /* LSIntercessionParticipateFinishView.h */,
+				ED8DAD5D1CF828F500C7BB1F /* LSIntercessionParticipateFinishView.m */,
+				ED8DAD5F1CF828FE00C7BB1F /* LSIntercessionParticipateFinishView.xib */,
 			);
 			name = Prayer;
 			sourceTree = "<group>";
@@ -612,6 +633,7 @@
 			files = (
 				ED3842991CCEF2FE0021EA06 /* huoshi.db in Resources */,
 				ED42986B1CC0637000FCD799 /* LaunchScreen.storyboard in Resources */,
+				ED0A89991CF6F2D90070770C /* LSIntercessionParticipateViewController.xib in Resources */,
 				ED94FB6E1CEF27FD00ECD199 /* LSIntercessionUpdateCell.xib in Resources */,
 				EDC02E891CEC0F890049114B /* LSIntercessionCell.xib in Resources */,
 				ED0221C61CC330BB004D6514 /* TableCellView.xib in Resources */,
@@ -619,10 +641,11 @@
 				ED6FD8C01CD838DF00BA599D /* LSRegisterViewController.xib in Resources */,
 				ED17E7351CD18F0800F6F6CF /* LSBibleTitleCell.xib in Resources */,
 				ED4848F61CC85D080093E29E /* LSBookChapterCell.xib in Resources */,
+				ED8DAD601CF828FE00C7BB1F /* LSIntercessionParticipateFinishView.xib in Resources */,
 				EDDC2E681CD2478B0054E4DD /* LSBibleNoteView.xib in Resources */,
 				ED4298681CC0637000FCD799 /* Assets.xcassets in Resources */,
-				ED0A89941CF6F10A0070770C /* LSIntercessionParticipateView.xib in Resources */,
 				ED17E7331CD18EE500F6F6CF /* LSBibleContentCell.xib in Resources */,
+				ED68C1101CF7ECFE0045384F /* LSIntercessionParticipateMiddleView.xib in Resources */,
 				ED29940B1CEE923B0017BC3E /* LSIntercessionBlessingCell.xib in Resources */,
 				ED0221DC1CC37CAC004D6514 /* LSBookCollectionViewCell.xib in Resources */,
 				ED4298631CC0637000FCD799 /* Main.storyboard in Resources */,
@@ -697,7 +720,9 @@
 				EDFA40931CC132620054E77C /* LSDiscoveryTableViewController.m in Sources */,
 				ED4CFE601CE427FD00A166C4 /* LSExtraService.m in Sources */,
 				ED2076EF1CF0A04D00D5BD4B /* UIPlaceHolderTextView.m in Sources */,
+				ED0A89981CF6F2D90070770C /* LSIntercessionParticipateViewController.m in Sources */,
 				ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */,
+				ED8DAD5E1CF828F500C7BB1F /* LSIntercessionParticipateFinishView.m in Sources */,
 				ED42704B1CF3EAE300B901CE /* LSIntercessionItem.m in Sources */,
 				ED42985A1CC0637000FCD799 /* main.m in Sources */,
 				EDFFE96C1CF55860004868E1 /* LSIntercessionCommentItem.m in Sources */,
@@ -725,6 +750,7 @@
 				ED358B991CC5C2C00016D1C1 /* LSBookDetailCell.m in Sources */,
 				ED0A89921CF6EB830070770C /* LSIntercessionParticipateRequestItem.m in Sources */,
 				ED94FB6D1CEF27FD00ECD199 /* LSIntercessionUpdateCell.m in Sources */,
+				ED68C10E1CF7ECEB0045384F /* LSIntercessionParticipateMiddleView.m in Sources */,
 				EDD623291CF2B08300C2C1FC /* LSDatePickerView.m in Sources */,
 				ED4270521CF45DBE00B901CE /* UITableView+NetworkStateDisplay.m in Sources */,
 				ED3842981CCEEA560021EA06 /* LSBibleStore.m in Sources */,

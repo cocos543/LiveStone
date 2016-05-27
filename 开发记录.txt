@@ -165,5 +165,6 @@ NSDictionary *requestContents = @{
 
 54. 点赞互交设计:点赞的时候,指明是赞还是取消,然后交给后台去完成请求.UI默认点赞操作是成功的并且立即响应.
 
+55. 模态显示一个控制器,让控制器的视图可以透明时显示模态前的界面.方法就是vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
 
 
