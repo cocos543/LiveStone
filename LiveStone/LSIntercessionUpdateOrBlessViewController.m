@@ -15,6 +15,7 @@
 
 @interface LSIntercessionUpdateOrBlessViewController () <UITextViewDelegate, LSIntercessionServiceDelegate>
 @property (weak, nonatomic) IBOutlet UIPlaceHolderTextView *textView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *confirmBtn;
 
 @property (nonatomic, strong) UILabel *placeholderLabel;
 
@@ -55,9 +56,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)downClick:(UIBarButtonItem *)sender {
+- (IBAction)confirmClick:(UIBarButtonItem *)sender {
     if ([self.textView.text length]) {
         [self.textView resignFirstResponder];
+        self.confirmBtn.enabled = NO;
         if (self.actionType == IntercessionActionTypeBless) {
             [self doBless];
         }else if (self.actionType == IntercessionActionTypeUpdate){
@@ -124,6 +126,7 @@
 }
 
 - (void)serviceConnectFail:(NSInteger)errorCode{
+    self.confirmBtn.enabled = YES;
     [self endLoadingHUD];
     [self toastMessage:@"网络不给力~"];
 }

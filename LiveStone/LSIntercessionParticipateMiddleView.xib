@@ -25,13 +25,6 @@
                         <constraint firstAttribute="width" secondItem="ZCq-Xa-rAz" secondAttribute="height" multiplier="31:40" id="66a-rI-UuZ"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKS-Xr-bhQ">
-                    <rect key="frame" x="256" y="44" width="32" height="30"/>
-                    <state key="normal" title="Next"/>
-                    <connections>
-                        <action selector="action:" destination="iN0-l3-epB" eventType="touchUpInside" id="pU7-Xj-bR6"/>
-                    </connections>
-                </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Halo" translatesAutoresizingMaskIntoConstraints="NO" id="ZWX-uy-JkT">
                     <rect key="frame" x="102" y="162" width="116" height="121"/>
                     <constraints>

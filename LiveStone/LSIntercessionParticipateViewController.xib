@@ -22,13 +22,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8Z-dI-tDY">
-                    <rect key="frame" x="23" y="44" width="30" height="30"/>
-                    <state key="normal" title="关闭"/>
-                    <connections>
-                        <action selector="closeAction:" destination="-1" eventType="touchUpInside" id="nir-6u-9ro"/>
-                    </connections>
-                </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ParticipateBackgroundWide" translatesAutoresizingMaskIntoConstraints="NO" id="orN-Om-NyV">
                     <rect key="frame" x="25" y="44" width="270" height="378"/>
                     <constraints>

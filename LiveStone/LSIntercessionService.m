@@ -263,4 +263,31 @@
     }];
 }
 
+- (void)intercessionParticipate:(LSIntercessionParticipateRequestItem *)item {
+    if (![self.authService isLogin]) {
+        if ([self.delegate respondsToSelector:@selector(serviceDoNotLogin)]) {
+            [self.delegate serviceDoNotLogin];
+        }
+        return;
+    }
+    
+    NSDictionary *msgDic = item.mj_keyValues;
+    
+    [self httpPOSTMessage:msgDic toURLString:@"http://119.29.108.48/bible/frontend/web/index.php/v1/intercession/join" respondHandle:^(id respond) {
+        if ( [respond isKindOfClass:[NSDictionary class]] && respond[@"status"] != nil && ([respond[@"status"] intValue] != 0 && [respond[@"status"] intValue] != 1) ) {
+            NSLog(@"Login fail~");
+            switch ([respond[@"status"] intValue]) {
+                case LSNetworkResponseCodeUnkonwError:
+                default:
+                    [self handleConnectError:respond];
+                    break;
+            }
+        }else{
+            if ([self.delegate respondsToSelector:@selector(intercessionServiceDidParticipate)]) {
+                [self.delegate intercessionServiceDidParticipate];
+            }
+        }
+    }];
+}
+
 @end

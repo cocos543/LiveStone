@@ -19,6 +19,7 @@
 #import "LSIntercessionPraiseRequestItem.h"
 #import "LSIntercessionDoCommentRequestItem.h"
 #import "LSIntercessionUpdateRequestItem.h"
+#import "LSIntercessionParticipateRequestItem.h"
 
 typedef NS_ENUM(NSUInteger, IntercessionType) {
     /**
@@ -76,6 +77,11 @@ typedef NS_ENUM(NSUInteger, IntercessionType) {
  */
 - (void)intercessionServiceDidUpdate;
 
+/**
+ *  Notifies the delegate that intercession's service did published participating.
+ */
+- (void)intercessionServiceDidParticipate;
+
 @end
 
 @interface LSIntercessionService : LSServiceBase
@@ -130,6 +136,13 @@ typedef NS_ENUM(NSUInteger, IntercessionType) {
  *  @param item LSIntercessionPraiseRequestItem *
  */
 - (void)intercessionPraise:(LSIntercessionPraiseRequestItem *)item;
+
+/**
+ *  Participate intercession once.
+ *
+ *  @param item LSIntercessionParticipateRequestItem *
+ */
+- (void)intercessionParticipate:(LSIntercessionParticipateRequestItem *)item;
 
 /**
  *  Get relationship label to display

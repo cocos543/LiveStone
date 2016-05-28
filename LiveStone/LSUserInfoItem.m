@@ -33,6 +33,14 @@
     item.readingItem.yesterdayMinutes = [dic valueForKey:@"yesterday_minutes"];
     item.readingItem.todayMinutes = [dic valueForKey:@"today_minutes"];
     item.readingItem.lastReadLong = [dic valueForKey:@"last_read_long"];
+    
+//    if ([[NSString stringWithFormat:@"%@",[dic valueForKey:@"last_interces_time"]] length] == 13) {
+//        item.lastIntercesTime = @([[dic valueForKey:@"last_interces_time"] longLongValue] / 1000);
+//    }else{
+//        item.lastIntercesTime = [dic valueForKey:@"last_interces_time"];
+//    }
+    item.lastIntercesTime = [dic valueForKey:@"last_interces_time"];
+    
     return item;
 }
 
@@ -72,6 +80,7 @@
     [aCoder encodeObject:self.totalShareTimes forKey:@"totalShareTimes"];
     
     [aCoder encodeObject:self.readingItem forKey:@"readingItem"];
+    [aCoder encodeObject:self.lastIntercesTime forKey:@"lastIntercesTime"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder{
@@ -96,6 +105,7 @@
         _totalShareTimes = [aDecoder decodeObjectForKey:@"totalShareTimes"];
         
         _readingItem = [aDecoder decodeObjectForKey:@"readingItem"];
+        _lastIntercesTime = [aDecoder decodeObjectForKey:@"lastIntercesTime"];
     }
     return self;
 }

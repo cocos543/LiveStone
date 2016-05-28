@@ -10,7 +10,12 @@
 #import "LSIntercessionParticipateMiddleView.h"
 #import "LSIntercessionParticipateFinishView.h"
 
-@interface LSIntercessionParticipateViewController () <LSIntercessionParticipateMiddleViewDelegate, LSIntercessionParticipateFinishViewDelegate>
+#import "LSServiceCenter.h"
+
+#import "UIViewController+ProgressHUD.h"
+
+@interface LSIntercessionParticipateViewController () <LSIntercessionParticipateMiddleViewDelegate, LSIntercessionParticipateFinishViewDelegate, LSIntercessionServiceDelegate>
+
 @property (weak, nonatomic) IBOutlet UILabel *cueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timesLabel;
 
@@ -20,6 +25,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *CueTopConstraint;
 
 @property (nonatomic, strong) NSTimer *intercedeTimer;
+
+@property (nonatomic, strong) LSIntercessionService *intercessionService;
+@property (nonatomic, strong) LSUserInfoItem *userInfo;
 
 @end
 
@@ -56,6 +64,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc{
+    NSLog(@"dealloc");
+}
 
 #pragma mark - Timer
 
@@ -74,7 +85,7 @@
 
 - (void)countedTimerFire:(NSTimer*)theTimer {
     NSLog(@"timer fire");
-    static int remaining = 1;
+    static int remaining = 6;
     remaining--;
     [self updateTimesLable:remaining];
     if (remaining == 0) {
@@ -119,28 +130,54 @@
 
 #pragma mark - Event
 
-- (IBAction)closeAction:(id)sender {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+#pragma mark - LSIntercessionServiceDelegate
+
+- (void)intercessionServiceDidParticipate{
+    [self endLoadingHUD];
+    [self showFinishView];
 }
 
 #pragma mark - LSIntercessionParticipateMiddleView
 
 - (void)intercessionParticipateMiddleViewFinishAction:(id)sender{
-    [self showFinishView];
+    [self finishOnceParticipating];
+    [self startLoadingHUDWithTitle:@"请稍候~"];
 }
 
 #pragma mark - LSIntercessionParticipateFinishViewDelegate
 
 - (void)intercessionParticipateFinishViewBlessingAction:(id)sender{
-    
+    if (self.blessingBlock) {
+        self.blessingBlock();
+    }
 }
 
 - (void)intercessionParticipateFinishViewSharedAction:(id)sender{
-    
+    // Temporary code
+    [self intercessionParticipateFinishViewFinishAction:nil];
 }
 
 - (void)intercessionParticipateFinishViewFinishAction:(id)sender{
+    if (self.finishBlock) {
+        self.finishBlock();
+    }
+}
+
+#pragma mark - Data
+
+- (void)finishOnceParticipating{
+    LSServiceCenter *center = [LSServiceCenter defaultCenter];
+    LSStatisticsService *statisticsService = [center getService:[LSStatisticsService class]];
+    self.intercessionService = [center getService:[LSIntercessionService class]];
+    self.intercessionService.delegate = self;
+    self.userInfo = [statisticsService statisticsParticipateOnce];
+    LSIntercessionParticipateRequestItem *item = [[LSIntercessionParticipateRequestItem alloc] init];
+    item.userId = self.userInfo.userID;
+    item.intercessionId = self.intercessionItem.intercessionId;
+    item.continuousIntercesDays = self.userInfo.continuousIntercessionDays;
+    item.lastIntercesTime = [self.userInfo.lastIntercesTime longLongValue];
     
+    [self.intercessionService intercessionParticipate:item];
 }
 /*
 #pragma mark - Navigation

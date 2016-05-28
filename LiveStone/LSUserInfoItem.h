@@ -29,6 +29,9 @@
 @property (nonatomic, strong) NSNumber *continuousIntercessionDays;
 @property (nonatomic, strong) NSNumber *totalShareTimes;
 
+//ms
+@property (nonatomic)         NSNumber *lastIntercesTime;
+
 @property (nonatomic,strong) LSUserReadingItem *readingItem;
 /**
  *  Init userInfoItem with a dictionary

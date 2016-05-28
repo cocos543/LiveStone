@@ -36,4 +36,12 @@
  *  @param readingItem LSUserReadingItem *
  */
 - (void)statisticsReCalcReadingTime:(LSUserReadingItem *)readingItem;
+
+/**
+ *  Calc and save user info.
+ *
+ *  @return LSUserInfoItem *
+ */
+- (LSUserInfoItem *)statisticsParticipateOnce;
+
 @end

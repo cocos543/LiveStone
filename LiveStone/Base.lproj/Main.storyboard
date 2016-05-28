@@ -748,7 +748,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="wcs-3E-Rwu"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="写下你想说的话,让大家为你加油祈福~"/>
@@ -944,6 +944,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="confirmBtn" destination="UOI-Am-ogO" id="VIu-mQ-dZa"/>
                         <outlet property="contentTextView" destination="OPC-XI-AJD" id="jV6-7E-b2Z"/>
                         <outlet property="dayTextField" destination="CKi-lG-U6f" id="mTF-pp-5Vj"/>
                         <outlet property="hourTextField" destination="qqu-ib-Fc2" id="sqP-Xw-MCV"/>
@@ -1027,7 +1028,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="Gai-7H-III"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <outlet property="delegate" destination="DQ5-F9-o4n" id="hnj-Rs-k3U"/>
@@ -1051,11 +1052,12 @@
                         <barButtonItem key="rightBarButtonItem" title="发布" id="T6k-bw-gRc">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="downClick:" destination="DQ5-F9-o4n" id="9JG-4g-gas"/>
+                                <action selector="confirmClick:" destination="DQ5-F9-o4n" id="gsh-Oe-RYE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="confirmBtn" destination="T6k-bw-gRc" id="a1G-U7-wIX"/>
                         <outlet property="textView" destination="vu5-xP-uII" id="HfL-1i-Er2"/>
                     </connections>
                 </viewController>

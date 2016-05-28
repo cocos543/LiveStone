@@ -155,6 +155,8 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     [self endLoadingHUD];
     if (intercessionItem) {
         self.intercessionItem.contentList = intercessionItem.contentList;
+        self.intercessionItem.intercessorsList = intercessionItem.intercessorsList;
+        [self initialzationWarriorString];
         [self.tableView reloadData];
     }
 }
@@ -269,8 +271,26 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
             [self toastMessage:@"已参加过代祷~"];
         }else{
             LSIntercessionParticipateViewController *vc = [[LSIntercessionParticipateViewController alloc] init];
+            vc.intercessionItem = self.intercessionItem;
             vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
             vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+            vc.finishBlock = ^{
+                [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
+                    NSLog(@"finish~");
+                    [self loadIntercessionDetailData];
+                }];
+            };
+            
+            vc.sharedBlock =  ^{
+                [self loadIntercessionDetailData];
+            };
+            
+            vc.blessingBlock = ^{
+                [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
+                    [self blessClick:nil];
+                }];
+            };
+            
             [self presentViewController:vc animated:YES completion:nil];
         }
     }

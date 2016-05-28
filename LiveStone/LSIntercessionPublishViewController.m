@@ -24,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *hourTextField;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *yearWidthConstraint;
 @property (weak, nonatomic) IBOutlet UIPlaceHolderTextView *contentTextView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *confirmBtn;
+
+
 @property (nonatomic) long long updateTime;
 
 //Location
@@ -101,6 +104,7 @@
 #pragma mark - Event
 
 - (IBAction)confirmClick:(id)sender {
+    self.confirmBtn.enabled = NO;
     [self publishIntercession];
 }
 
@@ -230,6 +234,7 @@
 }
 
 - (void)serviceConnectFail:(NSInteger)errorCode{
+    self.confirmBtn.enabled = YES;
     [self endLoadingHUD];
     [self toastMessage:@"网络错误~"];
 }

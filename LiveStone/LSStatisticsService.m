@@ -171,4 +171,17 @@
     self.isNeedUpload = YES;
     return self.readingTime;
 }
+
+
+- (LSUserInfoItem *)statisticsParticipateOnce {
+	LSUserInfoItem  *userInfo = [self.authService getUserInfo];
+    NSDate *lastParticipationDate = [NSDate dateWithTimeIntervalSince1970:userInfo.lastIntercesTime.longLongValue / 1000];
+    NSDate *nowDate = [NSDate date];
+    if ([self isTheNextDayBetween:lastParticipationDate and:nowDate]) {
+        userInfo.continuousIntercessionDays = @(userInfo.continuousIntercessionDays.integerValue + 1);
+    }
+    userInfo.lastIntercesTime = @((long long)[nowDate timeIntervalSince1970] * 1000);
+    [self.authService saveUserInfoWithItem:userInfo];
+    return userInfo;
+}
 @end

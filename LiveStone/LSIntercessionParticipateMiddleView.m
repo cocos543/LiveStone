@@ -37,6 +37,10 @@
     [self startFireDateTimer];
 }
 
+- (void)dealloc{
+    NSLog(@"LSIntercessionParticipateMiddleView dealloc");
+}
+
 - (void)setupUIElement{
     self.participateFinishBtn.layer.cornerRadius = 10.f;
     self.participateFinishBtn.enabled = NO;
@@ -62,10 +66,6 @@
     [self promptingFinishButton];
 }
 
-- (IBAction)action:(id)sender {
-    NSLog(@"action");
-}
-
 - (IBAction)finishAction:(id)sender {
     if ([self.delegate respondsToSelector:@selector(intercessionParticipateMiddleViewFinishAction:)]) {
         [self.delegate intercessionParticipateMiddleViewFinishAction:sender];
@@ -87,8 +87,8 @@
 }
 
 - (void)countedTimerFire:(NSTimer*)theTimer {
-    NSLog(@"timer fire");
-    static int remaining = 3;
+    static int remaining = 30;
+    NSLog(@"timer fire %d", remaining);
     remaining--;
     if (remaining == 0) {
         remaining = 30;
