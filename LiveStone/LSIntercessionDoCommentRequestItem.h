@@ -10,7 +10,7 @@
 
 @interface LSIntercessionDoCommentRequestItem : LSBaseModel
 
-@property (nonatomic, strong) NSNumber *userId;
+@property (nonatomic, strong) NSNumber *userID;
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, strong) NSNumber *intercessionId;
 

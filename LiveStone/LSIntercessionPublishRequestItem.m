@@ -20,6 +20,10 @@
 }
 
 + (NSString *)mj_replacedKeyFromPropertyName121:(NSString *)propertyName{
+    // nickName -> nick_name
+    if ([propertyName isEqualToString:@"userID"]) {
+        return @"user_id";
+    }
     return [propertyName mj_underlineFromCamel];
 }
 

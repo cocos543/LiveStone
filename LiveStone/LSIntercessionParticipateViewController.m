@@ -172,7 +172,7 @@
     self.intercessionService.delegate = self;
     self.userInfo = [statisticsService statisticsParticipateOnce];
     LSIntercessionParticipateRequestItem *item = [[LSIntercessionParticipateRequestItem alloc] init];
-    item.userId = self.userInfo.userID;
+    item.userID = self.userInfo.userID;
     item.intercessionId = self.intercessionItem.intercessionId;
     item.continuousIntercesDays = self.userInfo.continuousIntercessionDays;
     item.lastIntercesTime = [self.userInfo.lastIntercesTime longLongValue];

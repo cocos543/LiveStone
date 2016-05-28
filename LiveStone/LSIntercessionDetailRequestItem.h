@@ -10,7 +10,7 @@
 
 @interface LSIntercessionDetailRequestItem : LSBaseModel
 
-@property (nonatomic, strong) NSNumber *userId;
+@property (nonatomic, strong) NSNumber *userID;
 @property (nonatomic, strong) NSNumber *intercessionId;
 
 @end

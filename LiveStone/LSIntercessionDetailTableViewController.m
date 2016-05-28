@@ -117,9 +117,9 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     self.requestItem = [[LSIntercessionDetailRequestItem alloc] init];
     self.commentRequestItem = [[LSIntercessionCommentRequestItem alloc] init];
     self.praiseRequestItem = [[LSIntercessionPraiseRequestItem alloc] init];
-    self.currentUserID = self.praiseRequestItem.userId = self.commentRequestItem.userId = self.requestItem.userId = [authService getUserInfo].userID;
+    self.currentUserID = self.praiseRequestItem.userID = self.commentRequestItem.userID = self.requestItem.userID = [authService getUserInfo].userID;
     self.commentRequestItem.intercessionId = self.requestItem.intercessionId = self.intercessionItem.intercessionId;
-    if ([self.intercessionItem.userId isEqualToNumber:self.currentUserID]) {
+    if ([self.intercessionItem.userID isEqualToNumber:self.currentUserID]) {
         self.isCurrentUser = YES;
     }
 }

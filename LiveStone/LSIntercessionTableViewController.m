@@ -62,7 +62,7 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
     
     LSAuthService *authService = [[LSServiceCenter defaultCenter] getService:[LSAuthService class]];
     self.requestItem = [[LSIntercessionRequestItem alloc] init];
-    self.requestItem.userId = [authService getUserInfo].userID;
+    self.requestItem.userID = [authService getUserInfo].userID;
 }
 
 #pragma mark - UI

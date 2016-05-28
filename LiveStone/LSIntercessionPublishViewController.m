@@ -88,7 +88,7 @@
     
     LSAuthService *authService = [[LSServiceCenter defaultCenter] getService:[LSAuthService class]];
     self.requestItem = [[LSIntercessionPublishRequestItem alloc] init];
-    self.requestItem.userId = [authService getUserInfo].userID;
+    self.requestItem.userID = [authService getUserInfo].userID;
 }
 
 #pragma mark - Data

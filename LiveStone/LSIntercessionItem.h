@@ -13,7 +13,7 @@
 
 @interface LSIntercessionItem : LSBaseModel
 
-@property (nonatomic, strong) NSNumber *userId;
+@property (nonatomic, strong) NSNumber *userID;
 @property (nonatomic, strong) NSString *nickName;
 @property (nonatomic, strong) NSNumber *intercessionNumber;
 @property (nonatomic, strong) NSString *avatar;

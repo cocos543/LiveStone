@@ -167,4 +167,14 @@ NSDictionary *requestContents = @{
 
 55. 模态显示一个控制器,让控制器的视图可以透明时显示模态前的界面.方法就是vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
 
+56. 简单方便地为实现异步操作扩展出同步操作的方法,即使用CGD中的信号量函数
+//创建一个semaphore
+dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+//发送一个信号
+dispatch_semaphore_signal(sema);
+//等待信号 
+dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+
+57 
+
 

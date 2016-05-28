@@ -18,13 +18,16 @@
     return self;
 }
 
-//Just cell One of them
+//Just call One of them
 + (NSString *)mj_replacedKeyFromPropertyName121:(NSString *)propertyName{
     // nickName -> nick_name
+    if ([propertyName isEqualToString:@"userID"]) {
+        return @"user_id";
+    }
     return [propertyName mj_underlineFromCamel];
 }
 
-//Just cell One of them
+//Just call One of them
 //+ (NSDictionary *)mj_replacedKeyFromPropertyName{
 //    return @{
 //             @"userID":@"user_id"
