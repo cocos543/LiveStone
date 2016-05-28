@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "LSServiceCenter.h"
+
 @interface AppDelegate ()
 
 @end
@@ -18,6 +19,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    LSServiceCenter *center = [LSServiceCenter defaultCenter];
+    LSExtraService *extraService = [center getService:[LSExtraService class]];
+    [extraService synchronizeAddressBook];
     return YES;
 }
 
@@ -132,5 +136,7 @@
         }
     }
 }
+
+#pragma AddressBook
 
 @end

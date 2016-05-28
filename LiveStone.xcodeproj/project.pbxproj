@@ -61,6 +61,9 @@
 		ED4CFE601CE427FD00A166C4 /* LSExtraService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4CFE5F1CE427FD00A166C4 /* LSExtraService.m */; };
 		ED4CFE631CE46AE700A166C4 /* LSUserReadingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4CFE621CE46AE700A166C4 /* LSUserReadingItem.m */; };
 		ED4CFE661CE47B8200A166C4 /* LSStatisticsService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4CFE651CE47B8200A166C4 /* LSStatisticsService.m */; };
+		ED5BB26C1CF9673700EB9304 /* LSAddressBookItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5BB26B1CF9673700EB9304 /* LSAddressBookItem.m */; };
+		ED5BB26F1CF9684300EB9304 /* LSContactsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5BB26E1CF9684300EB9304 /* LSContactsItem.m */; };
+		ED5BB2721CF9685D00EB9304 /* LSContactsRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5BB2711CF9685D00EB9304 /* LSContactsRequestItem.m */; };
 		ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */; };
 		ED68C10E1CF7ECEB0045384F /* LSIntercessionParticipateMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED68C10D1CF7ECEB0045384F /* LSIntercessionParticipateMiddleView.m */; };
 		ED68C1101CF7ECFE0045384F /* LSIntercessionParticipateMiddleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED68C10F1CF7ECFE0045384F /* LSIntercessionParticipateMiddleView.xib */; };
@@ -192,6 +195,12 @@
 		ED4CFE621CE46AE700A166C4 /* LSUserReadingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSUserReadingItem.m; sourceTree = "<group>"; };
 		ED4CFE641CE47B8200A166C4 /* LSStatisticsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSStatisticsService.h; sourceTree = "<group>"; };
 		ED4CFE651CE47B8200A166C4 /* LSStatisticsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSStatisticsService.m; sourceTree = "<group>"; };
+		ED5BB26A1CF9673700EB9304 /* LSAddressBookItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSAddressBookItem.h; sourceTree = "<group>"; };
+		ED5BB26B1CF9673700EB9304 /* LSAddressBookItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSAddressBookItem.m; sourceTree = "<group>"; };
+		ED5BB26D1CF9684300EB9304 /* LSContactsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSContactsItem.h; sourceTree = "<group>"; };
+		ED5BB26E1CF9684300EB9304 /* LSContactsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSContactsItem.m; sourceTree = "<group>"; };
+		ED5BB2701CF9685D00EB9304 /* LSContactsRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSContactsRequestItem.h; sourceTree = "<group>"; };
+		ED5BB2711CF9685D00EB9304 /* LSContactsRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSContactsRequestItem.m; sourceTree = "<group>"; };
 		ED5F94BF1CC1B83D00D8D626 /* LSLiveStoneTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSLiveStoneTableViewController.h; sourceTree = "<group>"; };
 		ED5F94C01CC1B83D00D8D626 /* LSLiveStoneTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSLiveStoneTableViewController.m; sourceTree = "<group>"; };
 		ED68C10C1CF7ECEB0045384F /* LSIntercessionParticipateMiddleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionParticipateMiddleView.h; sourceTree = "<group>"; };
@@ -352,6 +361,10 @@
 				ED42704A1CF3EAE300B901CE /* LSIntercessionItem.m */,
 				EDFFE96A1CF55860004868E1 /* LSIntercessionCommentItem.h */,
 				EDFFE96B1CF55860004868E1 /* LSIntercessionCommentItem.m */,
+				ED5BB26A1CF9673700EB9304 /* LSAddressBookItem.h */,
+				ED5BB26B1CF9673700EB9304 /* LSAddressBookItem.m */,
+				ED5BB26D1CF9684300EB9304 /* LSContactsItem.h */,
+				ED5BB26E1CF9684300EB9304 /* LSContactsItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -407,6 +420,8 @@
 				ED0A898E1CF6CDF10070770C /* LSIntercessionUpdateRequestItem.m */,
 				ED0A89901CF6EB830070770C /* LSIntercessionParticipateRequestItem.h */,
 				ED0A89911CF6EB830070770C /* LSIntercessionParticipateRequestItem.m */,
+				ED5BB2701CF9685D00EB9304 /* LSContactsRequestItem.h */,
+				ED5BB2711CF9685D00EB9304 /* LSContactsRequestItem.m */,
 			);
 			name = Request;
 			sourceTree = "<group>";
@@ -722,6 +737,7 @@
 				ED2076EF1CF0A04D00D5BD4B /* UIPlaceHolderTextView.m in Sources */,
 				ED0A89981CF6F2D90070770C /* LSIntercessionParticipateViewController.m in Sources */,
 				ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */,
+				ED5BB2721CF9685D00EB9304 /* LSContactsRequestItem.m in Sources */,
 				ED8DAD5E1CF828F500C7BB1F /* LSIntercessionParticipateFinishView.m in Sources */,
 				ED42704B1CF3EAE300B901CE /* LSIntercessionItem.m in Sources */,
 				ED42985A1CC0637000FCD799 /* main.m in Sources */,
@@ -755,6 +771,7 @@
 				ED4270521CF45DBE00B901CE /* UITableView+NetworkStateDisplay.m in Sources */,
 				ED3842981CCEEA560021EA06 /* LSBibleStore.m in Sources */,
 				ED4CFE661CE47B8200A166C4 /* LSStatisticsService.m in Sources */,
+				ED5BB26C1CF9673700EB9304 /* LSAddressBookItem.m in Sources */,
 				ED029CE91CDABD9C00B76272 /* LSJoinUsViewController.m in Sources */,
 				EDC02E831CEBF79F0049114B /* LSIntercessionTableViewController.m in Sources */,
 				ED9815961CDB75F500CF7944 /* UIViewController+ProgressHUD.m in Sources */,
@@ -770,6 +787,7 @@
 				ED29940A1CEE923B0017BC3E /* LSIntercessionBlessingCell.m in Sources */,
 				ED45E7091CDC2C6700FAC93A /* LSAuthService.m in Sources */,
 				ED2B50C01CD051B600B0909B /* LSChapterContentViewController.m in Sources */,
+				ED5BB26F1CF9684300EB9304 /* LSContactsItem.m in Sources */,
 				ED825A261CEA9D2F0035AD25 /* LSSearchResultsController.m in Sources */,
 				EDC958AF1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m in Sources */,
 				ED2030591CC9ABD100369ACE /* LSBookChapterCell.m in Sources */,

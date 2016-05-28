@@ -90,6 +90,7 @@ typedef NS_ENUM(NSInteger,LSBookType){
 
 //NSUserDefaults constant
 #define LIVESTONE_DEFAULTS_USERINFO @"LiveStoneUserinfo"
+#define LIVESTONE_DEFAULTS_ADDRESSBOOK_COUNT @"LiveStoneAddressbookCount"
 
 #define LIVESTONE_KEYCHAIN_AUTH_SERVICE @"LiveStoneKeyChainAuthService"
 

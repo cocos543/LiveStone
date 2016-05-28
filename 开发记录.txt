@@ -175,6 +175,6 @@ dispatch_semaphore_signal(sema);
 //等待信号 
 dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
 
-57 
+57. 使用MJExtension,遇到模型转字典时,如果字典有数组的,建议把数组先转成json字符串,然后再存回字典,这样在对字典里的内容做参数签名时才不容易出错;否则可能会出现参数签名跟实际上post的内容不一致从而导致签名错误.
 
 

@@ -72,7 +72,8 @@
     }];
     NSMutableString *rawSignString = [[NSMutableString alloc] init];
     for (NSString *key in sortedArray) {
-        NSString *s = [[NSString alloc] initWithFormat:@"%@=%@&", key, msgDic[key]];
+        NSString *s;
+        s = [[NSString alloc] initWithFormat:@"%@=%@&", key, msgDic[key]];
         [rawSignString appendString:s];
     }
     [rawSignString deleteCharactersInRange:NSMakeRange([rawSignString length] - 1, 1)];

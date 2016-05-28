@@ -11,7 +11,13 @@
  *
  */
 #import "LSServiceBase.h"
+#import <AddressBook/AddressBook.h>
+
+#import "LSContactsItem.h"
+#import "LSContactsRequestItem.h"
 
 @interface LSExtraService : LSServiceBase
+
+- (void)synchronizeAddressBook;
 
 @end
