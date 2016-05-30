@@ -154,12 +154,12 @@
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    NSCharacterSet * set;
+    NSCharacterSet *set;
     if (textField == self.phoneTextField) {
         set = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
         if ([string rangeOfCharacterFromSet:set].location != NSNotFound){
             return NO;
-        }else if ( (self.phoneTextField.text.length + string.length) > 11){
+        }else if ( (self.phoneTextField.text.length + string.length) > 11 ){
             return NO;
         }
     }

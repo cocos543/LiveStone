@@ -104,8 +104,10 @@
 #pragma mark - Event
 
 - (IBAction)confirmClick:(id)sender {
-    self.confirmBtn.enabled = NO;
-    [self publishIntercession];
+    if ([self.contentTextView.text length]) {
+        self.confirmBtn.enabled = NO;
+        [self publishIntercession];
+    }
 }
 
 - (IBAction)cancelClick:(id)sender {

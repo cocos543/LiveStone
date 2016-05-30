@@ -287,6 +287,7 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
             
             vc.blessingBlock = ^{
                 [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
+                    [self loadIntercessionDetailData];
                     [self blessClick:nil];
                 }];
             };

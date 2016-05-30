@@ -174,7 +174,7 @@
 
 
 - (LSUserInfoItem *)statisticsParticipateOnce {
-	LSUserInfoItem  *userInfo = [self.authService getUserInfo];
+	LSUserInfoItem *userInfo = [self.authService getUserInfo];
     NSDate *lastParticipationDate = [NSDate dateWithTimeIntervalSince1970:userInfo.lastIntercesTime.longLongValue / 1000];
     NSDate *nowDate = [NSDate date];
     if ([self isTheNextDayBetween:lastParticipationDate and:nowDate]) {
