@@ -8,8 +8,11 @@
 
 #import "LSChapterContentViewController.h"
 #import "LSBibleItem.h"
-#import "UILabel+CCStringFrame.h"
 #import "LSServiceCenter.h"
+
+#import "UILabel+CCStringFrame.h"
+#import "MBProgressHUD/MBProgressHUD.h"
+
 
 @interface LSChapterContentViewController ()
 @property (nonatomic,strong) NSArray *itemsModel;
@@ -45,20 +48,18 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
         [self loadData];
     });
     self.isHiddenNoteView = YES;
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    //set title
-    self.title = [NSString stringWithFormat:@"%@ 第%@章",self.bookName,@(self.chapterNo)];
+    [self setupTitle];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     [self startCalcTime];
     [self addNotification];
     [self addLeftRightGesture];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [self hideNoteTextView];
     [self stopCalcTime];
 }
@@ -106,10 +107,20 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
     [self.view addGestureRecognizer:leftSwipeGestureRecognizer];
     [self.view addGestureRecognizer:rightSwipeGestureRecognizer];
 }
+
+- (void)setupTitle{
+    //set title
+    self.title = [NSString stringWithFormat:@"%@ 第%@章",self.bookName,@(self.chapterNo)];
+}
+
 #pragma mark - Event
 
-- (void)handleSwipes:(id)sender{
-    NSLog(@"%@",sender);
+- (void)handleSwipes:(UISwipeGestureRecognizer *)sender{
+    if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
+        [self loadNextChapter];
+    }else if (sender.direction == UISwipeGestureRecognizerDirectionRight){
+        [self loadPreviousChapter];
+    }
 }
 
 - (void)showNoteTextViewForIndexPath:(NSIndexPath *)indexPath{
@@ -168,6 +179,16 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
     [self.tableView reloadData];
 }
 
+- (void)toastMessage:(NSString *)text {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+    
+    // Set the annular determinate mode to show task progress.
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = text;
+    // Move to bottm center.
+    [hud hide:YES afterDelay:0.5];
+}
+
 #pragma mark - Data
 /**
  *  Load bible item
@@ -176,19 +197,53 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
     self.itemsModel = [[LSBibleStore sharedStore] bibleContentWithChapterNo:self.chapterNo bookNo:self.bookNo];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSMutableArray *indexPathsArray = [[NSMutableArray alloc] init];
-        for (int i = 0; i < self.itemsModel.count; i++) {
-            [indexPathsArray addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-            self.itemsNumber++;
-        }
-        [self.tableView insertRowsAtIndexPaths:indexPathsArray withRowAnimation:UITableViewRowAnimationAutomatic];
+//        NSMutableArray *indexPathsArray = [[NSMutableArray alloc] init];
+//        for (int i = 0; i < self.itemsModel.count; i++) {
+//            [indexPathsArray addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+//            self.itemsNumber++;
+//        }
+//        [self.tableView insertRowsAtIndexPaths:indexPathsArray withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     });
+}
+
+- (void)updateDataForAction{
+    self.itemsModel = [[LSBibleStore sharedStore] bibleContentWithChapterNo:self.chapterNo bookNo:self.bookNo];
+    
+}
+
+- (void)loadPreviousChapter{
+    NSArray *items = [[LSBibleStore sharedStore] bibleContentWithChapterNo:self.chapterNo - 1 bookNo:self.bookNo];
+    if (items.count) {
+        [self.tableView setContentOffset:CGPointMake(0, 0) animated:NO];
+        self.chapterNo --;
+        self.itemsModel = items;
+        [self setupTitle];
+        NSIndexSet *set = [[NSIndexSet alloc] initWithIndex:0];
+        [self.tableView reloadSections:set withRowAnimation:UITableViewRowAnimationRight];
+    }else{
+        [self toastMessage:@"当前是第一章"];
+    }
+}
+
+- (void)loadNextChapter{
+    NSArray *items = [[LSBibleStore sharedStore] bibleContentWithChapterNo:self.chapterNo + 1 bookNo:self.bookNo];
+    if (items.count) {
+        [self.tableView setContentOffset:CGPointMake(0, 0) animated:NO];
+        self.chapterNo ++;
+        [self setupTitle];
+        self.itemsModel = items;
+        NSIndexSet *set = [[NSIndexSet alloc] initWithIndex:0];
+        [self.tableView reloadSections:set withRowAnimation:UITableViewRowAnimationLeft];
+    }else{
+        [self toastMessage:@"当前是最后一章"];
+    }
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.itemsNumber;
+    return [self.itemsModel count];
 }
 
 

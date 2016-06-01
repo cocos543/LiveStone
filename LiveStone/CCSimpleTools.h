@@ -11,5 +11,5 @@
 @interface CCSimpleTools : NSObject
 + (UIColor *) stringToColor:(NSString *)str opacity:(CGFloat)opacity;
 
-
++ (NSString *)currentDeviceModel;
 @end

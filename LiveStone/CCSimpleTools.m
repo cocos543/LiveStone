@@ -7,9 +7,10 @@
 //
 
 #import "CCSimpleTools.h"
+#include <sys/sysctl.h>
 
 @implementation CCSimpleTools
-+ (UIColor *) stringToColor:(NSString *)str opacity:(CGFloat)opacity{
++ (UIColor *)stringToColor:(NSString *)str opacity:(CGFloat)opacity{
     if (!str || [str isEqualToString:@""]) {
         return nil;
     }
@@ -25,4 +26,14 @@
     UIColor *color= [UIColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:opacity];
     return color;
 }
+
++ (NSString *)currentDeviceModel{
+    size_t size;
+    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+    char *machine = (char*)malloc(size);
+    sysctlbyname("hw.machine", machine, &size, NULL, 0);
+    NSString *platform = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];
+    return platform;
+}
+
 @end

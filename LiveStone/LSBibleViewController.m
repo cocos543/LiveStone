@@ -95,10 +95,10 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     self.navigationItem.title = @"圣经";
     self.navigationController.navigationBarHidden = NO;
     //右侧加2个按钮...
-    UIBarButtonItem *itemSearch = [[UIBarButtonItem alloc] initWithTitle:@"搜索" style:UIBarButtonItemStylePlain target:nil action:nil];
-    UIBarButtonItem *itemTime = [[UIBarButtonItem alloc] initWithTitle:@"时间" style:UIBarButtonItemStylePlain target:nil action:nil];
-    NSArray *leftItems = @[itemSearch,itemTime];
-        self.navigationItem.rightBarButtonItems = leftItems;
+//    UIBarButtonItem *itemSearch = [[UIBarButtonItem alloc] initWithTitle:@"搜索" style:UIBarButtonItemStylePlain target:nil action:nil];
+//    UIBarButtonItem *itemTime = [[UIBarButtonItem alloc] initWithTitle:@"时间" style:UIBarButtonItemStylePlain target:nil action:nil];
+//    NSArray *leftItems = @[itemSearch,itemTime];
+//        self.navigationItem.rightBarButtonItems = leftItems;
 
 }
 

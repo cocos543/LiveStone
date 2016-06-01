@@ -9,9 +9,14 @@
 #import "LSUserTableViewController.h"
 #import "LSRegisterViewController.h"
 #import "LSServiceCenter.h"
+
+#import "UIViewController+ProgressHUD.h"
+
+#import <MessageUI/MessageUI.h>
+
 @import SDWebImage;
 
-@interface LSUserTableViewController () <UITableViewDelegate>
+@interface LSUserTableViewController () <UITableViewDelegate, MFMailComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *readingTimeLabel;
@@ -103,6 +108,17 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
     }
 }
 
+#pragma mark - MFMailComposeViewControllerDelegate
+
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (result == MFMailComposeResultSent) {
+            [self toastMessage:@"反馈信息已发送"];
+        }
+    }];
+}
+
+
 #pragma mark - TableViewDelegate
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -115,7 +131,40 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0 && indexPath.row == 0) {
         [self openUserInfo];
-    }else if (indexPath.section == 2 && indexPath.row == 2){
+    }else if (indexPath.section == 1 && indexPath.row == 0){
+        if ([MFMailComposeViewController canSendMail]) {
+            MFMailComposeViewController *mailVC = [[MFMailComposeViewController alloc] init];
+            [mailVC setToRecipients:@[@"543314602@qq.com"]];
+            [mailVC setSubject:[NSString stringWithFormat:@"来自活石APP反馈! [v%@]", BUNDLE_SHORT_VERSION]];
+            
+            NSString *bodyString = [NSString stringWithFormat:@"\n\n\n*************\n设备型号:%@\n系统版本号:%@\n手机型号%@", [CCSimpleTools currentDeviceModel], [[UIDevice currentDevice] systemVersion], [[UIDevice currentDevice] model]];
+            [mailVC setMessageBody:bodyString isHTML:NO];
+            
+            mailVC.mailComposeDelegate = self;
+            [self presentViewController:mailVC animated:YES completion:nil];
+            NSLog(@"eail send Yes");
+        }else{
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"请开启系统邮件功能后重试~" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+            UIAlertAction* yesAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * _Nonnull action) {
+                                                                  NSURL *url = [NSURL URLWithString:@"prefs:root=CASTLE"];
+                                                                  [[UIApplication sharedApplication] openURL:url];
+                                                              }];
+            UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel
+                                                                 handler:^(UIAlertAction * action) {}];
+            
+            [alert addAction:yesAction];
+            [alert addAction:cancelAction];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }else if (indexPath.section == 1 && indexPath.row == 1){
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"当前版本号" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        alert.message = BUNDLE_SHORT_VERSION;
+        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel
+                                                             handler:nil];
+        [alert addAction:cancelAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }else if (indexPath.section == 2 && indexPath.row == 0){
         if ([self.authService isLogin]) {
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"确定要退出登录吗?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
             UIAlertAction* yesAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDestructive
