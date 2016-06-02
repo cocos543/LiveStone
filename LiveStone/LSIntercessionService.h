@@ -82,6 +82,8 @@ typedef NS_ENUM(NSUInteger, IntercessionType) {
  */
 - (void)intercessionServiceDidParticipate;
 
+- (void)intercessionServiceDidDetectedPermissionOfIntercession:(BOOL)isPermission;
+
 @end
 
 @interface LSIntercessionService : LSServiceBase
@@ -143,6 +145,13 @@ typedef NS_ENUM(NSUInteger, IntercessionType) {
  *  @param item LSIntercessionParticipateRequestItem *
  */
 - (void)intercessionParticipate:(LSIntercessionParticipateRequestItem *)item;
+
+/**
+ *  Detection intercession's permission,This is a synchronized method
+ *
+ *  @return BOOL
+ */
+- (void)intercessionDetectPermission:(NSInteger)userID;
 
 /**
  *  Get relationship label to display

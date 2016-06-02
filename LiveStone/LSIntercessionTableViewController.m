@@ -48,7 +48,7 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.bounces = NO;
     [self initializeService];
-    [self loadIntercessionData];
+    [self detectIntercessionPermission];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,12 +92,34 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
 }
 
 #pragma mark - DATA
+
+-(void)detectIntercessionPermission{
+    //Detecte intercession's permission
+    [self startLoadingHUDWithTitle:@"检测权限中"];
+    [self.intercessionService intercessionDetectPermission:self.requestItem.userID.integerValue];
+}
+
 - (void)loadIntercessionData{
     [self startLoadingHUD];
     [self.intercessionService intercessionLoadList:self.requestItem];
 }
 
+
 #pragma mark - LSIntercessionServiceDelegate
+- (void)intercessionServiceDidDetectedPermissionOfIntercession:(BOOL)isPermission{
+    [self endLoadingHUD];
+    if (isPermission) {
+        [self loadIntercessionData];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (self.dismissBlock) {
+                self.dismissBlock();
+            }
+        });
+    }
+}
+
 - (void)intercessionServiceDidLoadList:(NSArray<LSIntercessionItem *> *)intercessionList forIntercessionType:(IntercessionType)type{
     self.tableView.bounces = YES;
     

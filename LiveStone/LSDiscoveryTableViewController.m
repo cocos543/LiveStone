@@ -7,8 +7,11 @@
 //
 
 #import "LSDiscoveryTableViewController.h"
+#import "LSIntercessionTableViewController.h"
 #import "LSRegisterViewController.h"
 #import "LSServiceCenter.h"
+
+#import "UIViewController+ProgressHUD.h"
 
 @interface LSDiscoveryTableViewController () <UITableViewDelegate>
 
@@ -56,6 +59,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"LSIntercessionSegue"]) {
+        LSIntercessionTableViewController *vc = (LSIntercessionTableViewController *)segue.destinationViewController;
+        vc.dismissBlock = ^{
+            [self toastMessage:@"请至少邀请三个朋友注册活石"];
+        };
+    }
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{

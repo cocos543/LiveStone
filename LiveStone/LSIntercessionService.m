@@ -290,4 +290,24 @@
     }];
 }
 
+- (void)intercessionDetectPermission:(NSInteger)userID {
+    NSDictionary *msgDic = @{@"user_id" : @(userID)};
+    
+    [self httpPOSTMessage:msgDic toURLString:@"http://119.29.108.48/bible/frontend/web/index.php/v1/permission" respondHandle:^(NSDictionary *respond) {
+        if (respond[@"status"] != nil) {
+            NSLog(@"Login fail~");
+            switch ([respond[@"status"] intValue]) {
+                case LSNetworkResponseCodeUnkonwError:
+                default:
+                    [self handleConnectError:respond];
+                    break;
+            }
+        }else{
+            if ([self.delegate respondsToSelector:@selector(intercessionServiceDidDetectedPermissionOfIntercession:)]) {
+                [self.delegate intercessionServiceDidDetectedPermissionOfIntercession:[respond[@"permission"] boolValue]];
+            }
+        }
+    }];
+}
+
 @end

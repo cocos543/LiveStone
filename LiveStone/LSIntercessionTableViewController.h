@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void(^LSIntercessionTableViewControllerDismissBlock)(void);
 
 @interface LSIntercessionTableViewController : UITableViewController
+
+@property (nonatomic,copy) LSIntercessionTableViewControllerDismissBlock dismissBlock;
 
 @end
