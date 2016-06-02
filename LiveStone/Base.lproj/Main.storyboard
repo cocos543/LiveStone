@@ -35,6 +35,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="aYh-7a-ffq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.45882352941176469" green="0.79607843137254897" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -599,7 +600,7 @@
         <!--代祷-->
         <scene sceneID="Sbu-ml-pyL">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="9ko-HB-QOD" customClass="LSIntercessionTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LSIntercessionStoryboardID" hidesBottomBarWhenPushed="YES" id="9ko-HB-QOD" customClass="LSIntercessionTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2b4-B0-j32">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -717,7 +718,8 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ap7-s5-RXM">
                                                     <rect key="frame" x="13" y="0.0" width="299" height="220"/>
                                                     <string key="text">·  我们是一群在各互联网公司从事多年产品、设计、研发、运营的在职人士；
-·  我们接受使徒信经、尼西亚信经等普世教会共同接受的信仰，并认同芝加哥「圣经无误」宣言；
+
+·  我们接受使徒信经、尼西亚信经等普世教会共同接受的信仰，并认同芝加哥「圣经无误」宣言；
 
 ·  我们寻求主的引领，拥抱并积极推广移动互联网下的信仰生活，使移动互联网技术为神所用，荣神益人；</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -764,7 +766,8 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbu-Nk-DJE">
                                                     <rect key="frame" x="13" y="0.0" width="299" height="310"/>
                                                     <string key="text">·  圣经版权——活石圣经版本为《圣经和合本》，已过50年版权保护期，属于可公开使用的版权。
-·  注释版权——注释版权归属黄迦勒先生《基督徒文摘解经》系列。我们取自网络，由于能力有限虽努力联系希望取得正式授权但一直进展缓慢。因此希望请有版权渠道的弟兄姊妹与我们联系。
+
+·  注释版权——注释版权归属黄迦勒先生《基督徒文摘解经》系列。我们取自网络，由于能力有限虽努力联系希望取得正式授权但一直进展缓慢。因此希望请有版权渠道的弟兄姊妹与我们联系。
 
 ·  活石版权——活石iOS版权归活石事工小组所有，iOS技术支持由Cocos提供，感谢他的付出，想了解更多，可以访问他个人技术博客：blog.cocosdever.com</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>

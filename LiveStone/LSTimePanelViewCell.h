@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void(^LSTimePanelViewCellIntercessionClickBlock)(void);
 
 @interface LSTimePanelViewCell : UITableViewCell
+
+@property (nonatomic, copy) LSTimePanelViewCellIntercessionClickBlock intercessionClickBlock;
 
 @end

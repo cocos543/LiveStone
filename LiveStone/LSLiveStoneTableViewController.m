@@ -9,6 +9,9 @@
 #import "LSLiveStoneTableViewController.h"
 #import "LSRegisterViewController.h"
 #import "LSBibleSearchController.h"
+#import "LSIntercessionTableViewController.h"
+#import "LSTimePanelViewCell.h"
+#import "UIViewController+ProgressHUD.h"
 #import "LSServiceCenter.h"
 
 @interface LSLiveStoneTableViewController () <UITableViewDelegate, UISearchBarDelegate>
@@ -104,19 +107,31 @@ static NSString *reuseIdentifierTimePanelCell = @"reuseIdentifierTimePanelCell";
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell;
     if (indexPath.row == 0 && indexPath.section == 1) {
         if ([self.authService isLogin]) {
             LSUserInfoItem *item = [self.authService getUserInfo];
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierTimePanelCell forIndexPath:indexPath];
+            cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierTimePanelCell forIndexPath:indexPath];
             UILabel *label1 = [cell viewWithTag:1];
             label1.text = [NSString stringWithFormat:@"%@",item.readingItem.continuousDays];
             UILabel *label2 = [cell viewWithTag:2];
             label2.text = [NSString stringWithFormat:@"%@",item.continuousIntercessionDays];
-            return cell;
+            
+            LSTimePanelViewCell *timeCell = (LSTimePanelViewCell *)cell;
+            timeCell.intercessionClickBlock = ^{
+                LSIntercessionTableViewController *intercessionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LSIntercessionStoryboardID"];
+                intercessionVC.dismissBlock = ^{
+                    [self toastMessage:@"请至少邀请三个朋友注册活石"];
+                };
+                [self.navigationController pushViewController:intercessionVC animated:YES];
+            };
         }
+    }else{
+        cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     }
     
-    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    return cell;
 }
 
 /*
