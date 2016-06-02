@@ -61,6 +61,8 @@
 		ED4CFE601CE427FD00A166C4 /* LSExtraService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4CFE5F1CE427FD00A166C4 /* LSExtraService.m */; };
 		ED4CFE631CE46AE700A166C4 /* LSUserReadingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4CFE621CE46AE700A166C4 /* LSUserReadingItem.m */; };
 		ED4CFE661CE47B8200A166C4 /* LSStatisticsService.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4CFE651CE47B8200A166C4 /* LSStatisticsService.m */; };
+		ED5BAE191D003AF7000F18DB /* LSDailyItem+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5BAE161D003AF7000F18DB /* LSDailyItem+CoreDataProperties.m */; };
+		ED5BAE1A1D003AF7000F18DB /* LSDailyItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5BAE181D003AF7000F18DB /* LSDailyItem.m */; };
 		ED5BB26C1CF9673700EB9304 /* LSAddressBookItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5BB26B1CF9673700EB9304 /* LSAddressBookItem.m */; };
 		ED5BB26F1CF9684300EB9304 /* LSContactsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5BB26E1CF9684300EB9304 /* LSContactsItem.m */; };
 		ED5BB2721CF9685D00EB9304 /* LSContactsRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5BB2711CF9685D00EB9304 /* LSContactsRequestItem.m */; };
@@ -196,6 +198,10 @@
 		ED4CFE621CE46AE700A166C4 /* LSUserReadingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSUserReadingItem.m; sourceTree = "<group>"; };
 		ED4CFE641CE47B8200A166C4 /* LSStatisticsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSStatisticsService.h; sourceTree = "<group>"; };
 		ED4CFE651CE47B8200A166C4 /* LSStatisticsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSStatisticsService.m; sourceTree = "<group>"; };
+		ED5BAE151D003AF7000F18DB /* LSDailyItem+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LSDailyItem+CoreDataProperties.h"; sourceTree = "<group>"; };
+		ED5BAE161D003AF7000F18DB /* LSDailyItem+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LSDailyItem+CoreDataProperties.m"; sourceTree = "<group>"; };
+		ED5BAE171D003AF7000F18DB /* LSDailyItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSDailyItem.h; sourceTree = "<group>"; };
+		ED5BAE181D003AF7000F18DB /* LSDailyItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSDailyItem.m; sourceTree = "<group>"; };
 		ED5BB26A1CF9673700EB9304 /* LSAddressBookItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSAddressBookItem.h; sourceTree = "<group>"; };
 		ED5BB26B1CF9673700EB9304 /* LSAddressBookItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSAddressBookItem.m; sourceTree = "<group>"; };
 		ED5BB26D1CF9684300EB9304 /* LSContactsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSContactsItem.h; sourceTree = "<group>"; };
@@ -368,6 +374,10 @@
 				ED5BB26B1CF9673700EB9304 /* LSAddressBookItem.m */,
 				ED5BB26D1CF9684300EB9304 /* LSContactsItem.h */,
 				ED5BB26E1CF9684300EB9304 /* LSContactsItem.m */,
+				ED5BAE151D003AF7000F18DB /* LSDailyItem+CoreDataProperties.h */,
+				ED5BAE161D003AF7000F18DB /* LSDailyItem+CoreDataProperties.m */,
+				ED5BAE171D003AF7000F18DB /* LSDailyItem.h */,
+				ED5BAE181D003AF7000F18DB /* LSDailyItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -744,6 +754,7 @@
 				ED42704F1CF4294900B901CE /* LSIntercessionRequestItem.m in Sources */,
 				ED4270481CF3E9C900B901CE /* LSIntercessorsItem.m in Sources */,
 				ED2076C91CF0888100D5BD4B /* LSIntercessionUpdateOrBlessViewController.m in Sources */,
+				ED5BAE1A1D003AF7000F18DB /* LSDailyItem.m in Sources */,
 				ED0221DA1CC37956004D6514 /* CCSimpleTools.m in Sources */,
 				EDFA40931CC132620054E77C /* LSDiscoveryTableViewController.m in Sources */,
 				ED4CFE601CE427FD00A166C4 /* LSExtraService.m in Sources */,
@@ -776,6 +787,7 @@
 				EDD856201CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.m in Sources */,
 				ED0A898F1CF6CDF10070770C /* LSIntercessionUpdateRequestItem.m in Sources */,
 				EDC02E881CEC0F890049114B /* LSIntercessionCell.m in Sources */,
+				ED5BAE191D003AF7000F18DB /* LSDailyItem+CoreDataProperties.m in Sources */,
 				ED358B991CC5C2C00016D1C1 /* LSBookDetailCell.m in Sources */,
 				ED0A89921CF6EB830070770C /* LSIntercessionParticipateRequestItem.m in Sources */,
 				ED94FB6D1CEF27FD00ECD199 /* LSIntercessionUpdateCell.m in Sources */,

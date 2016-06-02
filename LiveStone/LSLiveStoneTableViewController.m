@@ -119,6 +119,28 @@ static NSString *reuseIdentifierTimePanelCell = @"reuseIdentifierTimePanelCell";
             
             LSTimePanelViewCell *timeCell = (LSTimePanelViewCell *)cell;
             timeCell.intercessionClickBlock = ^{
+                
+                if (ABAddressBookGetAuthorizationStatus() != kABAuthorizationStatusAuthorized) {
+                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"请允许程序读取您的通讯录,用于开启代祷功能" message:nil preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction* yesAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault
+                                                                      handler:^(UIAlertAction * action) {
+                                                                          NSURL * url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                                                                          if([[UIApplication sharedApplication] canOpenURL:url]) {
+                                                                              [[UIApplication sharedApplication] openURL:url];
+                                                                          }
+                                                                      }];
+                    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+                    [alert addAction:yesAction];
+                    [alert addAction:noAction];
+                    [self presentViewController:alert animated:YES completion:nil];
+                    return;
+                }
+                
+                if (![self.authService isLogin]) {
+                    [self showRegisterViewController];
+                    return;
+                }
+                
                 LSIntercessionTableViewController *intercessionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LSIntercessionStoryboardID"];
                 intercessionVC.dismissBlock = ^{
                     [self toastMessage:@"请至少邀请三个朋友注册活石"];

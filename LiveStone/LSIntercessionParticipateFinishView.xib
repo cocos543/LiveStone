@@ -107,6 +107,7 @@
             <connections>
                 <outlet property="crucifixImageView" destination="EhE-SL-axr" id="BEq-MI-iRK"/>
                 <outlet property="crucifixTopConstraint" destination="oE8-ar-lBC" id="rqz-1W-KZ4"/>
+                <outlet property="crucifixWidthConstraint" destination="2Xn-tC-Z8Y" id="E07-2e-Qgd"/>
                 <outlet property="haloImageView" destination="ekj-Kj-Ah5" id="dEv-ek-dGr"/>
             </connections>
         </view>

@@ -179,5 +179,7 @@ dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
 
 58. 在AFNetworking中无法使用信号量实现同步操作.使用信号量到了wait部分,主线程进入等待状态,所以网络数据接受到后也无法再通过主线程进入回调.所以无法触发回调中的释放信号量方法,导致程序永久卡死.
 
+59. NSManagedObject的子类属性都要在实现文件中设置为@dynamic.因为定义的实体在.xcdatamodeld文件中默认的类型都是NSManagedObject,也就是说系统会自动把属性加到NSManagedObject对象里,所以创建NSManagedObject的子类的时候需要使用关键字@dynamic
+
 
 
