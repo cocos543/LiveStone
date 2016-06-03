@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface CCSimpleTools : NSObject
-+ (UIColor *) stringToColor:(NSString *)str opacity:(CGFloat)opacity;
++ (UIColor *)stringToColor:(NSString *)str opacity:(CGFloat)opacity;
 
 + (NSString *)currentDeviceModel;
+
++ (BOOL)isTheSameDayBetween:(NSDate *)firstDate and:(NSDate *)secondDate;
+
++ (BOOL)isTheNextDayBetween:(NSDate *)firstDate and:(NSDate *)secondDate;
 @end

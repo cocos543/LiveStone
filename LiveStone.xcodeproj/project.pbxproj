@@ -79,6 +79,8 @@
 		ED94FB6E1CEF27FD00ECD199 /* LSIntercessionUpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED94FB6C1CEF27FD00ECD199 /* LSIntercessionUpdateCell.xib */; };
 		ED9815961CDB75F500CF7944 /* UIViewController+ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9815951CDB75F500CF7944 /* UIViewController+ProgressHUD.m */; };
 		ED98159A1CDB848500CF7944 /* LSServiceCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9815991CDB848500CF7944 /* LSServiceCenter.m */; };
+		EDA690DA1D0123B2009A807B /* LSDailyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA690D91D0123B2009A807B /* LSDailyStore.m */; };
+		EDA690DD1D015FEF009A807B /* LSDailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA690DC1D015FEF009A807B /* LSDailyViewController.m */; };
 		EDB797DA1CDDC2E4005CB768 /* LSUserAuthItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB797D91CDDC2E4005CB768 /* LSUserAuthItem.m */; };
 		EDC02E831CEBF79F0049114B /* LSIntercessionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC02E811CEBF79F0049114B /* LSIntercessionTableViewController.m */; };
 		EDC02E881CEC0F890049114B /* LSIntercessionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC02E861CEC0F890049114B /* LSIntercessionCell.m */; };
@@ -230,6 +232,10 @@
 		ED9815951CDB75F500CF7944 /* UIViewController+ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ProgressHUD.m"; sourceTree = "<group>"; };
 		ED9815981CDB848500CF7944 /* LSServiceCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSServiceCenter.h; sourceTree = "<group>"; };
 		ED9815991CDB848500CF7944 /* LSServiceCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSServiceCenter.m; sourceTree = "<group>"; };
+		EDA690D81D0123B2009A807B /* LSDailyStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSDailyStore.h; sourceTree = "<group>"; };
+		EDA690D91D0123B2009A807B /* LSDailyStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSDailyStore.m; sourceTree = "<group>"; };
+		EDA690DB1D015FEF009A807B /* LSDailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSDailyViewController.h; sourceTree = "<group>"; };
+		EDA690DC1D015FEF009A807B /* LSDailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSDailyViewController.m; sourceTree = "<group>"; };
 		EDB797D81CDDC2E4005CB768 /* LSUserAuthItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSUserAuthItem.h; sourceTree = "<group>"; };
 		EDB797D91CDDC2E4005CB768 /* LSUserAuthItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSUserAuthItem.m; sourceTree = "<group>"; };
 		EDC02E801CEBF79F0049114B /* LSIntercessionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionTableViewController.h; sourceTree = "<group>"; };
@@ -342,6 +348,8 @@
 				ED4C7BE21CE94B580021D026 /* LSTimePanelViewCell.h */,
 				ED4C7BE31CE94B580021D026 /* LSTimePanelViewCell.m */,
 				ED064A171CE3103F00FA2745 /* LSTimePanelViewCell.xib */,
+				EDA690DB1D015FEF009A807B /* LSDailyViewController.h */,
+				EDA690DC1D015FEF009A807B /* LSDailyViewController.m */,
 			);
 			name = LiveStone;
 			sourceTree = "<group>";
@@ -352,6 +360,8 @@
 				ED42704C1CF4291D00B901CE /* Request */,
 				ED3842961CCEEA560021EA06 /* LSBibleStore.h */,
 				ED3842971CCEEA560021EA06 /* LSBibleStore.m */,
+				EDA690D81D0123B2009A807B /* LSDailyStore.h */,
+				EDA690D91D0123B2009A807B /* LSDailyStore.m */,
 				ED17E72F1CD1819600F6F6CF /* LSBibleItem.h */,
 				ED17E7301CD1819600F6F6CF /* LSBibleItem.m */,
 				ED45E70D1CDC776400FAC93A /* LSUserInfoItem.h */,
@@ -808,10 +818,12 @@
 				EDC300101CFE74D80007C3D7 /* LSAboutViewController.m in Sources */,
 				ED0221BF1CC32FC1004D6514 /* TestTableViewController.m in Sources */,
 				EDFA40901CC123D80054E77C /* LSUserTableViewController.m in Sources */,
+				EDA690DD1D015FEF009A807B /* LSDailyViewController.m in Sources */,
 				ED825A231CEA9C740035AD25 /* LSBibleSearchController.m in Sources */,
 				EDFA409A1CC139D90054E77C /* LSMainTabBarController.m in Sources */,
 				ED29940A1CEE923B0017BC3E /* LSIntercessionBlessingCell.m in Sources */,
 				ED45E7091CDC2C6700FAC93A /* LSAuthService.m in Sources */,
+				EDA690DA1D0123B2009A807B /* LSDailyStore.m in Sources */,
 				ED2B50C01CD051B600B0909B /* LSChapterContentViewController.m in Sources */,
 				ED5BB26F1CF9684300EB9304 /* LSContactsItem.m in Sources */,
 				ED825A261CEA9D2F0035AD25 /* LSSearchResultsController.m in Sources */,

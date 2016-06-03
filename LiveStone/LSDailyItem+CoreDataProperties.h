@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *content;
 @property (nullable, nonatomic, retain) NSNumber *questionId;
 @property (nullable, nonatomic, retain) NSString *url;
+@property (nullable, nonatomic, strong) NSDate *createAt;
 
 @end
 

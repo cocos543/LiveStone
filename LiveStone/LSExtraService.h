@@ -15,9 +15,21 @@
 
 #import "LSContactsItem.h"
 #import "LSContactsRequestItem.h"
+#import "LSDailyItem.h"
+
+@protocol LSExtraServiceDelegate <LSServiceBaseProtocol>
+
+@optional
+- (void)extraServiceDidLoadDaily:(LSDailyItem *)item;
+
+@end
 
 @interface LSExtraService : LSServiceBase
 
+@property (nonatomic, weak) id<LSExtraServiceDelegate>delegate;
+
 - (void)synchronizeAddressBook;
+
+- (void)extraLoadDaily;
 
 @end

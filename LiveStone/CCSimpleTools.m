@@ -36,4 +36,33 @@
     return platform;
 }
 
++ (BOOL)isTheSameDayBetween:(NSDate *)firstDate and:(NSDate *)secondDate{
+    NSDateComponents *firstComponents = [[NSCalendar currentCalendar]
+                                         components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
+                                         fromDate:firstDate];
+    NSDateComponents *secondComponents = [[NSCalendar currentCalendar]
+                                          components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
+                                          fromDate:secondDate];
+    
+    if (firstComponents.year == secondComponents.year && firstComponents.month == secondComponents.month && firstComponents.day == secondComponents.day) {
+        //the same day
+        return YES;
+    }
+    return NO;
+}
+
++ (BOOL)isTheNextDayBetween:(NSDate *)firstDate and:(NSDate *)secondDate{
+    NSDateComponents *firstComponents = [[NSCalendar currentCalendar]
+                                         components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
+                                         fromDate:firstDate];
+    NSDateComponents *secondComponents = [[NSCalendar currentCalendar]
+                                          components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
+                                          fromDate:secondDate];
+    if (firstComponents.year == secondComponents.year && firstComponents.month == secondComponents.month &&  (secondComponents.day - firstComponents.day) == 1) {
+        //Next day
+        return YES;
+    }
+    return NO;
+}
+
 @end

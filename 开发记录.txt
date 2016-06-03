@@ -181,5 +181,9 @@ dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
 
 59. NSManagedObject的子类属性都要在实现文件中设置为@dynamic.因为定义的实体在.xcdatamodeld文件中默认的类型都是NSManagedObject,也就是说系统会自动把属性加到NSManagedObject对象里,所以创建NSManagedObject的子类的时候需要使用关键字@dynamic
 
+60. 启用core data后出现The model used to open the store is incompatible with the one used to create the store,很可能是程序编译的时候没有把xcdatamodeld新增的内容打包进去,删除app,在clean一下项目试试.
+
+61. UITextView 如果在interface界面上事先设置了太多文字,则加载速度会非常慢..........
+
 
 

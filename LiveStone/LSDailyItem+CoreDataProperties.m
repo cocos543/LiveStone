@@ -17,5 +17,6 @@
 @dynamic content;
 @dynamic questionId;
 @dynamic url;
+@dynamic createAt;
 
 @end

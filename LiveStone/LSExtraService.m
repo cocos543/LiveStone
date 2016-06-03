@@ -8,6 +8,7 @@
 
 #import "LSExtraService.h"
 #import "LSAuthService.h"
+#import "LSDailyStore.h"
 
 @interface LSExtraService ()
 
@@ -19,6 +20,7 @@
 @end
 
 @implementation LSExtraService
+@dynamic delegate;
 
 + (instancetype)shardService{
     static LSExtraService *service;
@@ -65,6 +67,37 @@
             [self uploadAddressBookToServer];
         }
         CFRelease(addressBook);
+    }
+}
+
+
+- (void)extraLoadDaily {
+    LSDailyStore *store = [[LSDailyStore alloc] init];
+    __block LSDailyItem *item = [store dailyItem];
+    if (item && [CCSimpleTools isTheSameDayBetween:[item createAt] and:[NSDate date]]) {
+        if ([self.delegate respondsToSelector:@selector(extraServiceDidLoadDaily:)]) {
+            [self.delegate extraServiceDidLoadDaily:item];
+        }
+    }else{
+        [self httpPOSTMessage:@{} toURLString:@"http://119.29.108.48/bible/frontend/web/index.php/v1/asked/daily" respondHandle:^(NSDictionary *respond) {
+            if (respond[@"status"] != nil) {
+                NSLog(@"Login fail~");
+                switch ([respond[@"status"] intValue]) {
+                    case LSNetworkResponseCodeUnkonwError:
+                    default:
+                        [self handleConnectError:respond];
+                        break;
+                }
+            }else{
+                item  = [store createDailyItem:respond];
+            }
+            //Returning the old item unsuccessfully or returning new item successfully.
+            if (item) {
+                if ([self.delegate respondsToSelector:@selector(extraServiceDidLoadDaily:)]) {
+                    [self.delegate extraServiceDidLoadDaily:item];
+                }
+            }
+        }];
     }
 }
 
@@ -171,4 +204,5 @@
     
     return totalCount;
 }
+
 @end
