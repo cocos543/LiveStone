@@ -44,12 +44,11 @@ static NSString *reuseIdentifierTimePanelCell = @"reuseIdentifierTimePanelCell";
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"LSTimePanelViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifierTimePanelCell];
-    
     [self initializeService];
     [self loadDailyData];
 }
 
--(void)viewWillAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated{
     self.navigationItem.title = @"活石";
     self.navigationController.navigationBarHidden = NO;
     self.tableView.separatorStyle = NO;
@@ -116,11 +115,11 @@ static NSString *reuseIdentifierTimePanelCell = @"reuseIdentifierTimePanelCell";
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0.1f;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 1 && indexPath.row == 0) {
         if (![self.authService isLogin]) {
             [self showRegisterViewController];

@@ -81,6 +81,8 @@
 		ED98159A1CDB848500CF7944 /* LSServiceCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9815991CDB848500CF7944 /* LSServiceCenter.m */; };
 		EDA690DA1D0123B2009A807B /* LSDailyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA690D91D0123B2009A807B /* LSDailyStore.m */; };
 		EDA690DD1D015FEF009A807B /* LSDailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA690DC1D015FEF009A807B /* LSDailyViewController.m */; };
+		EDA81ED51D0511A200AEDE0C /* LSCompleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA81ED31D0511A200AEDE0C /* LSCompleteViewController.m */; };
+		EDA81ED61D0511A200AEDE0C /* LSCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA81ED41D0511A200AEDE0C /* LSCompleteViewController.xib */; };
 		EDB797DA1CDDC2E4005CB768 /* LSUserAuthItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB797D91CDDC2E4005CB768 /* LSUserAuthItem.m */; };
 		EDC02E831CEBF79F0049114B /* LSIntercessionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC02E811CEBF79F0049114B /* LSIntercessionTableViewController.m */; };
 		EDC02E881CEC0F890049114B /* LSIntercessionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC02E861CEC0F890049114B /* LSIntercessionCell.m */; };
@@ -96,6 +98,7 @@
 		EDFA40931CC132620054E77C /* LSDiscoveryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA40921CC132620054E77C /* LSDiscoveryTableViewController.m */; };
 		EDFA40971CC134A00054E77C /* LSBibleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA40961CC134A00054E77C /* LSBibleViewController.m */; };
 		EDFA409A1CC139D90054E77C /* LSMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA40991CC139D90054E77C /* LSMainTabBarController.m */; };
+		EDFB816D1D0558E800BB2544 /* LSUserInfoRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFB816C1D0558E800BB2544 /* LSUserInfoRequestItem.m */; };
 		EDFFE9661CF523EA004868E1 /* LSIntercessionPublishRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFFE9651CF523EA004868E1 /* LSIntercessionPublishRequestItem.m */; };
 		EDFFE9691CF55507004868E1 /* LSIntercessionDetailRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFFE9681CF55507004868E1 /* LSIntercessionDetailRequestItem.m */; };
 		EDFFE96C1CF55860004868E1 /* LSIntercessionCommentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFFE96B1CF55860004868E1 /* LSIntercessionCommentItem.m */; };
@@ -236,6 +239,9 @@
 		EDA690D91D0123B2009A807B /* LSDailyStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSDailyStore.m; sourceTree = "<group>"; };
 		EDA690DB1D015FEF009A807B /* LSDailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSDailyViewController.h; sourceTree = "<group>"; };
 		EDA690DC1D015FEF009A807B /* LSDailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSDailyViewController.m; sourceTree = "<group>"; };
+		EDA81ED21D0511A200AEDE0C /* LSCompleteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCompleteViewController.h; sourceTree = "<group>"; };
+		EDA81ED31D0511A200AEDE0C /* LSCompleteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCompleteViewController.m; sourceTree = "<group>"; };
+		EDA81ED41D0511A200AEDE0C /* LSCompleteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSCompleteViewController.xib; sourceTree = "<group>"; };
 		EDB797D81CDDC2E4005CB768 /* LSUserAuthItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSUserAuthItem.h; sourceTree = "<group>"; };
 		EDB797D91CDDC2E4005CB768 /* LSUserAuthItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSUserAuthItem.m; sourceTree = "<group>"; };
 		EDC02E801CEBF79F0049114B /* LSIntercessionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionTableViewController.h; sourceTree = "<group>"; };
@@ -263,6 +269,8 @@
 		EDFA40961CC134A00054E77C /* LSBibleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBibleViewController.m; sourceTree = "<group>"; };
 		EDFA40981CC139D90054E77C /* LSMainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSMainTabBarController.h; sourceTree = "<group>"; };
 		EDFA40991CC139D90054E77C /* LSMainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSMainTabBarController.m; sourceTree = "<group>"; };
+		EDFB816B1D0558E800BB2544 /* LSUserInfoRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSUserInfoRequestItem.h; sourceTree = "<group>"; };
+		EDFB816C1D0558E800BB2544 /* LSUserInfoRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSUserInfoRequestItem.m; sourceTree = "<group>"; };
 		EDFFE9641CF523EA004868E1 /* LSIntercessionPublishRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionPublishRequestItem.h; sourceTree = "<group>"; };
 		EDFFE9651CF523EA004868E1 /* LSIntercessionPublishRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionPublishRequestItem.m; sourceTree = "<group>"; };
 		EDFFE9671CF55507004868E1 /* LSIntercessionDetailRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionDetailRequestItem.h; sourceTree = "<group>"; };
@@ -336,6 +344,9 @@
 				ED029CE61CDABD9C00B76272 /* LSJoinUsViewController.h */,
 				ED029CE71CDABD9C00B76272 /* LSJoinUsViewController.m */,
 				ED029CE81CDABD9C00B76272 /* LSJoinUsViewController.xib */,
+				EDA81ED21D0511A200AEDE0C /* LSCompleteViewController.h */,
+				EDA81ED31D0511A200AEDE0C /* LSCompleteViewController.m */,
+				EDA81ED41D0511A200AEDE0C /* LSCompleteViewController.xib */,
 			);
 			name = Register;
 			sourceTree = "<group>";
@@ -445,6 +456,8 @@
 				ED0A89911CF6EB830070770C /* LSIntercessionParticipateRequestItem.m */,
 				ED5BB2701CF9685D00EB9304 /* LSContactsRequestItem.h */,
 				ED5BB2711CF9685D00EB9304 /* LSContactsRequestItem.m */,
+				EDFB816B1D0558E800BB2544 /* LSUserInfoRequestItem.h */,
+				EDFB816C1D0558E800BB2544 /* LSUserInfoRequestItem.m */,
 			);
 			name = Request;
 			sourceTree = "<group>";
@@ -679,6 +692,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDA81ED61D0511A200AEDE0C /* LSCompleteViewController.xib in Resources */,
 				ED3842991CCEF2FE0021EA06 /* huoshi.db in Resources */,
 				ED42986B1CC0637000FCD799 /* LaunchScreen.storyboard in Resources */,
 				ED0A89991CF6F2D90070770C /* LSIntercessionParticipateViewController.xib in Resources */,
@@ -778,6 +792,7 @@
 				EDFFE96C1CF55860004868E1 /* LSIntercessionCommentItem.m in Sources */,
 				ED45E70F1CDC776400FAC93A /* LSUserInfoItem.m in Sources */,
 				ED4270421CF3E58D00B901CE /* LSIntercessionUpdateContentItem.m in Sources */,
+				EDA81ED51D0511A200AEDE0C /* LSCompleteViewController.m in Sources */,
 				EDFA40971CC134A00054E77C /* LSBibleViewController.m in Sources */,
 				ED4298661CC0637000FCD799 /* LiveStone.xcdatamodeld in Sources */,
 				ED0A898C1CF68D670070770C /* LSIntercessionDoCommentRequestItem.m in Sources */,
@@ -799,6 +814,7 @@
 				EDC02E881CEC0F890049114B /* LSIntercessionCell.m in Sources */,
 				ED5BAE191D003AF7000F18DB /* LSDailyItem+CoreDataProperties.m in Sources */,
 				ED358B991CC5C2C00016D1C1 /* LSBookDetailCell.m in Sources */,
+				EDFB816D1D0558E800BB2544 /* LSUserInfoRequestItem.m in Sources */,
 				ED0A89921CF6EB830070770C /* LSIntercessionParticipateRequestItem.m in Sources */,
 				ED94FB6D1CEF27FD00ECD199 /* LSIntercessionUpdateCell.m in Sources */,
 				ED68C10E1CF7ECEB0045384F /* LSIntercessionParticipateMiddleView.m in Sources */,

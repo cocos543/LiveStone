@@ -8,6 +8,7 @@
 
 #import "LSJoinUsViewController.h"
 #import "LSServiceCenter.h"
+#import "LSCompleteViewController.h"
 #import "UIViewController+ProgressHUD.h"
 
 @interface LSJoinUsViewController () <UITextFieldDelegate, LSAuthServiceDelegate>
@@ -258,14 +259,10 @@
 
 - (void)authServiceDidRegister:(LSUserInfoItem *)userInfo{
     [self endLoadingHUD];
-    [self toastMessage:@"注册成功"];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:^{
-            if (self.dismissBlock) {
-                self.dismissBlock(userInfo);
-            }
-        }];
-    });
+    LSCompleteViewController *joinVC = [[LSCompleteViewController alloc] init];
+    joinVC.dismissBlock = self.dismissBlock;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:joinVC];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)authServiceSendCodeFail:(LSNetworkResponseCode)statusCode{

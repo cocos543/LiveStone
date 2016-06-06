@@ -175,6 +175,27 @@
     }];
 }
 
+- (void)authCompeleteUserInfo:(LSUserInfoRequestItem *)item {
+    NSDictionary *msgDic = item.mj_keyValues;
+    
+    [self httpPOSTMessage:msgDic toURLString:@"http://119.29.108.48/bible/frontend/web/index.php/v1/users/data" respondHandle:^(NSDictionary *respond) {
+        if (respond[@"status"] != nil) {
+            NSLog(@"Login fail~");
+            switch ([respond[@"status"] intValue]) {
+                case LSNetworkResponseCodeUnkonwError:
+                default:
+                    [self handleConnectError:respond];
+                    break;
+            }
+        }else{
+            LSUserInfoItem *userInfo = [self saveUserInfo:respond];
+            if ([self.delegate respondsToSelector:@selector(authServiceDidCompeleted:)]) {
+                [self.delegate authServiceDidCompeleted:userInfo];
+            }
+        }
+    }];
+}
+
 - (LSUserInfoItem *)getUserInfo {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *data = [defaults objectForKey:LIVESTONE_DEFAULTS_USERINFO];
@@ -193,6 +214,8 @@
 - (BOOL)isLogin {
     return [self getUserInfo] ? YES :NO;
 }
+
+
 
 
 

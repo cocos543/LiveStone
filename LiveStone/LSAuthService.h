@@ -9,6 +9,7 @@
 #import "LSServiceBase.h"
 #import "LSUserInfoItem.h"
 #import "LSUserAuthItem.h"
+#import "LSUserInfoRequestItem.h"
 
 @protocol LSAuthServiceDelegate <LSServiceBaseProtocol>
 
@@ -68,6 +69,8 @@
  */
 - (void)authServiceDidRegister:(LSUserInfoItem *)userInfo;
 
+- (void)authServiceDidCompeleted:(LSUserInfoItem *)userInfo;
+
 @end
 
 @interface LSAuthService : LSServiceBase
@@ -92,6 +95,13 @@
 - (void)authGetCode:(LSUserAuthItem *)authItem;
 
 - (void)authRegister:(LSUserAuthItem *)authItem;
+
+/**
+ *  Post user's info to the server
+ *
+ *  @param user's info whose will be post to the server
+ */
+- (void)authCompeleteUserInfo:(LSUserInfoRequestItem *)item;
 
 /**
  *  Update user info
