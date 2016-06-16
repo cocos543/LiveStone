@@ -21,6 +21,12 @@
         return date;
     }
     
+    if ([property.name isEqualToString:@"avatar"]) {
+        if ([oldValue length] == 0) {
+            oldValue = @"http://7xqd3b.com1.z0.glb.clouddn.com/9f23ede40ca924493492479cab70351c";
+        }
+    }
+    
     return oldValue;
 }
 @end

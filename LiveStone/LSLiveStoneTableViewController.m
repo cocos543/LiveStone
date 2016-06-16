@@ -45,7 +45,6 @@ static NSString *reuseIdentifierTimePanelCell = @"reuseIdentifierTimePanelCell";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"LSTimePanelViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifierTimePanelCell];
     [self initializeService];
-    [self loadDailyData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -57,6 +56,7 @@ static NSString *reuseIdentifierTimePanelCell = @"reuseIdentifierTimePanelCell";
     
     self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.size.width / 2.0f;
     self.avatarImageView.clipsToBounds = YES;
+    [self loadDailyData];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -225,6 +225,16 @@ static NSString *reuseIdentifierTimePanelCell = @"reuseIdentifierTimePanelCell";
 }
 
 #pragma mark - Navigation
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    if ([identifier isEqualToString:@"LSDailySegue"]) {
+        if (!self.item) {
+            [self loadDailyData];
+            return NO;
+        }
+    }
+    return YES;
+}
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
