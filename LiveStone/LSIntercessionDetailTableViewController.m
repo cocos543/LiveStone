@@ -156,6 +156,7 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     if (intercessionItem) {
         self.intercessionItem.contentList = intercessionItem.contentList;
         self.intercessionItem.intercessorsList = intercessionItem.intercessorsList;
+        self.intercessionItem.intercessionNumber = intercessionItem.intercessionNumber;
         [self initialzationWarriorString];
         [self.tableView reloadData];
     }
