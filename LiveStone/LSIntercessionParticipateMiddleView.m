@@ -7,7 +7,7 @@
 //
 
 #import "LSIntercessionParticipateMiddleView.h"
-#define FINISH_BUTTON_COLOR @"#25AFFE"
+#define FINISH_BUTTON_COLOR @"#75CBEC"
 @interface LSIntercessionParticipateMiddleView ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *crucifixTopConstraint;

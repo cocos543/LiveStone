@@ -48,7 +48,7 @@
     [attributedString addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, attributedString.length)];
     
     self.contentTextView.attributedText = attributedString;
-    self.contentTextView.font = [UIFont systemFontOfSize:15];
+    self.contentTextView.font = [UIFont systemFontOfSize:16];
 }
 
 - (void)setupTextView{
