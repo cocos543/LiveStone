@@ -387,7 +387,7 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
         return cell;
     }
     
-    return nil;
+    return [[UITableViewCell alloc] init];
 }
 
 /*

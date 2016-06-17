@@ -48,6 +48,8 @@ static NSString *reuseIdentifierTimePanelCell = @"reuseIdentifierTimePanelCell";
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
     self.navigationItem.title = @"活石";
     self.navigationController.navigationBarHidden = NO;
     self.tableView.separatorStyle = NO;
@@ -60,6 +62,8 @@ static NSString *reuseIdentifierTimePanelCell = @"reuseIdentifierTimePanelCell";
 }
 
 - (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
     [self.tableView reloadData];
 }
 

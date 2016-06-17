@@ -75,7 +75,7 @@
  *  @return chapter count
  */
 -(NSInteger)chaptersNumberWithBookNo:(NSInteger)bookNo{
-    NSInteger number;
+    NSInteger number = 0;
     FMResultSet *resultSet;
     [self openDB];
     resultSet = [self.fmdb executeQueryWithFormat:@"SELECT COUNT(*) FROM chapter WHERE bookId = %@",@(bookNo)];

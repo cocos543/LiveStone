@@ -81,6 +81,10 @@
      *  Do something
      */
     CocoaSecurityResult *pwdMD5 = [CocoaSecurity md5:authItem.password];
+    if (!authItem.phone || !pwdMD5.hexLower) {
+        return;
+    }
+    
     NSDictionary *msgDic = @{LIVESTONE_AUTH_PHONE : authItem.phone, LIVESTONE_AUTH_PASSWORD : pwdMD5.hexLower};
     
     [self httpPOSTMessage:msgDic toURLString:@"http://119.29.108.48/bible/frontend/web/index.php/v1/users/login" respondHandle:^(NSDictionary *respond) {

@@ -164,12 +164,13 @@
         
         // 取出个人记录中的详细信息
         // 名
-        NSString *firstName = (__bridge NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
+        
+        NSString *firstName = (__bridge_transfer NSString*) ABRecordCopyValue(person, kABPersonFirstNameProperty);
         if (firstName == nil) {
             firstName = @"";
         }
         // 姓
-        NSString *lastName = (__bridge NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
+        NSString *lastName = (__bridge_transfer NSString*) ABRecordCopyValue(person, kABPersonLastNameProperty);
         if (lastName == nil) {
             lastName = @"";
         }
@@ -181,7 +182,7 @@
         NSMutableString *phoneString = [[NSMutableString alloc] init];
         // 遍历所有的电话号码
         for (NSInteger i = 0; i < phoneCount; i++) {
-            NSString  *phone = (__bridge NSString *)ABMultiValueCopyValueAtIndex(phones, i);
+            NSString  *phone = (__bridge_transfer NSString *)ABMultiValueCopyValueAtIndex(phones, i);
             [phoneString appendFormat:@"%@,", phone];
         }
         if (phoneString.length) {
@@ -189,7 +190,9 @@
             contactsItem.contactsName = [NSString stringWithFormat:@"%@%@",lastName, firstName];
             [self.contactsItemArray addObject:contactsItem];
         }
+        CFRelease(phones);
     }
+    CFRelease(array);
 }
 
 - (NSInteger)addressBookTotalCount:(ABAddressBookRef)addressBook{
@@ -200,8 +203,9 @@
         ABRecordRef person = CFArrayGetValueAtIndex(array, i);
         ABMultiValueRef phones = ABRecordCopyValue(person, kABPersonPhoneProperty);
         totalCount += ABMultiValueGetCount(phones);
+        CFRelease(phones);
     }
-    
+    CFRelease(array);
     return totalCount;
 }
 

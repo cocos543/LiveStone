@@ -98,7 +98,7 @@
 
 - (void)httpGETMessage:(NSDictionary *)msgDic toURLString:(NSString *)urlString respondHandle:(void(^)(id respond))respondHander{
 	msgDic = [self supplementInfomation:msgDic];
-    
+    NSLog(@"%@", msgDic);
 }
 
 - (void)handleConnectError:(NSDictionary *)errDic {
