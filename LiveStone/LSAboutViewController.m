@@ -20,6 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupLabel];
+    self.title = [NSString stringWithFormat:@"关于[v%@]",BUNDLE_SHORT_VERSION];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

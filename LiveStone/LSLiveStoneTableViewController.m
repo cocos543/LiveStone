@@ -180,7 +180,7 @@ static NSString *reuseIdentifierTimePanelCell = @"reuseIdentifierTimePanelCell";
         cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     }
     
-    if (indexPath.row == 1 && indexPath.section == 3) {
+    if (indexPath.row == 1 && indexPath.section == 2) {
         [cell setSelectionStyle:UITableViewCellSelectionStyleDefault];
     }else{
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];

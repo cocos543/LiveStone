@@ -71,7 +71,7 @@
     if ([identifier isEqualToString:@"LSIntercessionSegue"]) {
         
         if (ABAddressBookGetAuthorizationStatus() != kABAuthorizationStatusAuthorized) {
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"请允许程序读取您的通讯录,用于开启代祷功能" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"请允许程序读取您的通讯录,用于开启代祷功能" message:@"您的通讯录将会被上传到服务器加密保存,用于提供代祷服务." preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction* yesAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault
                                                               handler:^(UIAlertAction * action) {
                                                                   NSURL * url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];

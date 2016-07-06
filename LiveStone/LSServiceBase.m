@@ -7,7 +7,6 @@
 //
 
 #import "LSServiceBase.h"
-#import <AdSupport/ASIdentifierManager.h>
 #import "CocoaSecurity.h"
 
 @interface LSServiceBase ()
@@ -56,7 +55,7 @@
     //NSLog(@"%@",[[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]);
     data[@"platform"]  = LIVESTONE_PLATFORM;
     data[@"version"]   = BUNDLE_SHORT_VERSION;
-    data[@"uuid"]      = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    data[@"uuid"]      = @"Cocos";//[[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     data[@"timestamp"] = @(ceil([NSDate date].timeIntervalSince1970));
     data[@"sign"]      = [self getSignMessageWithMsg:data];
     return data;
