@@ -57,13 +57,13 @@ NSDictionary *requestContents = @{
                               progress:(nullable void (^)(NSProgress *downloadProgress))downloadProgress
                                success:(nullable void (^)(NSURLSessionDataTask *task, id _Nullable responseObject))success
                                failure:(nullable void (^)(NSURLSessionDataTask * _Nullable task, NSError *error))failure;
-	1).post带参数
-	直接将参数放在parameters上
-	2).提示不接收服务器的返回类型,例如不接受text/plain
-	// manager.responseSerializer默认就是期望JSON类型的response:AFJSONResponseSerializer
-	manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
-	3).设置Header
-	manager.requestSerializer setAuthorizationHeaderFieldWithUsername:(nonnull NSString *) password:(nonnull NSString *)
+  1).post带参数
+  直接将参数放在parameters上
+  2).提示不接收服务器的返回类型,例如不接受text/plain
+  // manager.responseSerializer默认就是期望JSON类型的response:AFJSONResponseSerializer
+  manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+  3).设置Header
+  manager.requestSerializer setAuthorizationHeaderFieldWithUsername:(nonnull NSString *) password:(nonnull NSString *)
 
 
 
@@ -185,5 +185,8 @@ dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
 
 61. UITextView 如果在interface界面上事先设置了太多文字,则加载速度会非常慢..........
 
+62. 读取用户通讯录,需要简单跟用户说明你的通讯录会被怎么处理,不然通不过审核
 
-
+63. 自动布局不应该直接用常数,而应该用百分比,也就是Multiplier
+例如让view的leading相对与父视图的width进行设置,而不是直接让leading距离父视图固定多少个像素.
+具体的实现方法就是,让view的leading相对于父视图的trailing进行布局,根据公式item1.attribute1 = multiplier × item2.attribute2 + constant,其中item1就是view,item2就是父视图,所以这个时候multiplier可以取0.0~1.0,就等于父视图宽度的百分比了.

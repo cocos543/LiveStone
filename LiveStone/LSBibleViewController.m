@@ -13,9 +13,11 @@
 
 #import "LSBibleViewController.h"
 #import "LSBibleCollectionView.h"
+#import "LSChapterContentViewController.h"
+#import "LSReadingTimeController.h"
+
 #import "LSCollectionViewFlowLayout.h"
 #import "LSBookDetailCell.h"
-#import "LSChapterContentViewController.h"
 
 #define LINE_VIEW_HIGHT 3
 #define COLLECTVIEW_SPACE 5
@@ -234,6 +236,13 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
  */
 - (IBAction)theBtnAction:(id)sender {
     [self.scrollView setContentOffset:CGPointMake([(UIButton *)sender tag] * self.scrollView.frame.size.width, 0) animated:YES];
+}
+
+- (IBAction)readingTimeAction:(id)sender {
+    LSReadingTimeController *vc = [[LSReadingTimeController alloc] init];
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self.parentViewController.parentViewController presentViewController:vc animated:YES completion:nil];
 }
 
 /*

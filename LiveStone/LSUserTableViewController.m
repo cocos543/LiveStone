@@ -14,6 +14,9 @@
 
 #import <MessageUI/MessageUI.h>
 
+//Feedback
+#import <YWFeedbackFMWK/YWFeedbackKit.h>
+
 @import SDWebImage;
 
 @interface LSUserTableViewController () <UITableViewDelegate, MFMailComposeViewControllerDelegate>
@@ -24,6 +27,8 @@
  *  Compose the object
  */
 @property (nonatomic, strong) LSAuthService *authService;
+
+@property (nonatomic, strong) YWFeedbackKit *feedbackKit;
 
 @end
 
@@ -42,6 +47,8 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
     self.avatarImageView.clipsToBounds = YES;
     [self.tableView registerNib:[UINib nibWithNibName:@"LSBibleContentCell" bundle:nil] forCellReuseIdentifier:reuseIdentifierCell];
     self.authService = [[LSServiceCenter defaultCenter] getService:[LSAuthService class]];
+    
+    self.feedbackKit = [[YWFeedbackKit alloc] initWithAppKey:@"23015524"];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

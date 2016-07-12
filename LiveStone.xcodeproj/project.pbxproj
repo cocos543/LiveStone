@@ -73,6 +73,15 @@
 		ED7A6F721CD2FD6E00EF1592 /* UILabel+CCStringFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7A6F711CD2FD6E00EF1592 /* UILabel+CCStringFrame.m */; };
 		ED825A231CEA9C740035AD25 /* LSBibleSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED825A221CEA9C740035AD25 /* LSBibleSearchController.m */; };
 		ED825A261CEA9D2F0035AD25 /* LSSearchResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED825A251CEA9D2F0035AD25 /* LSSearchResultsController.m */; };
+		ED89F7211D3476C70060DBB4 /* AmrCodecFMWK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED89F7181D3476C70060DBB4 /* AmrCodecFMWK.framework */; };
+		ED89F7221D3476C70060DBB4 /* SecurityGuardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED89F7191D3476C70060DBB4 /* SecurityGuardSDK.framework */; };
+		ED89F7231D3476C70060DBB4 /* UTDID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED89F71A1D3476C70060DBB4 /* UTDID.framework */; };
+		ED89F7241D3476C70060DBB4 /* UTMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED89F71B1D3476C70060DBB4 /* UTMini.framework */; };
+		ED89F7251D3476C70060DBB4 /* WQConnectorBundle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED89F71C1D3476C70060DBB4 /* WQConnectorBundle.framework */; };
+		ED89F7261D3476C70060DBB4 /* yw_1222.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED89F71D1D3476C70060DBB4 /* yw_1222.jpg */; };
+		ED89F7271D3476C70060DBB4 /* YWFeedbackAudioExtentionFMWK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED89F71E1D3476C70060DBB4 /* YWFeedbackAudioExtentionFMWK.framework */; };
+		ED89F7281D3476C70060DBB4 /* YWFeedbackFMWK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED89F71F1D3476C70060DBB4 /* YWFeedbackFMWK.framework */; };
+		ED89F7291D3476C70060DBB4 /* YWHybridWebViewFMWK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED89F7201D3476C70060DBB4 /* YWHybridWebViewFMWK.framework */; };
 		ED8DAD5E1CF828F500C7BB1F /* LSIntercessionParticipateFinishView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8DAD5D1CF828F500C7BB1F /* LSIntercessionParticipateFinishView.m */; };
 		ED8DAD601CF828FE00C7BB1F /* LSIntercessionParticipateFinishView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED8DAD5F1CF828FE00C7BB1F /* LSIntercessionParticipateFinishView.xib */; };
 		ED94FB6D1CEF27FD00ECD199 /* LSIntercessionUpdateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED94FB6B1CEF27FD00ECD199 /* LSIntercessionUpdateCell.m */; };
@@ -94,6 +103,8 @@
 		EDD623291CF2B08300C2C1FC /* LSDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD623281CF2B08300C2C1FC /* LSDatePickerView.m */; };
 		EDD856201CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD8561E1CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.m */; };
 		EDDC2E681CD2478B0054E4DD /* LSBibleNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDC2E671CD2478B0054E4DD /* LSBibleNoteView.xib */; };
+		EDF9D9961D2D392900AD2ED8 /* LSReadingTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF9D9941D2D392900AD2ED8 /* LSReadingTimeController.m */; };
+		EDF9D9971D2D392900AD2ED8 /* LSReadingTimeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDF9D9951D2D392900AD2ED8 /* LSReadingTimeController.xib */; };
 		EDFA40901CC123D80054E77C /* LSUserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA408F1CC123D80054E77C /* LSUserTableViewController.m */; };
 		EDFA40931CC132620054E77C /* LSDiscoveryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA40921CC132620054E77C /* LSDiscoveryTableViewController.m */; };
 		EDFA40971CC134A00054E77C /* LSBibleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA40961CC134A00054E77C /* LSBibleViewController.m */; };
@@ -225,6 +236,15 @@
 		ED825A221CEA9C740035AD25 /* LSBibleSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBibleSearchController.m; sourceTree = "<group>"; };
 		ED825A241CEA9D2F0035AD25 /* LSSearchResultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSSearchResultsController.h; sourceTree = "<group>"; };
 		ED825A251CEA9D2F0035AD25 /* LSSearchResultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSSearchResultsController.m; sourceTree = "<group>"; };
+		ED89F7181D3476C70060DBB4 /* AmrCodecFMWK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmrCodecFMWK.framework; sourceTree = "<group>"; };
+		ED89F7191D3476C70060DBB4 /* SecurityGuardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SecurityGuardSDK.framework; sourceTree = "<group>"; };
+		ED89F71A1D3476C70060DBB4 /* UTDID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTDID.framework; sourceTree = "<group>"; };
+		ED89F71B1D3476C70060DBB4 /* UTMini.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTMini.framework; sourceTree = "<group>"; };
+		ED89F71C1D3476C70060DBB4 /* WQConnectorBundle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WQConnectorBundle.framework; sourceTree = "<group>"; };
+		ED89F71D1D3476C70060DBB4 /* yw_1222.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yw_1222.jpg; sourceTree = "<group>"; };
+		ED89F71E1D3476C70060DBB4 /* YWFeedbackAudioExtentionFMWK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YWFeedbackAudioExtentionFMWK.framework; sourceTree = "<group>"; };
+		ED89F71F1D3476C70060DBB4 /* YWFeedbackFMWK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YWFeedbackFMWK.framework; sourceTree = "<group>"; };
+		ED89F7201D3476C70060DBB4 /* YWHybridWebViewFMWK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YWHybridWebViewFMWK.framework; sourceTree = "<group>"; };
 		ED8DAD5C1CF828F500C7BB1F /* LSIntercessionParticipateFinishView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionParticipateFinishView.h; sourceTree = "<group>"; };
 		ED8DAD5D1CF828F500C7BB1F /* LSIntercessionParticipateFinishView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionParticipateFinishView.m; sourceTree = "<group>"; };
 		ED8DAD5F1CF828FE00C7BB1F /* LSIntercessionParticipateFinishView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSIntercessionParticipateFinishView.xib; sourceTree = "<group>"; };
@@ -261,6 +281,9 @@
 		EDD8561D1CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionDetailTableViewController.h; sourceTree = "<group>"; };
 		EDD8561E1CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionDetailTableViewController.m; sourceTree = "<group>"; };
 		EDDC2E671CD2478B0054E4DD /* LSBibleNoteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBibleNoteView.xib; sourceTree = "<group>"; };
+		EDF9D9931D2D392900AD2ED8 /* LSReadingTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSReadingTimeController.h; sourceTree = "<group>"; };
+		EDF9D9941D2D392900AD2ED8 /* LSReadingTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSReadingTimeController.m; sourceTree = "<group>"; };
+		EDF9D9951D2D392900AD2ED8 /* LSReadingTimeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSReadingTimeController.xib; sourceTree = "<group>"; };
 		EDFA408E1CC123D80054E77C /* LSUserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSUserTableViewController.h; sourceTree = "<group>"; };
 		EDFA408F1CC123D80054E77C /* LSUserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSUserTableViewController.m; sourceTree = "<group>"; };
 		EDFA40911CC132620054E77C /* LSDiscoveryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSDiscoveryTableViewController.h; sourceTree = "<group>"; };
@@ -286,7 +309,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED89F7221D3476C70060DBB4 /* SecurityGuardSDK.framework in Frameworks */,
+				ED89F7231D3476C70060DBB4 /* UTDID.framework in Frameworks */,
+				ED89F7291D3476C70060DBB4 /* YWHybridWebViewFMWK.framework in Frameworks */,
+				ED89F7271D3476C70060DBB4 /* YWFeedbackAudioExtentionFMWK.framework in Frameworks */,
 				48F3E0FA307752BF66939D0A /* Pods_LiveStone.framework in Frameworks */,
+				ED89F7211D3476C70060DBB4 /* AmrCodecFMWK.framework in Frameworks */,
+				ED89F7251D3476C70060DBB4 /* WQConnectorBundle.framework in Frameworks */,
+				ED89F7281D3476C70060DBB4 /* YWFeedbackFMWK.framework in Frameworks */,
+				ED89F7241D3476C70060DBB4 /* UTMini.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +347,9 @@
 			children = (
 				ED2B50C31CD051D200B0909B /* Book */,
 				ED2B50C21CD051C000B0909B /* Content */,
+				EDF9D9931D2D392900AD2ED8 /* LSReadingTimeController.h */,
+				EDF9D9941D2D392900AD2ED8 /* LSReadingTimeController.m */,
+				EDF9D9951D2D392900AD2ED8 /* LSReadingTimeController.xib */,
 			);
 			name = Bible;
 			sourceTree = "<group>";
@@ -519,6 +553,7 @@
 		ED4298761CC07DB400FCD799 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				ED89F7171D3476C70060DBB4 /* YWFramework */,
 			);
 			path = ThirdLib;
 			sourceTree = "<group>";
@@ -530,6 +565,22 @@
 				ED9815971CDB83C800CF7944 /* Service */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		ED89F7171D3476C70060DBB4 /* YWFramework */ = {
+			isa = PBXGroup;
+			children = (
+				ED89F7181D3476C70060DBB4 /* AmrCodecFMWK.framework */,
+				ED89F7191D3476C70060DBB4 /* SecurityGuardSDK.framework */,
+				ED89F71A1D3476C70060DBB4 /* UTDID.framework */,
+				ED89F71B1D3476C70060DBB4 /* UTMini.framework */,
+				ED89F71C1D3476C70060DBB4 /* WQConnectorBundle.framework */,
+				ED89F71D1D3476C70060DBB4 /* yw_1222.jpg */,
+				ED89F71E1D3476C70060DBB4 /* YWFeedbackAudioExtentionFMWK.framework */,
+				ED89F71F1D3476C70060DBB4 /* YWFeedbackFMWK.framework */,
+				ED89F7201D3476C70060DBB4 /* YWHybridWebViewFMWK.framework */,
+			);
+			path = YWFramework;
 			sourceTree = "<group>";
 		};
 		ED9815971CDB83C800CF7944 /* Service */ = {
@@ -705,8 +756,10 @@
 				ED4848F61CC85D080093E29E /* LSBookChapterCell.xib in Resources */,
 				ED8DAD601CF828FE00C7BB1F /* LSIntercessionParticipateFinishView.xib in Resources */,
 				EDDC2E681CD2478B0054E4DD /* LSBibleNoteView.xib in Resources */,
+				EDF9D9971D2D392900AD2ED8 /* LSReadingTimeController.xib in Resources */,
 				ED4298681CC0637000FCD799 /* Assets.xcassets in Resources */,
 				ED17E7331CD18EE500F6F6CF /* LSBibleContentCell.xib in Resources */,
+				ED89F7261D3476C70060DBB4 /* yw_1222.jpg in Resources */,
 				ED68C1101CF7ECFE0045384F /* LSIntercessionParticipateMiddleView.xib in Resources */,
 				ED29940B1CEE923B0017BC3E /* LSIntercessionBlessingCell.xib in Resources */,
 				ED0221DC1CC37CAC004D6514 /* LSBookCollectionViewCell.xib in Resources */,
@@ -782,6 +835,7 @@
 				ED0221DA1CC37956004D6514 /* CCSimpleTools.m in Sources */,
 				EDFA40931CC132620054E77C /* LSDiscoveryTableViewController.m in Sources */,
 				ED4CFE601CE427FD00A166C4 /* LSExtraService.m in Sources */,
+				EDF9D9961D2D392900AD2ED8 /* LSReadingTimeController.m in Sources */,
 				ED2076EF1CF0A04D00D5BD4B /* UIPlaceHolderTextView.m in Sources */,
 				ED0A89981CF6F2D90070770C /* LSIntercessionParticipateViewController.m in Sources */,
 				ED5F94C11CC1B83D00D8D626 /* LSLiveStoneTableViewController.m in Sources */,
@@ -959,6 +1013,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LiveStone/ThirdLib/YWFramework",
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LiveStone/PrefixHeader.pch";
@@ -977,6 +1035,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LiveStone/ThirdLib/YWFramework",
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LiveStone/PrefixHeader.pch";

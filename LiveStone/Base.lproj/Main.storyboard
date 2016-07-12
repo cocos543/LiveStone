@@ -396,7 +396,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="圣经" id="zx4-is-fsC"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="a26-kp-7WI"/>
+                    <navigationItem key="navigationItem" id="a26-kp-7WI">
+                        <barButtonItem key="rightBarButtonItem" image="TimeBtn" id="qDV-yC-LnM">
+                            <connections>
+                                <action selector="readingTimeAction:" destination="NYC-ky-rse" id="Dx3-2f-f2x"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="scrollView" destination="nYR-uz-HSq" id="hmE-sK-hFY"/>
@@ -1300,6 +1306,7 @@
         <image name="Me" width="35" height="35"/>
         <image name="PrayFor" width="24" height="24"/>
         <image name="PublishIntercession" width="24" height="24"/>
+        <image name="TimeBtn" width="24" height="24"/>
         <image name="UnChecked" width="18" height="18"/>
         <image name="UserDefaultAvatar" width="60" height="60"/>
     </resources>
