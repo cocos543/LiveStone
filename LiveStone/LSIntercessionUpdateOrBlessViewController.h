@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, IntercessionActionType)
 
 typedef void(^LSIntercessionUpdateOrBlessViewControllerDismissBlock)(void);
 
-@interface LSIntercessionUpdateOrBlessViewController : UIViewController
+@interface LSIntercessionUpdateOrBlessViewController : LSBaseUIViewController
 
 @property (nonatomic,copy) LSIntercessionUpdateOrBlessViewControllerDismissBlock dismissBlock;
 

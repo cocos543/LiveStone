@@ -14,7 +14,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LSChapterContentViewController : UITableViewController
+@interface LSChapterContentViewController : LSBaseUITableViewController
 
 @property (nonatomic) LSBookType bookType;
 /**

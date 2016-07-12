@@ -12,7 +12,7 @@
 
 typedef void(^LSRegisterViewControllerDismissBlock)(LSUserInfoItem *userInfoObject);
 
-@interface LSRegisterViewController : UIViewController
+@interface LSRegisterViewController : LSBaseUIViewController
 
 @property (nonatomic,copy) LSRegisterViewControllerDismissBlock dismissBlock;
 

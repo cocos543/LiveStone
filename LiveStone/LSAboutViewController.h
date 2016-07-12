@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LSAboutViewController : UITableViewController
+@interface LSAboutViewController : LSBaseUITableViewController
 
 @end

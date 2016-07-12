@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LSBibleViewController : UIViewController
+@interface LSBibleViewController : LSBaseUIViewController
 
 @end

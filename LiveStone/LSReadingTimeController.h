@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LSReadingTimeController : UIViewController
+@interface LSReadingTimeController : LSBaseUIViewController
 
 @end

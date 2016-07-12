@@ -10,6 +10,6 @@
 
 @class LSDailyItem;
 
-@interface LSDailyViewController : UIViewController
+@interface LSDailyViewController : LSBaseUIViewController
 @property (nonatomic, strong) LSDailyItem *item;
 @end

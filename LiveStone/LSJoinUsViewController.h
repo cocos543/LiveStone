@@ -12,7 +12,7 @@
 
 typedef void(^LSJoinUsViewControllerDismissBlock)(LSUserInfoItem *userInfoObject);
 
-@interface LSJoinUsViewController : UIViewController
+@interface LSJoinUsViewController : LSBaseUIViewController
 
 @property (nonatomic,copy) LSJoinUsViewControllerDismissBlock dismissBlock;
 

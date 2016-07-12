@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LSLiveStoneTableViewController : UITableViewController
+@interface LSLiveStoneTableViewController : LSBaseUITableViewController
 
 @end

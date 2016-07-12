@@ -14,7 +14,7 @@ typedef void(^LSIntercessionParticipateViewControllerBlessingActionBlock)(void);
 typedef void(^LSIntercessionParticipateViewControllerSharedActionBlock)(void);
 typedef void(^LSIntercessionParticipateViewControllerFinishActionBlock)(void);
 
-@interface LSIntercessionParticipateViewController : UIViewController
+@interface LSIntercessionParticipateViewController : LSBaseUIViewController
 
 @property (nonatomic, strong) LSIntercessionItem *intercessionItem;
 

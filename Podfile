@@ -10,4 +10,5 @@ target 'LiveStone' do
   pod 'SDWebImage', '~>3.7'
   pod 'MJRefresh'
   pod 'MJExtension'
+  pod 'UMengAnalytics-NO-IDFA'
 end

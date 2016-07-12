@@ -103,6 +103,8 @@
 		EDD623291CF2B08300C2C1FC /* LSDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD623281CF2B08300C2C1FC /* LSDatePickerView.m */; };
 		EDD856201CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD8561E1CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.m */; };
 		EDDC2E681CD2478B0054E4DD /* LSBibleNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDC2E671CD2478B0054E4DD /* LSBibleNoteView.xib */; };
+		EDE2327D1D351E6B00530084 /* LSBaseUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE2327C1D351E6B00530084 /* LSBaseUIViewController.m */; };
+		EDE232801D351E9600530084 /* LSBaseUITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE2327F1D351E9600530084 /* LSBaseUITableViewController.m */; };
 		EDF9D9961D2D392900AD2ED8 /* LSReadingTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF9D9941D2D392900AD2ED8 /* LSReadingTimeController.m */; };
 		EDF9D9971D2D392900AD2ED8 /* LSReadingTimeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDF9D9951D2D392900AD2ED8 /* LSReadingTimeController.xib */; };
 		EDFA40901CC123D80054E77C /* LSUserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFA408F1CC123D80054E77C /* LSUserTableViewController.m */; };
@@ -281,6 +283,10 @@
 		EDD8561D1CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionDetailTableViewController.h; sourceTree = "<group>"; };
 		EDD8561E1CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionDetailTableViewController.m; sourceTree = "<group>"; };
 		EDDC2E671CD2478B0054E4DD /* LSBibleNoteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBibleNoteView.xib; sourceTree = "<group>"; };
+		EDE2327B1D351E6B00530084 /* LSBaseUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBaseUIViewController.h; sourceTree = "<group>"; };
+		EDE2327C1D351E6B00530084 /* LSBaseUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBaseUIViewController.m; sourceTree = "<group>"; };
+		EDE2327E1D351E9600530084 /* LSBaseUITableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBaseUITableViewController.h; sourceTree = "<group>"; };
+		EDE2327F1D351E9600530084 /* LSBaseUITableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBaseUITableViewController.m; sourceTree = "<group>"; };
 		EDF9D9931D2D392900AD2ED8 /* LSReadingTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSReadingTimeController.h; sourceTree = "<group>"; };
 		EDF9D9941D2D392900AD2ED8 /* LSReadingTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSReadingTimeController.m; sourceTree = "<group>"; };
 		EDF9D9951D2D392900AD2ED8 /* LSReadingTimeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSReadingTimeController.xib; sourceTree = "<group>"; };
@@ -546,6 +552,10 @@
 				ED0221C71CC33424004D6514 /* TestContactsSearchResultController.h */,
 				ED0221C81CC33424004D6514 /* TestContactsSearchResultController.m */,
 				ED0221CD1CC35516004D6514 /* PrefixHeader.pch */,
+				EDE2327B1D351E6B00530084 /* LSBaseUIViewController.h */,
+				EDE2327C1D351E6B00530084 /* LSBaseUIViewController.m */,
+				EDE2327E1D351E9600530084 /* LSBaseUITableViewController.h */,
+				EDE2327F1D351E9600530084 /* LSBaseUITableViewController.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -833,6 +843,7 @@
 				ED2076C91CF0888100D5BD4B /* LSIntercessionUpdateOrBlessViewController.m in Sources */,
 				ED5BAE1A1D003AF7000F18DB /* LSDailyItem.m in Sources */,
 				ED0221DA1CC37956004D6514 /* CCSimpleTools.m in Sources */,
+				EDE2327D1D351E6B00530084 /* LSBaseUIViewController.m in Sources */,
 				EDFA40931CC132620054E77C /* LSDiscoveryTableViewController.m in Sources */,
 				ED4CFE601CE427FD00A166C4 /* LSExtraService.m in Sources */,
 				EDF9D9961D2D392900AD2ED8 /* LSReadingTimeController.m in Sources */,
@@ -871,6 +882,7 @@
 				EDFB816D1D0558E800BB2544 /* LSUserInfoRequestItem.m in Sources */,
 				ED0A89921CF6EB830070770C /* LSIntercessionParticipateRequestItem.m in Sources */,
 				ED94FB6D1CEF27FD00ECD199 /* LSIntercessionUpdateCell.m in Sources */,
+				EDE232801D351E9600530084 /* LSBaseUITableViewController.m in Sources */,
 				ED68C10E1CF7ECEB0045384F /* LSIntercessionParticipateMiddleView.m in Sources */,
 				EDD623291CF2B08300C2C1FC /* LSDatePickerView.m in Sources */,
 				ED4270521CF45DBE00B901CE /* UITableView+NetworkStateDisplay.m in Sources */,

@@ -10,7 +10,7 @@
 
 @class LSIntercessionItem;
 
-@interface LSIntercessionDetailTableViewController : UITableViewController
+@interface LSIntercessionDetailTableViewController : LSBaseUITableViewController
 
 @property (nonatomic, strong) LSIntercessionItem *intercessionItem;
 

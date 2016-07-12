@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LSDiscoveryTableViewController : UITableViewController
+@interface LSDiscoveryTableViewController : LSBaseUITableViewController
 
 @end

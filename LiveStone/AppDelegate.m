@@ -22,6 +22,10 @@
     LSServiceCenter *center = [LSServiceCenter defaultCenter];
     LSExtraService *extraService = [center getService:[LSExtraService class]];
     [extraService synchronizeAddressBook];
+    
+    UMConfigInstance.appKey = @UMENG_ANALYTICS_KEY;
+    UMConfigInstance.channelId = @"App Store";
+    [MobClick startWithConfigure:UMConfigInstance];
     return YES;
 }
 

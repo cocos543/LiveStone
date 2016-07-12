@@ -48,7 +48,7 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"LSBibleContentCell" bundle:nil] forCellReuseIdentifier:reuseIdentifierCell];
     self.authService = [[LSServiceCenter defaultCenter] getService:[LSAuthService class]];
     
-    self.feedbackKit = [[YWFeedbackKit alloc] initWithAppKey:@"23015524"];
+    self.feedbackKit = [[YWFeedbackKit alloc] initWithAppKey:@YW_FEEDBACK_KIT_KEY];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -115,6 +115,55 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
     }
 }
 
+#pragma mark - Feedback
+
+- (void)openFeedbackViewController
+{
+    __weak typeof(self) weakSelf = self;
+    
+    [self.feedbackKit makeFeedbackViewControllerWithCompletionBlock:^(YWFeedbackViewController *viewController, NSError *error) {
+        if ( viewController != nil ) {
+            viewController.title = @"反馈";
+            
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewController];
+            nav.navigationBar.barTintColor = [CCSimpleTools stringToColor:NAVIGATIONBAR_BACKGROUND_COLOR opacity:1];
+            nav.navigationBar.tintColor = [UIColor whiteColor];
+            nav.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]}; 
+            
+            [weakSelf presentViewController:nav animated:YES completion:nil];
+            
+            viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:weakSelf action:@selector(actionQuitFeedback)];
+            
+            viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"清除缓存" style:UIBarButtonItemStylePlain
+                                                                                              target:weakSelf action:@selector(actionCleanMemory:)];
+            
+            __weak typeof(nav) weakNav = nav;
+            
+            [viewController setOpenURLBlock:^(NSString *aURLString, UIViewController *aParentController) {
+                UIViewController *webVC = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+                UIWebView *webView = [[UIWebView alloc] initWithFrame:webVC.view.bounds];
+                webView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+                
+                [webVC.view addSubview:webView];
+                [weakNav pushViewController:webVC animated:YES];
+                [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:aURLString]]];
+            }];
+        } else {
+            [self toastMessage:@"请保持网络顺畅~"];
+        }
+    }];
+}
+
+- (void)actionQuitFeedback
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)actionCleanMemory:(id)sender
+{
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+}
+
 #pragma mark - MFMailComposeViewControllerDelegate
 
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
@@ -139,6 +188,8 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
     if (indexPath.section == 0 && indexPath.row == 0) {
         [self openUserInfo];
     }else if (indexPath.section == 1 && indexPath.row == 0){
+        [self openFeedbackViewController];
+        /*
         if ([MFMailComposeViewController canSendMail]) {
             MFMailComposeViewController *mailVC = [[MFMailComposeViewController alloc] init];
             [mailVC setToRecipients:@[@"543314602@qq.com"]];
@@ -163,7 +214,7 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
             [alert addAction:yesAction];
             [alert addAction:cancelAction];
             [self presentViewController:alert animated:YES completion:nil];
-        }
+        }*/
     }else if (indexPath.section == 1 && indexPath.row == 1){
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"前往商店给活石好评?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
 //        alert.message = [NSString stringWithFormat:@"当前版本:%@",BUNDLE_SHORT_VERSION];
