@@ -21,6 +21,8 @@
 
 #import "LSServiceCenter.h"
 
+#import "UMSocial.h"
+
 @import SDWebImage;
 
 #define BLESSING_SECTION_HEIGHT 28.f
@@ -283,7 +285,7 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
             };
             
             vc.sharedBlock =  ^{
-                [self loadIntercessionDetailData];
+                [self shareAction:nil];
             };
             
             vc.blessingBlock = ^{
@@ -302,6 +304,19 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
     NSLog(@"bless click");
     [self performSegueWithIdentifier:@"LSIntercessionBlessSegue" sender:sender];
 }
+
+- (IBAction)shareAction:(id)sender {
+    [UMSocialData defaultData].extConfig.title = @"我在「活石」上参与了一个代祷，邀请你一起为Ta灵里守望";
+    [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeWeb url:[NSString stringWithFormat:@"http://www.huoshi.im/bible/intercession/index.php?user_id=1&intercession_id=%@", self.intercessionItem.intercessionId]];
+    //调用快速分享接口
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:@UMENG_ANALYTICS_KEY
+                                      shareText:@"活石App，能代祷的主内工具"
+                                     shareImage:UIImagePNGRepresentation([UIImage imageNamed:@"Logo"])
+                                shareToSnsNames:@[UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQQ,UMShareToQzone]
+                                       delegate:nil];
+}
+
 
 #pragma mark - Table view data source
 

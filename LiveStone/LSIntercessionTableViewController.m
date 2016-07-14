@@ -101,8 +101,14 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
 
 -(void)detectIntercessionPermission{
     //Detecte intercession's permission
-    [self startLoadingHUDWithTitle:@"检测权限中"];
-    [self.intercessionService intercessionDetectPermission:self.requestItem.userID.integerValue];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults valueForKey:kLIVESTONE_DEFAULTS_INTERCESSION_PERMISSION]) {
+        [self startLoadingHUDWithTitle:@"检测权限中"];
+        [self.intercessionService intercessionDetectPermission:self.requestItem.userID.integerValue];
+    }else{
+        [self intercessionServiceDidDetectedPermissionOfIntercession:YES];
+    }
 }
 
 - (void)loadIntercessionData{
@@ -114,7 +120,10 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
 #pragma mark - LSIntercessionServiceDelegate
 - (void)intercessionServiceDidDetectedPermissionOfIntercession:(BOOL)isPermission{
     [self endLoadingHUD];
-    if (!isPermission) {
+    if (isPermission) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:@"kLIVESTONE_DEFAULTS_INTERCESSION_PERMISSION" forKey:kLIVESTONE_DEFAULTS_INTERCESSION_PERMISSION];
+        [defaults synchronize];
         [self loadIntercessionData];
     }else{
         [self.navigationController popViewControllerAnimated:YES];

@@ -132,7 +132,7 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
     }
     view.tag = 33;
     //Click self to hide
-    UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideNoteTextView)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideNoteTextView)];
     [view addGestureRecognizer:tapGesture];
     
     CGRect frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, noteHight);

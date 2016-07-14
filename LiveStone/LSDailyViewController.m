@@ -9,6 +9,8 @@
 #import "LSDailyViewController.h"
 #import "LSDailyItem.h"
 
+#import "UMSocial.h"
+
 @interface LSDailyViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -53,6 +55,19 @@
 
 - (void)setupTextView{
     [self.contentTextView setContentOffset:CGPointMake(0, 0) animated:NO];
+}
+
+#pragma mark - Event
+- (IBAction)shareAction:(id)sender {
+    [UMSocialData defaultData].extConfig.title = [NSString stringWithFormat:@"「%@」",self.item.title];
+    [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeWeb url:@"http://www.huoshi.im/bible/intercession/share.php?share_id=1"];
+    //调用快速分享接口
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:@UMENG_ANALYTICS_KEY
+                                      shareText:@"活石App，能代祷的主内工具"
+                                     shareImage:UIImagePNGRepresentation([UIImage imageNamed:@"Logo"])
+                                shareToSnsNames:@[UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQQ,UMShareToQzone]
+                                       delegate:nil];
 }
 
 /*

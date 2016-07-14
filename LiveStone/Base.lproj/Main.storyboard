@@ -310,6 +310,13 @@
                             <constraint firstItem="HPa-JJ-Z4C" firstAttribute="leading" secondItem="hKI-5C-oiH" secondAttribute="leadingMargin" id="x93-Fp-AAl"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="jpM-m2-zJK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="LMY-Ri-01W">
+                            <connections>
+                                <action selector="shareAction:" destination="sgx-ib-YMW" id="dxc-rh-XnL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="contentTextView" destination="0xM-yN-X9U" id="Oj0-t8-Gds"/>
                         <outlet property="timeLabel" destination="HPa-JJ-Z4C" id="Dd7-wb-0dA"/>
@@ -1163,6 +1170,13 @@
                             <outlet property="delegate" destination="Ntm-uF-JCz" id="ISo-mq-y3A"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="uC2-9a-6BQ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="n1x-7B-qbR">
+                            <connections>
+                                <action selector="shareAction:" destination="Ntm-uF-JCz" id="gy4-Jx-RxL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="07I-Or-oOW" kind="presentation" identifier="LSIntercessionUpdateSegue" id="hjP-WS-tvB"/>
                         <segue destination="07I-Or-oOW" kind="presentation" identifier="LSIntercessionBlessSegue" id="PPq-hw-LP8"/>

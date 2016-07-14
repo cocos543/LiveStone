@@ -9,6 +9,10 @@
 #import "AppDelegate.h"
 #import "LSServiceCenter.h"
 
+#import "UMSocial.h"
+#import "UMSocialWechatHandler.h"
+#import "UMSocialQQHandler.h"
+
 @interface AppDelegate ()
 
 @end
@@ -26,6 +30,12 @@
     UMConfigInstance.appKey = @UMENG_ANALYTICS_KEY;
     UMConfigInstance.channelId = @"App Store";
     [MobClick startWithConfigure:UMConfigInstance];
+    
+    [UMSocialData setAppKey:@UMENG_ANALYTICS_KEY];
+    //设置微信AppId、appSecret，分享url
+    [UMSocialWechatHandler setWXAppId:@WECHAT_APPID appSecret:@WECHAT_APPSECRET url:@"http://www.umeng.com/social"];
+    //设置手机QQ 的AppId，Appkey，和分享URL，需要#import "UMSocialQQHandler.h"
+    [UMSocialQQHandler setQQWithAppId:@QQ_APPID appKey:@QQ_APPKEY url:@"http://www.umeng.com/social"];
     return YES;
 }
 
@@ -60,6 +70,10 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    return [UMSocialSnsService handleOpenURL:url];
 }
 
 #pragma mark - Core Data stack

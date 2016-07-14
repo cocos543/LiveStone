@@ -65,7 +65,7 @@
     }else{
         self.numberLabel.font = [UIFont boldSystemFontOfSize:34];
     }
-    
+    self.numberLabel.text = [NSString stringWithFormat:@"%@",self.userInfo.readingItem.continuousDays];
     self.lastdayTimeLabel.text = [NSString stringWithFormat:@"%d",self.userInfo.readingItem.yesterdayMinutes.intValue];
     self.totalTimeLabel.text = [NSString stringWithFormat:@"%d",self.userInfo.readingItem.totalMinutes.intValue];
     

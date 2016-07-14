@@ -11,4 +11,5 @@ target 'LiveStone' do
   pod 'MJRefresh'
   pod 'MJExtension'
   pod 'UMengAnalytics-NO-IDFA'
+  pod 'UMengSocialCOM', '~> 5.2.1'
 end

@@ -153,8 +153,9 @@
 }
 
 - (void)intercessionParticipateFinishViewSharedAction:(id)sender{
-    // Temporary code
-    [self intercessionParticipateFinishViewFinishAction:nil];
+    if (self.sharedBlock) {
+        self.sharedBlock();
+    }
 }
 
 - (void)intercessionParticipateFinishViewFinishAction:(id)sender{

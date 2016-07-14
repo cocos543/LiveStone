@@ -94,11 +94,21 @@ typedef NS_ENUM(NSInteger,LSBookType){
 //NSUserDefaults constant
 #define LIVESTONE_DEFAULTS_USERINFO @"LiveStoneUserinfo"
 #define LIVESTONE_DEFAULTS_ADDRESSBOOK_COUNT @"LiveStoneAddressbookCount"
+#define kLIVESTONE_DEFAULTS_INTERCESSION_PERMISSION @"LiveStoneIntercessionPermission"
 
 #define LIVESTONE_KEYCHAIN_AUTH_SERVICE @"LiveStoneKeyChainAuthService"
 
 #define YW_FEEDBACK_KIT_KEY "23388458"
 #define UMENG_ANALYTICS_KEY "5783969967e58e7f4500211c"
+
+//WeChat
+#define WECHAT_APPID "wx4be13b2a34ae2c1c"
+#define WECHAT_APPSECRET "98f8f2053210c04eb40b2a9e18c9a1a3"
+
+//QQ
+#define QQ_APPID "1105254632"
+#define QQ_APPKEY "0EowbotBJdYwqMJj"
+
 /**
  *  网络响应状态
  */
