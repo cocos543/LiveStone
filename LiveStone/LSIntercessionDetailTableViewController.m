@@ -22,6 +22,8 @@
 #import "LSServiceCenter.h"
 
 #import "UMSocial.h"
+#import "WXApi.h"
+#import <TencentOpenAPI/QQApiInterface.h>
 
 @import SDWebImage;
 
@@ -306,14 +308,23 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
 }
 
 - (IBAction)shareAction:(id)sender {
+    NSMutableArray *platformArray = [[NSMutableArray alloc] init];
+    if ([WXApi isWXAppInstalled]) {
+        [platformArray addObject:UMShareToWechatTimeline];
+        [platformArray addObject:UMShareToWechatSession];
+    }
+    if ([QQApiInterface isQQInstalled]) {
+        [platformArray addObject:UMShareToQzone];
+        [platformArray addObject:UMShareToQQ];
+    }
     [UMSocialData defaultData].extConfig.title = @"我在「活石」上参与了一个代祷，邀请你一起为Ta灵里守望";
     [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeWeb url:[NSString stringWithFormat:@"http://www.huoshi.im/bible/intercession/index.php?user_id=1&intercession_id=%@", self.intercessionItem.intercessionId]];
     //调用快速分享接口
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:@UMENG_ANALYTICS_KEY
-                                      shareText:@"活石App，能代祷的主内工具"
+                                      shareText:[NSString stringWithFormat:@"活石App，能代祷的主内工具「 http://www.huoshi.im/bible/intercession/index.php?user_id=1&intercession_id=%@ 」", self.intercessionItem.intercessionId]
                                      shareImage:UIImagePNGRepresentation([UIImage imageNamed:@"Logo"])
-                                shareToSnsNames:@[UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQQ,UMShareToQzone]
+                                shareToSnsNames:platformArray
                                        delegate:nil];
 }
 
@@ -384,6 +395,7 @@ static NSString *reuseIntercessionUpdateCell = @"reuseIntercessionUpdateCell";
         cell.blessingID = item.commentId;
         cell.userNameLabel.text = item.nickName;
         cell.contentLabel.text = item.content;
+        cell.avatarImgView.sex = item.gender.integerValue;
         cell.likeNumberLabel.text = [NSString stringWithFormat:@"%d人", [item.praiseNumber intValue]];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];

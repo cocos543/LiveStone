@@ -10,6 +10,8 @@
 #import "LSDailyItem.h"
 
 #import "UMSocial.h"
+#import "WXApi.h"
+#import <TencentOpenAPI/QQApiInterface.h>
 
 @interface LSDailyViewController ()
 
@@ -59,14 +61,25 @@
 
 #pragma mark - Event
 - (IBAction)shareAction:(id)sender {
+    
+    NSMutableArray *platformArray = [[NSMutableArray alloc] init];
+    if ([WXApi isWXAppInstalled]) {
+        [platformArray addObject:UMShareToWechatTimeline];
+        [platformArray addObject:UMShareToWechatSession];
+    }
+    if ([QQApiInterface isQQInstalled]) {
+        [platformArray addObject:UMShareToQzone];
+        [platformArray addObject:UMShareToQQ];
+    }
+    
     [UMSocialData defaultData].extConfig.title = [NSString stringWithFormat:@"「%@」",self.item.title];
     [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeWeb url:@"http://www.huoshi.im/bible/intercession/share.php?share_id=1"];
     //调用快速分享接口
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:@UMENG_ANALYTICS_KEY
-                                      shareText:@"活石App，能代祷的主内工具"
+                                      shareText:@"活石App，能代祷的主内工具「http://www.huoshi.im/bible/intercession/share.php?share_id=1 」"
                                      shareImage:UIImagePNGRepresentation([UIImage imageNamed:@"Logo"])
-                                shareToSnsNames:@[UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQQ,UMShareToQzone]
+                                shareToSnsNames:platformArray
                                        delegate:nil];
 }
 

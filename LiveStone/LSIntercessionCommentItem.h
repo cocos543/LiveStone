@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, strong) NSNumber *praiseNumber;
 @property (nonatomic, strong) NSString *avatar;
+@property (nonatomic, strong) NSNumber *gender;
 @property (nonatomic, strong) NSDate *createdAt;
 @property (nonatomic, strong) NSNumber *commentId;
 @property (nonatomic)         BOOL isPraised;
