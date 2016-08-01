@@ -115,6 +115,23 @@
     [self closeDB];
     return itemsArray;
 }
+
+- (NSArray *)searchBibleContentWithKeyword:(NSString *)keyword {
+    FMResultSet *resultSet;
+    NSMutableArray *itemsArray = [[NSMutableArray alloc] init];
+    [self openDB];
+    resultSet = [self.fmdb executeQueryWithFormat:@"SELECT sectionNo, sectionIndex, sectionText, noteText FROM section WHERE chapterNo = %@",keyword];
+    while ([resultSet next]) {
+        LSBibleItem *item = [[LSBibleItem alloc] init];
+        item.no       = [resultSet intForColumn:@"sectionNo"];
+        item.index    = [resultSet intForColumn:@"sectionIndex"];
+        item.text     = [resultSet stringForColumn:@"sectionText"];
+        item.noteText = [resultSet stringForColumn:@"noteText"];
+        [itemsArray addObject:item];
+    }
+    [self closeDB];
+    return itemsArray;
+}
 @end
 
 

@@ -40,6 +40,7 @@
 		ED358B991CC5C2C00016D1C1 /* LSBookDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED358B981CC5C2C00016D1C1 /* LSBookDetailCell.m */; };
 		ED3842981CCEEA560021EA06 /* LSBibleStore.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3842971CCEEA560021EA06 /* LSBibleStore.m */; };
 		ED3842991CCEF2FE0021EA06 /* huoshi.db in Resources */ = {isa = PBXBuildFile; fileRef = ED08C3F51CCEE3DB00AAC7AA /* huoshi.db */; };
+		ED3A7CDE1D46E5E6004EE976 /* LSSearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3A7CDD1D46E5E6004EE976 /* LSSearchHeaderView.xib */; };
 		ED4270421CF3E58D00B901CE /* LSIntercessionUpdateContentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4270411CF3E58D00B901CE /* LSIntercessionUpdateContentItem.m */; };
 		ED4270451CF3E63400B901CE /* LSBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4270441CF3E63400B901CE /* LSBaseModel.m */; };
 		ED4270481CF3E9C900B901CE /* LSIntercessorsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4270471CF3E9C900B901CE /* LSIntercessorsItem.m */; };
@@ -103,6 +104,11 @@
 		EDD623291CF2B08300C2C1FC /* LSDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD623281CF2B08300C2C1FC /* LSDatePickerView.m */; };
 		EDD856201CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD8561E1CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.m */; };
 		EDDC2E681CD2478B0054E4DD /* LSBibleNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDC2E671CD2478B0054E4DD /* LSBibleNoteView.xib */; };
+		EDE216161D4649B6002CA58F /* LSSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE216141D4649B6002CA58F /* LSSearchResultTableViewCell.m */; };
+		EDE216171D4649B6002CA58F /* LSSearchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDE216151D4649B6002CA58F /* LSSearchResultTableViewCell.xib */; };
+		EDE2161B1D464AEA002CA58F /* LSSearchHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE216191D464AEA002CA58F /* LSSearchHistoryCell.m */; };
+		EDE2161C1D464AEA002CA58F /* LSSearchHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDE2161A1D464AEA002CA58F /* LSSearchHistoryCell.xib */; };
+		EDE216231D464FB2002CA58F /* LSSearchHistoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDE216221D464FB2002CA58F /* LSSearchHistoryHeaderView.xib */; };
 		EDE2327D1D351E6B00530084 /* LSBaseUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE2327C1D351E6B00530084 /* LSBaseUIViewController.m */; };
 		EDE232801D351E9600530084 /* LSBaseUITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE2327F1D351E9600530084 /* LSBaseUITableViewController.m */; };
 		EDF9D9961D2D392900AD2ED8 /* LSReadingTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF9D9941D2D392900AD2ED8 /* LSReadingTimeController.m */; };
@@ -177,6 +183,7 @@
 		ED358B981CC5C2C00016D1C1 /* LSBookDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBookDetailCell.m; sourceTree = "<group>"; };
 		ED3842961CCEEA560021EA06 /* LSBibleStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBibleStore.h; sourceTree = "<group>"; };
 		ED3842971CCEEA560021EA06 /* LSBibleStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBibleStore.m; sourceTree = "<group>"; };
+		ED3A7CDD1D46E5E6004EE976 /* LSSearchHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSSearchHeaderView.xib; sourceTree = "<group>"; };
 		ED4270401CF3E58D00B901CE /* LSIntercessionUpdateContentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionUpdateContentItem.h; sourceTree = "<group>"; };
 		ED4270411CF3E58D00B901CE /* LSIntercessionUpdateContentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionUpdateContentItem.m; sourceTree = "<group>"; };
 		ED4270431CF3E63400B901CE /* LSBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBaseModel.h; sourceTree = "<group>"; };
@@ -283,6 +290,13 @@
 		EDD8561D1CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSIntercessionDetailTableViewController.h; sourceTree = "<group>"; };
 		EDD8561E1CEDE47F00DB7B8D /* LSIntercessionDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSIntercessionDetailTableViewController.m; sourceTree = "<group>"; };
 		EDDC2E671CD2478B0054E4DD /* LSBibleNoteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSBibleNoteView.xib; sourceTree = "<group>"; };
+		EDE216131D4649B6002CA58F /* LSSearchResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSSearchResultTableViewCell.h; sourceTree = "<group>"; };
+		EDE216141D4649B6002CA58F /* LSSearchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSSearchResultTableViewCell.m; sourceTree = "<group>"; };
+		EDE216151D4649B6002CA58F /* LSSearchResultTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSSearchResultTableViewCell.xib; sourceTree = "<group>"; };
+		EDE216181D464AEA002CA58F /* LSSearchHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSSearchHistoryCell.h; sourceTree = "<group>"; };
+		EDE216191D464AEA002CA58F /* LSSearchHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSSearchHistoryCell.m; sourceTree = "<group>"; };
+		EDE2161A1D464AEA002CA58F /* LSSearchHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSSearchHistoryCell.xib; sourceTree = "<group>"; };
+		EDE216221D464FB2002CA58F /* LSSearchHistoryHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSSearchHistoryHeaderView.xib; sourceTree = "<group>"; };
 		EDE2327B1D351E6B00530084 /* LSBaseUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBaseUIViewController.h; sourceTree = "<group>"; };
 		EDE2327C1D351E6B00530084 /* LSBaseUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBaseUIViewController.m; sourceTree = "<group>"; };
 		EDE2327E1D351E9600530084 /* LSBaseUITableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBaseUITableViewController.h; sourceTree = "<group>"; };
@@ -408,11 +422,8 @@
 		ED17E72E1CD1816C00F6F6CF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EDDF53AB1D4EDCD900BC3867 /* Store */,
 				ED42704C1CF4291D00B901CE /* Request */,
-				ED3842961CCEEA560021EA06 /* LSBibleStore.h */,
-				ED3842971CCEEA560021EA06 /* LSBibleStore.m */,
-				EDA690D81D0123B2009A807B /* LSDailyStore.h */,
-				EDA690D91D0123B2009A807B /* LSDailyStore.m */,
 				ED17E72F1CD1819600F6F6CF /* LSBibleItem.h */,
 				ED17E7301CD1819600F6F6CF /* LSBibleItem.m */,
 				ED45E70D1CDC776400FAC93A /* LSUserInfoItem.h */,
@@ -672,9 +683,40 @@
 			name = CustomUIElement;
 			sourceTree = "<group>";
 		};
+		EDDF53AB1D4EDCD900BC3867 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				ED3842961CCEEA560021EA06 /* LSBibleStore.h */,
+				ED3842971CCEEA560021EA06 /* LSBibleStore.m */,
+				EDA690D81D0123B2009A807B /* LSDailyStore.h */,
+				EDA690D91D0123B2009A807B /* LSDailyStore.m */,
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
+		EDE216121D4648E1002CA58F /* SearchFunction */ = {
+			isa = PBXGroup;
+			children = (
+				ED825A211CEA9C740035AD25 /* LSBibleSearchController.h */,
+				ED825A221CEA9C740035AD25 /* LSBibleSearchController.m */,
+				ED825A241CEA9D2F0035AD25 /* LSSearchResultsController.h */,
+				ED825A251CEA9D2F0035AD25 /* LSSearchResultsController.m */,
+				EDE216131D4649B6002CA58F /* LSSearchResultTableViewCell.h */,
+				EDE216141D4649B6002CA58F /* LSSearchResultTableViewCell.m */,
+				EDE216151D4649B6002CA58F /* LSSearchResultTableViewCell.xib */,
+				ED3A7CDD1D46E5E6004EE976 /* LSSearchHeaderView.xib */,
+				EDE216181D464AEA002CA58F /* LSSearchHistoryCell.h */,
+				EDE216191D464AEA002CA58F /* LSSearchHistoryCell.m */,
+				EDE2161A1D464AEA002CA58F /* LSSearchHistoryCell.xib */,
+				EDE216221D464FB2002CA58F /* LSSearchHistoryHeaderView.xib */,
+			);
+			name = SearchFunction;
+			sourceTree = "<group>";
+		};
 		EDFA408D1CC11A450054E77C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				EDE216121D4648E1002CA58F /* SearchFunction */,
 				EDC3000D1CFE64A20007C3D7 /* Discovery */,
 				EDCF45BE1CEC96D600AA7E56 /* CustomUIElement */,
 				EDC02E7F1CEBF3F30049114B /* Prayer */,
@@ -685,10 +727,6 @@
 				EDFA408F1CC123D80054E77C /* LSUserTableViewController.m */,
 				EDFA40981CC139D90054E77C /* LSMainTabBarController.h */,
 				EDFA40991CC139D90054E77C /* LSMainTabBarController.m */,
-				ED825A211CEA9C740035AD25 /* LSBibleSearchController.h */,
-				ED825A221CEA9C740035AD25 /* LSBibleSearchController.m */,
-				ED825A241CEA9D2F0035AD25 /* LSSearchResultsController.h */,
-				ED825A251CEA9D2F0035AD25 /* LSSearchResultsController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -753,13 +791,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED3A7CDE1D46E5E6004EE976 /* LSSearchHeaderView.xib in Resources */,
 				EDA81ED61D0511A200AEDE0C /* LSCompleteViewController.xib in Resources */,
 				ED3842991CCEF2FE0021EA06 /* huoshi.db in Resources */,
+				EDE216231D464FB2002CA58F /* LSSearchHistoryHeaderView.xib in Resources */,
 				ED42986B1CC0637000FCD799 /* LaunchScreen.storyboard in Resources */,
 				ED0A89991CF6F2D90070770C /* LSIntercessionParticipateViewController.xib in Resources */,
 				ED94FB6E1CEF27FD00ECD199 /* LSIntercessionUpdateCell.xib in Resources */,
 				EDC02E891CEC0F890049114B /* LSIntercessionCell.xib in Resources */,
 				ED0221C61CC330BB004D6514 /* TableCellView.xib in Resources */,
+				EDE2161C1D464AEA002CA58F /* LSSearchHistoryCell.xib in Resources */,
 				EDC958A91CC5109A00D51CA5 /* LSBookDetailCell.xib in Resources */,
 				ED6FD8C01CD838DF00BA599D /* LSRegisterViewController.xib in Resources */,
 				ED17E7351CD18F0800F6F6CF /* LSBibleTitleCell.xib in Resources */,
@@ -768,6 +809,7 @@
 				EDDC2E681CD2478B0054E4DD /* LSBibleNoteView.xib in Resources */,
 				EDF9D9971D2D392900AD2ED8 /* LSReadingTimeController.xib in Resources */,
 				ED4298681CC0637000FCD799 /* Assets.xcassets in Resources */,
+				EDE216171D4649B6002CA58F /* LSSearchResultTableViewCell.xib in Resources */,
 				ED17E7331CD18EE500F6F6CF /* LSBibleContentCell.xib in Resources */,
 				ED89F7261D3476C70060DBB4 /* yw_1222.jpg in Resources */,
 				ED68C1101CF7ECFE0045384F /* LSIntercessionParticipateMiddleView.xib in Resources */,
@@ -844,6 +886,7 @@
 				ED5BAE1A1D003AF7000F18DB /* LSDailyItem.m in Sources */,
 				ED0221DA1CC37956004D6514 /* CCSimpleTools.m in Sources */,
 				EDE2327D1D351E6B00530084 /* LSBaseUIViewController.m in Sources */,
+				EDE2161B1D464AEA002CA58F /* LSSearchHistoryCell.m in Sources */,
 				EDFA40931CC132620054E77C /* LSDiscoveryTableViewController.m in Sources */,
 				ED4CFE601CE427FD00A166C4 /* LSExtraService.m in Sources */,
 				EDF9D9961D2D392900AD2ED8 /* LSReadingTimeController.m in Sources */,
@@ -870,6 +913,7 @@
 				ED0221C41CC330A4004D6514 /* TableCellView.m in Sources */,
 				ED4270451CF3E63400B901CE /* LSBaseModel.m in Sources */,
 				EDCF45C11CEC97DE00AA7E56 /* LSCircleImageView.m in Sources */,
+				EDE216161D4649B6002CA58F /* LSSearchResultTableViewCell.m in Sources */,
 				ED2994051CEE8A340017BC3E /* LSIntercessionWarriorCell.m in Sources */,
 				EDFFE9691CF55507004868E1 /* LSIntercessionDetailRequestItem.m in Sources */,
 				EDB797DA1CDDC2E4005CB768 /* LSUserAuthItem.m in Sources */,

@@ -13,6 +13,12 @@
 @end
 
 @implementation LSSearchResultsController
+static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
+static NSString *reuseIdentifierHeaderView = @"reuseIdentifierHeaderView";
+
+static NSString *reuseIdentifierHistoryCell = @"reuseIdentifierHistoryCell";
+static NSString *reuseIdentifierHistoryHeaderView = @"reuseIdentifierHistoryHeaderView";
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,6 +28,11 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.tableView registerNib:[UINib nibWithNibName:@"LSSearchResultTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifierCell];
+    [self.tableView registerNib:[UINib nibWithNibName:@"LSSearchHistoryCell" bundle:nil] forCellReuseIdentifier:reuseIdentifierHistoryCell];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"LSSearchHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:reuseIdentifierHeaderView];
+    [self.tableView registerNib:[UINib nibWithNibName:@"LSSearchHistoryHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:reuseIdentifierHistoryHeaderView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,25 +40,82 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)cleanBtnAction:(UIButton *)sender{
+    if (self.cleanClick) {
+        self.cleanClick();
+    }
+}
+
+#pragma mark - UITableViewDelegate
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.type == LSSearchResultTypeHistory) {
+        return 50.f;
+    }else{
+        return 80.f;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 50.f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 1.f;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (self.type == LSSearchResultTypeHistory) {
+        UIView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:reuseIdentifierHistoryHeaderView];
+        UIButton *cleanHistoryBtn = [view viewWithTag:2];
+        [cleanHistoryBtn addTarget:self action:@selector(cleanBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        return view;
+    }else{
+        UIView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:reuseIdentifierHeaderView];
+        return view;
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *footerView = [[UIView alloc] init];
+    footerView.backgroundColor = [UIColor clearColor];
+    return footerView;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.type == LSSearchResultTypeHistory) {
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        UILabel *label = [cell viewWithTag:1];
+        if (self.tableClick) {
+            self.tableClick(label.text);
+        }
+    }
+    NSLog(@"%@",indexPath);
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return self.data.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
+    if (self.type == LSSearchResultTypeHistory) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierHistoryCell forIndexPath:indexPath];
+        UILabel *textLabel = [cell viewWithTag:1];
+        textLabel.text = self.data[indexPath.row];
+        return cell;
+    }else{
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierCell forIndexPath:indexPath];
+        return cell;
+    }
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.

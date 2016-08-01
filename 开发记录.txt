@@ -124,6 +124,9 @@ NSDictionary *requestContents = @{
 (1)设置导航栏标题颜色self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                            [UIColor whiteColor],
                                            UITextAttributeTextColor];
+或者 self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                                   [UIColor whiteColor],
+                                                                   NSForegroundColorAttributeName, nil];
 
 (2)设置导航栏背景颜色self.navigationController.navigationBar.barTintColor
 (3)设置导航栏上面的bar button items文字颜色self.navigationController.navigationBar.tintColor;单独对item进行设置则是self.navigationItem.leftBarButtonItem.tintColor
@@ -190,3 +193,5 @@ dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
 63. 自动布局不应该直接用常数,而应该用百分比,也就是Multiplier
 例如让view的leading相对与父视图的width进行设置,而不是直接让leading距离父视图固定多少个像素.
 具体的实现方法就是,让view的leading相对于父视图的trailing进行布局,根据公式item1.attribute1 = multiplier × item2.attribute2 + constant,其中item1就是view,item2就是父视图,所以这个时候multiplier可以取0.0~1.0,就等于父视图宽度的百分比了.
+
+64. 添加约束的时候如果提示约束冲突,例如:Encapsulated-Layout-Width,很可能是因为你的视图本身就带有约束导致的约束冲突了.常见的就是tableViewController的View,这个View本身就有约束了.所以要设置一下view的translatesAutoresizingMaskIntoConstraints属性为NO,可以解决这个问题.

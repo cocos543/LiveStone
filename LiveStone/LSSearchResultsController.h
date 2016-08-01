@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LSSearchResultsController : UITableViewController
+typedef NS_ENUM(NSUInteger, LSSearchResultType) {
+    LSSearchResultTypeDefault = 0,
+    LSSearchResultTypeHistory = 1
+};
 
+typedef void(^LSSearchResultsControllerClickBlock)(NSString *selectedString);
+typedef void(^LSSearchResultsControllerCleanClickBlock)(void);
+
+@interface LSSearchResultsController : UITableViewController
+@property (strong, nonatomic) NSArray *data;
+@property (nonatomic) LSSearchResultType type;
+@property (copy, nonatomic) LSSearchResultsControllerClickBlock tableClick;
+@property (copy, nonatomic) LSSearchResultsControllerCleanClickBlock cleanClick;
 @end

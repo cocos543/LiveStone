@@ -10,9 +10,9 @@
 
 @interface LSBibleStore : NSObject
 
-+(instancetype) sharedStore;
++ (instancetype) sharedStore;
 
--(NSString *)storeSQLitePath;
+- (NSString *)storeSQLitePath;
 /**
  *  Get books name
  *
@@ -20,15 +20,15 @@
  *
  *  @return NSArray<Dictionary>
  */
--(NSArray *)booksWithType:(LSBookType)type;
+- (NSArray *)booksWithType:(LSBookType)type;
 
--(NSInteger)chaptersNumberWithBookNo:(NSInteger)bookNo;
+- (NSInteger)chaptersNumberWithBookNo:(NSInteger)bookNo;
 /**
  *  Get all book's chapter count
  *
  *  @return NSDictionary<NSString *,NSNumber *>
  */
--(NSDictionary<NSString *,NSNumber *> *)chaptersNumber;
+- (NSDictionary<NSString *,NSNumber *> *)chaptersNumber;
 /**
  *  Get boble content
  *
@@ -37,9 +37,15 @@
  *
  *  @return NSArray<NSDirectory *>
  */
--(NSArray *)bibleContentWithChapterNo:(NSInteger)chapterNo bookNo:(NSInteger)bookNo;
+- (NSArray *)bibleContentWithChapterNo:(NSInteger)chapterNo bookNo:(NSInteger)bookNo;
 
-
-
+/**
+ *  Search bible's content
+ *
+ *  @param keyword Search keyword.
+ *
+ *  @return Search result.
+ */
+- (NSArray *)searchBibleContentWithKeyword:(NSString *)keyword;
 
 @end
