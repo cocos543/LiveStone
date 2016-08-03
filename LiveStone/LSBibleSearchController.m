@@ -5,9 +5,16 @@
 //  Created by 郑克明 on 16/5/17.
 //  Copyright © 2016年 Cocos. All rights reserved.
 //
+#ifndef LS_Store
+#define LS_Store
+
+#import "LSBibleStore.h"
+
+#endif
 
 #import "LSBibleSearchController.h"
 #import "LSSearchResultsController.h"
+#import "LSChapterContentViewController.h"
 
 @interface LSBibleSearchController () <UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate>
 @property (strong, nonatomic) UISearchController *searchController;
@@ -44,18 +51,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setupSearchController{
-    UISearchController * searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-    
-    searchController.delegate = self;
-    searchController.searchBar.autoresizingMask = NO;
-    searchController.searchResultsUpdater = self;
-    searchController.searchBar.delegate = self;
-    [searchController.searchBar addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-    self.searchController = searchController;
-    
-    //[self.searchController.searchBar setValue:@"取消" forKey:@"_cancelButtonText"]
-}
+#pragma mark - UI
 
 - (void)hideResultTableView{
     self.resultVC.tableView.hidden = YES;
@@ -65,6 +61,30 @@
     self.historyVC.tableView.hidden = YES;
 }
 
+- (void)setupSearchController{
+    UISearchController * searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    searchController.delegate = self;
+    searchController.searchBar.autoresizingMask = NO;
+    searchController.view.backgroundColor = [CCSimpleTools stringToColor:NAVIGATIONBAR_BACKGROUND_COLOR opacity:1];
+    //searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    searchController.searchBar.barTintColor = [CCSimpleTools stringToColor:NAVIGATIONBAR_BACKGROUND_COLOR opacity:1];
+    searchController.searchBar.tintColor = [UIColor whiteColor];
+    searchController.searchBar.tintColor = [UIColor grayColor];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
+     setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+      [UIColor whiteColor],NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
+    //Remove black line on the bottom.
+    searchController.searchBar.layer.borderWidth = 1;
+    searchController.searchBar.layer.borderColor = [CCSimpleTools stringToColor:NAVIGATIONBAR_BACKGROUND_COLOR opacity:1].CGColor;
+    
+    searchController.searchResultsUpdater = self;
+    searchController.searchBar.delegate = self;
+    [searchController.searchBar addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    self.searchController = searchController;
+    
+    //[self.searchController.searchBar setValue:@"取消" forKey:@"_cancelButtonText"]
+}
+
 - (void)setupResultTableView{
     //For display the search result
     if (!self.resultVC) {
@@ -72,6 +92,28 @@
         self.resultVC = resultVC;
         resultVC.tableView.translatesAutoresizingMaskIntoConstraints = NO;
         resultVC.type = LSSearchResultTypeDefault;
+        
+        __weak typeof(self) weakSelf = self;
+        resultVC.resultClick = ^(LSBibleSearchRusultItem *item){
+            typeof(self)strongSelf = weakSelf;
+            LSChapterContentViewController *ccvc = [[LSChapterContentViewController alloc] init];
+            ccvc.searchItem = item;
+            ccvc.chapterNo = item.chapterNo;
+            ccvc.bookNo = item.bookNo;
+            ccvc.bookName = item.bookName;
+            ccvc.searchKeyword = strongSelf.searchController.searchBar.text;
+            ccvc.view.backgroundColor = [UIColor whiteColor];
+            ccvc.hidesBottomBarWhenPushed = YES;
+            ccvc.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(closeChapterCV:)];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:ccvc];
+            nav.navigationBar.barTintColor = [CCSimpleTools stringToColor:NAVIGATIONBAR_BACKGROUND_COLOR opacity:1];
+            nav.navigationBar.tintColor = [UIColor whiteColor];
+            nav.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                                      [UIColor whiteColor],
+                                                                      NSForegroundColorAttributeName, nil];
+            [strongSelf.searchController presentViewController:nav animated:YES completion:nil];
+        };
+        
         [self.searchController.view addSubview:resultVC.tableView];
         
         NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self.resultVC.tableView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.searchController.view attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
@@ -87,6 +129,8 @@
         [self.searchController.view addConstraint:constraint];
     }else{
         self.resultVC.tableView.hidden = NO;
+        self.resultVC.data = nil;
+        [self.resultVC.tableView reloadData];
     }
 }
 
@@ -99,9 +143,12 @@
         historyVC.type = LSSearchResultTypeHistory;
         historyVC.data = historyData;
         __weak typeof(self) weakSelf = self;
-        historyVC.tableClick = ^(NSString *selectedString){
+        historyVC.historyClick = ^(NSString *selectedString){
             typeof(self)strongSelf = weakSelf;
             strongSelf.searchController.searchBar.text = selectedString;
+            [strongSelf.searchController.searchBar resignFirstResponder];
+            [strongSelf searchBarSearchButtonClicked: strongSelf.searchController.searchBar];
+            //[self.view endEditing:YES];
         };
         
         historyVC.cleanClick = ^{
@@ -138,11 +185,22 @@
     }
 }
 
+#pragma mark Event
+- (void)closeChapterCV:(id)sender{
+    [self.searchController dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark Result Data
 - (NSArray *)searchData:(NSString *)string{
     string =  [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    
-    return nil;
+    NSArray *items = [[LSBibleStore sharedStore] searchBibleContentWithKeyword:string];
+    return items;
+}
+
+- (void)updateResultTableViewWithItems:(NSArray *)items{
+    self.resultVC.data = items;
+    self.resultVC.searchKeyword = self.searchController.searchBar.text;
+    [self.resultVC.tableView reloadData];
 }
 
 #pragma mark History Data
@@ -198,7 +256,11 @@
     }
     dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(globalQueue, ^{
-        [self searchData:searchBar.text];
+        NSArray *items = [self searchData:searchBar.text];
+        dispatch_queue_t mainQueue = dispatch_get_main_queue();
+        dispatch_async(mainQueue, ^{
+            [self updateResultTableViewWithItems:items];
+        });
     });
 
     NSLog(@"Click search button..");

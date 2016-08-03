@@ -7,17 +7,15 @@
 //
 
 #import "LSSearchResultsController.h"
-
+#import "LSBibleSearchRusultItem.h"
+#import "UILabel+Color.h"
 @interface LSSearchResultsController ()
 
 @end
 
 @implementation LSSearchResultsController
 static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
-static NSString *reuseIdentifierHeaderView = @"reuseIdentifierHeaderView";
-
 static NSString *reuseIdentifierHistoryCell = @"reuseIdentifierHistoryCell";
-static NSString *reuseIdentifierHistoryHeaderView = @"reuseIdentifierHistoryHeaderView";
 
 
 - (void)viewDidLoad {
@@ -30,9 +28,8 @@ static NSString *reuseIdentifierHistoryHeaderView = @"reuseIdentifierHistoryHead
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self.tableView registerNib:[UINib nibWithNibName:@"LSSearchResultTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifierCell];
     [self.tableView registerNib:[UINib nibWithNibName:@"LSSearchHistoryCell" bundle:nil] forCellReuseIdentifier:reuseIdentifierHistoryCell];
-    
-    [self.tableView registerNib:[UINib nibWithNibName:@"LSSearchHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:reuseIdentifierHeaderView];
-    [self.tableView registerNib:[UINib nibWithNibName:@"LSSearchHistoryHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:reuseIdentifierHistoryHeaderView];
+    self.tableView.estimatedRowHeight = 140;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,13 +45,11 @@ static NSString *reuseIdentifierHistoryHeaderView = @"reuseIdentifierHistoryHead
 
 #pragma mark - UITableViewDelegate
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.type == LSSearchResultTypeHistory) {
         return 50.f;
-    }else{
-        return 80.f;
     }
+    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -67,12 +62,21 @@ static NSString *reuseIdentifierHistoryHeaderView = @"reuseIdentifierHistoryHead
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (self.type == LSSearchResultTypeHistory) {
-        UIView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:reuseIdentifierHistoryHeaderView];
+        UIView *view = [[[NSBundle mainBundle] loadNibNamed:@"LSSearchHistoryHeaderView" owner:self options:nil] lastObject];
         UIButton *cleanHistoryBtn = [view viewWithTag:2];
         [cleanHistoryBtn addTarget:self action:@selector(cleanBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         return view;
     }else{
-        UIView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:reuseIdentifierHeaderView];
+        UIView *view = [[[NSBundle mainBundle] loadNibNamed:@"LSSearchHeaderView" owner:self options:nil] lastObject];
+
+        UILabel *textLabel = [view viewWithTag:1];
+        if (self.data == nil) {
+            textLabel.text = @"搜索中...";
+        }else if (self.data.count == 0){
+            textLabel.text = @"没有搜索到内容,换个内容试试吧";
+        }else{
+            textLabel.text = [NSString stringWithFormat:@"以下是您的搜索结果,共%@条", @(self.data.count)];
+        }
         return view;
     }
 }
@@ -87,8 +91,12 @@ static NSString *reuseIdentifierHistoryHeaderView = @"reuseIdentifierHistoryHead
     if (self.type == LSSearchResultTypeHistory) {
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         UILabel *label = [cell viewWithTag:1];
-        if (self.tableClick) {
-            self.tableClick(label.text);
+        if (self.historyClick) {
+            self.historyClick(label.text);
+        }
+    }else{
+        if (self.resultClick) {
+            self.resultClick(self.data[indexPath.row]);
         }
     }
     NSLog(@"%@",indexPath);
@@ -113,6 +121,12 @@ static NSString *reuseIdentifierHistoryHeaderView = @"reuseIdentifierHistoryHead
         return cell;
     }else{
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierCell forIndexPath:indexPath];
+        LSBibleSearchRusultItem *item = self.data[indexPath.row];
+        UILabel *titleLabel = [cell viewWithTag:1];
+        titleLabel.text = [NSString stringWithFormat:@"%@ %@:%@", item.bookName, @(item.chapterNo), @(item.no)];
+        UILabel *contextLabel = [cell viewWithTag:2];
+        contextLabel.text = item.text;
+        [contextLabel labelAssignedText:self.searchKeyword withColor:[CCSimpleTools stringToColor:NAVIGATIONBAR_BACKGROUND_COLOR opacity:1]];
         return cell;
     }
 }

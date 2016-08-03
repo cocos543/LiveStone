@@ -130,7 +130,7 @@ NSDictionary *requestContents = @{
 
 (2)设置导航栏背景颜色self.navigationController.navigationBar.barTintColor
 (3)设置导航栏上面的bar button items文字颜色self.navigationController.navigationBar.tintColor;单独对item进行设置则是self.navigationItem.leftBarButtonItem.tintColor
-(4)设置导航栏上的按钮,需要设置self.navigationItem属性.
+(4)设置导航栏上的按钮,需要设置Root视图控制器的navigationItem属性,而不是直接设置导航控制器!因为导航控制后最终的item是会取值Root视图控制器的
 * 注意,navigationController.navigationBar在viewDidLoad是nil,只有在控制器触发viewWillAppear方法后才有值
 
 39. 代码写宽度约束是这样的
@@ -195,3 +195,13 @@ dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
 具体的实现方法就是,让view的leading相对于父视图的trailing进行布局,根据公式item1.attribute1 = multiplier × item2.attribute2 + constant,其中item1就是view,item2就是父视图,所以这个时候multiplier可以取0.0~1.0,就等于父视图宽度的百分比了.
 
 64. 添加约束的时候如果提示约束冲突,例如:Encapsulated-Layout-Width,很可能是因为你的视图本身就带有约束导致的约束冲突了.常见的就是tableViewController的View,这个View本身就有约束了.所以要设置一下view的translatesAutoresizingMaskIntoConstraints属性为NO,可以解决这个问题.
+
+65. searchBar设置了tintColor后,底部可能有一条黑线,可以设置searchController.searchBar.layer.borderWidth = 1;searchController.searchBar.layer.borderColor去替换掉黑边...
+
+66. 分别设置searchBar上面取消按钮的颜色和输入框光标的颜色
+searchController.searchBar.tintColor = [UIColor lightGrayColor];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
+     setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+      [UIColor whiteColor],NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
+
+67.

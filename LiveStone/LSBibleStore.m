@@ -8,7 +8,6 @@
 
 #import "LSBibleStore.h"
 #import "FMDatabase.h"
-#import "LSBibleItem.h"
 
 @interface LSBibleStore ()
 @property (nonatomic, strong) FMDatabase *fmdb;
@@ -120,13 +119,15 @@
     FMResultSet *resultSet;
     NSMutableArray *itemsArray = [[NSMutableArray alloc] init];
     [self openDB];
-    resultSet = [self.fmdb executeQueryWithFormat:@"SELECT sectionNo, sectionIndex, sectionText, noteText FROM section WHERE chapterNo = %@",keyword];
+    resultSet = [self.fmdb executeQuery:[NSString stringWithFormat:@"SELECT bookId, bookName, chapterNo, sectionNo, sectionIndex, sectionText FROM section,book WHERE book.bookNo = section.bookId and sectionText like '%%%@%%' limit 0,200",keyword]];
     while ([resultSet next]) {
-        LSBibleItem *item = [[LSBibleItem alloc] init];
+        LSBibleSearchRusultItem *item = [[LSBibleSearchRusultItem alloc] init];
         item.no       = [resultSet intForColumn:@"sectionNo"];
         item.index    = [resultSet intForColumn:@"sectionIndex"];
         item.text     = [resultSet stringForColumn:@"sectionText"];
-        item.noteText = [resultSet stringForColumn:@"noteText"];
+        item.bookName = [resultSet stringForColumn:@"bookName"];
+        item.chapterNo = [resultSet intForColumn:@"chapterNo"];
+        item.bookNo = [resultSet intForColumn:@"bookId"];
         [itemsArray addObject:item];
     }
     [self closeDB];

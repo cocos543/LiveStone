@@ -16,4 +16,6 @@
 + (BOOL)isTheSameDayBetween:(NSDate *)firstDate and:(NSDate *)secondDate;
 
 + (BOOL)isTheNextDayBetween:(NSDate *)firstDate and:(NSDate *)secondDate;
+
++ (UIImage *)imageWithColor:(UIColor *)color;
 @end

@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LSBibleItem.h"
+#import "LSBibleSearchRusultItem.h"
 
 @interface LSBibleStore : NSObject
 
@@ -46,6 +48,6 @@
  *
  *  @return Search result.
  */
-- (NSArray *)searchBibleContentWithKeyword:(NSString *)keyword;
+- (NSArray<LSBibleSearchRusultItem *> *)searchBibleContentWithKeyword:(NSString *)keyword;
 
 @end

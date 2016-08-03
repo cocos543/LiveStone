@@ -30,4 +30,7 @@
  */
 @property (nonatomic) NSInteger chapterNo;
 
+@property (nonatomic,strong) LSBibleSearchRusultItem *searchItem;
+@property (nonatomic,strong) NSString *searchKeyword;
+
 @end

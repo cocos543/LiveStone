@@ -11,17 +11,19 @@
 #import "LSServiceCenter.h"
 
 #import "UILabel+CCStringFrame.h"
+#import "UILabel+Color.h"
 #import "MBProgressHUD/MBProgressHUD.h"
 
 
 @interface LSChapterContentViewController ()
-@property (nonatomic,strong) NSArray *itemsModel;
+@property (nonatomic,strong) NSArray<LSBibleItem *> *itemsModel;
 @property (nonatomic) NSInteger itemsNumber;
 @property (nonatomic) BOOL isHiddenNoteView;
 /**
  *  Description whether or not the row has been selected again.
  */
 @property (nonatomic) BOOL isSelectedAgain;
+@property (assign, nonatomic) NSInteger searchIndex;
 @end
 
 @implementation LSChapterContentViewController
@@ -49,6 +51,10 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
     });
     self.isHiddenNoteView = YES;
     [self setupTitle];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -113,6 +119,18 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
     self.title = [NSString stringWithFormat:@"%@ 第%@章",self.bookName,@(self.chapterNo)];
 }
 
+- (void)scrollIntoSearchItem{
+    if (!self.searchItem) {
+        return;
+    }
+    for (NSInteger i = 0; i < self.itemsModel.count; i++) {
+        if (self.searchItem.index == self.itemsModel[i].index) {
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+            self.searchIndex = i;
+            break;
+        }
+    }
+}
 #pragma mark - Event
 
 - (void)handleSwipes:(UISwipeGestureRecognizer *)sender{
@@ -203,7 +221,13 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
 //            self.itemsNumber++;
 //        }
 //        [self.tableView insertRowsAtIndexPaths:indexPathsArray withRowAnimation:UITableViewRowAnimationAutomatic];
-        [self.tableView reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+        if (!self.searchItem) {
+            [self.tableView reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+        }else{
+            [self.tableView reloadData];
+            [self scrollIntoSearchItem];
+        }
     });
 }
 
@@ -269,7 +293,9 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
         noLabel.text = [NSString stringWithFormat:@"%@",@(item.no)];
         UILabel *textLabel = (UILabel *)[cell viewWithTag:2];
         textLabel.text = item.text;
-        
+        if (self.searchIndex == indexPath.row) {
+            [textLabel labelAssignedText:self.searchKeyword withColor:[CCSimpleTools stringToColor:NAVIGATIONBAR_BACKGROUND_COLOR opacity:1]];
+        }
     }
     return cell;
 }
