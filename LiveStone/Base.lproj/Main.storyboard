@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Main Tab Bar Controller-->
@@ -430,11 +431,18 @@
                     <tabBarItem key="tabBarItem" title="圣经" id="zx4-is-fsC"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="a26-kp-7WI">
-                        <barButtonItem key="rightBarButtonItem" image="TimeBtn" id="qDV-yC-LnM">
-                            <connections>
-                                <action selector="readingTimeAction:" destination="NYC-ky-rse" id="Dx3-2f-f2x"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="TimeBtn" id="qDV-yC-LnM">
+                                <connections>
+                                    <action selector="readingTimeAction:" destination="NYC-ky-rse" id="Dx3-2f-f2x"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="search" id="Tvt-Rw-IkS">
+                                <connections>
+                                    <action selector="searchAction:" destination="NYC-ky-rse" id="YqD-4B-E6t"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -510,8 +518,40 @@
                             </tableViewSection>
                             <tableViewSection id="eQq-ML-UlH">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="ER5-Ea-llb">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="E73-Za-cH2">
                                         <rect key="frame" x="0.0" y="171" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E73-Za-cH2" id="mTN-f3-mPj">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Feedback" translatesAutoresizingMaskIntoConstraints="NO" id="b9z-Su-7ql">
+                                                    <rect key="frame" x="13" y="9" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="aS0-nf-yel"/>
+                                                        <constraint firstAttribute="height" constant="25" id="ksV-XR-pSD"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的祷告箱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZi-be-Wun">
+                                                    <rect key="frame" x="55" y="12" width="85" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="b9z-Su-7ql" firstAttribute="centerY" secondItem="mTN-f3-mPj" secondAttribute="centerY" id="I9U-eM-n3D"/>
+                                                <constraint firstItem="VZi-be-Wun" firstAttribute="top" secondItem="mTN-f3-mPj" secondAttribute="topMargin" constant="4" id="RHI-cM-tpA"/>
+                                                <constraint firstItem="VZi-be-Wun" firstAttribute="leading" secondItem="b9z-Su-7ql" secondAttribute="trailing" constant="17" id="lXS-SK-tib"/>
+                                                <constraint firstItem="b9z-Su-7ql" firstAttribute="leading" secondItem="mTN-f3-mPj" secondAttribute="leadingMargin" constant="5" id="yq7-sg-enB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Ify-29-1GK" kind="show" id="3Ig-0S-ogV"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="ER5-Ea-llb">
+                                        <rect key="frame" x="0.0" y="215" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ER5-Ea-llb" id="QQm-hl-abN">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -540,7 +580,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="fEE-h5-gF7">
-                                        <rect key="frame" x="0.0" y="215" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="259" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fEE-h5-gF7" id="sw2-fz-Zha">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -573,7 +613,7 @@
                             <tableViewSection id="Oex-q7-Lma">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="AgL-At-l5o">
-                                        <rect key="frame" x="0.0" y="295" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="339" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AgL-At-l5o" id="rC1-PR-QVb">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -619,6 +659,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ib-bM-s1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="549" y="2138"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="H78-MD-MEb">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="Ify-29-1GK" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5kI-Ag-kQt"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Ou-ag-vh1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7rM-Vm-3ip">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Vbl-HS-h2S">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="7k6-4I-Dp3">
+                            <rect key="frame" x="227" y="7" width="146" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="我的祷告"/>
+                                <segment title="我的代祷"/>
+                            </segments>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </segmentedControl>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nCy-pb-Hu8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1213" y="2138"/>
         </scene>
         <!--Discovery-->
         <scene sceneID="Lg8-bg-jFd">
@@ -1295,6 +1365,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="KMd-Rf-xvy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.45882352941176469" green="0.79607843137254897" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

@@ -126,7 +126,7 @@ static NSString *reuseIdentifierHistoryCell = @"reuseIdentifierHistoryCell";
         titleLabel.text = [NSString stringWithFormat:@"%@ %@:%@", item.bookName, @(item.chapterNo), @(item.no)];
         UILabel *contextLabel = [cell viewWithTag:2];
         contextLabel.text = item.text;
-        [contextLabel labelAssignedText:self.searchKeyword withColor:[CCSimpleTools stringToColor:NAVIGATIONBAR_BACKGROUND_COLOR opacity:1]];
+        [contextLabel labelAssignedText:self.searchKeyword withColor:[CCSimpleTools stringToColor:@"#40C6FF" opacity:1]];
         return cell;
     }
 }

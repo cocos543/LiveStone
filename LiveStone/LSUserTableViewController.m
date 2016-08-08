@@ -187,7 +187,7 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0 && indexPath.row == 0) {
         [self openUserInfo];
-    }else if (indexPath.section == 1 && indexPath.row == 0){
+    }else if (indexPath.section == 1 && indexPath.row == 1){
         [self openFeedbackViewController];
         /*
         if ([MFMailComposeViewController canSendMail]) {
@@ -215,7 +215,7 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
             [alert addAction:cancelAction];
             [self presentViewController:alert animated:YES completion:nil];
         }*/
-    }else if (indexPath.section == 1 && indexPath.row == 1){
+    }else if (indexPath.section == 1 && indexPath.row == 2){
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"前往商店给活石好评?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
 //        alert.message = [NSString stringWithFormat:@"当前版本:%@",BUNDLE_SHORT_VERSION];
         UIAlertAction *confimAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

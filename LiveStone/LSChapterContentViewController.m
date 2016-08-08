@@ -293,8 +293,8 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
         noLabel.text = [NSString stringWithFormat:@"%@",@(item.no)];
         UILabel *textLabel = (UILabel *)[cell viewWithTag:2];
         textLabel.text = item.text;
-        if (self.searchIndex == indexPath.row) {
-            [textLabel labelAssignedText:self.searchKeyword withColor:[CCSimpleTools stringToColor:NAVIGATIONBAR_BACKGROUND_COLOR opacity:1]];
+        if (self.searchItem && self.searchIndex == indexPath.row) {
+            [textLabel labelAssignedText:self.searchKeyword withColor:[CCSimpleTools stringToColor:@"#40C6FF" opacity:1]];
         }
     }
     return cell;

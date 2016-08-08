@@ -12,12 +12,15 @@
 #endif
 
 #import "LSBibleViewController.h"
+#import "LSRegisterViewController.h"
 #import "LSBibleCollectionView.h"
 #import "LSChapterContentViewController.h"
 #import "LSReadingTimeController.h"
+#import "LSBibleSearchController.h"
 
 #import "LSCollectionViewFlowLayout.h"
 #import "LSBookDetailCell.h"
+#import "LSServiceCenter.h"
 
 #define LINE_VIEW_HIGHT 3
 #define COLLECTVIEW_SPACE 5
@@ -227,6 +230,12 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     return layout;
 }
 
+- (void)showRegisterViewController{
+    LSRegisterViewController *regVC = [[LSRegisterViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:regVC];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
 #pragma mark - 界面事件响应处理
 
 /**
@@ -239,11 +248,21 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
 }
 
 - (IBAction)readingTimeAction:(id)sender {
-    LSReadingTimeController *vc = [[LSReadingTimeController alloc] init];
-    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    [self.parentViewController.parentViewController presentViewController:vc animated:YES completion:nil];
+    LSAuthService *authService = [[LSServiceCenter defaultCenter] getService:[LSAuthService class]];
+    if (![authService isLogin]) {
+        [self showRegisterViewController];
+    }else{
+        LSReadingTimeController *vc = [[LSReadingTimeController alloc] init];
+        vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self.parentViewController.parentViewController presentViewController:vc animated:YES completion:nil];
+    }
 }
+
+- (IBAction)searchAction:(id)sender {
+    [self presentViewController:[[LSBibleSearchController alloc] init] animated:NO completion:nil];
+}
+
 
 /*
 #pragma mark - Navigation

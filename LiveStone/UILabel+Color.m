@@ -22,7 +22,7 @@
 	NSRange textRange = [self.text rangeOfString:text];
     NSMutableAttributedString *mbString = [[NSMutableAttributedString alloc] initWithString:self.text];
     [mbString addAttribute:NSForegroundColorAttributeName value:color range:textRange];
-    [mbString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:18.0] range:textRange];
+    //[mbString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:18.0] range:textRange];
 
     self.attributedText = mbString;
 }
