@@ -164,7 +164,7 @@ NSDictionary *requestContents = @{
 
 53. 　　祷告勇士: 含蕊、亦玉、靖荷、碧萱、寒云、向南、书雁、怀薇、思菱、忆文、翠巧、怀山、若山、向秋、凡白、绮烟、从蕾、天曼、又亦、依琴、曼彤、沛槐、又槐
 
-53. 如果在tablview还没显示好的时候就加载hud到 tableview上,则hud会被tableview上的线条啊,hearder view等覆盖了.解决方法就是在viewDidAppear:(BOOL)animated方法里面添加hud.或者在didload方法中延迟0.5s加载就完美解决了
+53. 如果在tablview还没显示好的时候就加载hud到 tableview上,则hud会被tableview上的线条啊,hearder view等覆盖了.解决方法就是在viewDidAppear:(BOOL)animated方法里面添加hud.或者在didload方法中延迟0.5s加载就完美解决了.其实也可以把hud加到控制器的view下...
 
 54. 点赞互交设计:点赞的时候,指明是赞还是取消,然后交给后台去完成请求.UI默认点赞操作是成功的并且立即响应.
 
@@ -204,4 +204,7 @@ searchController.searchBar.tintColor = [UIColor lightGrayColor];
      setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
       [UIColor whiteColor],NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
 
-67.
+67. 读取本地文件时候需要特别注意的地方.
+例如String,NSDictionary都会提供一个方法读取URL或者读取File.URL其实可以是网络地址,也可以是本地地址,可以使用[[NSBundle mainBundle] URLForResource:@"region" withExtension:@"json"]获取到包中的地址,这样获取到的URL实质上就是file:///开头的路径(file:///private/var/mobile/Containers/Bundle/Application/F09363E1-7F9F-4315-A3F2-4F08E6092E0A/LiveStone.app/region.json).
+如果是通过File方式获取文件的,可以使用[[NSBundle mainBundle] pathForResource:@"region" ofType:@"json"]获取,得到的就是一个路径了,从磁盘根目录开始,类型这样/private/var/mobile/Containers/Bundle/Application/F09363E1-7F9F-4315-A3F2-4F08E6092E0A/LiveStone.app/region.json
+需要特别注意的地方,读取json的时候,需要先把json读取成字符串,再把字符串转成NSData,最后再转成字典.

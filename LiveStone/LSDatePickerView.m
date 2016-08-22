@@ -17,6 +17,8 @@
 @property (nonatomic, strong) NSArray *daysArray;
 @property (nonatomic, strong) NSArray *hoursArray;
 
+
+
 @end
 
 @implementation LSDatePickerView
@@ -25,6 +27,7 @@
     [super awakeFromNib];
     if (!self.maxYears) {
         self.maxYears = 20;
+        self.goAhead = YES;
         self.clipsToBounds = YES;
         self.backgroundColor = [UIColor clearColor];
     }
@@ -32,10 +35,11 @@
     [self setupDatePickerView];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame{
+- (instancetype)initWithFrame:(CGRect)frame type:(LSDatePickerType)pickerType{
     self = [super initWithFrame:frame];
     if (self) {
         self.maxYears = 20;
+        self.pickerType = pickerType;
         self.clipsToBounds = YES;
         self.backgroundColor = [UIColor clearColor];
         [self setupDatePickerView];
@@ -43,8 +47,37 @@
     return self;
 }
 
+- (instancetype)initWithFrame:(CGRect)frame{
+    return [self initWithFrame:frame type:LSDatePickerTypeDefault];
+}
+
 - (instancetype) init{
     return [self initWithFrame:CGRectZero];
+}
+
+- (void)setGoAhead:(BOOL)goAhead{
+    _goAhead = goAhead;
+    [self updteDatePickerView];
+}
+
+- (void)updteDatePickerView{
+    NSMutableArray *yearsArr = [[NSMutableArray alloc] init];
+    
+    NSDateComponents *nowComponents = [[NSCalendar currentCalendar]
+                                       components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | kCFCalendarUnitHour
+                                       fromDate:[NSDate date]];
+    if (self.isGoAhead) {
+        for (NSInteger i = nowComponents.year; i < nowComponents.year + self.maxYears; i++) {
+            [yearsArr addObject:@(i)];
+        }
+    }else{
+        for (NSInteger i = nowComponents.year - 1; i > nowComponents.year - 120; i--) {
+            [yearsArr addObject:@(i)];
+        }
+    }
+    
+    self.yearsArray = yearsArr;
+    [self.pickerView reloadAllComponents];
 }
 
 - (void)setupDatePickerView{
@@ -90,9 +123,17 @@
     pickerView.showsSelectionIndicator=YES;
     pickerView.dataSource = self;
     pickerView.delegate = self;
-    [pickerView selectRow:nowComponents.month - 1 inComponent:1 animated:NO];
-    [pickerView selectRow:nowComponents.day - 1 inComponent:2 animated:NO];
-    [pickerView selectRow:nowComponents.hour - 1 inComponent:3 animated:NO];
+    if (self.pickerType == LSDatePickerTypeDefault || self.pickerType == LSDatePickerTypeHours) {
+        [pickerView selectRow:nowComponents.month - 1 inComponent:1 animated:NO];
+        [pickerView selectRow:nowComponents.day - 1 inComponent:2 animated:NO];
+        [pickerView selectRow:nowComponents.hour - 1 inComponent:3 animated:NO];
+    }else if (self.pickerType == LSDatePickerTypeDays){
+        [pickerView selectRow:nowComponents.month - 1 inComponent:1 animated:NO];
+        [pickerView selectRow:nowComponents.day - 1 inComponent:2 animated:NO];
+    }else if (self.pickerType == LSDatePickerTypeYears){
+        //Do nothing ~
+    }
+
     
     [self addSubview:pickerView];
     
@@ -109,15 +150,28 @@
 
 - (void)confirmClick:(id)sender{
     NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
-    dateComponents.day = [self.daysArray[[self.pickerView selectedRowInComponent:2]] integerValue];
-    dateComponents.month = [self.monthsArray[[self.pickerView selectedRowInComponent:1]] integerValue];
-    dateComponents.year = [self.yearsArray[[self.pickerView selectedRowInComponent:0]] integerValue];
-    dateComponents.hour = [self.hoursArray[[self.pickerView selectedRowInComponent:3]] integerValue];
+    if (self.pickerType == LSDatePickerTypeDefault || self.pickerType == LSDatePickerTypeHours) {
+        dateComponents.day = [self.daysArray[[self.pickerView selectedRowInComponent:2]] integerValue];
+        dateComponents.month = [self.monthsArray[[self.pickerView selectedRowInComponent:1]] integerValue];
+        dateComponents.year = [self.yearsArray[[self.pickerView selectedRowInComponent:0]] integerValue];
+        dateComponents.hour = [self.hoursArray[[self.pickerView selectedRowInComponent:3]] integerValue];
+    }else if (self.pickerType == LSDatePickerTypeDays){
+        dateComponents.day = [self.daysArray[[self.pickerView selectedRowInComponent:2]] integerValue];
+        dateComponents.month = [self.monthsArray[[self.pickerView selectedRowInComponent:1]] integerValue];
+        dateComponents.year = [self.yearsArray[[self.pickerView selectedRowInComponent:0]] integerValue];
+    }else if (self.pickerType == LSDatePickerTypeYears){
+        //Do nothing ~
+        dateComponents.year = [self.yearsArray[[self.pickerView selectedRowInComponent:0]] integerValue];
+    }
+    
     
     if (self.confirmBlock) {
         self.confirmBlock(dateComponents);
     }
 }
+
+
+
 
 #pragma mark - UIPickerViewDelegate
 
@@ -141,7 +195,6 @@
     }else if (component == 3){
         pickerLabel.text =  [NSString stringWithFormat:@"%@时",[self.hoursArray objectAtIndex:row]];
     }
-    
     return pickerLabel;
 }
 
@@ -150,19 +203,24 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    if (component == 1 || component == 0) {
-        [pickerView reloadComponent:2];
+    if (self.pickerType == LSDatePickerTypeDefault || self.pickerType == LSDatePickerTypeHours || self.pickerType == LSDatePickerTypeDays) {
+        if (component == 1 || component == 0) {
+            [pickerView reloadComponent:2];
+        }
     }
 }
 
 #pragma mark - UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    return 4;
+    if (self.pickerType == LSDatePickerTypeDefault) {
+        return 4;
+    }
+    return self.pickerType;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     if (component == 0) {
-        return self.maxYears;
+        return self.yearsArray.count;
     }else if (component == 1){
         return [self.monthsArray count];
     }else if (component == 2){

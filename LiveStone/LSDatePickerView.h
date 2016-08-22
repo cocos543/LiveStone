@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, LSDatePickerType) {
+    LSDatePickerTypeDefault = 0,
+    LSDatePickerTypeHours   = 4,
+    LSDatePickerTypeDays    = 3,
+    LSDatePickerTypeYears   = 1
+};
+
 /**
  *  Click confirm button
  *
@@ -25,8 +32,14 @@ IB_DESIGNABLE
 
 @property (nonatomic) IBInspectable NSInteger maxYears;
 
+@property (nonatomic, assign, getter = isGoAhead) BOOL goAhead;
+
 @property (nonatomic, copy) ClickConfirmBlock confirmBlock;
 
 @property (nonatomic, copy) ClickCancelBlock cancelBlock;
+
+@property (nonatomic, assign) LSDatePickerType pickerType;
+
+- (instancetype)initWithFrame:(CGRect)frame type:(LSDatePickerType)pickerType;
 
 @end

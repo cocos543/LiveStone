@@ -209,4 +209,22 @@
     return totalCount;
 }
 
+- (void)extraQiNiuTokenWithUserinfo:(LSUserInfoItem *)item {
+    [self httpPOSTMessage:@{@"user_id":item.userID} toURLString:@"http://119.29.108.48/bible/frontend/web/index.php/v1/qiniu/token" respondHandle:^(id respond) {
+        if ([respond isKindOfClass:[NSDictionary class]] && respond[@"status"] != nil) {
+            NSLog(@"Login fail~");
+            switch ([respond[@"status"] intValue]) {
+                case LSNetworkResponseCodeUnkonwError:
+                default:
+                    [self handleConnectError:respond];
+                    break;
+            }
+        }else{
+            if ([self.delegate respondsToSelector:@selector(extraServiceDidGetQiNiuToken:)]) {
+                [self.delegate extraServiceDidGetQiNiuToken:respond[@"token"]];
+            }
+        }
+    }];
+}
+
 @end

@@ -21,7 +21,7 @@
 /**
  *  Only years for believe date.
  */
-@property (nonatomic, strong) NSDate   *believeDate;
+@property (nonatomic, strong) NSNumber *believeDate;
 @property (nonatomic, strong) NSNumber *provinceID;
 @property (nonatomic, strong) NSNumber *cityID;
 @property (nonatomic, strong) NSString *provinceName;

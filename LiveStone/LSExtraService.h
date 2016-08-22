@@ -16,11 +16,14 @@
 #import "LSContactsItem.h"
 #import "LSContactsRequestItem.h"
 #import "LSDailyItem.h"
+#import "LSUserInfoItem.h"
 
 @protocol LSExtraServiceDelegate <LSServiceBaseProtocol>
 
 @optional
 - (void)extraServiceDidLoadDaily:(LSDailyItem *)item;
+
+- (void)extraServiceDidGetQiNiuToken:(NSString *)token;
 
 @end
 
@@ -31,5 +34,7 @@
 - (void)synchronizeAddressBook;
 
 - (void)extraLoadDaily;
+
+- (void)extraQiNiuTokenWithUserinfo:(LSUserInfoItem *)item;
 
 @end

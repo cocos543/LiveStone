@@ -41,7 +41,7 @@
  *
  *  @param userInfo user's information
  */
-- (void)authServiceDidUpdatedUserInfo:(LSUserInfoItem *)userInfo;
+//- (void)authServiceDidUpdatedUserInfo:(LSUserInfoItem *)userInfo;
 
 /**
  *  Notifies the delegate that server has been sent code to user's phone.
@@ -132,4 +132,13 @@
  *  @return YES or NO
  */
 - (BOOL)isLogin;
+
+/**
+ *  Update user avatar and return LSUserInfoItem *
+ *
+ *  @param imgUrlString avatar url
+ *
+ *  @return LSUserInfoItem *
+ */
+- (LSUserInfoItem *)updateUserAvatar:(NSString *)imgUrlString;
 @end

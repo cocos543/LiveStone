@@ -187,6 +187,8 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0 && indexPath.row == 0) {
         [self openUserInfo];
+    }else if (indexPath.section == 1 && indexPath.row == 0){
+
     }else if (indexPath.section == 1 && indexPath.row == 1){
         [self openFeedbackViewController];
         /*
@@ -286,5 +288,15 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
     // Pass the selected object to the new view controller.
 }
 */
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    if ([identifier isEqualToString:@"FMPrayerBoxSegue"]) {
+        if (![self.authService isLogin]) {
+            [self showRegisterViewController];
+            return NO;
+        }
+    }
+    return YES;
+}
 
 @end

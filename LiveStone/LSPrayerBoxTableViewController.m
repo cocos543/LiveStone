@@ -1,17 +1,18 @@
 //
-//  LSIntercessionTableViewController.m
+//  LSPrayerBoxTableViewController.m
 //  LiveStone
 //
-//  Created by 郑克明 on 16/5/18.
+//  Created by 郑克明 on 16/8/9.
 //  Copyright © 2016年 Cocos. All rights reserved.
 //
 
-#import "LSIntercessionTableViewController.h"
+#import "LSPrayerBoxTableViewController.h"
+#import "LSIntercessionDetailTableViewController.h"
+#import "LSIntercessionDetailTableViewController.h"
+
 #import "LSIntercessionCell.h"
 #import "LSCircleImageView.h"
-#import "LSIntercessionDetailTableViewController.h"
-#import "LSIntercessionPublishViewController.h"
-#import "LSRegisterViewController.h"
+
 #import "MJRefresh.h"
 #import "UIViewController+ProgressHUD.h"
 #import "UITableView+NetworkStateDisplay.h"
@@ -20,17 +21,19 @@
 
 @import SDWebImage;
 
-@interface LSIntercessionTableViewController () <LSIntercessionServiceDelegate>
+@interface LSPrayerBoxTableViewController () <LSIntercessionServiceDelegate>
 
 @property (nonatomic, strong) NSArray<LSIntercessionItem *> *intercessionList;
 
-// For load data
 @property (nonatomic, strong) LSIntercessionRequestItem *requestItem;
 @property (nonatomic, strong) LSIntercessionService *intercessionService;
 
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+
 @end
 
-@implementation LSIntercessionTableViewController
+@implementation LSPrayerBoxTableViewController
 static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
 
 - (void)viewDidLoad {
@@ -41,20 +44,16 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"LSIntercessionCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:reuseIdentifierCell];
     self.tableView.estimatedRowHeight = 140;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.hidesBottomBarWhenPushed = YES;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.bounces = NO;
-    [self initializeService];
-    [self detectIntercessionPermission];
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
     
-    [self.tableView reloadData];
+    [self initializeService];
+    [self loadIntercessionData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,6 +68,9 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
     LSAuthService *authService = [[LSServiceCenter defaultCenter] getService:[LSAuthService class]];
     self.requestItem = [[LSIntercessionRequestItem alloc] init];
     self.requestItem.userID = [authService getUserInfo].userID;
+    //"我参与的代祷" is actually "我的代祷"
+    //"我的代祷" is actually "我的祷告"
+    self.requestItem.intercessionType = @(1);
 }
 
 #pragma mark - UI
@@ -82,7 +84,7 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
         self.requestItem.startPage = @(1);
         [self loadIntercessionData];
     }];
-    
+
     self.tableView.mj_header = mjHeader;
     
 }
@@ -108,42 +110,22 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
 }
 
 #pragma mark - DATA
-
--(void)detectIntercessionPermission{
-    //Detecte intercession's permission
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults valueForKey:kLIVESTONE_DEFAULTS_INTERCESSION_PERMISSION]) {
-        [self startLoadingHUDWithTitle:@"检测权限中"];
-        [self.intercessionService intercessionDetectPermission:self.requestItem.userID.integerValue];
-    }else{
-        [self intercessionServiceDidDetectedPermissionOfIntercession:YES];
-    }
-}
-
 - (void)loadIntercessionData{
     [self startLoadingHUD];
     [self.intercessionService intercessionLoadList:self.requestItem];
 }
 
+#pragma mark - Event
+- (IBAction)segmentedControlAction:(UISegmentedControl *)sender {
+    if (sender.selectedSegmentIndex == 0) {
+        self.requestItem.intercessionType = @(1);
+    }else{
+        self.requestItem.intercessionType = @(2);
+    }
+    [self loadIntercessionData];
+}
 
 #pragma mark - LSIntercessionServiceDelegate
-- (void)intercessionServiceDidDetectedPermissionOfIntercession:(BOOL)isPermission{
-    [self endLoadingHUD];
-    if (isPermission) {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:@"kLIVESTONE_DEFAULTS_INTERCESSION_PERMISSION" forKey:kLIVESTONE_DEFAULTS_INTERCESSION_PERMISSION];
-        [defaults synchronize];
-        [self loadIntercessionData];
-    }else{
-        [self.navigationController popViewControllerAnimated:YES];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            if (self.dismissBlock) {
-                self.dismissBlock();
-            }
-        });
-    }
-}
 
 - (void)intercessionServiceDidLoadList:(NSArray<LSIntercessionItem *> *)intercessionList forIntercessionType:(IntercessionType)type{
     self.tableView.bounces = YES;
@@ -157,11 +139,6 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
         if ([intercessionList count] >= 10) {
             [self addRefreshFooter];
         }
-//        NSMutableArray *indexPathsArray = [[NSMutableArray alloc] init];
-//        for (int i = 0; i < self.intercessionList.count; i++) {
-//            [indexPathsArray addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-//        }
-//        [self.tableView insertRowsAtIndexPaths:indexPathsArray withRowAnimation:UITableViewRowAnimationAutomatic];
     }else{
         self.intercessionList = [self.intercessionList arrayByAddingObjectsFromArray:intercessionList];
         
@@ -186,11 +163,6 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
     NSLog(@"网络出错");
 }
 
-- (void)serviceDoNotLogin{
-    [self endLoadingHUD];
-    self.requestItem.startPage = @(self.requestItem.startPage.integerValue - 1);
-    NSLog(@"Do not login");
-}
 
 #pragma mark - Table view data source
 
@@ -202,9 +174,7 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
     return [self.intercessionList count];
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     LSIntercessionCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierCell forIndexPath:indexPath];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     LSIntercessionItem *item = self.intercessionList[indexPath.row];
@@ -215,22 +185,32 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     cell.updateLabel.text = [dateFormatter stringFromDate:contentItem.createTime];
-    cell.relationshipLabel.text = [self.intercessionService intercessionGetRelationship:item.relationship.integerValue];
+    if (self.segmentedControl.selectedSegmentIndex == 0) {
+        cell.relationshipLabel.hidden = YES;
+    }else{
+        cell.relationshipLabel.text = [self.intercessionService intercessionGetRelationship:item.relationship.integerValue];
+    }
+    
     cell.avatarImgView.sex = item.gender.integerValue;
     
     [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:item.avatar] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {} completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
         cell.avatarImgView.image = image;
     }];
     
-//    if (![cell.contentView viewWithTag:1009]) {
-//        UIImageView *separatorLine = [[UIImageView alloc] initWithFrame:CGRectMake(cell.frame.size.width / 20, cell.frame.size.height - 6.0f, cell.frame.size.width - (cell.frame.size.width / 20), 1.0f)];
-//        separatorLine.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
-//        separatorLine.tag = 1009;
-//        [cell.contentView addSubview:separatorLine];
-//    }
+    //    if (![cell.contentView viewWithTag:1009]) {
+    //        UIImageView *separatorLine = [[UIImageView alloc] initWithFrame:CGRectMake(cell.frame.size.width / 20, cell.frame.size.height - 6.0f, cell.frame.size.width - (cell.frame.size.width / 20), 1.0f)];
+    //        separatorLine.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
+    //        separatorLine.tag = 1009;
+    //        [cell.contentView addSubview:separatorLine];
+    //    }
     return cell;
 }
 
+#pragma mark - table view delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Push the view controller.
+    [self performSegueWithIdentifier:@"LSIntercessionDetailSegue" sender:indexPath];
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -266,48 +246,17 @@ static NSString *reuseIdentifierCell = @"reuseIdentifierCell";
 }
 */
 
-
-#pragma mark - Table view delegate
-
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if (indexPath.row == ([self.intercessionList count] - 1 ) && indexPath.section == 0) {
-//        [self addRefreshHeader];
-//    }
-//}
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self performSegueWithIdentifier:@"LSIntercessionDetailSegue" sender:indexPath];
-}
-
-
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]) {
-        if ([((UINavigationController *)segue.destinationViewController).visibleViewController isKindOfClass:[LSIntercessionPublishViewController class]]) {
-            LSIntercessionPublishViewController *vc = (LSIntercessionPublishViewController *)((UINavigationController *)segue.destinationViewController).visibleViewController;
-            if ([segue.identifier isEqualToString:@"LSIntercessionPublishSegue"]) {
-                vc.dismissBlock = ^{
-                    [self loadIntercessionData];
-                };
-            }
-        }
-    }else if ([segue.destinationViewController isKindOfClass:[LSIntercessionDetailTableViewController class]]){
+    if ([segue.destinationViewController isKindOfClass:[LSIntercessionDetailTableViewController class]]){
         LSIntercessionDetailTableViewController *vc = (LSIntercessionDetailTableViewController *)segue.destinationViewController;
         vc.intercessionItem = self.intercessionList[[(NSIndexPath *)sender row]];
         
     }
 }
-
 
 @end

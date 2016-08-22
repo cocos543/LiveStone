@@ -16,4 +16,9 @@
 @property (nonatomic, strong) NSString *birthday;
 @property (nonatomic, strong) NSString *believeDate;
 
+@property (nonatomic, strong) NSNumber *provinceId;
+@property (nonatomic, strong) NSNumber *cityId;
+@property (nonatomic, strong) NSString *provinceName;
+@property (nonatomic, strong) NSString *cityName;
+
 @end

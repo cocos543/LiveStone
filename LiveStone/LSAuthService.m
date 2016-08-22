@@ -219,9 +219,10 @@
     return [self getUserInfo] ? YES :NO;
 }
 
-
-
-
-
-
+- (LSUserInfoItem *)updateUserAvatar:(NSString *)imgUrlString {
+    LSUserInfoItem *infoItem = [self getUserInfo];
+    infoItem.avatar = imgUrlString;
+    [self saveUserInfoWithItem:infoItem];
+    return infoItem;
+}
 @end

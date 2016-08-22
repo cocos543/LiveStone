@@ -13,7 +13,14 @@
 + (instancetype)userInfoItemWithDictionary:(NSDictionary *)dic {
     LSUserInfoItem *item = [[LSUserInfoItem alloc] init];
     item.readingItem = [[LSUserReadingItem alloc] init];
-    item.userID = [dic valueForKey:@"user_id"];
+    if ([[dic valueForKey:@"user_id"] isKindOfClass:[NSString class]]) {
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        f.numberStyle = NSNumberFormatterDecimalStyle;
+        NSNumber *myNumber = [f numberFromString:[dic valueForKey:@"user_id"]];
+        item.userID = myNumber;
+    }else{
+        item.userID = [dic valueForKey:@"user_id"];
+    }
     item.nationCode = [dic valueForKey:@"nation_code"];
     item.avatar = [dic valueForKey:@"avatar"];
     item.phone = [dic valueForKey:@"phone"];
@@ -21,7 +28,16 @@
     item.nickID = [dic valueForKey:@"nick_id"];
     item.gender = [dic valueForKey:@"gender"];
     item.birthday = [item stringToDate:[dic valueForKey:@"birthday"]];
-    item.believeDate = [item stringToDate:[NSString stringWithFormat:@"%@-01-01", [dic valueForKey:@"believe_date"]]];
+    
+    if ([[dic valueForKey:@"believe_date"] isKindOfClass:[NSString class]]) {
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        f.numberStyle = NSNumberFormatterDecimalStyle;
+        NSNumber *myNumber = [f numberFromString:[dic valueForKey:@"believe_date"]];
+        item.believeDate = myNumber;
+    }else{
+        item.believeDate = [dic valueForKey:@"believe_date"];
+    }
+    
     item.provinceID = [dic valueForKey:@"province_id"];
     item.cityID = [dic valueForKey:@"city_id"];
     item.provinceName = [dic valueForKey:@"province_name"];
