@@ -75,7 +75,12 @@ static NSString *reuseIdentifierHistoryCell = @"reuseIdentifierHistoryCell";
         }else if (self.data.count == 0){
             textLabel.text = @"没有搜索到内容,换个内容试试吧";
         }else{
-            textLabel.text = [NSString stringWithFormat:@"以下是您的搜索结果,共%@条", @(self.data.count)];
+            if (self.data.count >200) {
+                textLabel.text = [NSString stringWithFormat:@"以下是您的搜索结果,优先展示前%@条", @(self.data.count)];
+            }else{
+                textLabel.text = [NSString stringWithFormat:@"以下是您的搜索结果,共%@条", @(self.data.count)];
+            }
+            
         }
         return view;
     }
