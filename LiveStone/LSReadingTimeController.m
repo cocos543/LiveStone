@@ -11,6 +11,8 @@
 
 @interface LSReadingTimeController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *numberTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *encourageBottomConstraint;
+
 @property (weak, nonatomic) IBOutlet UILabel *viewTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastdayTimeLabel;
@@ -57,6 +59,12 @@
 
 - (void)setUpConstraint{
     self.numberTopConstraint.constant = self.numberTopConstraint.constant / 320 * SCREEN_WIDTH;
+    
+    if (IS_IPHONE_5 || IS_IPHONE_4_OR_LESS) {
+        self.encourageBottomConstraint.constant = 30;
+    }else{
+        self.encourageBottomConstraint.constant = 50;
+    }
 }
 
 - (void)setUpView{

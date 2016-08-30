@@ -110,8 +110,6 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
 - (void)openUserInfo{
     if ([self.authService isLogin]) {
         NSLog(@"User has been logined~");
-    }else{
-        [self showRegisterViewController];
     }
 }
 
@@ -290,7 +288,7 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
 */
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    if ([identifier isEqualToString:@"FMPrayerBoxSegue"]) {
+    if ([identifier isEqualToString:@"FMPrayerBoxSegue"] || [identifier isEqualToString:@"UserDetailSegue"]) {
         if (![self.authService isLogin]) {
             [self showRegisterViewController];
             return NO;
