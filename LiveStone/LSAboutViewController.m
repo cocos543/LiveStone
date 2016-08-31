@@ -11,6 +11,7 @@
 @interface LSAboutViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *aboutContextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *copyrightContextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 
 @end
 
@@ -20,7 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupLabel];
-    self.title = [NSString stringWithFormat:@"关于[v%@]",BUNDLE_SHORT_VERSION];
+    self.versionLabel.text = [NSString stringWithFormat:@"版本: %@",BUNDLE_SHORT_VERSION];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

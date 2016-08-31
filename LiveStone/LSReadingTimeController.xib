@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3iF-m4-xTK">
-                    <rect key="frame" x="30" y="90" width="260" height="310.5"/>
+                    <rect key="frame" x="30" y="90" width="260" height="311"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TimeCircle" translatesAutoresizingMaskIntoConstraints="NO" id="9Zn-dq-4c3">
                             <rect key="frame" x="84" y="30" width="91" height="91"/>
@@ -39,7 +39,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOS-99-ymv">
-                            <rect key="frame" x="143" y="80" width="19" height="21"/>
+                            <rect key="frame" x="143" y="81" width="19" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="PRa-u6-NOC"/>
                                 <constraint firstAttribute="width" constant="19" id="fwC-Og-8o9"/>
@@ -49,7 +49,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaN-aB-7xW">
-                            <rect key="frame" x="103" y="68" width="40" height="38.5"/>
+                            <rect key="frame" x="103" y="68" width="40" height="39"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="250" constant="40" id="HW1-5D-McG"/>
                                 <constraint firstAttribute="width" priority="250" constant="40" id="est-cZ-oZE"/>
@@ -58,48 +58,48 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昨日阅读时长:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPG-e2-Kws">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昨日阅读时长:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="JPG-e2-Kws">
                             <rect key="frame" x="45" y="145" width="91" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="Vr4-eB-eLx"/>
                                 <constraint firstAttribute="width" constant="91" id="o8d-ix-pio"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="累计阅读时长:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ort-B8-K21">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="累计阅读时长:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ort-B8-K21">
                             <rect key="frame" x="45" y="196" width="91" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="91" id="22B-qK-BaN"/>
                                 <constraint firstAttribute="height" constant="21" id="uf2-tC-4Vd"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分钟" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZy-k5-kPb">
-                            <rect key="frame" x="196.5" y="145" width="34" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分钟" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="vZy-k5-kPb">
+                            <rect key="frame" x="197" y="145" width="34" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="34" id="Fyg-C2-hwW"/>
                                 <constraint firstAttribute="height" constant="21" id="N5E-gm-YSh"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分钟" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtr-Ab-OkK">
-                            <rect key="frame" x="196.5" y="196" width="34" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分钟" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtr-Ab-OkK">
+                            <rect key="frame" x="197" y="196" width="34" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="6Ol-Ce-e3o"/>
                                 <constraint firstAttribute="width" constant="34" id="g5d-4Y-bSQ"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88888" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avC-MV-xeT">
-                            <rect key="frame" x="142" y="145" width="52.5" height="21"/>
+                            <rect key="frame" x="142" y="145" width="53" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" priority="250" constant="54" id="hp8-aR-jXC"/>
                                 <constraint firstAttribute="height" constant="21" id="p0C-4o-uNf"/>
@@ -109,7 +109,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88888" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkK-2U-M68">
-                            <rect key="frame" x="142" y="196" width="52.5" height="21"/>
+                            <rect key="frame" x="142" y="196" width="53" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" priority="250" constant="54" id="OCN-YA-EhT"/>
                                 <constraint firstAttribute="height" constant="21" id="fe7-20-lwq"/>
@@ -118,9 +118,9 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="“你从我听的那纯正话语的规模，要用在基督耶稣里的信心和爱心，常常守着。”" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ges-kR-XQT">
-                            <rect key="frame" x="13" y="238.5" width="235" height="31.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="“你从我听的那纯正话语的规模，要用在基督耶稣里的信心和爱心，常常守着。”" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ges-kR-XQT">
+                            <rect key="frame" x="13" y="234" width="235" height="36"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="0.33333333333333331" alpha="0.8024515086206897" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>

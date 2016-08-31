@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NVa-53-XlV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NVa-53-XlV">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -1153,8 +1153,29 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="20" id="wte-Gd-bDa">
+                                        <rect key="frame" x="0.0" y="140" width="320" height="20"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wte-Gd-bDa" id="bST-72-iqT">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本: 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZrM-93-CUm">
+                                                    <rect key="frame" x="8" y="0.0" width="304" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ZrM-93-CUm" firstAttribute="bottom" secondItem="bST-72-iqT" secondAttribute="bottom" id="7DH-ab-w23"/>
+                                                <constraint firstItem="ZrM-93-CUm" firstAttribute="top" secondItem="bST-72-iqT" secondAttribute="top" id="LOu-49-G4Q"/>
+                                                <constraint firstItem="ZrM-93-CUm" firstAttribute="trailing" secondItem="bST-72-iqT" secondAttribute="trailingMargin" id="TJd-Wy-itH"/>
+                                                <constraint firstItem="ZrM-93-CUm" firstAttribute="leading" secondItem="bST-72-iqT" secondAttribute="leadingMargin" id="lzl-sf-gvR"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="220" id="q5P-wJ-QuJ">
-                                        <rect key="frame" x="0.0" y="140" width="320" height="220"/>
+                                        <rect key="frame" x="0.0" y="160" width="320" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q5P-wJ-QuJ" id="qiN-mI-eNG">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
@@ -1181,7 +1202,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="25" id="8GR-yo-brh">
-                                        <rect key="frame" x="0.0" y="360" width="320" height="25"/>
+                                        <rect key="frame" x="0.0" y="380" width="320" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8GR-yo-brh" id="ddQ-nt-FZa">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="25"/>
@@ -1202,7 +1223,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="310" id="OjJ-pN-fyb">
-                                        <rect key="frame" x="0.0" y="385" width="320" height="310"/>
+                                        <rect key="frame" x="0.0" y="405" width="320" height="310"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OjJ-pN-fyb" id="Yzr-Qn-CTr">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="310"/>
@@ -1248,6 +1269,7 @@
                     <connections>
                         <outlet property="aboutContextLabel" destination="ap7-s5-RXM" id="IU8-hr-gg7"/>
                         <outlet property="copyrightContextLabel" destination="Jbu-Nk-DJE" id="t8n-31-HOx"/>
+                        <outlet property="versionLabel" destination="ZrM-93-CUm" id="CtB-TL-Mi5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y56-DX-uhb" userLabel="First Responder" sceneMemberID="firstResponder"/>
