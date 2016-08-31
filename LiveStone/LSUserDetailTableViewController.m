@@ -395,9 +395,13 @@
     return 0.5f;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 20.f;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == 0) {
+    if (indexPath.row == 0 && indexPath.section == 0) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"修改头像" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"相机" style:UIAlertActionStyleDefault
                                                            handler:^(UIAlertAction * action) {
@@ -412,14 +416,14 @@
         [alert addAction:photoAction];
         [alert addAction:noAction];
         [self presentViewController:alert animated:YES completion:nil];
-    }else if (indexPath.row == 2) {
+    }else if (indexPath.row == 2 && indexPath.section == 0) {
         [self showAlertViewWithTitle:@"设置昵称" fieldText:self.userInfo.nickName :^(UITextField *textField) {
             if (textField.text.length > 0) {
                 self.nickNameLabel.text = textField.text;
                 self.userInfo.nickName = textField.text;
             }
         }];
-    }else if(indexPath.row == 3) {
+    }else if(indexPath.row == 3 && indexPath.section == 0) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"请选择您的性别" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *maleAction = [UIAlertAction actionWithTitle:@"男" style:UIAlertActionStyleDefault
                                                            handler:^(UIAlertAction * action) {
@@ -436,7 +440,7 @@
         [alert addAction:femaleAction];
         [alert addAction:noAction];
         [self presentViewController:alert animated:YES completion:nil];
-    }else if (indexPath.row == 4){
+    }else if (indexPath.row == 0 && indexPath.section == 1){
         LSUserRegionTableViewController *regionVC = [[LSUserRegionTableViewController alloc] init];
         regionVC.dismissBlock = ^(NSDictionary *dic){
             self.regionLabel.text = [NSString stringWithFormat:@"%@ %@", dic[@"province"][0], dic[@"city"][0]];
@@ -446,12 +450,12 @@
             self.userInfo.cityName     = dic[@"city"][0];
         };
         [self.navigationController pushViewController:regionVC animated:YES];
-    }else if (indexPath.row == 5){
+    }else if (indexPath.row == 1 && indexPath.section == 1){
         [self showDatePickerViewWithType:LSDatePickerTypeDays :^(NSDateComponents *dateComponents) {
             self.birthdayLabel.text = [NSString stringWithFormat:@"%@-%@-%@",@(dateComponents.year), @(dateComponents.month), @(dateComponents.day)];
             self.userInfo.birthday = [[NSCalendar currentCalendar] dateFromComponents:dateComponents];
         }];
-    }else if(indexPath.row == 6){
+    }else if(indexPath.row == 2 && indexPath.section == 1){
         [self showDatePickerViewWithType:LSDatePickerTypeYears :^(NSDateComponents *dateComponents) {
             self.believeTimeLabel.text = [NSString stringWithFormat:@"%@",@(dateComponents.year)];
             self.userInfo.believeDate = @(dateComponents.year);
