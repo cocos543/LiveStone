@@ -12,5 +12,5 @@ target 'LiveStone' do
   pod 'MJExtension'
   pod 'UMengAnalytics-NO-IDFA'
   pod 'UMengSocialCOM', '~> 5.2.1'
-  pod 'Qiniu', '~> 7.1'
+  pod 'Qiniu', '7.1.0'
 end
