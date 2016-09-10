@@ -86,6 +86,7 @@
 
 static NSString * const reuseIdentifierBookCell = @"reuseIdentifierBookCell";
 static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell";
+static NSString * const reuseIdentifierReadRecordCell = @"reuseIdentifierReadRecordCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -129,6 +130,11 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
         collectionViewFrame.origin.x += self.scrollView.frame.size.width;
         self.theNewCollectionView.frame = collectionViewFrame;
         self.theNewCollectionView.contentSize = collectionViewFrame.size;
+        
+//        UILabel *readRecordLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,collectionViewFrame.size.height - 50, SCREEN_WIDTH - 20, 40)];
+//        readRecordLabel.text = @"7/30 阅读到: 第1章第1节";
+//        readRecordLabel.font = [UIFont systemFontOfSize:15];
+//        [self.scrollView addSubview:readRecordLabel];
     }
 }
 
@@ -191,6 +197,8 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     [theOldCollectionView registerNib:[UINib nibWithNibName:@"LSBookDetailCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierDetailCell];
     [theNewCollectionView registerNib:[UINib nibWithNibName:@"LSBookCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierBookCell];
     [theNewCollectionView registerNib:[UINib nibWithNibName:@"LSBookDetailCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierDetailCell];
+    
+    [theNewCollectionView registerNib:[UINib nibWithNibName:@"LSRealRecordCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierReadRecordCell];
 
     [self.scrollView addSubview:theOldCollectionView];
     [self.scrollView addSubview:theNewCollectionView];
@@ -215,7 +223,7 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
 /**
  *  计算书本布局
  */
--(LSCollectionViewFlowLayout *)calcBookLayout{
+- (LSCollectionViewFlowLayout *)calcBookLayout{
     LSCollectionViewFlowLayout *layout = [[LSCollectionViewFlowLayout alloc] init];
     layout.itemSize = CGSizeMake(SCREEN_WIDTH / (COLLECTIONVIEW_ROW_ITMES + 0.40), 30);
     //Here,I cant't use perfect formula @_@~
@@ -275,7 +283,7 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
 */
 
 #pragma mark - ScrollView 代理
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if (scrollView != self.scrollView) {
         return;
     }
@@ -308,7 +316,7 @@ static NSString * const reuseIdentifierDetailCell = @"reuseIdentifierDetailCell"
     }
 }
 
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     UICollectionViewCell *cell;
     
     BOOL isSelectedCell = NO;

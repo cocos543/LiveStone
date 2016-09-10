@@ -97,6 +97,8 @@
 		ED94FB6E1CEF27FD00ECD199 /* LSIntercessionUpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED94FB6C1CEF27FD00ECD199 /* LSIntercessionUpdateCell.xib */; };
 		ED9815961CDB75F500CF7944 /* UIViewController+ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9815951CDB75F500CF7944 /* UIViewController+ProgressHUD.m */; };
 		ED98159A1CDB848500CF7944 /* LSServiceCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9815991CDB848500CF7944 /* LSServiceCenter.m */; };
+		EDA4B2D51D839C0D00186267 /* LSRealRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA4B2D31D839C0D00186267 /* LSRealRecordCell.m */; };
+		EDA4B2D61D839C0D00186267 /* LSRealRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA4B2D41D839C0D00186267 /* LSRealRecordCell.xib */; };
 		EDA690DA1D0123B2009A807B /* LSDailyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA690D91D0123B2009A807B /* LSDailyStore.m */; };
 		EDA690DD1D015FEF009A807B /* LSDailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA690DC1D015FEF009A807B /* LSDailyViewController.m */; };
 		EDA81ED51D0511A200AEDE0C /* LSCompleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA81ED31D0511A200AEDE0C /* LSCompleteViewController.m */; };
@@ -287,6 +289,9 @@
 		ED9815951CDB75F500CF7944 /* UIViewController+ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ProgressHUD.m"; sourceTree = "<group>"; };
 		ED9815981CDB848500CF7944 /* LSServiceCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSServiceCenter.h; sourceTree = "<group>"; };
 		ED9815991CDB848500CF7944 /* LSServiceCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSServiceCenter.m; sourceTree = "<group>"; };
+		EDA4B2D21D839C0D00186267 /* LSRealRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSRealRecordCell.h; sourceTree = "<group>"; };
+		EDA4B2D31D839C0D00186267 /* LSRealRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSRealRecordCell.m; sourceTree = "<group>"; };
+		EDA4B2D41D839C0D00186267 /* LSRealRecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSRealRecordCell.xib; sourceTree = "<group>"; };
 		EDA690D81D0123B2009A807B /* LSDailyStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSDailyStore.h; sourceTree = "<group>"; };
 		EDA690D91D0123B2009A807B /* LSDailyStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSDailyStore.m; sourceTree = "<group>"; };
 		EDA690DB1D015FEF009A807B /* LSDailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSDailyViewController.h; sourceTree = "<group>"; };
@@ -513,6 +518,9 @@
 				ED0221DB1CC37CAC004D6514 /* LSBookCollectionViewCell.xib */,
 				EDC958AD1CC5186300D51CA5 /* LSCollectionViewFlowLayout.h */,
 				EDC958AE1CC5186300D51CA5 /* LSCollectionViewFlowLayout.m */,
+				EDA4B2D21D839C0D00186267 /* LSRealRecordCell.h */,
+				EDA4B2D31D839C0D00186267 /* LSRealRecordCell.m */,
+				EDA4B2D41D839C0D00186267 /* LSRealRecordCell.xib */,
 			);
 			name = Book;
 			sourceTree = "<group>";
@@ -817,7 +825,6 @@
 				TargetAttributes = {
 					ED4298541CC0637000FCD799 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = B8NHNK8KY5;
 					};
 				};
 			};
@@ -851,6 +858,7 @@
 				ED42986B1CC0637000FCD799 /* LaunchScreen.storyboard in Resources */,
 				ED0A89991CF6F2D90070770C /* LSIntercessionParticipateViewController.xib in Resources */,
 				ED94FB6E1CEF27FD00ECD199 /* LSIntercessionUpdateCell.xib in Resources */,
+				EDA4B2D61D839C0D00186267 /* LSRealRecordCell.xib in Resources */,
 				EDC02E891CEC0F890049114B /* LSIntercessionCell.xib in Resources */,
 				ED0221C61CC330BB004D6514 /* TableCellView.xib in Resources */,
 				EDE2161C1D464AEA002CA58F /* LSSearchHistoryCell.xib in Resources */,
@@ -1004,6 +1012,7 @@
 				ED17E7311CD1819600F6F6CF /* LSBibleItem.m in Sources */,
 				ED2030561CC99AD800369ACE /* LSBibleCollectionView.m in Sources */,
 				EDC300101CFE74D80007C3D7 /* LSAboutViewController.m in Sources */,
+				EDA4B2D51D839C0D00186267 /* LSRealRecordCell.m in Sources */,
 				ED070F0C1D5BFA7800597B91 /* LSUserDetailTableViewController.m in Sources */,
 				ED0221BF1CC32FC1004D6514 /* TestTableViewController.m in Sources */,
 				EDFA40901CC123D80054E77C /* LSUserTableViewController.m in Sources */,
