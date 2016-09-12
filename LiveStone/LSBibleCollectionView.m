@@ -43,6 +43,7 @@
     if (!self.theDetailLayout) {
         self.theDetailLayout = [[LSCollectionViewFlowLayout alloc] init];
     }
+    
     CGFloat detailCellWidth = SCREEN_WIDTH - 16;
     //计算需要的高度
     CGRect chapterCellFrame = CHAPTER_CELL_FRAME;
@@ -166,6 +167,10 @@
         NSNumber *chaptersNumber = self.theChaptersDic[[bookNo stringValue]];
         [self calcDetailLayoutWithChaptersNumber:[chaptersNumber integerValue]];
         return self.theDetailLayout.itemSize;
+    }else if (self.isShowReadRecord && indexPath.item == self.theBooksArray.count){
+        //show read record cell...
+        CGFloat detailCellWidth = SCREEN_WIDTH - 16;
+        return CGSizeMake(detailCellWidth, 50);
     }else{
         return self.theBookLayout.itemSize;
     }

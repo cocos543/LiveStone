@@ -174,6 +174,7 @@ static NSString * const reuseIdentifierReadRecordCell = @"reuseIdentifierReadRec
     
     theNewCollectionView.delegate = theNewCollectionView;
     theNewCollectionView.dataSource = self;
+    theNewCollectionView.isShowReadRecord = YES;
     
     theOldCollectionView.allowsMultipleSelection = NO;
     theNewCollectionView.allowsMultipleSelection = NO;
@@ -198,7 +199,7 @@ static NSString * const reuseIdentifierReadRecordCell = @"reuseIdentifierReadRec
     [theNewCollectionView registerNib:[UINib nibWithNibName:@"LSBookCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierBookCell];
     [theNewCollectionView registerNib:[UINib nibWithNibName:@"LSBookDetailCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierDetailCell];
     
-    [theNewCollectionView registerNib:[UINib nibWithNibName:@"LSRealRecordCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierReadRecordCell];
+    [theNewCollectionView registerNib:[UINib nibWithNibName:@"LSReadRecordCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifierReadRecordCell];
 
     [self.scrollView addSubview:theOldCollectionView];
     [self.scrollView addSubview:theNewCollectionView];
@@ -312,7 +313,7 @@ static NSString * const reuseIdentifierReadRecordCell = @"reuseIdentifierReadRec
     if (collectionView == self.theOldCollectionView) {
         return self.theOldBooksArray.count;
     }else{
-        return self.theNewBooksArray.count;
+        return self.theNewBooksArray.count + 1;
     }
 }
 
@@ -342,6 +343,10 @@ static NSString * const reuseIdentifierReadRecordCell = @"reuseIdentifierReadRec
             booksArray = self.theOldBooksArray;
         }
     }else{
+        if ((indexPath.item + 1) == [self collectionView:collectionView numberOfItemsInSection:indexPath.section]) {
+            cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierReadRecordCell forIndexPath:indexPath];
+            return cell;
+        }
         if (self.theNewCollectionView.theSelectedIndexPath && [indexPath compare:self.theNewCollectionView.theSelectedIndexPath] == NSOrderedSame) {
             isSelectedCell = YES;
         }

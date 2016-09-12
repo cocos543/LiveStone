@@ -1,5 +1,5 @@
 //
-//  LSRealRecordCell.h
+//  LSReadRecordCell.h
 //  LiveStone
 //
 //  Created by Cocos on 16/9/10.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LSRealRecordCell : UICollectionViewCell
+@interface LSReadRecordCell : UICollectionViewCell
 
 @end

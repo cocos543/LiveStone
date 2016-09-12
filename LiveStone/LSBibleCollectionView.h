@@ -36,6 +36,8 @@
  */
 @property (nonatomic, strong) NSDictionary *theChaptersDic;
 
+@property (nonatomic, assign) BOOL isShowReadRecord;
+
 
 /**
  *  Call when adding detail
