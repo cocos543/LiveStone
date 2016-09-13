@@ -105,6 +105,14 @@
 #pragma mark - <UICollectionViewDelegate>
 //选择了某个cell
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    //Select read record cell on the last
+    if (self.isShowReadRecord && indexPath.item == self.theBooksArray.count) {
+        if (self.clickReadRecordBlock) {
+            self.clickReadRecordBlock();
+        }
+        return;
+    }
+    
     //点击后检查是否已经存在detail,存在则先移除
     //如果同个按钮被第二次点中,则以取消点击的方式对当它
     //detail出现位置公式为 item / COLLECTIONVIEW_ROW_ITMES * COLLECTIONVIEW_ROW_ITMES + COLLECTIONVIEW_ROW_ITMES;

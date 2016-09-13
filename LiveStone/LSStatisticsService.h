@@ -44,4 +44,8 @@
  */
 - (LSUserInfoItem *)statisticsParticipateOnce;
 
+- (void)saveReadRecord:(NSDictionary *)readDic;
+
+- (NSDictionary *)getReadRecord;
+
 @end

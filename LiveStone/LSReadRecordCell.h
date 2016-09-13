@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LSReadRecordCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UILabel *lastReadTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *readRecordLabel;
 
 @end

@@ -90,6 +90,11 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
     LSServiceCenter *center = [LSServiceCenter defaultCenter];
     LSStatisticsService *statisticsService = [center getService:[LSStatisticsService class]];
     LSAuthService *authService = [center getService:[LSAuthService class]];
+    
+    //save read record.
+    NSDictionary *readDic = @{@"bookName":self.bookName, @"bookNo":@(self.bookNo), @"chapterNo":@(self.chapterNo), @"readDate":[NSDate date]};
+    [statisticsService saveReadRecord:readDic];
+    
     LSUserInfoItem *item = [authService getUserInfo];
     item.readingItem = [statisticsService statisticsEndCalcReadingTime];
     //Until now the data has not uploaded.The data will be uploaded when the app into the background.

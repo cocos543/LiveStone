@@ -48,6 +48,8 @@
  */
 @property (nonatomic, copy) void (^removingDetailCellBlock)(UICollectionView *collectionView, NSIndexPath *indexPath);
 
+@property (nonatomic, copy) void (^clickReadRecordBlock)(void);
+
 -(instancetype)initWithFrame:(CGRect)frame bookCollectionViewLayout:(LSCollectionViewFlowLayout *)layout;
 
 

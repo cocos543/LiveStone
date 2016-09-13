@@ -184,4 +184,15 @@
     [self.authService saveUserInfoWithItem:userInfo];
     return userInfo;
 }
+
+- (void)saveReadRecord:(NSDictionary *)readDic {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:readDic forKey:kLIVESTONE_DEFAULTS_READ_RECORD];
+    [defaults synchronize];
+}
+
+- (NSDictionary *)getReadRecord {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults valueForKey:kLIVESTONE_DEFAULTS_READ_RECORD];
+}
 @end

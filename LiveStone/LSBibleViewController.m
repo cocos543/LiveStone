@@ -105,7 +105,11 @@ static NSString * const reuseIdentifierReadRecordCell = @"reuseIdentifierReadRec
 //    UIBarButtonItem *itemTime = [[UIBarButtonItem alloc] initWithTitle:@"时间" style:UIBarButtonItemStylePlain target:nil action:nil];
 //    NSArray *leftItems = @[itemSearch,itemTime];
 //        self.navigationItem.rightBarButtonItems = leftItems;
+}
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.theNewCollectionView reloadItemsAtIndexPaths:@[]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -191,6 +195,10 @@ static NSString * const reuseIdentifierReadRecordCell = @"reuseIdentifierReadRec
     };
     theNewCollectionView.removingDetailCellBlock = ^void(UICollectionView *collectionView,NSIndexPath *indexPath) {
         [self.theNewBooksArray removeObjectAtIndex:indexPath.item];
+    };
+    
+    theNewCollectionView.clickReadRecordBlock = ^(void){
+        NSLog(@"click read record~");
     };
     
     //注册cell
@@ -343,7 +351,8 @@ static NSString * const reuseIdentifierReadRecordCell = @"reuseIdentifierReadRec
             booksArray = self.theOldBooksArray;
         }
     }else{
-        if ((indexPath.item + 1) == [self collectionView:collectionView numberOfItemsInSection:indexPath.section]) {
+        //read record cell.
+        if (indexPath.item == self.theNewBooksArray.count) {
             cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierReadRecordCell forIndexPath:indexPath];
             return cell;
         }

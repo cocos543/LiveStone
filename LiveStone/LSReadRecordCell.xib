@@ -40,6 +40,10 @@
                 <constraint firstAttribute="trailing" secondItem="CN7-fu-u4Z" secondAttribute="trailing" constant="8" id="qbh-zp-sUI"/>
             </constraints>
             <size key="customSize" width="284" height="50"/>
+            <connections>
+                <outlet property="lastReadTimeLabel" destination="hAB-gX-u4f" id="tDZ-ZW-YPL"/>
+                <outlet property="readRecordLabel" destination="CN7-fu-u4Z" id="8Nf-Pj-is1"/>
+            </connections>
             <point key="canvasLocation" x="460" y="355"/>
         </collectionViewCell>
     </objects>
