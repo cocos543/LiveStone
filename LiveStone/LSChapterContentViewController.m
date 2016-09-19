@@ -24,6 +24,7 @@
  */
 @property (nonatomic) BOOL isSelectedAgain;
 @property (assign, nonatomic) NSInteger searchIndex;
+@property (strong, nonatomic) NSString *cellLongPressString;
 @end
 
 @implementation LSChapterContentViewController
@@ -92,7 +93,7 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
     LSAuthService *authService = [center getService:[LSAuthService class]];
     
     //save read record.
-    NSDictionary *readDic = @{@"bookName":self.bookName, @"bookNo":@(self.bookNo), @"chapterNo":@(self.chapterNo), @"readDate":[NSDate date]};
+    NSDictionary *readDic = @{@"bookType":@(self.bookType), @"bookName":self.bookName, @"bookNo":@(self.bookNo), @"chapterNo":@(self.chapterNo), @"readDate":[NSDate date]};
     [statisticsService saveReadRecord:readDic];
     
     LSUserInfoItem *item = [authService getUserInfo];
@@ -136,6 +137,18 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
         }
     }
 }
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender{
+    if (action == @selector(copyItemClicked:)) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)canBecomeFirstResponder{
+    return YES;
+}
+
 #pragma mark - Event
 
 - (void)handleSwipes:(UISwipeGestureRecognizer *)sender{
@@ -210,6 +223,24 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
     hud.labelText = text;
     // Move to bottm center.
     [hud hide:YES afterDelay:0.5];
+}
+
+- (void)copyItemClicked:(id)sender{
+    UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
+    [pasteBoard setString:self.cellLongPressString];
+}
+
+- (void)cellLongPress:(UILongPressGestureRecognizer *)longRecognizer{
+    if (longRecognizer.state==UIGestureRecognizerStateBegan) {
+        [self becomeFirstResponder];
+        UIMenuController *menu=[UIMenuController sharedMenuController];
+        UIMenuItem *copyItem = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyItemClicked:)];
+        [menu setMenuItems:[NSArray arrayWithObjects:copyItem,nil]];
+        [menu setTargetRect:longRecognizer.view.bounds inView:longRecognizer.view];
+        [menu setMenuVisible:YES animated:YES];
+        
+        self.cellLongPressString = ((UILabel *)[longRecognizer.view viewWithTag:2]).text;
+    }
 }
 
 #pragma mark - Data
@@ -302,10 +333,30 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
             [textLabel labelAssignedText:self.searchKeyword withColor:[CCSimpleTools stringToColor:@"#40C6FF" opacity:1]];
         }
     }
+    
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cellLongPress:)];
+    [cell addGestureRecognizer:longPressGesture];
     return cell;
 }
 
 #pragma mark - Table view delegate
+
+//Not working
+//- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    //允许菜单在每一行上显示
+//    return YES;
+//}
+//- (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender{
+//    //把可使用的动作(SEL类型)简单转化成字符串并且打印到控制台
+//    NSLog(@"%@",NSStringFromSelector(action));
+//    //现在允许所有的action
+//    return YES;
+//}
+//
+//- (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender{
+//    
+//}
+
 -(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
     if ([indexPath compare:selectedIndexPath] == NSOrderedSame) {

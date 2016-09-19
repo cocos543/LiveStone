@@ -17,6 +17,7 @@
 #import "LSChapterContentViewController.h"
 #import "LSReadingTimeController.h"
 #import "LSBibleSearchController.h"
+#import "LSReadRecordCell.h"
 
 #import "LSCollectionViewFlowLayout.h"
 #import "LSBookDetailCell.h"
@@ -107,9 +108,13 @@ static NSString * const reuseIdentifierReadRecordCell = @"reuseIdentifierReadRec
 //        self.navigationItem.rightBarButtonItems = leftItems;
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self reloadReadRecordCell];
+}
+
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.theNewCollectionView reloadItemsAtIndexPaths:@[]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -134,6 +139,7 @@ static NSString * const reuseIdentifierReadRecordCell = @"reuseIdentifierReadRec
         collectionViewFrame.origin.x += self.scrollView.frame.size.width;
         self.theNewCollectionView.frame = collectionViewFrame;
         self.theNewCollectionView.contentSize = collectionViewFrame.size;
+        [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width, 0)];
         
 //        UILabel *readRecordLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,collectionViewFrame.size.height - 50, SCREEN_WIDTH - 20, 40)];
 //        readRecordLabel.text = @"7/30 阅读到: 第1章第1节";
@@ -143,6 +149,11 @@ static NSString * const reuseIdentifierReadRecordCell = @"reuseIdentifierReadRec
 }
 
 #pragma mark - 界面部分
+- (void)reloadReadRecordCell{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.theNewBooksArray.count inSection:0];
+    [self.theNewCollectionView reloadItemsAtIndexPaths:@[indexPath]];
+}
+
 /**
  *  处理头部两个分类底部下划线
  */
@@ -198,6 +209,17 @@ static NSString * const reuseIdentifierReadRecordCell = @"reuseIdentifierReadRec
     };
     
     theNewCollectionView.clickReadRecordBlock = ^(void){
+        LSServiceCenter *center = [LSServiceCenter defaultCenter];
+        LSStatisticsService *statisticsService = [center getService:[LSStatisticsService class]];
+        NSDictionary *readDic = [statisticsService getReadRecord];
+        LSChapterContentViewController *ccvc = [[LSChapterContentViewController alloc] init];
+        ccvc.bookType = [[readDic objectForKey:@"bookType"] integerValue];
+        ccvc.chapterNo = [[readDic objectForKey:@"chapterNo"] integerValue];
+        ccvc.bookNo = [[readDic objectForKey:@"bookNo"] integerValue];
+        ccvc.bookName = [readDic objectForKey:@"bookName"];
+        ccvc.view.backgroundColor = [UIColor whiteColor];
+        ccvc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:ccvc animated:YES];
         NSLog(@"click read record~");
     };
     
@@ -354,6 +376,20 @@ static NSString * const reuseIdentifierReadRecordCell = @"reuseIdentifierReadRec
         //read record cell.
         if (indexPath.item == self.theNewBooksArray.count) {
             cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierReadRecordCell forIndexPath:indexPath];
+            LSReadRecordCell *readCell = (LSReadRecordCell *)cell;
+            LSServiceCenter *center = [LSServiceCenter defaultCenter];
+            LSStatisticsService *statisticsService = [center getService:[LSStatisticsService class]];
+            //NSDictionary *readDic = @{@"bookType":@(self.bookType), @"bookName":self.bookName, @"bookNo":@(self.bookNo), @"chapterNo":@(self.chapterNo), @"readDate":[NSDate date]};
+            NSDictionary *readDic = [statisticsService getReadRecord];
+            if (readDic) {
+                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setDateFormat:@"MM/dd HH:mm"];
+                readCell.lastReadTimeLabel.text = [dateFormatter stringFromDate:[readDic objectForKey:@"readDate"]];
+                readCell.readRecordLabel.text = [NSString stringWithFormat:@"读到 :%@ %@章%@节", [readDic objectForKey:@"bookName"], [readDic objectForKey:@"bookNo"], [readDic objectForKey:@"chapterNo"]];
+            }else{
+                readCell.lastReadTimeLabel.text = @"";
+                readCell.readRecordLabel.text = @"暂未发现阅读记录";
+            }
             return cell;
         }
         if (self.theNewCollectionView.theSelectedIndexPath && [indexPath compare:self.theNewCollectionView.theSelectedIndexPath] == NSOrderedSame) {
