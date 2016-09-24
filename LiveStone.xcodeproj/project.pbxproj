@@ -101,6 +101,7 @@
 		EDA4B2D61D839C0D00186267 /* LSReadRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA4B2D41D839C0D00186267 /* LSReadRecordCell.xib */; };
 		EDA690DA1D0123B2009A807B /* LSDailyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA690D91D0123B2009A807B /* LSDailyStore.m */; };
 		EDA690DD1D015FEF009A807B /* LSDailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA690DC1D015FEF009A807B /* LSDailyViewController.m */; };
+		EDA776551D9654C80062426F /* LSInvitationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA776541D9654C80062426F /* LSInvitationTableViewController.m */; };
 		EDA81ED51D0511A200AEDE0C /* LSCompleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA81ED31D0511A200AEDE0C /* LSCompleteViewController.m */; };
 		EDA81ED61D0511A200AEDE0C /* LSCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA81ED41D0511A200AEDE0C /* LSCompleteViewController.xib */; };
 		EDAE33951D523130004BD639 /* UILabel+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAE33941D523130004BD639 /* UILabel+Color.m */; };
@@ -296,6 +297,8 @@
 		EDA690D91D0123B2009A807B /* LSDailyStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSDailyStore.m; sourceTree = "<group>"; };
 		EDA690DB1D015FEF009A807B /* LSDailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSDailyViewController.h; sourceTree = "<group>"; };
 		EDA690DC1D015FEF009A807B /* LSDailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSDailyViewController.m; sourceTree = "<group>"; };
+		EDA776531D9654C80062426F /* LSInvitationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSInvitationTableViewController.h; sourceTree = "<group>"; };
+		EDA776541D9654C80062426F /* LSInvitationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSInvitationTableViewController.m; sourceTree = "<group>"; };
 		EDA81ED21D0511A200AEDE0C /* LSCompleteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCompleteViewController.h; sourceTree = "<group>"; };
 		EDA81ED31D0511A200AEDE0C /* LSCompleteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCompleteViewController.m; sourceTree = "<group>"; };
 		EDA81ED41D0511A200AEDE0C /* LSCompleteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSCompleteViewController.xib; sourceTree = "<group>"; };
@@ -540,6 +543,8 @@
 				ED669DFD1D63F013007C8517 /* LSUserRegionCell.m */,
 				ED669DFE1D63F013007C8517 /* LSUserRegionCell.xib */,
 				ED669E061D63F2D1007C8517 /* LSUserCurrentRegionView.xib */,
+				EDA776531D9654C80062426F /* LSInvitationTableViewController.h */,
+				EDA776541D9654C80062426F /* LSInvitationTableViewController.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -1021,6 +1026,7 @@
 				EDFA409A1CC139D90054E77C /* LSMainTabBarController.m in Sources */,
 				ED29940A1CEE923B0017BC3E /* LSIntercessionBlessingCell.m in Sources */,
 				ED45E7091CDC2C6700FAC93A /* LSAuthService.m in Sources */,
+				EDA776551D9654C80062426F /* LSInvitationTableViewController.m in Sources */,
 				EDA690DA1D0123B2009A807B /* LSDailyStore.m in Sources */,
 				ED2B50C01CD051B600B0909B /* LSChapterContentViewController.m in Sources */,
 				ED5BB26F1CF9684300EB9304 /* LSContactsItem.m in Sources */,
