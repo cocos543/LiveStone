@@ -25,6 +25,7 @@
 @property (nonatomic) BOOL isSelectedAgain;
 @property (assign, nonatomic) NSInteger searchIndex;
 @property (strong, nonatomic) NSString *cellLongPressString;
+@property (strong, nonatomic) UITableViewCell *cellForCopy;
 @end
 
 @implementation LSChapterContentViewController
@@ -225,12 +226,19 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
     [hud hide:YES afterDelay:0.5];
 }
 
+- (void)highlightCopyCell{
+    ((UILabel *)[self.cellForCopy viewWithTag:2]).textColor = [UIColor blackColor];
+}
+
 - (void)copyItemClicked:(id)sender{
     UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
-    [pasteBoard setString:self.cellLongPressString];
+    UILabel *noLabel = [self.cellForCopy viewWithTag:1];
+    UILabel *textLabel = [self.cellForCopy viewWithTag:2];
+    [pasteBoard setString:[NSString stringWithFormat:@"%@(%@ %@:%@ 和合本 by「活石App」)",textLabel.text,self.bookName, @(self.chapterNo), noLabel.text]];
 }
 
 - (void)cellLongPress:(UILongPressGestureRecognizer *)longRecognizer{
+    //UIMenuControllerDidHideMenuNotification
     if (longRecognizer.state==UIGestureRecognizerStateBegan) {
         [self becomeFirstResponder];
         UIMenuController *menu=[UIMenuController sharedMenuController];
@@ -240,6 +248,10 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
         [menu setMenuVisible:YES animated:YES];
         
         self.cellLongPressString = ((UILabel *)[longRecognizer.view viewWithTag:2]).text;
+        self.cellForCopy = (UITableViewCell *)longRecognizer.view;
+        ((UILabel *)[longRecognizer.view viewWithTag:2]).textColor = [CCSimpleTools stringToColor:NAVIGATIONBAR_BACKGROUND_COLOR opacity:1];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(highlightCopyCell) name:UIMenuControllerWillHideMenuNotification object:nil];
     }
 }
 
