@@ -25,7 +25,10 @@
     //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     LSServiceCenter *center = [LSServiceCenter defaultCenter];
     LSExtraService *extraService = [center getService:[LSExtraService class]];
-    [extraService synchronizeAddressBook];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [extraService synchronizeAddressBook];
+    });
+    
     
     UMConfigInstance.appKey = @UMENG_ANALYTICS_KEY;
     UMConfigInstance.channelId = @"App Store";

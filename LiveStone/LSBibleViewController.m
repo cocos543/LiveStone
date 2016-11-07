@@ -388,6 +388,7 @@ static NSString * const reuseIdentifierReadRecordCell = @"reuseIdentifierReadRec
                 readCell.readRecordLabel.text = [NSString stringWithFormat:@"读到 :%@ %@章%@节", [readDic objectForKey:@"bookName"], [readDic objectForKey:@"bookNo"], [readDic objectForKey:@"chapterNo"]];
             }else{
                 readCell.lastReadTimeLabel.text = @"";
+                readCell.lastReadTimeLabel.hidden = YES;
                 readCell.readRecordLabel.text = @"暂未发现阅读记录";
             }
             return cell;
