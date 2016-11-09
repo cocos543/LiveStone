@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,11 +15,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无注释" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8r-RG-raK">
-                    <rect key="frame" x="8" y="10" width="304" height="39"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" editable="NO" text="暂没有注释" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Qc6-tc-mkn">
+                    <rect key="frame" x="8" y="18" width="304" height="31"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击隐藏" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkv-0M-Edd">
                     <rect key="frame" x="126" y="0.0" width="68" height="21"/>
                     <constraints>
@@ -23,18 +28,18 @@
                         <constraint firstAttribute="width" constant="68" id="u6g-eM-VO1"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Fkv-0M-Edd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Gg6-Jb-0lk"/>
                 <constraint firstItem="Fkv-0M-Edd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ifd-p2-SUE"/>
-                <constraint firstItem="f8r-RG-raK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="YRw-c9-PcZ"/>
-                <constraint firstAttribute="bottom" secondItem="f8r-RG-raK" secondAttribute="bottom" id="dKC-AA-8xP"/>
-                <constraint firstAttribute="trailing" secondItem="f8r-RG-raK" secondAttribute="trailing" constant="8" id="mPJ-FX-UUA"/>
-                <constraint firstItem="f8r-RG-raK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="mgN-gA-i2I"/>
+                <constraint firstAttribute="trailing" secondItem="Qc6-tc-mkn" secondAttribute="trailing" constant="8" id="OdU-Uf-ipl"/>
+                <constraint firstItem="Qc6-tc-mkn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="18" id="k5r-qA-JNi"/>
+                <constraint firstAttribute="bottom" secondItem="Qc6-tc-mkn" secondAttribute="bottom" id="s41-ZQ-IN2"/>
+                <constraint firstItem="Qc6-tc-mkn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="t59-Yw-joe"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

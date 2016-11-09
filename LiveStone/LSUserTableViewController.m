@@ -138,13 +138,13 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
             __weak typeof(nav) weakNav = nav;
             
             [viewController setOpenURLBlock:^(NSString *aURLString, UIViewController *aParentController) {
-                UIViewController *webVC = [[UIViewController alloc] initWithNibName:nil bundle:nil];
-                UIWebView *webView = [[UIWebView alloc] initWithFrame:webVC.view.bounds];
-                webView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-                
-                [webVC.view addSubview:webView];
-                [weakNav pushViewController:webVC animated:YES];
-                [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:aURLString]]];
+//                UIViewController *webVC = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+//                UIWebView *webView = [[UIWebView alloc] initWithFrame:webVC.view.bounds];
+//                webView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+//                
+//                [webVC.view addSubview:webView];
+//                [weakNav pushViewController:webVC animated:YES];
+//                [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:aURLString]]];
             }];
         } else {
             [self toastMessage:@"请保持网络顺畅~"];
@@ -187,7 +187,7 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
         [self openUserInfo];
     }else if (indexPath.section == 1 && indexPath.row == 0){
 
-    }else if (indexPath.section == 1 && indexPath.row == 2){
+    }else if (indexPath.section == 1 && indexPath.row == 1){
         [self openFeedbackViewController];
         /*
         if ([MFMailComposeViewController canSendMail]) {
@@ -215,7 +215,7 @@ static NSString * const reuseIdentifierCell = @"reuseIdentifierCell";
             [alert addAction:cancelAction];
             [self presentViewController:alert animated:YES completion:nil];
         }*/
-    }else if (indexPath.section == 1 && indexPath.row == 3){
+    }else if (indexPath.section == 1 && indexPath.row == 2){
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"前往商店给活石好评?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
 //        alert.message = [NSString stringWithFormat:@"当前版本:%@",BUNDLE_SHORT_VERSION];
         UIAlertAction *confimAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

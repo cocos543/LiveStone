@@ -174,7 +174,10 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
     
     CGRect frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, noteHight);
     
-    UILabel *label = [view viewWithTag:1];
+    UITextView *textView = [view viewWithTag:1];
+    UILabel *label = [[UILabel alloc] init];
+    label.numberOfLines = 0;
+    label.font = textView.font;
     //label.text = [NSString stringWithFormat:@"日落时分，沏上一杯山茶，听一曲意境空远的《禅》，心神随此天籁，沉溺于玄妙的幻境里。"];
     if (item.noteText.length) {
         label.text = item.noteText;
@@ -186,9 +189,14 @@ static NSString * const reuseIdentifierTitleCell = @"reuseIdentifierTitleCell";
         [runLoop addTimer:timer forMode:NSDefaultRunLoopMode];
     }
     
+    textView.text = label.text;
+    
     // Get the size of label font
-    CGSize size = [label boundingRectWithSize:CGSizeMake(label.frame.size.width, 0)].size;
+    CGSize size = [label boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 16, 0)].size;
     frame.size.height = size.height + 30;
+    if (frame.size.height > SCREEN_HEIGHT / 2) {
+        frame.size.height = SCREEN_HEIGHT / 2;
+    }
     view.frame = frame;
     [[UIApplication sharedApplication].keyWindow addSubview:view];
     [UIView animateWithDuration:0.3 animations:^{
